@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+
+    <item
+        android:id="@+id/menu1"
+        android:title="La Hora del Código" />
+
+    <item
+        android:id="@+id/menu2"
+        android:title="Cursos en Aula Clic" />
+
+    <item
+        android:id="@+id/menu3"
+        android:title="Programación Ya" />
+
+    <item
+        android:id="@+id/menu4"
+        android:title="Juegos para el cerebro" />
+
+
+    <item
+        android:id="@+id/menu5"
+        android:title="Indigo Tutoriales" />
+
+
+    <item
+        android:id="@+id/menu6"
+        android:title="Wiki FreeCAD Temporada 1" />
+
+
+    <item
+        android:id="@+id/menu7"
+        android:title="Video Tutorial FreeCAD Temporada 1" />
+
+
+    <item
+        android:id="@+id/menu8"
+        android:title="Wiki FreeCAD Temporada 2" />
+
+
+    <item
+        android:id="@+id/menu9"
+        android:title="Video Tutorial FreeCAD Temporada 2" />
+
+
+    <item
+        android:id="@+id/menu10"
+        android:title="PeruEduca" />
+
+
+    <item
+        android:id="@+id/menu11"
+        android:title="Universia" />
+
+    <item
+        android:id="@+id/menu12"
+        android:title="Jugando y aprendiendo" />
+
+
+    <item
+        android:id="@+id/menu13"
+        android:title="Área Tecnología" />
+
+
+    <item
+        android:id="@+id/menu14"
+        android:title="Sopas Letras" />
+
+
+    <item
+        android:id="@+id/menu15"
+        android:title="Code Monkey" />
+
+
+    <item
+        android:id="@+id/menu16"
+        android:title="Kodable" />
+
+    <item
+        android:id="@+id/menu17"
+        android:title="Aprende Programación con Chavo" />
+
+
+    <item
+        android:id="@+id/menu18"
+        android:title="codeSpark Academia y los Foos" />
+
+
+
+</menu>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/action_opcionB"
+        android:orderInCategory="100"
+        android:title="opcionB"
+        android:icon="@drawable/ic_home_white"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_opcionE"
+        android:orderInCategory="100"
+        android:title="Configuración"
+        android:icon="@drawable/downwhite"
+        app:showAsAction="ifRoom">
+
+        <menu>
+
+            <item   android:id="@+id/identificador_tablet"
+                android:title="Identificador"
+                android:icon="@drawable/ic_contact_mail"
+                />
+
+            <item   android:id="@+id/descargas_tablet"
+                android:title="Historial de Descargas"
+                android:icon="@drawable/ic_file_download"
+                />
+
+        </menu>
+
+
+
+    </item>
+</menu>

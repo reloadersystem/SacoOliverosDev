@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.fragments.fragmentComputacion">
+
+    <ImageView
+        android:id="@+id/img_backexamcap"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_arrow" />
+
+    <TextView
+        android:id="@+id/tx_temas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="COMPUTACIÓN"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btn_computacion"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/sh_transparente"
+        android:drawableRight="@drawable/ic_more_vert_black_24dp"
+        android:text="MATERIALES DE INTERÉS CIENTÍFICO\n Y TECNOLÓGICO"
+        android:textAlignment="center"
+        android:layout_below="@+id/img_backexamcap"
+        android:textColor="@color/celesteD"
+        android:textSize="12dp"         />
+
+
+    <GridView
+
+        android:id="@+id/ma_tomocomputacion"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_computacion"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:verticalSpacing="1dp"
+
+        >
+
+    </GridView>
+
+
+</RelativeLayout>

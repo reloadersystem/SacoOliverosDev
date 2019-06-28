@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/frgcontentseminario"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Secundaria.fragments.Content_SeminarioFragment">
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/main_navseminario"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_seminarios"
+        app:itemIconTint="@drawable/colorbottom"
+        app:itemTextColor="@android:color/white"
+        android:background="@drawable/fondopopup"
+        android:elevation="8dp"
+        >
+
+    </android.support.design.widget.BottomNavigationView>
+
+    <FrameLayout
+        android:id="@+id/main_frameseminario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_nav"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="0dp">
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

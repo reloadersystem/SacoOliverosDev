@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#5472d3</color>
+
+    <color name="colorPrimaryLight">#C5CAE9</color>
+
+    <color name="titulos">#861645</color>
+
+    <color name="copyright">#e1e0e0</color>
+    <color name="celeste">#e0eaeaea</color>
+
+    <color name="barbottom">#eaeaea</color>
+
+    <color name="colorPrimaryS">#b71c1c</color>
+    <color name="colorPrimaryDarkS">#7f0000</color>
+    <color name="colorAccentS">#7e0000</color>
+    <color name="redlight">#de0023</color>
+    <color name="magenta">#ffffff</color>
+    <color name="colortitlebalotario">#d75349</color>
+
+
+
+    <color name="whiteTransparent">#6ff2f2f2</color>
+
+    <color name="transparentFinal">#00f2f2f2</color>
+
+
+    <color name="accent">#ff5722</color>
+    <color name="primary_text">#212121</color>
+
+    <color name="primary_toolbar">#ed3e3e3e</color>
+
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+    <color name="whitealpha">#02ffffff</color>
+
+    <color name="celesteD">#3485cc</color>
+
+    <color name="celestelucido">#d9ff00</color>
+
+    <color name="balotariotext">#1b7fc6</color>
+
+    <color name="transparente">#99080808</color>
+
+    <color name="transparenteblanco">#43181818</color>
+
+    <color name="popuptransparente">#338b8b8b</color>
+
+    <color name="transparenteb">#5728c1c4</color>
+    <color name="celeste_balotario">#4093cf</color>
+
+
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/relative_img"
+        android:layout_width="match_parent"
+        android:layout_height="181dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        android:padding="3dp">
+
+
+        <ImageView
+            android:id="@+id/imgViewOptions1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/aritmetica_f"
+            />
+
+
+        <ImageView
+            android:id="@+id/imgViewOptions3"
+            android:layout_width="49dp"
+            android:layout_height="35dp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="10dp"
+
+
+            android:src="@drawable/ic_file_download_black_24dp" />
+
+    </android.support.v7.widget.CardView>
+
+
+</android.support.v7.widget.CardView>

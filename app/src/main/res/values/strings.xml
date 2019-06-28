@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Plataforma Virtual </string>
+
+    <string name="title_activity_nav_init">NavInitActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_navigator">NavigatorActivity</string>
+    <string name="title_activity_nav">Saco Oliveros</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pasasword"> <u>Olvidaste tu Contraseña?</u></string>
+    <string name="name_copyright">©Copyright 2019 Saco Oliveros -Area de Sistemas TIC</string>
+    <string name="title_activity_navigator_primaria">NavigatorPrimaria</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_connection_saco">ConnectionSACO</string>
+    <string name="ruta_raiz">/data/user/0/pe.sacooliveros.apptablet/files</string>
+
+    <string name="ruta_ssd">/data/user/0/pe.sacooliveros.apptablet/files/APP</string>
+
+
+    <string name="servidor_ruta">http://192.169.218.177</string>    <!--<string name="servidor_ruta">http://app8.sacooliveros.edu.pe</string>-->
+
+
+    <string name="modelo_tablet">ZL80</string>
+    <string name="version_base">MOLY.WR8.W1449.MD.WG.MP.V57.P2, 2018/03/05 20:40</string>
+    <string name="descripcion_marketing">Brindamos una EDUCACIÓN DE CALIDAD para formar personas con liderazgo y alto sentido ético, capaces de enfrentar la vida dignamente. Para ello contamos con un equipo de profesionales altamente calificados y de amplia experiencia que maximizan las competencias de los estudiantes para garantizar una formación integral con excelencia académica.</string>
+    <string name="title_activity_ciclos_especiales">Saco Oliveros</string>
+
+
+    <string name="politica_privacidad">La utilización de la aplicación para el colegio Saco Oliveros y las demas instituciones de Saco Oliveros, en adelante “la institución Saco Oliveros”, implica la aceptación tácita y sin reservas de las Condiciones de Uso y Políticas de Privacidad. Si no acepta las Condiciones de Uso, absténgase de utilizar esta aplicación. Las Condiciones de Uso tendrán vigencia a partir del momento de su publicación en esta aplicación y podrán ser revisadas y actualizadas por la Administración del Portal anunciando de ello a los usuarios.
+</string>
+
+    <string name="politica_texto2">El usuario, al ingresar cualquier dato de carácter personal, autoriza a la institución Saco Oliveros a disponer, como titular, de la información contenida y a manejarla responsablemente. La información personal de los usuarios contenida en el Portal no se utilizará para ningún fin comercial, ni será cedida a terceros. La Institución Saco Oliveros utilizarán la información suministrada por los usuarios al registrarse, con el único fin de generar estadísticas para el estudio y análisis del comportamiento del Portal, mejoramiento de los servicios ofrecidos, diseño de nuevas opciones y envío de información a los usuarios registrados sobre las actividades académicas desarrolladas por ellas.</string>
+
+    <string name="politica_texto3">La Institución Saco Oliveros velarán por mantener la fiabilidad, seguridad y confidencialidad de la información registrada en el Portal. Para ello cuenta con las medidas de seguridad requeridas para la protección de datos. Sin embargo, no se hace responsable por el uso indebido, por parte de terceros no autorizados. La Institución Saco Oliveros se reservan el derecho de modificar las Políticas de Privacidad en caso de ser necesario, ya sea por cambios legislativos o por decisiones de tipo institucional. Sin embargo, toda modificación será publicada para seguir garantizando la privacidad de la información suministrada por los usuarios.</string>
+
+
+    <string name="SelectVideoToPlay">Seleccione un Video para Reproducir</string>
+    <string name="textProgresDialog">Video Helico Seminario</string>
+
+
+</resources>

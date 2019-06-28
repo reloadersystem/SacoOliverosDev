@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.fragments.CompendiosTomosFrag">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="1050dp">
+
+            <ImageView
+                android:id="@+id/img_temasCompendio"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_arrow" />
+
+            <TextView
+                android:id="@+id/tx_temasDiapositivas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/img_temasCompendio"
+                android:text="CIENCIAS"
+                android:textSize="25sp" />
+
+
+            <GridView
+
+                android:id="@+id/ma_tomoDiapositivas"
+                android:layout_width="match_parent"
+                android:layout_height="442dp"
+                android:layout_below="@id/tx_temasDiapositivas"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="3dp"
+                android:horizontalSpacing="1dp"
+                android:numColumns="3"
+                android:verticalSpacing="1dp"
+
+                >
+
+            </GridView>
+
+
+            <TextView
+                android:id="@+id/tx_tomo4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ma_tomoDiapositivas"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="LETRAS"
+                android:textSize="25sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_below="@id/tx_tomo4"
+                android:layout_marginTop="20dp">
+
+
+                <GridView
+
+                    android:id="@+id/ma_tomoCompendio2"
+                    android:layout_width="match_parent"
+                    android:layout_height="480dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:horizontalSpacing="1dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="1dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

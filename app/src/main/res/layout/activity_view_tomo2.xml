@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context="pe.sacooliveros.apptablet.Secundaria.ViewTomosActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/img_gobackt3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+
+            android:src="@drawable/ic_arrow" />
+
+        <TextView
+            android:id="@+id/tv_tomoletraspdft3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOMO"
+            android:textSize="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@id/img_gobackt3"/>
+
+
+
+
+
+
+
+
+        <android.support.v7.widget.CardView
+
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_gobackt3"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:cardElevation="2dp"
+
+            >
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv_tomoletraspdft3"
+                android:layout_marginTop="5dp"
+
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/img_indicepdft1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/ic_format_list" />
+
+
+                <TextView
+                    android:id="@+id/tv_buscar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tomoletraspdft3"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:text="Ir a:"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/edt_buscarletraspdft1"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@android:color/white"
+                    android:inputType="number"
+                    android:textAlignment="center" />
+
+                <ImageView
+                    android:id="@+id/img_buscarletraspdft3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/ic_find" />
+
+
+                <ImageView
+                    android:id="@+id/img_prevletraspdft1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/img_buscarletraspdft3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toEndOf="@+id/img_buscarletraspdft3"
+                    android:layout_toRightOf="@+id/img_buscarletraspdft3"
+                    android:src="@drawable/ic__arrow_left" />
+
+
+                <ImageView
+                    android:id="@+id/img_nextletraspdft1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/img_buscarletraspdft3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img_buscarletraspdft3"
+                    android:layout_toRightOf="@+id/img_buscarletraspdft3"
+                    android:src="@drawable/ic_arrow_right" />
+
+                <ImageView
+                    android:id="@+id/img_zoominletraspdft1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/img_buscarletraspdft3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img_buscarletraspdft3"
+                    android:layout_toRightOf="@+id/img_buscarletraspdft3"
+                    android:src="@drawable/ic_zoom_in" />
+
+                <ImageView
+                    android:id="@+id/img_zoomoutletraspdft1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/img_buscarletraspdft3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toEndOf="@+id/img_buscarletraspdft3"
+                    android:layout_toRightOf="@+id/img_buscarletraspdft3"
+                    android:src="@drawable/ic_zoom_out" />
+
+
+                <ImageView
+                    android:id="@+id/img_fullscreenletraspdft1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/img_buscarletraspdft3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toEndOf="@+id/img_buscarletraspdft3"
+                    android:layout_toRightOf="@+id/img_buscarletraspdft3"
+                    android:src="@drawable/ic_fullscreen" />
+
+
+                <ImageView
+                    android:id="@+id/img_miniaturet1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/ic_apps" />
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfViewletraspdft1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/divider"
+            android:layout_marginTop="10dp"
+
+            android:background="@android:color/white">
+
+
+            <ProgressBar
+                android:id="@+id/progresbart1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+
+        </com.github.barteksc.pdfviewer.PDFView>
+
+
+        <FrameLayout
+            android:id="@+id/fr_vminiaturat1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="450dp"
+            android:layout_marginTop="92dp"
+            android:background="@color/colorAccent"
+            android:padding="1dp"
+            android:visibility="gone">
+
+
+            <com.github.barteksc.pdfviewer.PDFView
+                android:id="@+id/pdfViewminiaturat1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/divider"
+                android:scrollbarAlwaysDrawVerticalTrack="true">
+
+
+            </com.github.barteksc.pdfviewer.PDFView>
+
+
+        </FrameLayout>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

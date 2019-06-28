@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:layout_width="280dp"
+    android:layout_height="190dp">
+
+    <FrameLayout
+        android:id="@+id/fr_init"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v7.widget.CardView
+
+            android:layout_width="270dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="1dp">
+
+            <ImageView
+                android:id="@+id/img_vhseminario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/secundariatomovm_1" />
+
+        </android.support.v7.widget.CardView>
+
+    </FrameLayout>
+
+</RelativeLayout>

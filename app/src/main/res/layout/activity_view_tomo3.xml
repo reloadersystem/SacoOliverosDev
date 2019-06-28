@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lnSerIndiceMainActivity"
+    tools:context="pe.sacooliveros.apptablet.ViewTomo3Activity">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        app:cardElevation="5dp"
+        android:padding="5dp"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            android:padding="2dp">
+
+
+            <TextView
+                android:id="@+id/tv_tomoletraspdft3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOMO"
+
+                android:textSize="30dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                />
+
+
+            <android.support.v7.widget.CardView
+
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tomoletraspdft3"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/primary_toolbar"
+                app:cardElevation="6dp"
+
+                >
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/tv_tomoletraspdft3"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/btn_cibergafia"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_filter" />
+
+
+                    <ImageView
+                        android:id="@+id/img_indicepdft3"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/listapdf" />
+
+                    <ImageView
+                        android:id="@+id/img_prevletraspdft3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic__arrow_left" />
+
+
+                    <ImageView
+                        android:id="@+id/img_nextletraspdft3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/ic_arrow_right" />
+
+                    <ImageView
+                        android:id="@+id/img_zoominletraspdft3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_zoom_in" />
+
+                    <ImageView
+                        android:id="@+id/img_zoomoutletraspdft3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/ic_zoom_out" />
+
+
+                    <ImageView
+                        android:id="@+id/img_fullscreenletraspdft3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/ic_fullscreen" />
+
+
+                    <ImageView
+                        android:id="@+id/img_miniaturet3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/ic_apps" />
+
+                    <EditText
+                        android:id="@+id/edt_buscarletraspdft3"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/sh_cuadro"
+
+                        android:drawableRight="?android:attr/actionModeWebSearchDrawable"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:textAlignment="center" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <com.github.barteksc.pdfviewer.PDFView
+                android:id="@+id/pdfViewletraspdft3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/divider"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <ProgressBar
+                    android:id="@+id/progresbart3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+
+            </com.github.barteksc.pdfviewer.PDFView>
+
+
+            <FrameLayout
+                android:id="@+id/fr_vminiaturat3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginRight="450dp"
+                android:layout_marginTop="62dp"
+                android:background="@color/celesteD"
+                android:padding="1dp"
+                android:visibility="gone"
+
+
+                >
+
+
+                <com.github.barteksc.pdfviewer.PDFView
+                    android:id="@+id/pdfViewminiaturat3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/divider"
+                    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+
+                </com.github.barteksc.pdfviewer.PDFView>
+
+
+            </FrameLayout>
+
+
+            <FrameLayout
+            android:id="@+id/fr_vindice"
+            android:layout_width="410dp"
+            android:layout_height="770dp"
+            android:layout_marginTop="60dp"
+                android:background="@color/celeste"
+                android:visibility="gone"
+
+                         >
+
+            <ListView
+                android:id="@+id/lvIndice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+
+            </ListView>
+
+        </FrameLayout>
+
+
+            <FrameLayout
+                android:id="@+id/fr_cibergrafia"
+                android:layout_width="410dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="60dp"
+                android:padding="6dp"
+                android:background="@color/celeste"
+                android:visibility="gone"
+
+                >
+
+                <GridView
+                    android:id="@+id/lv_cibergrafia"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+
+                </GridView>
+
+            </FrameLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+
+</RelativeLayout>

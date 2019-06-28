@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.fragments.fragmentPFMatematica">
+
+    <ImageView
+        android:id="@+id/img_backfisica"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_arrow" />
+
+    <TextView
+        android:id="@+id/tx_tomfisica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Principios Fundamentales Matemática"
+        android:textSize="30sp"
+        android:fontFamily="@font/rajdhanisemibold"
+        />
+
+
+    <GridView
+        android:id="@+id/ma_listfisica"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tx_tomfisica"
+        android:layout_marginTop="30dp"
+        android:horizontalSpacing="1dp"
+        android:layout_marginLeft="6dp"
+        android:numColumns="2"
+        android:verticalSpacing="1dp"
+
+        ></GridView>
+
+</RelativeLayout>

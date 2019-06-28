@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Inicio" />
+
+
+        <item
+            android:id="@+id/nav_compendios"
+            android:icon="@drawable/ic_book_black_24dp"
+            android:title="Compendios" />
+
+        <item
+            android:id="@+id/nav_hbalotario"
+            android:icon="@drawable/ic_devices_black_24dp"
+            android:title="Helico Balotario" />
+
+        <item
+            android:id="@+id/nav_pfmatematica"
+            android:icon="@drawable/ic_filter_b_and_w_black_24dp"
+            android:title="Fundamentos-Matemática" />
+
+        <item
+            android:id="@+id/nav_computacion"
+            android:icon="@drawable/ic_laptop_mac_black_24dp"
+            android:title="Computación" />
+
+        <item
+            android:id="@+id/nav_ppropuestos"
+            android:icon="@drawable/ic_pie_chart_black_24dp"
+            android:title="Problemas Propuestos" />
+
+        <item
+            android:id="@+id/nav_presueltos"
+            android:icon="@drawable/ic_pie_chart_outlined_black_24dp"
+            android:title="Problemas Resueltos" />
+
+        <item
+            android:id="@+id/nav_henglish"
+
+            android:icon="@drawable/ic_language_black_24dp"
+            android:title="Helico English" />
+
+        <item
+            android:id="@+id/nav_hdiapositivas"
+            android:icon="@drawable/ic_view_quilt_black_24dp"
+            android:title="Helico Diapositivas" />
+
+
+        <item
+            android:id="@+id/nav_hmotivadores"
+            android:icon="@drawable/ic_important_devices_black_24dp"
+            android:title="Video Helico Motivadores" />
+
+
+        <item
+            android:id="@+id/nav_vhseminario"
+            android:icon="@drawable/ic_ondemand_video_black_24dp"
+            android:title="Video Helico Seminario" />
+
+
+        <item
+            android:id="@+id/nav_efisica"
+            android:icon="@drawable/ic_directions_bike_black_24dp"
+            android:title="Educación Física" />
+
+        <item
+            android:id="@+id/nav_ajedrez"
+            android:icon="@drawable/ajedrezpeon"
+            android:title="Ajedrez" />
+
+
+        <item
+            android:id="@+id/nav_eadanual"
+            android:icon="@drawable/ic_check_box24dp"
+            android:visible="false"
+            android:title="E.Adm por Años" />
+
+
+        <item
+            android:id="@+id/nav_eadcap"
+            android:icon="@drawable/ic_adjust24dp"
+            android:visible="false"
+            android:title="E.Adm por Capítulos" />
+
+        <item
+            android:id="@+id/nav_eadsimulacro"
+            android:icon="@drawable/ic_note24dp"
+            android:visible="false"
+            android:title="Simulacros de E.Adm" />
+
+
+
+        <item
+            android:id="@+id/nav_cerrarsesion"
+            android:icon="@drawable/changeuser"
+            android:title="Cerrar Sesión" />
+
+
+        <item
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/logout"
+            android:title="Salir" />
+
+    </group>
+
+</menu>

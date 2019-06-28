@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_school_black_24dp"
+        android:title="BIMESTRE 1" />
+    <item
+        android:id="@+id/nav_notif"
+        android:icon="@drawable/ic_account_balance_black_24dp"
+        android:title="BIMESTRE 2" />
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@drawable/ic_import_contacts_black_24dp"
+        android:title="BIMESTRE 3" />
+
+    <item
+        android:id="@+id/nav_home2"
+        android:icon="@drawable/baseline_assessment_black_18dp"
+        android:title="BIMESTRE 4" />
+
+
+
+</menu>

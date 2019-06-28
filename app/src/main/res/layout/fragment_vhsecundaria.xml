@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.fragments.fragmentVHSecundaria">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="900dp"
+            >
+
+            <ImageView
+                android:id="@+id/img_vhseminario"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_arrow" />
+
+            <TextView
+                android:id="@+id/tx_temavhseminario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/rajdhanisemibold"
+                android:text="VIDEO HELICO SEMINARIO"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tx_temaletras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/grid_tomocienciasvhs"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/rajdhanisemibold"
+                android:text="LETRAS"
+                android:textSize="30sp" />
+
+            <GridView
+                android:id="@+id/grid_tomocienciasvhs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tx_temavhletras"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:horizontalSpacing="1dp"
+                android:numColumns="2"
+                android:verticalSpacing="1dp"></GridView>
+
+            <GridView
+                android:id="@+id/ma_vhstomoletras"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_below="@id/tx_temaletras"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:horizontalSpacing="1dp"
+                android:numColumns="2"
+                android:verticalSpacing="1dp"
+
+                ></GridView>
+
+
+
+            <TextView
+                android:id="@+id/tx_temavhletras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tx_temavhseminario"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/rajdhanisemibold"
+                android:text="CIENCIAS"
+                android:textSize="30sp" />
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

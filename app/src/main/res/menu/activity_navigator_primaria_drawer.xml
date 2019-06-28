@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_homepri"
+            android:icon="@drawable/ic_home"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_librospri"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Libros" />
+
+        <item
+            android:id="@+id/nav_multimediapri"
+            android:icon="@drawable/multimediaico"
+            android:title="Clase Multimedia" />
+
+
+        <item
+            android:id="@+id/nav_asesoriavirtual"
+            android:icon="@drawable/asesoriaico"
+            android:title="Asesoria Virtuales" />
+
+        <item
+            android:id="@+id/nav_diccionario"
+            android:icon="@drawable/englishico"
+            android:title="Diccionario" />
+        <item
+            android:id="@+id/nav_calculo"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Cálculo Mental" />
+
+        <item
+            android:id="@+id/nav_ajedrez"
+            android:icon="@drawable/ajedrezpeon"
+            android:title="Ajedrez" />
+
+        <item
+            android:id="@+id/nav_motivacion"
+            android:icon="@drawable/ic_terrain_black_24dp"
+            android:title="Hélico Motivación" />
+
+        <item
+            android:id="@+id/nav_diverti"
+            android:icon="@drawable/divertiicon"
+            android:title="Diverti Aprendo" />
+
+
+        <item
+        android:id="@+id/nav_planlector"
+        android:icon="@drawable/ic_book"
+        android:title="Plan Lector" />
+
+        <item
+            android:id="@+id/nav_videoseminario"
+            android:icon="@drawable/seminarioicon"
+            android:title="Video Seminario" />
+
+        <item
+            android:id="@+id/nav_sabiasque"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="Sabias Que?" />
+
+        <item
+            android:id="@+id/nav_cerrarsesionpri"
+            android:icon="@drawable/changeuser"
+            android:title="Cerrar Sesión" />
+
+        <item
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/ic_account_circle"
+            android:title="Salir" />
+    </group>
+
+</menu>

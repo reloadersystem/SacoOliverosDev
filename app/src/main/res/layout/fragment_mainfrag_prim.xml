@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Primaria.fragments.MainfragPrim">
+
+
+    <GridView
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:id="@+id/ma_principal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:verticalSpacing="1dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        >
+
+    </GridView>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_copyright"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="5dp"
+            />
+
+
+</RelativeLayout>

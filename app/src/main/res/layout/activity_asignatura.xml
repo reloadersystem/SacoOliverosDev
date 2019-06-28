@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.DataBaseHelper.AsignaturaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="1200dp">
+
+                <EditText
+                    android:id="@+id/txt_capitulodb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="capitulo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btnModificar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="160dp"
+                    android:text="Modificar"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toStartOf="@+id/btnEliminar"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_listyoutube" />
+
+                <EditText
+                    android:id="@+id/txt_ssdpdfdb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:hint="ssd pdf"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_asiganturadb" />
+
+                <EditText
+                    android:id="@+id/txt_asiganturadb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginTop="24dp"
+                    android:hint="asignatura"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_capitulodb" />
+
+                <ListView
+
+                    android:id="@+id/lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:fadeScrollbars="false"
+                    android:scrollbarAlwaysDrawHorizontalTrack="true"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnVaciar">
+
+                </ListView>
+
+                <Button
+                    android:id="@+id/btRegistrar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Registrar"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_listyoutube" />
+
+                <Button
+                    android:id="@+id/btnBuscar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="156dp"
+                    android:text="Buscar"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toStartOf="@+id/btnListar"
+                    app:layout_constraintTop_toBottomOf="@+id/btnModificar" />
+
+                <Button
+                    android:id="@+id/btnListar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="Listar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnEliminar" />
+
+                <EditText
+                    android:id="@+id/txt_deshabilitardb"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="deshabilitado"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_gradopdf" />
+
+
+                <EditText
+                    android:id="@+id/txt_tomopdf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="tomo pdf"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_deshabilitardb" />
+
+                <EditText
+                    android:id="@+id/txt_gradopdf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="gradopdf"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_capitulodb" />
+
+                <EditText
+                    android:id="@+id/txt_urlpdfdb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="12dp"
+
+
+                    android:layout_marginTop="20dp"
+                    android:hint="url pdf"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_ssdpdfdb" />
+
+                <EditText
+                    android:id="@+id/txt_codigodb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:hint="codigo"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/txt_listyoutube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:hint="list youtube"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_urlpdfdb"
+                    tools:layout_editor_absoluteX="12dp" />
+
+                <Button
+                    android:id="@+id/btnVaciar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="VaciardB"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btRegistrar" />
+
+                <Button
+                    android:id="@+id/btnEliminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Eliminar"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_listyoutube" />
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

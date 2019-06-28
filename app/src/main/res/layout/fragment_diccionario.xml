@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Primaria.fragments.diccionarioFragment">
+
+
+    <TextView
+        android:id="@+id/titulo"
+        android:text="INGLÉS"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+    <FrameLayout
+        android:id="@+id/fr_diccionario"
+        android:layout_width="280dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/titulo"
+        android:layout_marginTop="20dp"
+
+
+
+        >
+
+
+        <android.support.v7.widget.CardView
+
+            android:layout_width="250dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginVertical="15dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
+            <ImageView
+                android:id="@+id/img_diccionario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+
+                android:src="@drawable/logoogle" />
+
+
+        </android.support.v7.widget.CardView>
+
+        <FrameLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/sh_menu"
+
+            >
+
+            <TextView
+                android:id="@+id/txt_diccionario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:textStyle="bold"
+                android:text="TRADUCTOR DE GOOGLE"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/txt_detadiccionario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="VER DETALLE"
+                android:textSize="8dp" />
+
+
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fr_diccionario1"
+        android:layout_width="280dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/titulo"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+
+
+
+        >
+
+
+        <android.support.v7.widget.CardView
+
+            android:layout_width="250dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginVertical="15dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
+            <ImageView
+                android:id="@+id/img_diccionario1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                />
+
+
+        </android.support.v7.widget.CardView>
+
+        <FrameLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/sh_menu"
+
+            >
+
+            <TextView
+                android:id="@+id/txt_diccionario1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:textStyle="bold"
+                android:text="HAPPY CAMPERS"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/txt_detadiccionario1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="VER DETALLE"
+                android:textSize="8dp" />
+
+
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+
+
+
+
+
+</RelativeLayout>

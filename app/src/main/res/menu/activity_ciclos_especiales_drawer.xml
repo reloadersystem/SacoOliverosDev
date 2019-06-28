@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_ingles"
+            android:icon="@drawable/ic_language_black_24dp"
+            android:title="INGLÉS" />
+
+        <item
+            android:id="@+id/nav_libroacademia"
+            android:icon="@drawable/ic_book_black_24dp"
+            android:title="LIBRO ACADEMIA" />
+        <item
+            android:id="@+id/nav_olimpiada"
+            android:icon="@drawable/ic_pie_chart_black_24dp"
+            android:title="OLIMPIADA CONCURSOS" />
+
+        <item
+            android:id="@+id/nav_eanual"
+            android:icon="@drawable/ic_school_black_24dp"
+            android:title="E.ADMISION ANUALES" />
+
+        <item
+            android:id="@+id/nav_cerrarsesionsel"
+            android:icon="@drawable/changeuser"
+            android:title="CERRAR SESIÓN" />
+
+
+        <item
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/logout"
+            android:title="SALIR" />
+
+    </group>
+
+</menu>

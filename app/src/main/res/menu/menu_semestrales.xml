@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/nav_seuni"
+        android:icon="@drawable/ic_school_black_24dp"
+        android:title="SEMESTRAL UNI"/>
+
+    <item
+        android:id="@+id/nav_sesm"
+        android:icon="@drawable/ic_account_balance_black_24dp"
+        android:title="SEMESTRAL SAN MARCOS" />
+
+
+
+</menu>

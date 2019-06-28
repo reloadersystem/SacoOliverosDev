@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:foreground="@android:color/transparent"
+    tools:context=".PptViewer"
+    >
+
+    <RelativeLayout
+        android:id="@+id/toolbar_saco"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@drawable/logo_saco_sombreado"
+
+        >
+
+
+        <ImageView
+
+            android:id="@+id/home_primaria"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ic_home_white"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/tx_materiappt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Grado-Materia-Tema"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/celesteD"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone"
+            />
+
+
+
+            <WebView
+                android:id="@+id/id_webspring"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sh_menu"
+                android:backgroundTint="@color/whitealpha"
+                android:layout_below="@+id/toolbar_saco"
+
+                />
+
+
+
+
+
+
+
+</RelativeLayout>

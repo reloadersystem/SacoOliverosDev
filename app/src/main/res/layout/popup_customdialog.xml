@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/ln_lectura"
+        android:layout_width="550dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="LECTURAS MOTIVADORAS"
+            android:textSize="25sp" />
+
+
+        <Button
+            android:id="@+id/btn_cerrar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/cerrarmedita" />
+
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/grid_pruebas"
+        android:layout_width="548dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ln_lectura"
+        android:layout_marginTop="50dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/ln_lectura">
+
+    </GridView>
+
+
+</FrameLayout>

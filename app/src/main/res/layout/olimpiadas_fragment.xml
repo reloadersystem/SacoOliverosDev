@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".Seleccion.fragments.OlimpiadasFragment">
+
+
+    <TextView
+        android:id="@+id/tx_nacionales"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="NACIONALES" />
+
+    <GridView
+        android:id="@+id/grid_nacionales"
+        android:layout_width="230dp"
+        android:verticalSpacing="1dp"
+        android:layout_below="@+id/tx_nacionales"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:numColumns="1"></GridView>
+
+    <TextView
+        android:id="@+id/tx_internacionales"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_alignParentRight="true"
+        android:text="INTERNACIONALES" />
+
+
+    <GridView
+        android:id="@+id/grid_internacionales"
+        android:layout_marginTop="7dp"
+        android:layout_width="360dp"
+        android:layout_alignParentRight="true"
+        android:numColumns="2"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:layout_below="@+id/tx_internacionales"
+        android:layout_height="match_parent"></GridView>
+
+
+
+
+
+</RelativeLayout>

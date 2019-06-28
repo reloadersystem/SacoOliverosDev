@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+
+    <ImageButton
+        android:id="@+id/img_meditapp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/meditaimg"
+        android:scaleType="centerCrop"
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/ln_lectura"
+        android:layout_width="550dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="LECTURAS MOTIVADORAS"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btn_materiales"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/btn_cerrar"
+            android:background="@android:color/white"
+            android:drawableLeft="@android:drawable/ic_input_get"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text=" Ver Materiales "
+            android:textColor="@color/celesteD"
+            android:visibility="gone"
+
+            />
+
+
+        <Button
+            android:id="@+id/btn_cerrar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/cerrarmedita" />
+
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/grid_pruebas"
+        android:layout_width="469dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ln_lectura"
+        android:layout_marginTop="50dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/ln_lectura">
+
+    </GridView>
+
+
+</FrameLayout>

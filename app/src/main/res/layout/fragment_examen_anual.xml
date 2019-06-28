@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".QuintoUniversidades.fragments.examenAnualFragment">
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/main_navexamenanual"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:menu="@menu/menu_fisica"
+
+        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemTextColor="@color/colorAccent"
+
+        >
+
+    </android.support.design.widget.BottomNavigationView>
+
+    <FrameLayout
+        android:id="@+id/main_examenanual"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/main_navexamenanual"
+        android:layout_alignParentTop="true">
+
+
+    </FrameLayout>
+
+</RelativeLayout>

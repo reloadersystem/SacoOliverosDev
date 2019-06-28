@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="2dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/txt_tituloind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"
+        android:text="LENGUAJE" />
+
+    <LinearLayout
+        android:id="@+id/line_indice0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/txt_tituloind"
+        android:padding="4dp"
+
+        >
+
+        <TextView
+            android:id="@+id/txt_indicea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CAP. 1 ORTOGRAFÍA LITERAL"
+            android:textColor="@android:color/black"
+            android:textSize="6sp" />
+
+        <TextView
+            android:id="@+id/txt_numind1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:textSize="7sp"
+            android:text="7"
+            android:textColor="@android:color/black"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+    android:id="@+id/line_indice1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@id/line_indice0"
+        android:layout_marginTop="3dp"
+        android:padding="5dp"
+    >
+
+        <TextView
+            android:id="@+id/txt_indiceb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="6sp"
+            android:textColor="@android:color/black"
+            android:text="CAP1. LAS GUERRAS CIVILES ENTRE ESPAÑOLES" />
+
+        <TextView
+            android:id="@+id/txt_numind2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:textSize="7sp"
+            android:text="20"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textAlignment="textEnd"
+           />
+</LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/line_indice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/line_indice1"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/txt_indicec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="7sp"
+
+            android:textColor="@android:color/black"
+            android:text="CAP. 3 VICIOS DEL LENGUAJE" />
+
+        <TextView
+            android:id="@+id/txt_numind3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:textSize="8sp"
+            android:text="30"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textAlignment="textEnd"
+             />
+    </LinearLayout>
+
+</RelativeLayout>

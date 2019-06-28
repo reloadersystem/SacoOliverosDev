@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.fragments.fragmentPlanLector">
+
+    <ImageView
+        android:id="@+id/img_backexamcap"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_arrow" />
+
+    <TextView
+        android:id="@+id/plan_lector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="40dp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:layout_toRightOf="@id/img_backexamcap"
+        android:text="PLAN LECTOR"
+        />
+
+    <Button
+        android:id="@+id/btn_computacion"
+        android:layout_width="560dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/plan_lector"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/plan_1"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:textColor="#313131"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_lecturainspiradoras"
+        android:layout_width="560dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/btn_computacion"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/plan_2"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:layout_centerInParent="true"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/btn_materialesliterarios"
+
+        android:layout_width="560dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/btn_lecturainspiradoras"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/plan_3"
+        android:textAlignment="center"
+        android:textColor="#313131"
+        android:textSize="35dp"
+        android:layout_centerInParent="true"
+        android:textStyle="bold" />
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <FrameLayout
+        android:id="@+id/fr_tomo"
+        android:layout_width="250dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="4dp"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="1dp">
+
+            <ImageView
+                android:id="@+id/tomo_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/habitos_estudio_2" />
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </FrameLayout>
+
+</RelativeLayout>

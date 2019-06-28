@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+
+    tools:context=".Noticias.noticiasFragment">
+
+
+    <ImageView
+        android:id="@+id/conectate"
+        android:layout_width="168dp"
+        android:layout_height="87dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/conectate"
+        android:layout_toRightOf="@+id/dibuconectate"
+
+        />
+
+    <ImageView
+        android:id="@+id/dibuconectate"
+        android:layout_width="76dp"
+        android:layout_height="86dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+
+        android:scaleType="centerInside"
+        android:src="@drawable/saco"
+        />
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/dibuconectate"
+        android:id="@+id/movies_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        />
+
+</RelativeLayout>

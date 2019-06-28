@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondocomfig"
+    android:padding="10dp"
+    tools:context=".ConfigFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_config"
+        android:layout_width="111dp"
+        android:layout_height="105dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="39dp"
+        android:background="@drawable/ic_account_circle" />
+
+
+    <LinearLayout
+        android:id="@+id/relative_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/img_config"
+        android:orientation="vertical"
+        android:padding="10dp"
+
+
+        >
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rajdhanibold"
+            android:text="Usuario "
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView"
+            android:background="@drawable/sh_cuadro"
+            android:hint="  nombre_alumno"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="Email de Contacto"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/email_config"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/textView6"
+            android:background="@drawable/sh_cuadro"
+            android:text=" secundaria.bellavista@sacooliveros.edu.pe"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView6"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="Plataforma Virtual para:"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/email_config"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/sh_cuadro"
+            android:text=" "
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView16"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="Localización"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView16"
+            android:layout_marginTop="12dp"
+
+            android:layout_toRightOf="@id/textView6"
+            android:background="@drawable/sh_cuadro"
+
+            android:text=" Lince"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView18"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="Estado de Matrícula"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_matricula"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView18"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/textView6"
+            android:background="@drawable/sh_cuadro"
+            android:text="  "
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_institucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_title"
+        android:layout_marginLeft="30dp"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="INFORMACIÓN DE TABLET"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView8"
+            android:layout_marginTop="28dp"
+            android:text="Número de modelo "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/modelconfig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView9"
+            android:layout_marginLeft="54dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/textView9"
+            android:text="#model"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="Número de serie"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/serialconfig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:layout_toRightOf="@+id/textView13"
+            android:text="#serial"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/textView13"
+            android:layout_marginTop="40dp"
+            android:text="Versión de la banda base"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/timeconfig"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/serialconfig"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@id/textView35"
+            android:text="#info banda base"
+            android:textSize="16sp"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_below="@id/textView8"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/sh_cuadro2"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="  Memoria Total"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/txt_version"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/pantalla"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/sh_cuadro2"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="  Versión"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_numversion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sizescreen"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/txt_version"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/rajdhanibold"
+            android:text="vr."
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/storagesize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView8"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/textView37"
+            android:text="#Gb"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/pantalla"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_below="@id/storagesize"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/sh_cuadro2"
+            android:fontFamily="@font/rajdhanisemibold"
+            android:text="  Tamaño de Pantalla  "
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/sizescreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/storagesize"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/textView37"
+            android:text="10''"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_institucion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="115dp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="CONTACTO"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_institucion"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="80dp"
+        android:layout_toRightOf="@id/textView39"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="Telf. 7172-722"
+        android:textColor="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView20"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/textView39"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="www.sacooliveros.edu.pe"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView21"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@id/textView39"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="soporte.tablet@sacooliveros.edu.pe"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="493dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView22"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="Copyright 2019 |  Asociación Civil Educativa Saco Oliveros"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="19dp" />
+
+</RelativeLayout>

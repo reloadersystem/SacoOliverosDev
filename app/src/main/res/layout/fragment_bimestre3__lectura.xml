@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuintoUniversidades.fragments.Bimestre3_LecturaFragment">
+
+    <ImageView
+        android:id="@+id/img_backanual"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_arrow" />
+
+    <FrameLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tx_bianual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="30sp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="BIMESTRE 3"
+        />
+
+    <GridView
+        android:id="@+id/ma_listanual"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tx_bianual"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:layout_marginLeft="8dp"
+        android:verticalSpacing="1dp"
+
+        ></GridView>
+
+</RelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Seleccion.fragments.DiecisieteFragment">
+
+    <TextView
+        android:id="@+id/tx_exdiecisiete"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="EXAMEN ADMISIÓN 2017"
+        android:textSize="30sp" />
+
+    <GridView
+        android:id="@+id/grid_exdiecisiete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tx_exdiecisiete"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp"
+        android:horizontalSpacing="1dp"
+        android:layout_marginLeft="8dp"
+        android:numColumns="2"
+        android:verticalSpacing="3dp">
+
+    </GridView>
+
+
+</RelativeLayout>

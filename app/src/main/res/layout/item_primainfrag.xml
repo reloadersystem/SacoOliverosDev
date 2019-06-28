@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+
+    <FrameLayout
+        android:id="@+id/fr_init"
+        android:layout_width="300dp"
+        android:layout_height="280dp"
+        android:layout_centerHorizontal="true"
+        >
+
+
+        <android.support.v7.widget.CardView
+
+            android:layout_width="270dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginVertical="15dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
+            <ImageView
+                android:id="@+id/img_primain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/primaria" />
+
+
+        </android.support.v7.widget.CardView>
+
+        <FrameLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/sh_menu"
+
+            >
+
+            <TextView
+                android:id="@+id/txt_primain"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="CIENCIAS"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/txt_detaprimain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="VER DETALLE"
+                android:textSize="8dp" />
+
+
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+</RelativeLayout>

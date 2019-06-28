@@ -1,0 +1,220 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <item name="colorPrimaryDark">@color/primary_text</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlNormal">#cc54084d</item>
+        <item name="colorControlActivated">#f1f2f2f2</item>
+
+
+    </style>
+
+
+    <style name="AppThemePublicidad" parent="Theme.AppCompat.Light.DarkActionBar">
+
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <item name="colorPrimaryDark">@color/primary_text</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlNormal">#cc54084d</item>
+        <item name="colorControlActivated">#f1f2f2f2</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <item name="colorPrimaryDark">@color/primary_text</item>
+
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="AppThemePdf" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <item name="colorPrimaryDark">@color/primary_text</item>
+
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+
+    <style name="AppThemeVisorPdf" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/celesteD</item>
+        <item name="colorPrimaryDark">@color/primary_text</item>
+        <item name="colorAccent">@color/primary_text</item>
+    </style>
+
+    <style name="TextLimitError" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">#cc54084d</item>
+    </style>
+
+
+    <style name="AppThemeTitulos" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/primary_text</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="MyPopupMenu" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-40dp</item>
+        <item name="android:dropDownVerticalOffset">-550dp</item>
+    </style>
+
+
+    <style name="MyPopupMenuDepIndiv" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-90dp</item>
+        <item name="android:dropDownVerticalOffset">-550dp</item>
+    </style>
+
+
+    <style name="MyPopupMenuPlan" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-90dp</item>
+        <item name="android:dropDownVerticalOffset">220dp</item>
+    </style>
+
+
+    <style name="MyPopupMenuPlan1" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-90dp</item>
+        <item name="android:dropDownVerticalOffset">120dp</item>
+    </style>
+
+
+    <style name="MyPopupMenuPlan2" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-90dp</item>
+        <item name="android:dropDownVerticalOffset">-100dp</item>
+    </style>
+
+
+    <style name="MyPopupMenuMeditacion" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-40dp</item>
+        <item name="android:dropDownVerticalOffset">-300dp</item>
+    </style>
+
+
+    <style name="AppPdfVisualizador" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/celesteD</item>
+        <item name="colorPrimaryDark">@color/primary_text</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+
+    <style name="MyPopupMenuDColec" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-200dp</item>
+        <item name="android:dropDownVerticalOffset">-600dp</item>
+    </style>
+
+    <style name="MyPopupMenuHigiene" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-250dp</item>
+        <item name="android:dropDownVerticalOffset">-300dp</item>
+    </style>
+
+    <style name="MyPopupMenuNutricion" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-50dp</item>
+        <item name="android:dropDownVerticalOffset">-300dp</item>
+    </style>
+
+    <style name="MyPopupMenuLaEFisica" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-100dp</item>
+        <item name="android:dropDownVerticalOffset">-100dp</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+
+    <style name="MyPopupLecturasMotivadoras" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">280dp</item>
+        <item name="android:dropDownVerticalOffset">-200dp</item>
+    </style>
+
+
+    <!--<style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">-->
+    <!--<item name="android:windowDisablePreview">true</item>-->
+    <!--<item name="colorPrimary">@color/celesteD</item>-->
+    <!--<item name="colorPrimaryDark">@color/primary_text</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="colorPrimary">@color/celesteD</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimaryDark">@color/primary_text</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="MyPopupMotivacion" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">-180dp</item>
+        <item name="android:dropDownVerticalOffset">-650dp</item>
+    </style>
+
+    <style name="progressDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+
+        <!--<item name="android:windowMinWidthMajor">90%</item>-->
+        <!--<item name="android:windowMinWidthMinor">90%</item>-->
+        <!--<item name="android:textColor">@color/celesteD</item>-->
+        <!--<item name="android:layout_centerHorizontal">true</item>-->
+        <!--<item name="colorControlActivated">@color/whiteTransparent</item>-->
+        <!--<item name="android:textAlignment">center</item>-->
+        <item name="android:background">@color/transparentFinal</item>
+
+        <!--<item name="android:windowBackground">@drawable/animacion_carga</item>-->
+
+
+        <!--<item name="colorAccent">@color/colorPrimaryS</item>-->
+        <!--<item name="android:textColorSecondary">@color/colorPrimaryS</item>-->
+        <!--<item name="android:textColorPrimary">@color/whiteTransparent</item>-->
+    </style>
+
+
+    <style name="StyleAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+        <!--<item name="android:fontFamily">@font/futuralt_bold</item>-->
+    </style>
+
+    <style name="StyleAppBarCollpase" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+        <!--<item name="android:fontFamily">@font/futuralt_bold</item>-->
+    </style>
+
+</resources>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.fragments.BalotarioMenuFragment">
+
+    <TextView
+        android:id="@+id/txt_tituloBalotario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/rajdhanibold"
+        android:text="HELICO BALOTARIO"
+        android:textColor="@color/colortitlebalotario"
+
+        android:textSize="30sp" />
+
+
+    <LinearLayout
+        android:id="@+id/ln_primerbalotario"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_tituloBalotario"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/sh_balotario"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/txt_primertitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/rajdhanibold"
+            android:text="PRIMER  BALOTARIO"
+            android:textColor="@color/colortitlebalotario"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_balotar1bimestral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="BIMESTRAL" />
+
+
+        <TextView
+            android:id="@+id/txt_balotar1mensual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="MENSUAL" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_segundobalotario"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_tituloBalotario"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/sh_balotario"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/txt_segundotitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/rajdhanibold"
+            android:text="SEGUNDO BALOTARIO"
+            android:textColor="@color/colortitlebalotario"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_balotar2bimestral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="BIMESTRAL" />
+
+
+        <TextView
+            android:id="@+id/txt_balotar2mensual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="MENSUAL" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_tercerbalotario"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ln_primerbalotario"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/sh_balotario"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <TextView
+            android:id="@+id/txt_tercerotitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/rajdhanibold"
+            android:text="TERCER BALOTARIO"
+            android:textColor="@color/colortitlebalotario"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_balotar3bimestral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="BIMESTRAL" />
+
+
+        <TextView
+            android:id="@+id/txt_balotar3mensual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="MENSUAL" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_cuartobalotario"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ln_primerbalotario"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/sh_balotario"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/txt_cuartotitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/rajdhanibold"
+            android:text="CUARTO BALOTARIO"
+            android:textColor="@color/colortitlebalotario"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_balotar4bimestral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="BIMESTRAL" />
+
+
+        <TextView
+            android:id="@+id/txt_balotar4mensual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="MENSUAL" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

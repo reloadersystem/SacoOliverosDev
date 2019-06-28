@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Secundaria.fragments.fragmentPropuestos">
+
+
+
+    <ImageView
+        android:id="@+id/img_temasDiapo"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/ic_arrow"/>
+
+    <TextView
+        android:id="@+id/tx_titlePropuesto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PROBLEMAS PROPUESTOS"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+         />
+
+
+
+
+    <GridView
+
+        android:id="@+id/ma_tomoDiapo"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:verticalSpacing="1dp"
+        android:layout_marginLeft="3dp"
+        android:layout_below="@id/tx_titlePropuesto"
+
+        >
+
+    </GridView>
+
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Primaria.fragments.divertiAprendoFragment">
+
+
+
+    <TextView
+
+        android:id="@+id/tx_title"
+        android:layout_width="wrap_content"
+        android:text="DIVERTI APRENDO"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:textSize="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        />
+
+
+    <TextView
+        android:id="@+id/tx_aprendo"
+        android:layout_width="wrap_content"
+        android:text="Elegí otra Unidad"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:textColor="@color/celesteD"
+        android:textSize="25dp"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+
+        />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_diverti"
+        android:layout_below="@id/tx_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Seleccion.fragments.AcademiaFragment">
+
+    <ImageView
+        android:id="@+id/img_anualseleccion"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_arrow" />
+
+    <TextView
+        android:id="@+id/tx_anualseleccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:text="SPA-S4(Lib - Anual SM)"
+        android:textSize="25sp" />
+
+
+    <GridView
+        android:id="@+id/grid_anualseleccion"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:verticalSpacing="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@id/tx_anualseleccion"
+
+        >
+
+    </GridView>
+
+</RelativeLayout>

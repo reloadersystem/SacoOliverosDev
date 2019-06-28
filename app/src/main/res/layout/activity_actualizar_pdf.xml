@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pe.sacooliveros.apptablet.ActualizarPDFActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/linear_descargar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        >
+
+        <TextView
+        android:id="@+id/id_descargatxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+        android:text="Helico Materiales  Académicos Tomo 1 Ciencias"/>
+
+        <ImageView
+            android:id="@+id/image_descarga"
+            android:src="@drawable/ic_cloud_download_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:id="@+id/id_newdescarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/holo_green_light"
+            android:textStyle="bold"
+            android:text="NEW"></TextView>
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:id="@+id/btn_open_storage"
+        android:text="VISUALIZAR STORAGE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/linear_descargar"
+        android:layout_centerHorizontal="true"/>
+
+
+
+    <Button
+        android:id="@+id/btn_open_from_internet"
+        android:text="VISTA DESDE LINK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_open_storage"
+        android:layout_centerHorizontal="true"/>
+
+
+
+    <GridView
+        android:layout_below="@id/btn_open_from_internet"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/ma_lista"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="1dp"
+        android:numColumns="1"
+        android:verticalSpacing="1dp"></GridView>
+
+
+
+
+
+</RelativeLayout>

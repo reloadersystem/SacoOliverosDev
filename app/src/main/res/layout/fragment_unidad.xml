@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Primaria.fragments.unidadFragment">
+
+
+    <TextView
+        android:id="@+id/tx_plan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:text="PLAN LECTOR"
+
+        android:fontFamily="@font/rajdhanisemibold"
+        android:textSize="30sp"
+
+         />
+
+    <GridView
+        android:layout_marginLeft="2dp"
+        android:id="@+id/ma_plan"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:verticalSpacing="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tx_plan"
+        >
+
+    </GridView>
+
+
+
+</RelativeLayout>

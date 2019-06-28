@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoprimaria"
+    tools:context=".Primaria.fragments.tomoLibroFrag">
+
+    <TextView
+        android:id="@+id/tx_tomoLibro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@android:color/white"
+        android:text="TOMO #"
+        android:fontFamily="@font/rajdhanisemibold"
+        android:textSize="35sp"
+
+         />
+
+    <GridView
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:id="@+id/ma_tomoLibro"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="1dp"
+        android:numColumns="2"
+        android:verticalSpacing="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/tx_tomoLibro"
+
+        >
+
+    </GridView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/celesteD"
+        android:layout_below="@+id/ma_tomoLibro"
+        android:layout_marginTop="10dp"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_copyright"
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

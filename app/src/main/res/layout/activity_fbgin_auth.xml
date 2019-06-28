@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lnMainActivity"
+    tools:context=".Authenticacion.FBginAuth">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@drawable/logo_saco_sombreado"
+        android:elevation="10dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="UnusedAttribute" />
+
+
+    <LinearLayout
+        android:id="@+id/fotos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/photoImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tv_urphoto"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/idTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fotos">
+
+
+        <Button
+            android:id="@+id/btnIngresar"
+            android:text="Primaria"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+
+        <Button
+            android:id="@+id/btnIngresarSecundaria"
+            android:text="SECUNDARIA"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+
+
+
+
+
+        <Button
+            android:id="@+id/btnRelogear"
+            android:text="elegir otro mail"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+
+
+        <Button
+            android:id="@+id/btn_datos"
+            android:layout_marginTop="20dp"
+            android:hint="Consulta datos del Servidor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+        <TextView
+            android:id="@+id/tx_datos_server"
+            android:hint="datos del alumno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:visibility="gone"
+            />
+
+
+
+
+
+
+        <Button
+            android:id="@+id/btnSalir"
+            android:text="Salir"
+            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:visibility="gone"
+
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

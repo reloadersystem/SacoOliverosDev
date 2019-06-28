@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_simulacro"
+        android:icon="@drawable/simulacro"
+        android:orderInCategory="100"
+        android:title="Simulacro y Solucionario"
+        android:visible="false"
+        app:showAsAction="ifRoom">
+
+        <menu>
+
+            <item
+                android:id="@+id/simulacropdf"
+                android:icon="@drawable/pregunta"
+                android:title="Simulacro Mensual" />
+
+            <item
+                android:id="@+id/solucionariopdf"
+                android:icon="@drawable/libroicon"
+                android:title="Solucionario Mensual" />
+
+        </menu>
+
+    </item>
+
+
+    <item
+        android:id="@+id/action_opcionB"
+        android:icon="@drawable/ic_home_white"
+        android:orderInCategory="100"
+        android:title="opcionB"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_opcionE"
+        android:icon="@drawable/downwhite"
+        android:orderInCategory="100"
+        android:title="Configuración"
+        app:showAsAction="ifRoom">
+
+        <menu>
+
+            <item
+                android:id="@+id/identificador_tablet"
+                android:icon="@drawable/ic_contact_mail"
+                android:title="Identificador" />
+
+            <item
+                android:id="@+id/descargas_tablet"
+                android:icon="@drawable/ic_file_download"
+                android:title="Historial de Descargas" />
+
+        </menu>
+
+
+    </item>
+
+
+</menu>
