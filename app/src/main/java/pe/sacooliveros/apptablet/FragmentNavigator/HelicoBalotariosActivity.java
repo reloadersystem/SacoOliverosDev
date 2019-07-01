@@ -196,8 +196,8 @@ public class HelicoBalotariosActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menupdf, menu);
-        //getMenuInflater().inflate(R.menu, menu);
+        //getMenuInflater().inflate(R.menu.menupdf, menu);
+        getMenuInflater().inflate(R.menu.menu_balotario, menu);
         return true;
     }
 
@@ -207,27 +207,18 @@ public class HelicoBalotariosActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_reload) {
 
-
-       /* if (id == R.id.action_opcionBpdf) {
-
-            Toast.makeText(this,"zoom in",Toast.LENGTH_SHORT).show();
-            return true;
+            new MyAsynTask().execute();
         }
 
-        if (id == R.id.action_opcionCpdf) {
-            Toast.makeText(this,"zoom out",Toast.LENGTH_SHORT).show();
-            return true;
-        }*/
+
 
 
         if (id == R.id.action_opcionDpdf) {
 
             Intent intent= new Intent(HelicoBalotariosActivity.this,NavActivity.class );
             startActivity(intent);
-
-
 
             return true;
         }

@@ -107,8 +107,8 @@ public class Bimestre1_AnualFragment extends Fragment {
 
         } else if (tipogrado.equalsIgnoreCase("CATOLICA")) {
             ciclo = "5";
-            Lista.add(new mAnualExamen(R.drawable.admisioncatolica_2, R.drawable.ic_file_download_black_24dp));
             Lista.add(new mAnualExamen(R.drawable.admisioncatolica_1, R.drawable.ic_file_download_black_24dp));
+            Lista.add(new mAnualExamen(R.drawable.admisioncatolica_2, R.drawable.ic_file_download_black_24dp));
             Lista.add(new mAnualExamen(R.drawable.admisioncatolica_3, R.drawable.ic_file_download_black_24dp));
 
         } else if (tipogrado.equalsIgnoreCase("PRE")) {

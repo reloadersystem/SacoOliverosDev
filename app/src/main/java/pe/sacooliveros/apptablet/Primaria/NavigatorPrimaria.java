@@ -52,7 +52,6 @@ import pe.sacooliveros.apptablet.Primaria.fragments.appCalculoFrag;
 import pe.sacooliveros.apptablet.Primaria.fragments.asesoriaFragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.comunicacionFragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.diccionarioFragment;
-import pe.sacooliveros.apptablet.Primaria.fragments.divertiAprendoFragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.fragmentSabiasQ;
 import pe.sacooliveros.apptablet.Primaria.fragments.librosfragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.mateRFragment;
@@ -64,7 +63,7 @@ import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 
 public class NavigatorPrimaria extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, EnviarNumeroGrado, EnviarTomo, mateRFragment.IEnviarMensaje {
+        implements NavigationView.OnNavigationItemSelectedListener, EnviarNumeroGrado, mateRFragment.IEnviarMensaje {
 
     MainfragPrim inicioFragment;
 
@@ -104,6 +103,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
     String apellidopaterno, apellidomaterno;
 
+    String versionapkbase;
 
     public static void apkversion(Double updateversionapk) {
 
@@ -151,7 +151,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        Float versionapkbase = Float.valueOf(getVersionName(getApplicationContext()));
+        versionapkbase = getVersionName(getApplicationContext());
 
         String codigoAuth = ShareDataRead.obtenerValor(getApplicationContext(), "codigo_autenticacion");
 
@@ -198,9 +198,11 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
+        Double versionapk = Double.valueOf(getVersionName(getApplicationContext()));
+
 
         if (cd.isConnected()) {
-            if (updateapk > Double.parseDouble(String.valueOf(versionapkbase))) {
+            if (updateapk > versionapk) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(NavigatorPrimaria.this);
                 builder.setTitle("Nueva Versión Disponible");
@@ -866,14 +868,6 @@ public class NavigatorPrimaria extends AppCompatActivity
 
     }
 
-    @Override
-    public void enviartomo(String mensaje) {
-
-        Fragment fragment = new divertiAprendoFragment();
-        FragmentManager fmanager = this.getSupportFragmentManager();
-        fmanager.findFragmentById(R.id.id_comunicacion);
-
-    }
 
     @Override
     public void enviarMensaje(String mensaje) {

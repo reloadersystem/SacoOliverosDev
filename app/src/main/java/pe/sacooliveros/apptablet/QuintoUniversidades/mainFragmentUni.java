@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
@@ -906,6 +907,7 @@ public class mainFragmentUni extends Fragment {
 
         final AlertDialog alertDialog;
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        String tipogrado = ShareDataRead.obtenerValor(getContext(), "TipoGradoAsiste");
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
 
@@ -913,9 +915,15 @@ public class mainFragmentUni extends Fragment {
 
         GridView lvView = view2.findViewById(R.id.grid_pruebas);
         Button btn_cerrar = view2.findViewById(R.id.btn_cerrar);
+        ImageButton imgmedita = view2.findViewById(R.id.img_meditapp);
 
+        //img_meditapp
 
-        String tipogrado = ShareDataRead.obtenerValor(getContext(), "TipoGradoAsiste");
+        if(tipogrado.equalsIgnoreCase("CATOLICA"))
+        {
+            imgmedita.setVisibility(View.GONE);
+        }
+
 
         builder.setView(view2);
         alertDialog = builder.create();

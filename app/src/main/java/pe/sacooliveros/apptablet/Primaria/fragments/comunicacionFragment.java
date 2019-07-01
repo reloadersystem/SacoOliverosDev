@@ -130,7 +130,7 @@ public class comunicacionFragment extends Fragment implements View.OnClickListen
         cir_download3.setOnClickListener(this);
 
 
-        cd = new ConnectionDetector(getContext());
+
 
 
         servidor_ruta = getContext().getString(R.string.servidor_ruta);

@@ -126,7 +126,7 @@ public class NavActivity extends AppCompatActivity
 
     DrawerLayout drawer;
 
-    Float versionapkbase;
+    String versionapkbase;
 
     String urlfotoalumno;
 
@@ -198,7 +198,7 @@ public class NavActivity extends AppCompatActivity
 
         urlfotoalumno = ShareDataRead.obtenerValor(getApplicationContext(), "URLPhoto");
 
-        versionapkbase = Float.valueOf(getVersionName(getApplicationContext()));
+
 
         String codigoAuth = ShareDataRead.obtenerValor(getApplicationContext(), "codigo_autenticacion");
 
@@ -215,6 +215,8 @@ public class NavActivity extends AppCompatActivity
 
 
         String consultarServicio = ShareDataRead.obtenerValor(getApplicationContext(), "CheckOutService");
+
+        versionapkbase = getVersionName(getApplicationContext());
 
 
         if (cd.isConnected()) {
@@ -289,13 +291,11 @@ public class NavActivity extends AppCompatActivity
 
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
-        if (updateapk == null) {
-            updateapk = 2.1585;
-        }
 
+       Double  versionapk = Double.valueOf(getVersionName(getApplicationContext()));
 
         if (cd.isConnected()) {
-            if (updateapk > Double.parseDouble(String.valueOf(versionapkbase))) {
+            if (updateapk > versionapk) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(NavActivity.this);
                 builder.setTitle("Nueva Versión Disponible");

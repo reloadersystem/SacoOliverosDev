@@ -69,7 +69,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="20dp"
-
+                android:fontFamily="@font/futuraheavy"
                 android:text="Primer balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
@@ -83,7 +83,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="8dp"
-
+                android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
@@ -96,7 +96,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="8dp"
-
+                android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="8dp"
-
+                android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
@@ -138,7 +138,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="31dp"
                 android:layout_marginTop="20dp"
-
+                android:fontFamily="@font/futuraheavy"
                 android:text="Segundo balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="8dp"
-
+                android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
@@ -199,7 +199,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="31dp"
-
+                android:fontFamily="@font/futuraheavy"
                 android:text="Tercer balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
@@ -211,13 +211,12 @@
                 android:id="@+id/txt_balotar3bimestral"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="65dp"
                 android:layout_marginTop="8dp"
-
+                android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/txt_balotar2mensual"
+                app:layout_constraintEnd_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
@@ -226,8 +225,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="43dp"
-
+                android:layout_marginEnd="39dp"
+                android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
@@ -239,10 +238,10 @@
                 android:id="@+id/imageView5"
                 android:layout_width="25dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="1dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
                 android:src="@drawable/sh_divider"
-                app:layout_constraintStart_toEndOf="@+id/txt_balotar3bimestral"
+                app:layout_constraintEnd_toStartOf="@+id/txt_balotar3mensual"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
@@ -263,7 +262,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
-
+                android:fontFamily="@font/futuraheavy"
                 android:text="Cuarto balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
@@ -277,7 +276,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
-
+                android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
@@ -290,7 +289,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="64dp"
-
+                android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"

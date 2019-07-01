@@ -7,7 +7,7 @@
         android:id="@+id/action_reload"
         android:orderInCategory="100"
         android:title="opcionD"
-        android:icon="@drawable/recargapdf"
+        android:icon="@drawable/repairpdf"
         app:showAsAction="ifRoom" />
 
     <item

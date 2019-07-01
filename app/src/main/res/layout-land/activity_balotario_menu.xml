@@ -12,29 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/radius"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="exitUntilCollapsed|scroll"
-            app:contentScrim="@drawable/sh_cabecera"
-            app:title="HELICO BALOTARIOS"
+            android:background="@drawable/cabecera_balotario"
             app:collapsedTitleGravity="center_horizontal"
+            app:collapsedTitleTextAppearance="@style/StyleAppBarCollpase"
+            app:contentScrim="@drawable/sh_cabecera"
             app:expandedTitleGravity="center"
             app:expandedTitleTextAppearance="@style/StyleAppBar"
-            app:collapsedTitleTextAppearance="@style/StyleAppBarCollpase"
-            android:background="@drawable/cabecera_balotario"
-            >
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            app:title="HELICO BALOTARIOS">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarid"
                 android:layout_width="match_parent"
-                app:popupTheme="@style/AlertDialog.AppCompat.Light"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                android:layout_height="?attr/actionBarSize">
+                app:popupTheme="@style/AlertDialog.AppCompat.Light">
 
             </android.support.v7.widget.Toolbar>
 
@@ -43,87 +41,73 @@
 
     </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/ln_balotario"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            >
+            android:layout_marginTop="50dp"
 
 
+            android:orientation="horizontal">
 
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/ln_balotario"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="50dp"
+            <ImageView
+                android:id="@+id/img_balotariovirtual"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginStart="230dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/icobalotario_1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_aulavirtual"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="244dp"
+                android:src="@drawable/icobalotario_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-                    android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/futuraheavy"
+                android:text="Balotario virtual"
+                android:textColor="#989898"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_balotariovirtual" />
 
 
-                    <ImageView
-                        android:id="@+id/img_balotariovirtual"
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:layout_marginStart="230dp"
-                        android:layout_marginTop="25dp"
-                        android:src="@drawable/icobalotario_1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/img_aulavirtual"
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="244dp"
-                        android:src="@drawable/icobalotario_2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="232dp"
+                android:fontFamily="@font/futuraheavy"
+                android:text="Aula virtual \n interactiva"
+                android:textColor="#989898"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_aulavirtual" />
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="200dp"
-                        android:layout_marginTop="16dp"
-
-                        android:text="Balotario virtual"
-                        android:textColor="#989898"
-                        android:textSize="25sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/img_balotariovirtual" />
+        </android.support.constraint.ConstraintLayout>
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="232dp"
-
-                        android:text="Aula virtual \n interactiva"
-                        android:textColor="#989898"
-                        android:textSize="25sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/img_aulavirtual" />
-
-
-                </android.support.constraint.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>

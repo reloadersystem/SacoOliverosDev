@@ -114,21 +114,21 @@ public class SeleccionFragment extends Fragment {
 
                         if (cd.isConnected()) {
 
-                            String urldata = servidor_ruta + "/APP/MEDITACION_GENERAL.json";
+                        String urldata = servidor_ruta + "/APP/MEDITACION_GENERAL.json";
 
-                            ServiceNoticia.urljson(urldata);
-                            SConsultNoticia consult = new SConsultNoticia();
-                            consult.setCurrentContext(getContext());
-                            consult.setCurrentLayout(lnLayout);
-                            consult.execute("");
-
-                            break;
-
-                        } else
-
-                            Toast.makeText(getContext(), "Necesitás Conexión a Internet", Toast.LENGTH_SHORT).show();
+                        ServiceNoticia.urljson(urldata);
+                        SConsultNoticia consult = new SConsultNoticia();
+                        consult.setCurrentContext(getContext());
+                        consult.setCurrentLayout(lnLayout);
+                        consult.execute("");
 
                         break;
+
+                    } else
+
+                        Toast.makeText(getContext(), "Necesitás Conexión a Internet", Toast.LENGTH_SHORT).show();
+
+                    break;
 
 
                     case 2:

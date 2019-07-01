@@ -21,5 +21,20 @@
         android:font="@font/rajdhanisemiBold"
     </font>
 
+    <font>
+        android:font="@font/futurabold"
+    </font>
+    <font>
+        android:font="@font/futuraheavy"
+    </font>
+
+    <font>
+        android:font="@font/futuralt"
+    </font>
+
+    <font>
+        android:font="@font/myriadproregular.otf"
+    </font>
+
 </font-family>
 

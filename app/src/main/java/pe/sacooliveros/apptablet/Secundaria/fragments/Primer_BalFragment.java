@@ -115,20 +115,14 @@ public class Primer_BalFragment extends Fragment {
             listaBalotarioss.add(new mBalotarios(R.drawable.publicaciones17, "Psicología", R.drawable.downloadpublic, "Psicología - " + balotariotipo, "Psicologia" + balotariotipo, numperiodo + "/BALOTARIO_" + tipoperiodo + "/"));
         }
 
-
         RecyclerBalotariosAdapter adapter = new RecyclerBalotariosAdapter(rootview.getContext(), listaBalotarioss);
 
         if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            //recyclerViewCursos.setLayoutManager(new GridLayoutManager(getContext(), 3));
             recyclerViewCursos.setLayoutManager(new GridLayoutManager(getContext(), 4));
         } else {
-            //recyclerViewCursos.setLayoutManager(new GridLayoutManager(getContext(), 4));
             recyclerViewCursos.setLayoutManager(new GridLayoutManager(getContext(), 5));
         }
-
-//        manager = new GridLayoutManager(rootview.getContext(), 3);
         recyclerViewCursos.setHasFixedSize(true);
-        // recyclerViewCursos.setLayoutManager(manager);
         recyclerViewCursos.setAdapter(adapter);
 
         adapter.setOnClickListener(new View.OnClickListener() {

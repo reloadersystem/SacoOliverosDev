@@ -5,20 +5,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,23 +30,16 @@ import com.krishna.fileloader.FileLoader;
 import com.krishna.fileloader.listener.FileRequestListener;
 import com.krishna.fileloader.pojo.FileResponse;
 import com.krishna.fileloader.request.FileLoadRequest;
-import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
 
 import pe.sacooliveros.apptablet.Primaria.NavigatorPrimaria;
 import pe.sacooliveros.apptablet.R;
-import pe.sacooliveros.apptablet.Secundaria.Model.M_Cybergrafia;
 import pe.sacooliveros.apptablet.Secundaria.NavActivity;
 import pe.sacooliveros.apptablet.Seleccion.CiclosEspeciales;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
+
+import static android.os.Environment.getExternalStorageDirectory;
 
 public class VisorPdfActivity extends AppCompatActivity {
 
@@ -67,31 +55,15 @@ public class VisorPdfActivity extends AppCompatActivity {
     ConnectionDetector cd;
     Integer pageNumber = 0;
     Integer pagecontador = 0;
-    @NotEmpty
-
-    ImageView img_fullscreen, img_prev, img_next, zoomout, zoomin, index, miniature, btn_cibergafia;
     ProgressBar progresbar;
-    PDFView pdfViewfull;
-
-    InputStream inputStream;
     String rutafile;
     String estadoconec;
-
     RelativeLayout lnLayout;
-    int selectitem;
-
-    String numeropagina;
-
-
     static String paginainicio;
-
     String ruta_storage;
-
     MenuInflater inflater;
-
     MenuItem shareItem;
-
-
+    String ssdtablet;
 
 
     public static String obtenerValor(Context context, String keyPref) {
@@ -123,6 +95,8 @@ public class VisorPdfActivity extends AppCompatActivity {
             viewType = bundle.getString("ViewType");
             rutafile = bundle.getString("SSDFILE");
             estadoconec = bundle.getString("EstadoConexion");
+            ssdtablet= bundle.getString("ssdtablet");
+
         }
 
         {
@@ -221,42 +195,12 @@ public class VisorPdfActivity extends AppCompatActivity {
                     @Override
                     public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
                         //Toast.makeText(ViewTomo3Activity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(VisorPdfActivity.this, "Conexión baja intente mas  tarde o presione Actualizar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VisorPdfActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
                         progresbar.setVisibility(View.GONE);
                     }
                 });
     }
 
-
-    private void fullScreenInternet() {
-        progresbar.setVisibility(View.VISIBLE);
-        FileLoader.with(this)
-                .fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
-                .load(urlcode)
-                .fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
-                .asFile(new FileRequestListener<File>() {
-                    @Override
-                    public void onLoad(FileLoadRequest fileLoadRequest, FileResponse<File> fileResponse) {
-                        progresbar.setVisibility(View.GONE);
-                        File pdfFile = fileResponse.getBody();
-                        pdfViewfull.fromFile(pdfFile)
-                                .password(password)
-                                .swipeHorizontal(true)
-                                .defaultPage(pdfView.getCurrentPage())
-                                .enableAntialiasing(true)
-                                .load();
-                        pdfViewfull.zoomWithAnimation((float) 0.9);
-
-                    }
-
-                    @Override
-                    public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
-                        //Toast.makeText(ViewTomo3Activity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(VisorPdfActivity.this, "Conexión baja intente mas tarde o presione Actualizar", Toast.LENGTH_SHORT).show();
-                        progresbar.setVisibility(View.GONE);
-                    }
-                });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -286,11 +230,17 @@ public class VisorPdfActivity extends AppCompatActivity {
 
             if (cd.isConnected()) {
 
-                File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/file_loader");
-                deleteRecursive(filecache);
-                shareItem.setVisible(false);
+                ///APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf
 
-//                EjecucionInternet();
+                File filecachepdf = new File(getExternalStorageDirectory() + "/PDFiles/"+ ssdtablet);
+                boolean deleted = filecachepdf.delete();
+
+//                if(deleted)
+//                {
+//                    Toast.makeText(this, "Se elimino el archivo cache", Toast.LENGTH_SHORT).show();
+//                }
+
+                shareItem.setVisible(false);
 
                 progresbar.setVisibility(View.VISIBLE);
                 FileLoader.with(this)
@@ -342,6 +292,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                                             @Override
                                             public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
                                                 pdfView.fitToWidth();
+
                                             }
                                         })
                                         .enableAntialiasing(true)
@@ -359,7 +310,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                             @Override
                             public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
                                 //Toast.makeText(ViewTomo3Activity.this, "Pruebe mas  tarde" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(VisorPdfActivity.this, "Conexión baja intente mas tarde o presione Actualizar", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(VisorPdfActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
 
                                 progresbar.setVisibility(View.GONE);
                                 shareItem.setVisible(true);
@@ -500,62 +451,10 @@ public class VisorPdfActivity extends AppCompatActivity {
         }
     }
 
-    class RetrievePDFStreamFull extends AsyncTask<String, Void, InputStream> {
-        @Override
-        protected InputStream doInBackground(String... strings) {
-            try {
-                URL url = new URL(strings[0]);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                if (urlConnection.getResponseCode() == 200) {
-                    inputStream = new BufferedInputStream(urlConnection.getInputStream());
-                }
-            } catch (UnknownHostException e) {
-                Log.e("ConexionError", e.toString());
-                e.printStackTrace();
-                return null;
-            } catch (IOException e) {
-                return null;
-            }
-            return inputStream;
-        }
-
-        @Override
-        protected void onPostExecute(InputStream inputStream) {
-            pdfViewfull.fromStream(inputStream)
-                    .password(password)
-                    .swipeHorizontal(true)
-                    .defaultPage(pdfView.getCurrentPage())
-                    .enableAntialiasing(true)
-                    .load();
-
-        }
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-
-    public AlertDialog cibergrafiaPanelDialog() {
-        final AlertDialog alertDialog;
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.dialogcibergrafia, null);
-
-
-        ArrayList<M_Cybergrafia> elements = new ArrayList<>();
-
-//        Lista= new ArrayList<M_Cybergrafia>();
-//        final adapter_Cibergrafia adapter= new adapter_Cibergrafia(getApplicationContext(),elements);
-//        gridcibergrafia.setAdapter(adapter);
-//        adapter.notifyDataSetChanged();
-
-        //builder.setView(v);
-        alertDialog = builder.create();
-        alertDialog.dismiss();
-        return alertDialog;
     }
 
 

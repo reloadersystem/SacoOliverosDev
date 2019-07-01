@@ -2,7 +2,6 @@ package pe.sacooliveros.apptablet.Balotario;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -76,9 +75,6 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
         }
 
 
-
-
-
         BottomNavigationView navigationView = findViewById(R.id.main_bottomlecturas);
         Menu nav_Menu = navigationView.getMenu();
 
@@ -86,11 +82,8 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
         //final Typeface tf = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/rajdhanibold.ttf");
 
 
-
-
         nav_Menu.findItem(R.id.nav_balotario).setTitle("Balotario");
         nav_Menu.findItem(R.id.nav_solucionario).setTitle("Solucionario");
-
 
 
         viewPager.setCurrentItem(0);
@@ -100,11 +93,11 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingtoolbar);
         appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
 
-        String fuente1="fuentes/futurabold.ttf";
-        this.futuralbold= Typeface.createFromAsset(getAssets(),fuente1);
+        String fuente1 = "fuentes/futurabold.ttf";
+        this.futuralbold = Typeface.createFromAsset(getAssets(), fuente1);
 
-        String fuente2="fuentes/futuraheavy.ttf";
-        this.futuraheavy= Typeface.createFromAsset(getAssets(),fuente2);
+        String fuente2 = "fuentes/futuraheavy.ttf";
+        this.futuraheavy = Typeface.createFromAsset(getAssets(), fuente2);
 
         collapsingToolbarLayout.setCollapsedTitleTypeface(futuralbold);
         collapsingToolbarLayout.setExpandedTitleTypeface(futuraheavy);

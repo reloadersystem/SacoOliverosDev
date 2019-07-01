@@ -113,9 +113,6 @@ public class mateRFragment extends Fragment {
         implementacion.enviarMensaje(tomoNum);
 
 
-
-
-
     }
 
     private void loadRecyclerViewItem() {

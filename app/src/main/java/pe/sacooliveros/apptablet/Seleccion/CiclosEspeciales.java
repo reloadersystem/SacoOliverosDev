@@ -90,11 +90,14 @@ public class CiclosEspeciales extends AppCompatActivity
 
     String apellidopaterno, apellidomaterno;
 
+    String versionapkbase;
+
 
     public static void apkversion(Double updateversionapk) {
 
         updateapk = updateversionapk;
     }
+
 
     @Override
     protected void onStart() {
@@ -144,7 +147,7 @@ public class CiclosEspeciales extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
-        Float versionapkbase = Float.valueOf(getVersionName(getApplicationContext()));
+        versionapkbase = getVersionName(getApplicationContext());
 
         String codigoAuth = ShareDataRead.obtenerValor(getApplicationContext(), "codigo_autenticacion");
 
@@ -177,8 +180,7 @@ public class CiclosEspeciales extends AppCompatActivity
                 consultversion.setCurrentLayout(drawer);
                 consultversion.execute();
 
-            } else if(consultarServicio.equalsIgnoreCase("Servicio Finalizado"))
-            {
+            } else if (consultarServicio.equalsIgnoreCase("Servicio Finalizado")) {
                 guardarValor(getApplicationContext(), "CheckOutService", "");
                 SConsultVersion consultversion = new SConsultVersion("http://192.169.218.177:8080/FacturacionElectronicaSIIAA/api/v1/estudiante/validarVersionAplicativo/" + codigoAuth + "/" + versionapkbase);
                 consultversion.setCurrentContext(this);
@@ -187,8 +189,11 @@ public class CiclosEspeciales extends AppCompatActivity
             }
         }
 
+
+        Double  versionapk = Double.valueOf(getVersionName(getApplicationContext()));
+
         if (cd.isConnected()) {
-            if (updateapk >  Double.parseDouble(String.valueOf(versionapkbase))) {
+            if (updateapk > Double.parseDouble(String.valueOf(versionapk))) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(CiclosEspeciales.this);
                 builder.setTitle("Nueva Versión Disponible");

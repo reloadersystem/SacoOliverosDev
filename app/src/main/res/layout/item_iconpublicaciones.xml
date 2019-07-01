@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardview_id"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="2dp"
-   >
+    >
 
 
     <ImageView
         android:id="@+id/img_balotario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/publicaciones8"
-         />
+        android:layout_marginTop="16dp"
+        android:src="@drawable/publicaciones8" />
 
     <TextView
         android:id="@+id/txt_materia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="Física"
-        android:textSize="15dp"
         android:layout_below="@+id/img_balotario"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="14dp"
         android:layout_toRightOf="@+id/img_downloadbalotario"
+        android:fontFamily="@font/futuralt"
+        android:text="Física"
+        android:textSize="15dp"
 
         />
 
@@ -35,11 +33,9 @@
         android:id="@+id/img_downloadbalotario"
         android:layout_width="16dp"
         android:layout_height="14dp"
-        android:src="@drawable/downloadpublic"
         android:layout_below="@id/img_balotario"
         android:layout_marginTop="17dp"
-         />
-
+        android:src="@drawable/downloadpublic" />
 
 
 </RelativeLayout>

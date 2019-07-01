@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,11 +24,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import pe.sacooliveros.apptablet.Balotario.VisorPdfActivity;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Model.mBalotarios;
+import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
-import pe.sacooliveros.apptablet.Balotario.VisorPdfActivity;
 
+import static android.os.Environment.getExternalStorageDirectory;
 import static java.lang.Thread.sleep;
 
 public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalotariosAdapter.MyViewHolder> implements View.OnClickListener {
@@ -43,6 +46,8 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
     String numgrado;
     String complementurl;
 
+    ConnectionDetector cd;
+
 
     public RecyclerBalotariosAdapter(Context mContext, List<mBalotarios> mBalotariosList) {
         this.mContext = mContext;
@@ -54,7 +59,7 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
     public RecyclerBalotariosAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
-       // view = mInflater.inflate(R.layout.item_balotarios, parent, false);
+        // view = mInflater.inflate(R.layout.item_balotarios, parent, false);
         view = mInflater.inflate(R.layout.item_iconpublicaciones, parent, false);
         view.setOnClickListener(this);
         return new MyViewHolder(view);
@@ -67,6 +72,8 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
         holder.imgdownload.setImageResource(mBalotariosList.get(position).getImage_download());
         holder.txtmateria.setText(mBalotariosList.get(position).getMateria());
 
+        cd = new ConnectionDetector(mContext);
+
         servidor_ruta = mContext.getString(R.string.servidor_ruta);
 
         numgrado = ShareDataRead.obtenerValor(mContext, "ServerGradoNivel").substring(0, 1);
@@ -76,13 +83,19 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
             @Override
             public void onClick(View view) {
 
-                materia = mBalotariosList.get(position).getMateria();
-                title = mBalotariosList.get(position).getTitle();
-                namedescarga = mBalotariosList.get(position).getNamedownload();
-                complementurl = mBalotariosList.get(position).getUrlcomplement();
+                if (cd.isConnected()) {
+                    materia = mBalotariosList.get(position).getMateria();
+                    title = mBalotariosList.get(position).getTitle();
+                    namedescarga = mBalotariosList.get(position).getNamedownload();
+                    complementurl = mBalotariosList.get(position).getUrlcomplement();
 
-                String urlADescargar = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
-                descargarPDF(urlADescargar);
+                    String urlADescargar = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
+                    descargarPDF(urlADescargar);
+                } else {
+                    Toast.makeText(mContext, "Estas sin Conexión", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
@@ -95,14 +108,37 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
                 namedescarga = mBalotariosList.get(position).getNamedownload();
                 complementurl = mBalotariosList.get(position).getUrlcomplement();
 
-                String URL = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
+                File filecachepdf = new File(getExternalStorageDirectory() + "/PDFiles/" + namedescarga + ".pdf");
 
-                Intent intent = new Intent(mContext, VisorPdfActivity.class);
 
-                intent.putExtra("ViewType", "internet");
-                intent.putExtra("URL", URL);
-                intent.putExtra("Materia", "Balotario " + title);
-                mContext.startActivity(intent);
+                if (!cd.isConnected()) {
+                    if (!filecachepdf.exists()) {
+                        Toast.makeText(mContext, "El archivo no existe, estas  sin Conexión", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String URL = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
+
+                        Intent intent = new Intent(mContext, VisorPdfActivity.class);
+
+                        intent.putExtra("ViewType", "internet");
+                        intent.putExtra("URL", URL);
+                        intent.putExtra("Materia", "Balotario " + title);
+                        intent.putExtra("ssdtablet", namedescarga + ".pdf");
+
+                        mContext.startActivity(intent);
+                    }
+                } else {
+
+                    String URL = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
+
+                    Intent intent = new Intent(mContext, VisorPdfActivity.class);
+
+                    intent.putExtra("ViewType", "internet");
+                    intent.putExtra("URL", URL);
+                    intent.putExtra("Materia", "Balotario " + title);
+                    intent.putExtra("ssdtablet", namedescarga + ".pdf");
+
+                    mContext.startActivity(intent);
+                }
             }
         });
     }
