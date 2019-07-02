@@ -4,11 +4,12 @@
 
     <item
         android:id="@+id/nav_balotario"
-        android:icon="@drawable/ic_school_black_24dp"
+        android:icon="@drawable/balotariobottomico2"
+
         android:title="BALOTARIO" />
     <item
         android:id="@+id/nav_solucionario"
-        android:icon="@drawable/ic_account_balance_black_24dp"
+        android:icon="@drawable/balotariobottomico1"
         android:title="SOLUCIONARIO" />
 
 

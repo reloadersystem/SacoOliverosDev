@@ -78,25 +78,25 @@
 
 
             <TextView
-                android:id="@+id/txt_balotar1bimestral"
+                android:id="@+id/txt_mensualbalotario1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="92dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
-                android:text="Bimestral"
+                android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
             <TextView
-                android:id="@+id/txt_balotar2bimestral"
+                android:id="@+id/txt_mensualbalotario2"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
-                android:text="Bimestral"
                 android:fontFamily="@font/futuralt"
+                android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView4"
@@ -109,18 +109,18 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:src="@drawable/sh_divider"
-                app:layout_constraintEnd_toStartOf="@+id/txt_balotar2mensual"
+                app:layout_constraintEnd_toStartOf="@+id/txt_bimestralbalotario2"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
             <TextView
-                android:id="@+id/txt_balotar2mensual"
+                android:id="@+id/txt_bimestralbalotario2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="88dp"
                 android:fontFamily="@font/futuralt"
-                android:text="Mensual"
+                android:text="Bimestral"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -143,12 +143,12 @@
 
 
             <TextView
-                android:id="@+id/txt_balotar1mensual"
+                android:id="@+id/txt_bimestralbalotario1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
-                android:text="Mensual"
+                android:text="Bimestral"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -161,7 +161,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/sh_divider"
-                app:layout_constraintStart_toEndOf="@+id/txt_balotar1bimestral"
+                app:layout_constraintStart_toEndOf="@+id/txt_mensualbalotario1"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 
@@ -184,7 +184,7 @@
                 android:layout_marginTop="96dp"
                 android:src="@drawable/icobalotario_3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_balotar1bimestral" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_mensualbalotario1" />
 
 
             <TextView
@@ -203,13 +203,13 @@
 
 
             <TextView
-                android:id="@+id/txt_balotar3bimestral"
+                android:id="@+id/txt_mensualbalotario3"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="92dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
-                android:text="Bimestral"
+                android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -217,12 +217,12 @@
 
 
             <TextView
-                android:id="@+id/txt_balotar3mensual"
+                android:id="@+id/txt_bimestralbalotario3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
-                android:text="Mensual"
+                android:text="Bimestral"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
@@ -236,7 +236,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/sh_divider"
-                app:layout_constraintStart_toEndOf="@+id/txt_balotar3bimestral"
+                app:layout_constraintStart_toEndOf="@+id/txt_mensualbalotario3"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
@@ -248,7 +248,7 @@
                 android:layout_marginEnd="116dp"
                 android:src="@drawable/icobalotario_3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_balotar2bimestral" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_mensualbalotario2" />
 
 
             <TextView
@@ -266,26 +266,26 @@
 
 
             <TextView
-                android:id="@+id/txt_balotar4bimestral"
+                android:id="@+id/txt_mensualbalotario4"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:fontFamily="@font/futuralt"
-                android:text="Bimestral"
+                android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView22"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
             <TextView
-                android:id="@+id/txt_balotar4mensual"
+                android:id="@+id/txt_bimestralbalotario4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="84dp"
                 android:fontFamily="@font/futuralt"
-                android:text="Mensual"
+                android:text="Bimestral"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -298,7 +298,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:src="@drawable/sh_divider"
-                app:layout_constraintEnd_toStartOf="@+id/txt_balotar4mensual"
+                app:layout_constraintEnd_toStartOf="@+id/txt_bimestralbalotario4"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
 

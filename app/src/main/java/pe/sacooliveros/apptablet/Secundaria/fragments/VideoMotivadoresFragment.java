@@ -524,13 +524,51 @@ public class VideoMotivadoresFragment extends Fragment {
                     break;
 
                     case 4: {
-                        Toast.makeText(getContext(), "Material no Disponible", Toast.LENGTH_SHORT).show();
+                        ArrayList<mPruebas> mListPruebas;
+                        mListPruebas = new ArrayList<mPruebas>();
+                        PopupCustomDialog popupCustomDialog = new PopupCustomDialog();
+
+                        if (sharedata.equalsIgnoreCase("1 Secundaria")) {
+                            mListPruebas.add(new mPruebas("Solidaridad", "https://www.youtube.com/watch?v=GEV-8wnvwes"));
+                            mListPruebas.add(new mPruebas("Valorar lo que se tiene", "https://www.youtube.com/watch?v=QdcjNy8CcfE"));
+                            mListPruebas.add(new mPruebas("Trabajo en equipo", "https://www.youtube.com/watch?v=a2tYJ7Nj2zQ"));
+                        }
+
+                        if (sharedata.equalsIgnoreCase("2 Secundaria")) {
+                            mListPruebas.add(new mPruebas("Sin límites para alcanzar tus sueños", "https://www.youtube.com/watch?v=JOWiPx5VRUU"));
+                            mListPruebas.add(new mPruebas("Solidaridad", "https://www.youtube.com/watch?v=VBDDeHC2PlU"));
+                            mListPruebas.add(new mPruebas("El águila adolescente", "https://www.youtube.com/watch?v=9YG1yVCLnHk"));
+                        }
+
+
+                        if (sharedata.equalsIgnoreCase("3 Secundaria")) {
+                            mListPruebas.add(new mPruebas("Lo que das recibes", "https://www.youtube.com/watch?v=k16sC7_H30E"));
+                            mListPruebas.add(new mPruebas("Lección de motivación", "https://www.youtube.com/watch?v=A2iq8VEP6go"));
+                            mListPruebas.add(new mPruebas("Nunca digas no puedo", "https://www.youtube.com/watch?v=S5XNXe9pY1U&amp=&t=49s"));
+                        }
+
+                        if (sharedata.equalsIgnoreCase("4 Secundaria")) {
+                            mListPruebas.add(new mPruebas("Todo es cuestión de actitud", "https://www.youtube.com/watch?v=cMD3F6GgjAw"));
+                            mListPruebas.add(new mPruebas("Persigue tus sueños", "https://www.youtube.com/watch?v=mrhFNYXVJSo"));
+                            mListPruebas.add(new mPruebas("El cambio del águila", "https://www.youtube.com/watch?v=Fggo7wCf6o4"));
+                        }
+
+                        if (sharedata.equalsIgnoreCase("5 Secundaria")) {
+                            mListPruebas.add(new mPruebas("Perseverancia", "https://www.youtube.com/watch?v=6Gs0SvSa94Q"));
+                            mListPruebas.add(new mPruebas("El arte de la actitud positiva", "https://www.youtube.com/watch?v=1iICK76BO8I"));
+                            mListPruebas.add(new mPruebas("Invierte en ti mismo", "https://www.youtube.com/watch?v=c7f-t7nRYb8"));
+                        }
+
+                        popupCustomDialog.customDialog(getContext(), "VIDEO MOTIVACIONALES - TOMO 5", mListPruebas);
                     }
                     break;
 
 
                     case 5: {
+
                         Toast.makeText(getContext(), "Material no Disponible", Toast.LENGTH_SHORT).show();
+
+
                     }
                     break;
 

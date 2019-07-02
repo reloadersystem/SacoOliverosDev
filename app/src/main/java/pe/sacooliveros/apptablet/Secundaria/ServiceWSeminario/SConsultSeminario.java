@@ -5,28 +5,23 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.AnimationDrawable;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
+
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.DBVersionSeminario.AdminSQLVersionSeminario;
 import pe.sacooliveros.apptablet.Secundaria.DBVersionSeminario.UtilVersion;
@@ -123,70 +118,66 @@ public class SConsultSeminario extends AsyncTask<String, Integer, ArrayList> {
         Log.e("RESOBJ_RSTRING", rString);
         JSONObject resObject = null;
 
-        try {
-            resObject = new JSONObject(rString);
+        if (WebServiceSeminarioData.isValidResponse(rString)) {
+            try {
+                resObject = new JSONObject(rString);
 
-            versionjson = resObject.get("version").toString();
-            tomoversion = resObject.get("nombretomo").toString();
+                versionjson = resObject.get("version").toString();
+                tomoversion = resObject.get("nombretomo").toString();
 
-            urlcontent = url;
+                urlcontent = url;
 
-            String estadobd = checkEmpty();
+                JSONArray resArray2 = resObject.getJSONArray("listavideo"); //
 
-            float versioninfo = Float.parseFloat(versionjson);
+                for (int idxItem = 0; idxItem < resArray2.length(); idxItem++) {
+
+                    JSONObject arrayItem = resArray2.getJSONObject(idxItem);
+
+                    ContentValues registro = new ContentValues();
+                    registro.put(Utilidades.CAMPO_CODIGO, arrayItem.getString("codigo"));
+                    registro.put(Utilidades.CAMPO_ASIGNATURA, arrayItem.getString("asignatura"));
+                    registro.put(Utilidades.CAMPO_HABILITAR, arrayItem.getString("habilitar"));
+                    registro.put(Utilidades.CAMPO_CAPITULO, arrayItem.getString("capitulo"));
+                    registro.put(Utilidades.CAMPO_URLPDF, arrayItem.getString("urlpdf"));
+                    registro.put(Utilidades.CAMPO_SSDPDF, arrayItem.getString("ssdpdf"));
+                    registro.put(Utilidades.CAMPO_TOMOPDF, arrayItem.getString("tomopdf"));
+                    registro.put(Utilidades.CAMPO_GRADOPDF, arrayItem.getString("gradopdf"));
+                    registro.put(Utilidades.CAMPO_LISTYOUTUBE, arrayItem.getString("listyoutube"));
+
+                    BaseDeDatos.insert("videoseminario", null, registro);
+
+                    JSONObject vListVideo = new JSONObject();
+
+                    vListVideo.put("codigo", arrayItem.getString("codigo"));
+                    vListVideo.put("asignatura", arrayItem.getString("asignatura"));
+                    vListVideo.put("habilitar", arrayItem.getString("habilitar"));
+                    vListVideo.put("capitulo", arrayItem.getString("capitulo"));
+                    vListVideo.put("urlpdf", arrayItem.getString("urlpdf"));
+                    vListVideo.put("ssdpdf", arrayItem.getString("ssdpdf"));
+                    vListVideo.put("tomopdf", arrayItem.getString("tomopdf"));
+                    vListVideo.put("gradopdf", arrayItem.getString("gradopdf"));
+                    vListVideo.put("listyoutube", arrayItem.getString("listyoutube"));
+                    resValues.add(vListVideo);
+                }
+
+                BaseDeDatos.close();
+
+                ContentValues versionregistro = new ContentValues();
+
+                versionregistro.put("codigo", "G0001");
+                versionregistro.put("version", versionjson);
+                versionregistro.put("urltomo", urlcontent);
+                versionregistro.put("nombretomo", tomoversion);
+
+                BDVersion.insert("tablaversiondb", null, versionregistro);
+                BDVersion.close();
 
 
-            JSONArray resArray2 = resObject.getJSONArray("listavideo"); //
-
-            for (int idxItem = 0; idxItem < resArray2.length(); idxItem++) {
-
-                JSONObject arrayItem = resArray2.getJSONObject(idxItem);
-
-                ContentValues registro = new ContentValues();
-                registro.put(Utilidades.CAMPO_CODIGO, arrayItem.getString("codigo"));
-                registro.put(Utilidades.CAMPO_ASIGNATURA, arrayItem.getString("asignatura"));
-                registro.put(Utilidades.CAMPO_HABILITAR, arrayItem.getString("habilitar"));
-                registro.put(Utilidades.CAMPO_CAPITULO, arrayItem.getString("capitulo"));
-                registro.put(Utilidades.CAMPO_URLPDF, arrayItem.getString("urlpdf"));
-                registro.put(Utilidades.CAMPO_SSDPDF, arrayItem.getString("ssdpdf"));
-                registro.put(Utilidades.CAMPO_TOMOPDF, arrayItem.getString("tomopdf"));
-                registro.put(Utilidades.CAMPO_GRADOPDF, arrayItem.getString("gradopdf"));
-                registro.put(Utilidades.CAMPO_LISTYOUTUBE, arrayItem.getString("listyoutube"));
-
-                BaseDeDatos.insert("videoseminario", null, registro);
-
-                // resValues = new ArrayList<>();
-
-                JSONObject vListVideo = new JSONObject();
-
-                vListVideo.put("codigo", arrayItem.getString("codigo"));
-                vListVideo.put("asignatura", arrayItem.getString("asignatura"));
-                vListVideo.put("habilitar", arrayItem.getString("habilitar"));
-                vListVideo.put("capitulo", arrayItem.getString("capitulo"));
-                vListVideo.put("urlpdf", arrayItem.getString("urlpdf"));
-                vListVideo.put("ssdpdf", arrayItem.getString("ssdpdf"));
-                vListVideo.put("tomopdf", arrayItem.getString("tomopdf"));
-                vListVideo.put("gradopdf", arrayItem.getString("gradopdf"));
-                vListVideo.put("listyoutube", arrayItem.getString("listyoutube"));
-                resValues.add(vListVideo);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-            BaseDeDatos.close();
-
-            ContentValues versionregistro = new ContentValues();
-
-            versionregistro.put("codigo", "G0001");
-            versionregistro.put("version", versionjson);
-            versionregistro.put("urltomo", urlcontent);
-            versionregistro.put("nombretomo", tomoversion);
-
-            BDVersion.insert("tablaversiondb", null, versionregistro);
-            BDVersion.close();
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
+
 
         return resValues;
     }
@@ -206,12 +197,12 @@ public class SConsultSeminario extends AsyncTask<String, Integer, ArrayList> {
 //        progressDialog.setMessage("Descargando Recursos...");
 //        progressDialog.show();
 
-
+//
         dialog = new Dialog(currentContext, R.style.progressDialogTheme);
         dialog.setContentView(R.layout.customdialog_carga);
-        ImageView imageView =  dialog.findViewById(R.id.imageView);
+        ImageView imageView = dialog.findViewById(R.id.imageView);
         AnimationDrawable animationDrawable;
-        animationDrawable= (AnimationDrawable)imageView.getDrawable();
+        animationDrawable = (AnimationDrawable) imageView.getDrawable();
         animationDrawable.start();
 
         dialog.show();
@@ -225,7 +216,7 @@ public class SConsultSeminario extends AsyncTask<String, Integer, ArrayList> {
         super.onPostExecute(resValues);
 
 
-        if (resValues != null) {
+        if (resValues.isEmpty() == false) {
 
             ArrayList<Model> elements = new ArrayList<>();
 // si es primer grado 12
@@ -268,7 +259,7 @@ public class SConsultSeminario extends AsyncTask<String, Integer, ArrayList> {
             recyclerViewvideo.setAdapter(adapter);
 
 
-          //  progressDialog.dismiss();
+            //  progressDialog.dismiss();
 
             dialog.dismiss();
 

@@ -44,14 +44,14 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balotario_opciones);
 
-        txt_primermensual = findViewById(R.id.txt_balotar1mensual);
-        txt_primerbimestral = findViewById(R.id.txt_balotar1bimestral);
-        txt_segundobimestral = findViewById(R.id.txt_balotar2bimestral);
-        txt_segundomensual = findViewById(R.id.txt_balotar2mensual);
-        txt_tercerbimestral = findViewById(R.id.txt_balotar3bimestral);
-        txt_tercermensual = findViewById(R.id.txt_balotar3mensual);
-        txt_cuartomensual = findViewById(R.id.txt_balotar4mensual);
-        txt_cuartobimestral = findViewById(R.id.txt_balotar4bimestral);
+        txt_primermensual = findViewById(R.id.txt_mensualbalotario1);
+        txt_primerbimestral = findViewById(R.id.txt_bimestralbalotario1);
+        txt_segundobimestral = findViewById(R.id.txt_bimestralbalotario2);
+        txt_segundomensual = findViewById(R.id.txt_mensualbalotario2);
+        txt_tercerbimestral = findViewById(R.id.txt_bimestralbalotario3);
+        txt_tercermensual = findViewById(R.id.txt_mensualbalotario3);
+        txt_cuartomensual = findViewById(R.id.txt_mensualbalotario4);
+        txt_cuartobimestral = findViewById(R.id.txt_bimestralbalotario4);
 
 
         File balotariospdf = new File(Environment.getExternalStorageDirectory(), "/SacoOliveros");

@@ -852,4 +852,6 @@ public class InitialFragment extends Fragment {
         return preferences.getString(keyPref, "");
 
     }
+
+
 }

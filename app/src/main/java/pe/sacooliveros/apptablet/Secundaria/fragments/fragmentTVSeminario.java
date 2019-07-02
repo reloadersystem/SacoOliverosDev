@@ -105,6 +105,8 @@ public class fragmentTVSeminario extends Fragment {
             }
         });
 
+
+
         //todo BD VERSIONES && BDSEMINARIO
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,85 +118,92 @@ public class fragmentTVSeminario extends Fragment {
                 Capitulo3_Fragment capitulo3_fragment = new Capitulo3_Fragment();
 
                 String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel").substring(0, 1);
+                String pingvalor= Boolean.toString(isOnlineNet());
+
 
                 switch (position) {
+
+
                     case 0:
 
                     {
-
                         if (conn.isConnected()) {
 
-                            //Boolean data= checkEmpty(); //BD esta vacia?
-                            String estadobd = checkEmpty();
+                            if (pingvalor.equalsIgnoreCase("True")) {
 
-                            if (estadobd.equalsIgnoreCase("Contiene Datos")) {
+                                String estadobd = checkEmpty();
 
+                                if (estadobd.equalsIgnoreCase("Contiene Datos")) {
 
-                                //no esta  vacia
+                                    eliminarTomo("Tomo1");
 
-                                eliminarTomo("Tomo1");
-
-
-                                //SConsultSeminario consult = new SConsultSeminario("http://tablet.sacooliveros.edu.pe/APP/2/1/VIDEO_HELICO_SEMINARIO/TOMO1/VHS21_TOMO1.json");
-                                SConsultSeminario consult = new SConsultSeminario(rutaserver + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/TOMO1/VHS2" + grado + "_TOMO1.json");
-                                consult.setCurrentContext(getContext());
-                                consult.setCurrentLayout(relativeVideoSeminario);    // sino cambio  solo  no  hace nada visualiza  la SSD
-                                consult.execute();
+                                    SConsultSeminario consult = new SConsultSeminario(rutaserver + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/TOMO1/VHS2" + grado + "_TOMO1.json");
+                                    consult.setCurrentContext(getContext());
+                                    consult.setCurrentLayout(relativeVideoSeminario);    // sino cambio  solo  no  hace nada visualiza  la SSD
+                                    consult.execute();
 //
-                                capitulo1_fragment.tomolistener("Tomo1");
-                                capitulo2_fragment.tomolistener("Tomo1");
-                                capitulo3_fragment.tomolistener("Tomo1");
+                                    capitulo1_fragment.tomolistener("Tomo1");
+                                    capitulo2_fragment.tomolistener("Tomo1");
+                                    capitulo3_fragment.tomolistener("Tomo1");
 
-                                Fragment fragment2 = new Content_SeminarioFragment();
-                                FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
-                                if (fmanager2 != null) {
+                                    Fragment fragment2 = new Content_SeminarioFragment();
+                                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+                                    if (fmanager2 != null) {
 
-                                    Bundle args = new Bundle();
-                                    args.putString("Tomo", "Tomo 1");
-                                    fragment2.setArguments(args);
+                                        Bundle args = new Bundle();
+                                        args.putString("Tomo", "Tomo 1");
+                                        fragment2.setArguments(args);
 
-                                    FragmentTransaction ftransaction = fmanager2.beginTransaction();
-                                    if (ftransaction != null) {
-                                        ftransaction.replace(R.id.contenedorFragments, fragment2);
-                                        ftransaction.addToBackStack("");
-                                        ftransaction.commit();
+                                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
+                                        if (ftransaction != null) {
+                                            ftransaction.replace(R.id.contenedorFragments, fragment2);
+                                            ftransaction.addToBackStack("");
+                                            ftransaction.commit();
+                                        }
                                     }
-                                }
 
-                                break;
-
-
-                            } else if (estadobd.equalsIgnoreCase("No Contiene Datos")) {
-
-                                //si esta  vacia
-                                SConsultSeminario consult = new SConsultSeminario(rutaserver + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/TOMO1/VHS2" + grado + "_TOMO1.json");
-                                consult.setCurrentContext(getContext());
-                                consult.setCurrentLayout(relativeVideoSeminario);
-                                consult.execute();
+                                    break;
 
 
-                                capitulo1_fragment.tomolistener("Tomo1");
-                                capitulo2_fragment.tomolistener("Tomo1");
-                                capitulo3_fragment.tomolistener("Tomo1");
+                                } else if (estadobd.equalsIgnoreCase("No Contiene Datos")) {
 
-                                Fragment fragment2 = new Content_SeminarioFragment();
-                                FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
-                                if (fmanager2 != null) {
+                                    //si esta  vacia
+                                    SConsultSeminario consult = new SConsultSeminario(rutaserver + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/TOMO1/VHS2" + grado + "_TOMO1.json");
+                                    consult.setCurrentContext(getContext());
+                                    consult.setCurrentLayout(relativeVideoSeminario);
+                                    consult.execute();
 
-                                    Bundle args = new Bundle();
-                                    args.putString("Tomo", "Tomo 1");
-                                    fragment2.setArguments(args);
 
-                                    FragmentTransaction ftransaction = fmanager2.beginTransaction();
-                                    if (ftransaction != null) {
-                                        ftransaction.replace(R.id.contenedorFragments, fragment2);
-                                        ftransaction.addToBackStack("");
-                                        ftransaction.commit();
+                                    capitulo1_fragment.tomolistener("Tomo1");
+                                    capitulo2_fragment.tomolistener("Tomo1");
+                                    capitulo3_fragment.tomolistener("Tomo1");
+
+                                    Fragment fragment2 = new Content_SeminarioFragment();
+                                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+                                    if (fmanager2 != null) {
+
+                                        Bundle args = new Bundle();
+                                        args.putString("Tomo", "Tomo 1");
+                                        fragment2.setArguments(args);
+
+                                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
+                                        if (ftransaction != null) {
+                                            ftransaction.replace(R.id.contenedorFragments, fragment2);
+                                            ftransaction.addToBackStack("");
+                                            ftransaction.commit();
+                                        }
                                     }
-                                }
 
+                                    break;
+                                }
+                            } else {
+                                Toast.makeText(getContext(), "Verifique su estado de Conexión", Toast.LENGTH_SHORT).show();
                                 break;
                             }
+
+
+                            //Boolean data= checkEmpty(); //BD esta vacia?
+
                         } else {
                             Toast.makeText(getContext(), "Material solo con Conexión a Internet", Toast.LENGTH_SHORT).show();
                         }
@@ -536,6 +545,23 @@ public class fragmentTVSeminario extends Fragment {
 
         BaseDeDatos.close();
 
+    }
+
+
+    public Boolean isOnlineNet() {
+
+        try {
+            Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.es");
+
+            int val = p.waitFor();
+            boolean reachable = (val == 0);
+            return reachable;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

@@ -70,7 +70,7 @@
         android:layout_height="56dp"
         android:background="@color/barbottom"
         app:itemIconTint="@drawable/colorbottombalotario"
-        app:itemTextColor="@color/balotariotext"
+        app:itemTextColor="@drawable/colorbottombalotario"
         app:menu="@menu/menu_balotariospdf"
         android:layout_gravity="bottom"
      >

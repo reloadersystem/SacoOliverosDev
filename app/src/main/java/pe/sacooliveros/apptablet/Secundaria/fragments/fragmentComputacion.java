@@ -89,18 +89,21 @@ public class fragmentComputacion extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Fragment fragment2 = new InitialFragment();
-                FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
-                if (fmanager2 != null) {
 
+                getActivity().getSupportFragmentManager().popBackStack();
 
-                    FragmentTransaction ftransaction = fmanager2.beginTransaction();
-                    if (ftransaction != null) {
-                        ftransaction.replace(R.id.contenedorFragments, fragment2);
-                        ftransaction.addToBackStack("");
-                        ftransaction.commit();
-                    }
-                }
+//                Fragment fragment2 = new InitialFragment();
+//                FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+//                if (fmanager2 != null) {
+//
+//
+//                    FragmentTransaction ftransaction = fmanager2.beginTransaction();
+//                    if (ftransaction != null) {
+//                        ftransaction.replace(R.id.contenedorFragments, fragment2);
+//                        ftransaction.addToBackStack("");
+//                        ftransaction.commit();
+//                    }
+//                }
             }
         });
 
