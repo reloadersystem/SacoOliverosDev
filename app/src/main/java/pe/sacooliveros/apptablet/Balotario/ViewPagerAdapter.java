@@ -8,11 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
+
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+
     private final List<Fragment> mFragmentList = new ArrayList<>();
 
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }
+
     @Override
     public Fragment getItem(int position) {
         return mFragmentList.get(position);
@@ -26,5 +32,4 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public void addFragment(Fragment fragment) {
         mFragmentList.add(fragment);
     }
-
 }

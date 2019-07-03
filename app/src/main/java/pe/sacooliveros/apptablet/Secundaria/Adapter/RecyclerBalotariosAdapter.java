@@ -223,7 +223,7 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
                 conexion.connect();
 
                 if (conexion.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                    return "Conexion no realizada correctamente";
+                    return "Conexión no realizada correctamente";
                 }
 
                 input = conexion.getInputStream();
@@ -258,7 +258,7 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
                 return "Error: " + "Intente otra vez";
             } catch (IOException e) {
                 e.printStackTrace();
-                return "Sin Conexion";
+                return "Sin Conexión";
             }
             //cerrando la carpeta una vez que termino
             catch (InterruptedException e) {
@@ -280,7 +280,7 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
             }
 
 
-            return "Se realizo Correctamente";
+            return "Se realizó Correctamente";
         }
 
 
@@ -297,7 +297,6 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
         @Override
         protected void onPostExecute(String mensaje) {
             super.onPostExecute(mensaje);
-
 
             Toast.makeText(mContext, mensaje, Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();

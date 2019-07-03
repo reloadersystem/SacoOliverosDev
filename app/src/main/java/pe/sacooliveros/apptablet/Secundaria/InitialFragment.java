@@ -1,7 +1,6 @@
 package pe.sacooliveros.apptablet.Secundaria;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,13 +12,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -30,11 +27,10 @@ import pe.sacooliveros.apptablet.Primaria.fragments.ajedrezFragment;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterInit;
 import pe.sacooliveros.apptablet.Secundaria.Model.mInit;
-import pe.sacooliveros.apptablet.Secundaria.fragments.BalotarioMenuFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.VideoMotivadoresFragment;
+import pe.sacooliveros.apptablet.Secundaria.fragments.contentFisicaFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentComputacion;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentEnglish;
-import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentFisica;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentHDiapositivas;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentMotivadores;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentPFMatematica;
@@ -44,7 +40,6 @@ import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentResueltosProblemas
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentTVSeminario;
 import pe.sacooliveros.apptablet.Seleccion.Model.mPruebas;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
-import pe.sacooliveros.apptablet.Utils.GeneralFragmentManager;
 import pe.sacooliveros.apptablet.Utils.PopupAlertManager;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 import pe.sacooliveros.apptablet.comunicador;
@@ -478,7 +473,7 @@ public class InitialFragment extends Fragment {
 
                         } else if (nivelacceso.equalsIgnoreCase("5")) {
 
-                            Fragment fragment10 = new fragmentFisica();
+                            Fragment fragment10 = new contentFisicaFragment();
                             FragmentManager fmanager10 = getActivity().getSupportFragmentManager();
                             if (fmanager10 != null) {
 
@@ -605,7 +600,9 @@ public class InitialFragment extends Fragment {
                             break;
 
                         } else {
-                            Fragment fragment10 = new fragmentFisica();
+//                            Fragment fragment10 = new fragmentFisica();
+                            Fragment fragment10 = new contentFisicaFragment();
+
                             FragmentManager fmanager10 = getActivity().getSupportFragmentManager();
                             if (fmanager10 != null) {
 

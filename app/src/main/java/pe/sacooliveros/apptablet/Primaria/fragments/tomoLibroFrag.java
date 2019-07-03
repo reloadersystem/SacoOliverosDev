@@ -146,9 +146,7 @@ public class tomoLibroFrag extends Fragment {
                                 ftransaction.addToBackStack("");
                                 ftransaction.commit();
                             }
-
                         }
-
                     }
 
                     break;
@@ -174,9 +172,7 @@ public class tomoLibroFrag extends Fragment {
                                 ftransaction.addToBackStack("");
                                 ftransaction.commit();
                             }
-
                         }
-
                     }
 
                     break;

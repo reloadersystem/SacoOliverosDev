@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.NavActivity;
@@ -123,6 +124,9 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
         });
 
 
+
+
+
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -181,6 +185,9 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
+
+
+
         });
 
         setupViewPager(viewPager);

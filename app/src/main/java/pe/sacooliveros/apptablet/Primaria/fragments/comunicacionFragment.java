@@ -123,14 +123,9 @@ public class comunicacionFragment extends Fragment implements View.OnClickListen
         cir_download2= rootview.findViewById(R.id.cir_download2);
         cir_download3= rootview.findViewById(R.id.cir_download3);
 
-
-
         cir_download1.setOnClickListener(this);
         cir_download2.setOnClickListener(this);
         cir_download3.setOnClickListener(this);
-
-
-
 
 
         servidor_ruta = getContext().getString(R.string.servidor_ruta);
@@ -139,14 +134,14 @@ public class comunicacionFragment extends Fragment implements View.OnClickListen
 
         tomonumero= String.valueOf(tomo.charAt(4));
 
+        cd = new ConnectionDetector(getContext());
+
         txt_ciencia.setText(tomo + " COMUNICACION");
 
         if(nivelacceso==null)
         {
             nivelacceso=ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel").substring(0,1);
         }
-
-
 
 
         fr_comunicacionapp.setOnClickListener(new View.OnClickListener() {
@@ -162,8 +157,6 @@ public class comunicacionFragment extends Fragment implements View.OnClickListen
                     //String accesofinal=String.valueOf(acceso.charAt(4));
 
                     String URL = servidor_ruta+"/APP/1/"+nivelacceso+"/LIBROS/"+ tomo+"/COMUNICACION/GRAMATICA/Gramatica_T"+tomonumero+".pdf";
-
-
 
                     Intent intent = new Intent(getContext(), ViewTomo3Activity.class);
 

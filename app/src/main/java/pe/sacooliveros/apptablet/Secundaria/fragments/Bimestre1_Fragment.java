@@ -64,34 +64,36 @@ public class Bimestre1_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                getActivity().getSupportFragmentManager().popBackStack();
 
-                if (gradoasiste.equalsIgnoreCase("Regular") || gradoasiste.equalsIgnoreCase("CIRCULO") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE"))
 
-                {
-                    Fragment fragment2 = new InitialFragment();
-                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
-                    if (fmanager2 != null) {
-                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
-                        if (ftransaction != null) {
-                            ftransaction.replace(R.id.contenedorFragments, fragment2);
-                            ftransaction.addToBackStack("");
-                            ftransaction.commit();
-                        }
-                    }
-
-                } else if (gradoasiste.equalsIgnoreCase("Uni") || gradoasiste.equalsIgnoreCase("SAN MARCOS") || gradoasiste.equalsIgnoreCase("CATOLICA") || gradonombre.equalsIgnoreCase("Quinto Año") && gradoasiste.equalsIgnoreCase("PRE")) {
-
-                    Fragment fragment2 = new mainFragmentUni();
-                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
-                    if (fmanager2 != null) {
-                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
-                        if (ftransaction != null) {
-                            ftransaction.replace(R.id.contenedorFragments, fragment2);
-                            ftransaction.addToBackStack("");
-                            ftransaction.commit();
-                        }
-                    }
-                }
+//                if (gradoasiste.equalsIgnoreCase("Regular") || gradoasiste.equalsIgnoreCase("CIRCULO") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE"))
+//
+//                {
+//                    Fragment fragment2 = new InitialFragment();
+//                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+//                    if (fmanager2 != null) {
+//                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
+//                        if (ftransaction != null) {
+//                            ftransaction.replace(R.id.contenedorFragments, fragment2);
+//                            ftransaction.addToBackStack("");
+//                            ftransaction.commit();
+//                        }
+//                    }
+//
+//                } else if (gradoasiste.equalsIgnoreCase("Uni") || gradoasiste.equalsIgnoreCase("SAN MARCOS") || gradoasiste.equalsIgnoreCase("CATOLICA") || gradonombre.equalsIgnoreCase("Quinto Año") && gradoasiste.equalsIgnoreCase("PRE")) {
+//
+//                    Fragment fragment2 = new mainFragmentUni();
+//                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+//                    if (fmanager2 != null) {
+//                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
+//                        if (ftransaction != null) {
+//                            ftransaction.replace(R.id.contenedorFragments, fragment2);
+//                            ftransaction.addToBackStack("");
+//                            ftransaction.commit();
+//                        }
+//                    }
+//                }
 
             }
         });

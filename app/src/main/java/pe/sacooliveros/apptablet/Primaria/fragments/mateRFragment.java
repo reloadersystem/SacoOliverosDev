@@ -123,8 +123,6 @@ public class mateRFragment extends Fragment {
         list.add(new MyList(R.drawable.primarialibro_4,  R.drawable.ic_file_download_black_24dp));
         list.add(new MyList(R.drawable.primarialibro_5,  R.drawable.ic_file_download_black_24dp));
 
-
-
         adapter = new CustomAdapter(list, getContext());
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(adapter);
