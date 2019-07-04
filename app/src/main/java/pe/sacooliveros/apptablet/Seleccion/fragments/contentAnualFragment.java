@@ -1,4 +1,4 @@
-package pe.sacooliveros.apptablet.Secundaria.fragments;
+package pe.sacooliveros.apptablet.Seleccion.fragments;
 
 
 import android.os.Bundle;
@@ -12,29 +12,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 import pe.sacooliveros.apptablet.R;
+import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class contentFisicaFragment extends Fragment {
+public class contentAnualFragment extends Fragment {
 
     private BottomNavigationView mMainNav;
-
-    Bimestre1_Fragment bimestre1_fragment;
-    Bimestre2_Fragment bimestre2_fragment;
-    Bimestre3_Fragment bimestre3_fragment;
-    Bimestre4_Fragment bimestre4_fragment;
-
-    View rootview;
+    private DiecinueveFragment diecinueveFragment;
+    private DieciochoFragment dieciochoFragment;
+    private DiecisieteFragment diecisieteFragment;
+    private DieciseisFragment dieciseisFragment;
+    private QuinceFragment quinceFragment;
 
     MenuItem prevMenuItem;
 
     private ViewPager viewPager;
 
+    View rootview;
 
-    public contentFisicaFragment() {
+
+    public contentAnualFragment() {
         // Required empty public constructor
     }
 
@@ -43,21 +43,19 @@ public class contentFisicaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_content_fisica, container, Boolean.parseBoolean(null));
+        rootview = inflater.inflate(R.layout.fragment_content_anual, container, false);
 
-        viewPager = rootview.findViewById(R.id.pager);
-        mMainNav = rootview.findViewById(R.id.main_bottomlecturas);
+        viewPager = rootview.findViewById(R.id.pageranualselec);
+        mMainNav = rootview.findViewById(R.id.main_bottomselanual);
 
+        diecinueveFragment = new DiecinueveFragment();
+        dieciochoFragment = new DieciochoFragment();
+        diecisieteFragment = new DiecisieteFragment();
+        dieciseisFragment = new DieciseisFragment();
+        quinceFragment = new QuinceFragment();
 
-        bimestre1_fragment = new Bimestre1_Fragment();
-        bimestre2_fragment = new Bimestre2_Fragment();
-        bimestre3_fragment = new Bimestre3_Fragment();
-        bimestre4_fragment = new Bimestre4_Fragment();
-
-//        viewPager.notify();
         viewPager.setCurrentItem(0);
         setupViewPager(viewPager);
-
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -65,35 +63,36 @@ public class contentFisicaFragment extends Fragment {
 
                 switch (item.getItemId()) {
 
-                    case R.id.nav_home:
+                    case R.id.nav_examendiecinueve:
 
                         viewPager.setCurrentItem(0);
-
 
                         break;
 
 
-                    case R.id.nav_notif:
+                    case R.id.nav_examendieciocho:
 
                         viewPager.setCurrentItem(1);
 
                         break;
 
-
-                    case R.id.nav_account:
+                    case R.id.nav_examendiecisiete:
 
                         viewPager.setCurrentItem(2);
 
                         break;
 
-
-                    case R.id.nav_home2:
+                    case R.id.nav_examendieciseis:
 
                         viewPager.setCurrentItem(3);
 
                         break;
 
+                    case R.id.nav_examenquince:
 
+                        viewPager.setCurrentItem(4);
+
+                        break;
                 }
 
                 return false;
@@ -127,24 +126,27 @@ public class contentFisicaFragment extends Fragment {
 
         setupViewPager(viewPager);
 
+
         return rootview;
-
-
     }
+
 
     private void setupViewPager(ViewPager viewPager) {
 
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         // ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        bimestre1_fragment = new Bimestre1_Fragment();
-        bimestre2_fragment = new Bimestre2_Fragment();
-        bimestre3_fragment = new Bimestre3_Fragment();
-        bimestre4_fragment = new Bimestre4_Fragment();
+        diecinueveFragment = new DiecinueveFragment();
+        dieciochoFragment = new DieciochoFragment();
+        diecisieteFragment = new DiecisieteFragment();
+        dieciseisFragment = new DieciseisFragment();
+        quinceFragment = new QuinceFragment();
 
-        adapter.addFragment(bimestre1_fragment);
-        adapter.addFragment(bimestre2_fragment);
-        adapter.addFragment(bimestre3_fragment);
-        adapter.addFragment(bimestre4_fragment);
+        adapter.addFragment(diecinueveFragment);
+        adapter.addFragment(dieciochoFragment);
+        adapter.addFragment(diecisieteFragment);
+        adapter.addFragment(dieciseisFragment);
+        adapter.addFragment(quinceFragment);
 
         viewPager.setAdapter(adapter);
     }

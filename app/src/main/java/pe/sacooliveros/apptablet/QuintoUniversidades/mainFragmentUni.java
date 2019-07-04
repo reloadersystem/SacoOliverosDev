@@ -37,11 +37,11 @@ import pe.sacooliveros.apptablet.QuintoUniversidades.Model.mMainU;
 import pe.sacooliveros.apptablet.QuintoUniversidades.fragments.CapitulosAdmisionfragment;
 import pe.sacooliveros.apptablet.QuintoUniversidades.fragments.ContentLecturasFragment;
 import pe.sacooliveros.apptablet.QuintoUniversidades.fragments.SimulacrosUNIFragment;
-import pe.sacooliveros.apptablet.QuintoUniversidades.fragments.examenAnualFragment;
+import pe.sacooliveros.apptablet.QuintoUniversidades.fragments.contentEAnualFragment;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.fragments.VideoMotivadoresFragment;
+import pe.sacooliveros.apptablet.Secundaria.fragments.contentFisicaFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentEnglish;
-import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentFisica;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentHDiapositivas;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentMotivadores;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentPFMatematica;
@@ -366,7 +366,7 @@ public class mainFragmentUni extends Fragment {
 
                         if (gradoasiste.equalsIgnoreCase("CATOLICA")) {
 
-                            Fragment fragment6 = new fragmentFisica();
+                            Fragment fragment6 = new contentFisicaFragment();
                             FragmentManager fmanager6 = getActivity().getSupportFragmentManager();
                             if (fmanager6 != null) {
                                 Bundle args = new Bundle();
@@ -475,7 +475,7 @@ public class mainFragmentUni extends Fragment {
 
                         }
 
-                        Fragment fragment6 = new fragmentFisica();
+                        Fragment fragment6 = new contentFisicaFragment();
                         FragmentManager fmanager6 = getActivity().getSupportFragmentManager();
                         if (fmanager6 != null) {
                             Bundle args = new Bundle();
@@ -546,7 +546,7 @@ public class mainFragmentUni extends Fragment {
                     case 7:
 
                         if (gradoasiste.equalsIgnoreCase("CATOLICA")) {
-                            Fragment fragment9 = new examenAnualFragment();
+                            Fragment fragment9 = new contentEAnualFragment();
                             FragmentManager fmanager9 = getActivity().getSupportFragmentManager();
                             if (fmanager9 != null) {
                                 Bundle args = new Bundle();
@@ -612,7 +612,7 @@ public class mainFragmentUni extends Fragment {
                             break;
                         }
 
-                        Fragment fragment9 = new examenAnualFragment();
+                        Fragment fragment9 = new contentEAnualFragment();
                         FragmentManager fmanager9 = getActivity().getSupportFragmentManager();
                         if (fmanager9 != null) {
                             Bundle args = new Bundle();
@@ -919,8 +919,7 @@ public class mainFragmentUni extends Fragment {
 
         //img_meditapp
 
-        if(tipogrado.equalsIgnoreCase("CATOLICA"))
-        {
+        if (tipogrado.equalsIgnoreCase("CATOLICA")) {
             imgmedita.setVisibility(View.GONE);
         }
 

@@ -74,7 +74,7 @@ public class DieciseisFragment extends Fragment {
                         Intent intent = new Intent(getContext(), ViewTomo3Activity.class);
                         intent.putExtra("ViewType", "internet");
                         intent.putExtra("URL", URL);
-                        intent.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO UNI2016_II");
+                        intent.putExtra("Materia", "EXAMEN Y SOLUCIONARIO UNI2016_II");
                         getContext().startActivity(intent);
 
                         break;
@@ -87,7 +87,7 @@ public class DieciseisFragment extends Fragment {
                         Intent intent1 = new Intent(getContext(), ViewTomo3Activity.class);
                         intent1.putExtra("ViewType", "internet");
                         intent1.putExtra("URL", URL1);
-                        intent1.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO UNI2016_I");
+                        intent1.putExtra("Materia", "EXAMEN Y SOLUCIONARIO UNI2016_I");
                         getContext().startActivity(intent1);
 
                         break;
@@ -100,7 +100,7 @@ public class DieciseisFragment extends Fragment {
                         Intent intent2 = new Intent(getContext(), ViewTomo3Activity.class);
                         intent2.putExtra("ViewType", "internet");
                         intent2.putExtra("URL", URL2);
-                        intent2.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO SM2016_II.pdf");
+                        intent2.putExtra("Materia", "EXAMEN Y SOLUCIONARIO SM2016_II.pdf");
                         getContext().startActivity(intent2);
 
                         break;
@@ -113,7 +113,7 @@ public class DieciseisFragment extends Fragment {
                         Intent intent3 = new Intent(getContext(), ViewTomo3Activity.class);
                         intent3.putExtra("ViewType", "internet");
                         intent3.putExtra("URL", URL3);
-                        intent3.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO SM2016_I.pdf");
+                        intent3.putExtra("Materia", "EXAMEN Y SOLUCIONARIO SM2016_I.pdf");
                         getContext().startActivity(intent3);
 
                         break;
@@ -126,7 +126,7 @@ public class DieciseisFragment extends Fragment {
                         Intent intent4 = new Intent(getContext(), ViewTomo3Activity.class);
                         intent4.putExtra("ViewType", "internet");
                         intent4.putExtra("URL", URL4);
-                        intent4.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO SM2016_I.pdf");
+                        intent4.putExtra("Materia", "EXAMEN Y SOLUCIONARIO SM2016_I.pdf");
                         getContext().startActivity(intent4);
 
                         break;
@@ -138,7 +138,7 @@ public class DieciseisFragment extends Fragment {
                         Intent intent5 = new Intent(getContext(), ViewTomo3Activity.class);
                         intent5.putExtra("ViewType", "internet");
                         intent5.putExtra("URL", URL5);
-                        intent5.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO SM2016_II.pdf");
+                        intent5.putExtra("Materia", "EXAMEN Y SOLUCIONARIO SM2016_II.pdf");
                         getContext().startActivity(intent5);
 
                         break;

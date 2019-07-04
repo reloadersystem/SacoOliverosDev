@@ -15,12 +15,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.NavActivity;
 import pe.sacooliveros.apptablet.Secundaria.fragments.Primer_BalFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.Segundo_BalFragment;
+import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 
 public class BalotariosPeriodosActivity extends AppCompatActivity {
 
@@ -122,10 +122,6 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

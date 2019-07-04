@@ -43,12 +43,12 @@ import pe.sacooliveros.apptablet.DBDescargas.AdminSQLiteOpenHelper;
 import pe.sacooliveros.apptablet.DirectoryCreateUtil;
 import pe.sacooliveros.apptablet.DirectoryUtilSeleccion;
 import pe.sacooliveros.apptablet.R;
+import pe.sacooliveros.apptablet.Seleccion.fragments.contentAnualFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentEnglish;
 import pe.sacooliveros.apptablet.Seleccion.fragments.AcademiaFragment;
-import pe.sacooliveros.apptablet.Seleccion.fragments.OlimpiadasConcursosFragment;
-import pe.sacooliveros.apptablet.Seleccion.fragments.SeleccionExamenAdFragment;
 import pe.sacooliveros.apptablet.Seleccion.fragments.SeleccionFragment;
-import pe.sacooliveros.apptablet.Seleccion.fragments.SemestralesFragment;
+import pe.sacooliveros.apptablet.Seleccion.fragments.contentOlimpiadasFragment;
+import pe.sacooliveros.apptablet.Seleccion.fragments.contentSemestralFragment;
 import pe.sacooliveros.apptablet.ServiceVersion.SConsultVersion;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
@@ -190,7 +190,7 @@ public class CiclosEspeciales extends AppCompatActivity
         }
 
 
-        Double  versionapk = Double.valueOf(getVersionName(getApplicationContext()));
+        Double versionapk = Double.valueOf(getVersionName(getApplicationContext()));
 
         if (cd.isConnected()) {
             if (updateapk > Double.parseDouble(String.valueOf(versionapk))) {
@@ -520,7 +520,7 @@ public class CiclosEspeciales extends AppCompatActivity
 
             } else if (sharedata.equalsIgnoreCase("701 Secundaria")) {
 
-                Fragment fragment2 = new SemestralesFragment();
+                Fragment fragment2 = new contentSemestralFragment();
                 FragmentManager fmanager2 = this.getSupportFragmentManager();
                 if (fmanager2 != null) {
 
@@ -538,7 +538,7 @@ public class CiclosEspeciales extends AppCompatActivity
 
         } else if (id == R.id.nav_olimpiada) {
 
-            Fragment fragment2 = new OlimpiadasConcursosFragment();
+            Fragment fragment2 = new contentOlimpiadasFragment();
             FragmentManager fmanager2 = this.getSupportFragmentManager();
             if (fmanager2 != null) {
 
@@ -555,7 +555,7 @@ public class CiclosEspeciales extends AppCompatActivity
 
         } else if (id == R.id.nav_eanual) {
 
-            Fragment fragment2 = new SeleccionExamenAdFragment();
+            Fragment fragment2 = new contentAnualFragment();
             FragmentManager fmanager2 = this.getSupportFragmentManager();
             if (fmanager2 != null) {
 

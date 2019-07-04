@@ -75,7 +75,7 @@ public class DiecinueveFragment extends Fragment {
                     Intent intent = new Intent(getContext(), ViewTomo3Activity.class);
                     intent.putExtra("ViewType", "internet");
                     intent.putExtra("URL", URL);
-                    intent.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO UNI2019_I");
+                    intent.putExtra("Materia", "EXAMEN Y SOLUCIONARIO UNI2019_I");
                     getContext().startActivity(intent);
 
 
@@ -90,7 +90,7 @@ public class DiecinueveFragment extends Fragment {
                         Intent intent1 = new Intent(getContext(), ViewTomo3Activity.class);
                         intent1.putExtra("ViewType", "internet");
                         intent1.putExtra("URL", URL1);
-                        intent1.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO SM2019_II");
+                        intent1.putExtra("Materia", "EXAMEN Y SOLUCIONARIO SM2019_II");
                         getContext().startActivity(intent1);
 
                     break;
@@ -103,7 +103,7 @@ public class DiecinueveFragment extends Fragment {
                         Intent intent2 = new Intent(getContext(), ViewTomo3Activity.class);
                         intent2.putExtra("ViewType", "internet");
                         intent2.putExtra("URL", URL2);
-                        intent2.putExtra("Materia", "EXÁMEN Y SOLUCIONARIO SM2019_I");
+                        intent2.putExtra("Materia", "EXAMEN Y SOLUCIONARIO SM2019_I");
                         getContext().startActivity(intent2);
 
 

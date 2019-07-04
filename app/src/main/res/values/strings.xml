@@ -43,6 +43,9 @@
 
     <string name="SelectVideoToPlay">Seleccione un Video para Reproducir</string>
     <string name="textProgresDialog">Video Helico Seminario</string>
+    <string name="contenido_asoftware">Avisos  Legales, este software es propiedad de Saco Oliveros y sus licenciantes y está protegido por derechos de autor. Cualquier reproducción total o parcial está estrictamente prohibida. Saco Oliveros, el logotipo y la combinación del logotipo son marcas comerciales registradas de la Asociación Educativa Saco Oliveros.\n Este producto y el empaque incluyen propiedad intelectual (incluidas las marcas registradas) de propiedad, registradas y / o con licencia de terceros respectivos. El uso de este producto está sujeto a la aceptación de los acuerdos de licencia incluidos en este paquete.</string>
+    <string name="contenido_bsoftware">http://www.sacooliveros.edu.pe/ \nFranquicia Nombre: Colegio Saco Oliveros \nGiro o Sector: Colegio Actividad Principal: \nEducación Origen: Perú</string>
+    <string name="titulo_contenidosoftware">Plataforma Saco Oliveros® Asociación Educativa Saco Oliveros. Todos los derechos reservados.</string>
 
 
 </resources>

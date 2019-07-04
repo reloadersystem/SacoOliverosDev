@@ -1,4 +1,4 @@
-package pe.sacooliveros.apptablet.Secundaria.fragments;
+package pe.sacooliveros.apptablet.Seleccion.fragments;
 
 
 import android.os.Bundle;
@@ -11,30 +11,32 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
-import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 import pe.sacooliveros.apptablet.R;
+import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class contentFisicaFragment extends Fragment {
+public class contentSemestralFragment extends Fragment {
 
     private BottomNavigationView mMainNav;
+    private FrameLayout mMainFrame;
 
-    Bimestre1_Fragment bimestre1_fragment;
-    Bimestre2_Fragment bimestre2_fragment;
-    Bimestre3_Fragment bimestre3_fragment;
-    Bimestre4_Fragment bimestre4_fragment;
 
-    View rootview;
+    private SemestralSMFragment semestralSMFragment;
+    private SemestralUniFragment semestralUniFragment;
 
     MenuItem prevMenuItem;
 
     private ViewPager viewPager;
 
 
-    public contentFisicaFragment() {
+    View rootview;
+
+
+    public contentSemestralFragment() {
         // Required empty public constructor
     }
 
@@ -43,21 +45,17 @@ public class contentFisicaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_content_fisica, container, Boolean.parseBoolean(null));
+        rootview = inflater.inflate(R.layout.fragment_content_semestral, container, false);
 
-        viewPager = rootview.findViewById(R.id.pager);
-        mMainNav = rootview.findViewById(R.id.main_bottomlecturas);
+        viewPager = rootview.findViewById(R.id.pagersemestrales);
+        mMainNav = rootview.findViewById(R.id.main_bottomsemestrales);
 
 
-        bimestre1_fragment = new Bimestre1_Fragment();
-        bimestre2_fragment = new Bimestre2_Fragment();
-        bimestre3_fragment = new Bimestre3_Fragment();
-        bimestre4_fragment = new Bimestre4_Fragment();
+        semestralSMFragment = new SemestralSMFragment();
+        semestralUniFragment = new SemestralUniFragment();
 
-//        viewPager.notify();
         viewPager.setCurrentItem(0);
         setupViewPager(viewPager);
-
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -65,34 +63,18 @@ public class contentFisicaFragment extends Fragment {
 
                 switch (item.getItemId()) {
 
-                    case R.id.nav_home:
+                    case R.id.nav_seuni:
 
                         viewPager.setCurrentItem(0);
-
 
                         break;
 
 
-                    case R.id.nav_notif:
+                    case R.id.nav_sesm:
 
                         viewPager.setCurrentItem(1);
 
                         break;
-
-
-                    case R.id.nav_account:
-
-                        viewPager.setCurrentItem(2);
-
-                        break;
-
-
-                    case R.id.nav_home2:
-
-                        viewPager.setCurrentItem(3);
-
-                        break;
-
 
                 }
 
@@ -127,24 +109,21 @@ public class contentFisicaFragment extends Fragment {
 
         setupViewPager(viewPager);
 
+
         return rootview;
-
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         // ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        bimestre1_fragment = new Bimestre1_Fragment();
-        bimestre2_fragment = new Bimestre2_Fragment();
-        bimestre3_fragment = new Bimestre3_Fragment();
-        bimestre4_fragment = new Bimestre4_Fragment();
+        semestralSMFragment = new SemestralSMFragment();
+        semestralUniFragment = new SemestralUniFragment();
 
-        adapter.addFragment(bimestre1_fragment);
-        adapter.addFragment(bimestre2_fragment);
-        adapter.addFragment(bimestre3_fragment);
-        adapter.addFragment(bimestre4_fragment);
+
+        adapter.addFragment(semestralSMFragment);
+        adapter.addFragment(semestralUniFragment);
+
 
         viewPager.setAdapter(adapter);
     }

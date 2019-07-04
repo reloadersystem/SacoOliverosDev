@@ -1,4 +1,4 @@
-package pe.sacooliveros.apptablet.Secundaria.fragments;
+package pe.sacooliveros.apptablet.QuintoUniversidades.fragments;
 
 
 import android.os.Bundle;
@@ -12,29 +12,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 import pe.sacooliveros.apptablet.R;
+import pe.sacooliveros.apptablet.Secundaria.fragments.Bimestre1_Fragment;
+import pe.sacooliveros.apptablet.Secundaria.fragments.Bimestre2_Fragment;
+import pe.sacooliveros.apptablet.Secundaria.fragments.Bimestre3_Fragment;
+import pe.sacooliveros.apptablet.Secundaria.fragments.Bimestre4_Fragment;
+import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class contentFisicaFragment extends Fragment {
+public class contentEAnualFragment extends Fragment {
 
-    private BottomNavigationView mMainNav;
-
-    Bimestre1_Fragment bimestre1_fragment;
-    Bimestre2_Fragment bimestre2_fragment;
-    Bimestre3_Fragment bimestre3_fragment;
-    Bimestre4_Fragment bimestre4_fragment;
 
     View rootview;
 
-    MenuItem prevMenuItem;
+    private BottomNavigationView mMainNav;
 
+
+    private Bimestre1_AnualFragment bimestre1_fragment;
+    private Bimestre2_AnualFragment bimestre2_fragment;
+    private Bimestre3_AnualFragment bimestre3_fragment;
+    private Bimestre4_AnualFragment bimestre4_fragment;
+
+    MenuItem prevMenuItem;
     private ViewPager viewPager;
 
-
-    public contentFisicaFragment() {
+    public contentEAnualFragment() {
         // Required empty public constructor
     }
 
@@ -43,18 +47,16 @@ public class contentFisicaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_content_fisica, container, Boolean.parseBoolean(null));
+        rootview = inflater.inflate(R.layout.fragment_content_eanual, container, false);
 
-        viewPager = rootview.findViewById(R.id.pager);
-        mMainNav = rootview.findViewById(R.id.main_bottomlecturas);
+        viewPager = rootview.findViewById(R.id.viewpagerexamen);
+        mMainNav = rootview.findViewById(R.id.main_bottoexamenmanual);
 
+        bimestre1_fragment = new Bimestre1_AnualFragment();
+        bimestre2_fragment = new Bimestre2_AnualFragment();
+        bimestre3_fragment = new Bimestre3_AnualFragment();
+        bimestre4_fragment = new Bimestre4_AnualFragment();
 
-        bimestre1_fragment = new Bimestre1_Fragment();
-        bimestre2_fragment = new Bimestre2_Fragment();
-        bimestre3_fragment = new Bimestre3_Fragment();
-        bimestre4_fragment = new Bimestre4_Fragment();
-
-//        viewPager.notify();
         viewPager.setCurrentItem(0);
         setupViewPager(viewPager);
 
@@ -93,13 +95,13 @@ public class contentFisicaFragment extends Fragment {
 
                         break;
 
-
                 }
 
                 return false;
 
             }
         });
+
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -128,18 +130,15 @@ public class contentFisicaFragment extends Fragment {
         setupViewPager(viewPager);
 
         return rootview;
-
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        // ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        bimestre1_fragment = new Bimestre1_Fragment();
-        bimestre2_fragment = new Bimestre2_Fragment();
-        bimestre3_fragment = new Bimestre3_Fragment();
-        bimestre4_fragment = new Bimestre4_Fragment();
+        bimestre1_fragment = new Bimestre1_AnualFragment();
+        bimestre2_fragment = new Bimestre2_AnualFragment();
+        bimestre3_fragment = new Bimestre3_AnualFragment();
+        bimestre4_fragment = new Bimestre4_AnualFragment();
 
         adapter.addFragment(bimestre1_fragment);
         adapter.addFragment(bimestre2_fragment);
@@ -148,5 +147,6 @@ public class contentFisicaFragment extends Fragment {
 
         viewPager.setAdapter(adapter);
     }
+
 
 }

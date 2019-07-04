@@ -114,21 +114,21 @@ public class SeleccionFragment extends Fragment {
 
                         if (cd.isConnected()) {
 
-                        String urldata = servidor_ruta + "/APP/MEDITACION_GENERAL.json";
+                            String urldata = servidor_ruta + "/APP/MEDITACION_GENERAL.json";
 
-                        ServiceNoticia.urljson(urldata);
-                        SConsultNoticia consult = new SConsultNoticia();
-                        consult.setCurrentContext(getContext());
-                        consult.setCurrentLayout(lnLayout);
-                        consult.execute("");
+                            ServiceNoticia.urljson(urldata);
+                            SConsultNoticia consult = new SConsultNoticia();
+                            consult.setCurrentContext(getContext());
+                            consult.setCurrentLayout(lnLayout);
+                            consult.execute("");
+
+                            break;
+
+                        } else
+
+                            Toast.makeText(getContext(), "Necesitás Conexión a Internet", Toast.LENGTH_SHORT).show();
 
                         break;
-
-                    } else
-
-                        Toast.makeText(getContext(), "Necesitás Conexión a Internet", Toast.LENGTH_SHORT).show();
-
-                    break;
 
 
                     case 2:
@@ -157,7 +157,7 @@ public class SeleccionFragment extends Fragment {
                             break;
 
                         } else if (sharedata.equalsIgnoreCase("701 Secundaria")) {
-                            Fragment fragment2 = new SemestralesFragment();
+                            Fragment fragment2 = new contentSemestralFragment();
                             FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
                             if (fmanager2 != null) {
 
@@ -178,7 +178,7 @@ public class SeleccionFragment extends Fragment {
 
                     case 3:
 
-                        Fragment fragment3 = new OlimpiadasConcursosFragment();
+                        Fragment fragment3 = new contentOlimpiadasFragment();
                         FragmentManager fmanager3 = getActivity().getSupportFragmentManager();
                         if (fmanager3 != null) {
 
@@ -198,7 +198,7 @@ public class SeleccionFragment extends Fragment {
 
                     case 4:
 
-                        Fragment fragment4 = new SeleccionExamenAdFragment();
+                        Fragment fragment4 = new contentAnualFragment();
                         FragmentManager fmanager4 = getActivity().getSupportFragmentManager();
                         if (fmanager4 != null) {
 

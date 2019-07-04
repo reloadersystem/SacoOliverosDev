@@ -54,7 +54,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -200,7 +200,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -213,9 +213,12 @@
         <activity
             android:name=".Balotario.BalotarioOpcionesActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Balotario.BalotariosPeriodosActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+        <activity
+            android:name=".Balotario.BalotariosPeriodosActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FinallyActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

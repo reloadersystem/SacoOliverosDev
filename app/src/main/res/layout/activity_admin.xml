@@ -30,7 +30,6 @@
         android:textAlignment="center"
         android:background="@drawable/sh_menu"
         android:hint="Contraseña"
-        android:inputType="textPassword"
         />
 
 

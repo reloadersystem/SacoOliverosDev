@@ -71,7 +71,7 @@ public class OlimpiadasConcursosFragment extends Fragment {
 
                         return true;
 
-                     case R.id.nav_olimpiadasconcursos:
+                    case R.id.nav_olimpiadasconcursos:
 
                         setFragment(recursosAcademicosFragment);
 

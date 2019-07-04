@@ -58,9 +58,9 @@ import pe.sacooliveros.apptablet.QuintoUniversidades.fragments.examenAnualFragme
 import pe.sacooliveros.apptablet.QuintoUniversidades.mainFragmentUni;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.fragments.VideoMotivadoresFragment;
+import pe.sacooliveros.apptablet.Secundaria.fragments.contentFisicaFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentComputacion;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentEnglish;
-import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentFisica;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentHDiapositivas;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentMotivadores;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentPFMatematica;
@@ -71,6 +71,7 @@ import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentVSeminario;
 import pe.sacooliveros.apptablet.ServiceVersion.SConsultVersion;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
+import pe.sacooliveros.apptablet.Utils.ValidateCopyright;
 import pe.sacooliveros.apptablet.ViewTomo3Activity;
 import pe.sacooliveros.apptablet.comunicador;
 
@@ -175,6 +176,10 @@ public class NavActivity extends AppCompatActivity
         getSupportActionBar().setTitle("");
 
 
+        final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
+        validateCopyright.isvalidate();
+
+
         if (getIntent() != null && getIntent().getExtras() != null) {
             Bundle bundle = this.getIntent().getExtras();
             emailogin = bundle.getString("UsuarioMail");
@@ -197,7 +202,6 @@ public class NavActivity extends AppCompatActivity
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         urlfotoalumno = ShareDataRead.obtenerValor(getApplicationContext(), "URLPhoto");
-
 
 
         String codigoAuth = ShareDataRead.obtenerValor(getApplicationContext(), "codigo_autenticacion");
@@ -291,8 +295,12 @@ public class NavActivity extends AppCompatActivity
 
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
+        if (updateapk == null) {
+            updateapk = Double.valueOf("2.1440");
+        }
 
-       Double  versionapk = Double.valueOf(getVersionName(getApplicationContext()));
+
+        Double versionapk = Double.valueOf(getVersionName(getApplicationContext()));
 
         if (cd.isConnected()) {
             if (updateapk > versionapk) {
@@ -1347,7 +1355,7 @@ public class NavActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_efisica) {
 
-            Fragment fragment10 = new fragmentFisica();
+            Fragment fragment10 = new contentFisicaFragment();
             FragmentManager fmanager10 = this.getSupportFragmentManager();
             if (fmanager10 != null) {
 
