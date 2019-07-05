@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <item
         android:id="@+id/action_reload"
         android:orderInCategory="100"
@@ -16,6 +15,14 @@
         android:title="opcionD"
         android:icon="@drawable/ic_home_white"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="100"
+        android:title="opcionD"
+        android:icon="@drawable/ic_share_black_24dp"
+        app:showAsAction="ifRoom" />
+
 
 
 </menu>

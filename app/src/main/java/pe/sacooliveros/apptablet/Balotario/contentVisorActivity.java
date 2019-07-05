@@ -1,25 +1,26 @@
 package pe.sacooliveros.apptablet.Balotario;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -42,10 +43,11 @@ import java.io.File;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.NavActivity;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
+import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 
 import static android.os.Environment.getExternalStorageDirectory;
 
-public class VisorPdfActivity extends AppCompatActivity {
+public class contentVisorActivity extends AppCompatActivity {
 
     private static final String TAG = "PDFDatos";
     static String PREFS_KEY = "autenticacionOff";
@@ -69,6 +71,50 @@ public class VisorPdfActivity extends AppCompatActivity {
     MenuItem shareItem;
     String ssdtablet;
 
+    private static final boolean AUTO_HIDE = true;
+    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+    private static final int UI_ANIMATION_DELAY = 300;
+    private final Handler mHideHandler = new Handler();
+    private View mContentView;
+    private final Runnable mHidePart2Runnable = new Runnable() {
+        @SuppressLint("InlinedApi")
+        @Override
+        public void run() {
+            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        }
+    };
+    private View mControlsView;
+    private final Runnable mShowPart2Runnable = new Runnable() {
+        @Override
+        public void run() {
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.show();
+            }
+        }
+    };
+    private boolean mVisible;
+    private final Runnable mHideRunnable = new Runnable() {
+        @Override
+        public void run() {
+            show();
+        }
+    };
+
+    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (AUTO_HIDE) {
+                delayedHide(AUTO_HIDE_DELAY_MILLIS);
+            }
+            return false;
+        }
+    };
 
     public static String obtenerValor(Context context, String keyPref) {
         SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
@@ -76,23 +122,11 @@ public class VisorPdfActivity extends AppCompatActivity {
         return preferences.getString(keyPref, "");
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visor_pdf);
-        setTitle("");
-
-
-        pdfView = findViewById(R.id.pdfViewletraspdft3);
-
-        progresbar = findViewById(R.id.progresbart3);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        cd = new ConnectionDetector(this);
-
-        ruta_storage = getApplicationContext().getString(R.string.ruta_raiz);
+        setContentView(R.layout.activity_content_visor);
 
         if (getIntent() != null) {
             Bundle bundle = this.getIntent().getExtras();
@@ -103,6 +137,19 @@ public class VisorPdfActivity extends AppCompatActivity {
             estadoconec = bundle.getString("EstadoConexion");
             ssdtablet = bundle.getString("ssdtablet");
         }
+
+        mVisible = true;
+        mContentView = findViewById(R.id.fullscreen_content);
+        pdfView = findViewById(R.id.fullscreen_content);
+
+        progresbar = findViewById(R.id.progresbart3);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        cd = new ConnectionDetector(this);
+
+        ruta_storage = getApplicationContext().getString(R.string.ruta_raiz);
 
         {
             switch (viewType) {
@@ -134,7 +181,6 @@ public class VisorPdfActivity extends AppCompatActivity {
             }
         }
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,9 +199,53 @@ public class VisorPdfActivity extends AppCompatActivity {
             }
         });
 
-
+        mContentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggle();
+            }
+        });
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        delayedHide(100);
+    }
+
+    private void toggle() {
+        if (mVisible) {
+            hide();
+        } else {
+            show();
+        }
+    }
+
+    private void hide() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+
+        mVisible = false;
+        mHideHandler.removeCallbacks(mShowPart2Runnable);
+        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
+    }
+
+    @SuppressLint("InlinedApi")
+    private void show() {
+        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+        mVisible = true;
+        mHideHandler.removeCallbacks(mHidePart2Runnable);
+        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
+    }
+
+    private void delayedHide(int delayMillis) {
+        mHideHandler.removeCallbacks(mHideRunnable);
+        mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -195,7 +285,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                                 .onPageError(new OnPageErrorListener() {
                                     @Override
                                     public void onPageError(int page, Throwable t) {
-                                        Toast.makeText(VisorPdfActivity.this, "error" + page, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(contentVisorActivity.this, "error" + page, Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .onPageChange(new OnPageChangeListener() {
@@ -226,7 +316,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                     @Override
                     public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
                         //Toast.makeText(ViewTomo3Activity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(VisorPdfActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(contentVisorActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
                         progresbar.setVisibility(View.GONE);
                     }
                 });
@@ -252,6 +342,22 @@ public class VisorPdfActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         int id = item.getItemId();
+
+        if (id == R.id.action_share) {
+            Uri uri = Uri.fromFile(new
+                    File(getExternalStorageDirectory() + "/PDFiles/" + ssdtablet));
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("application/pdf");
+
+            String printemailname = ShareDataRead.obtenerValor(getApplicationContext(), "EMail");
+
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{printemailname});
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Saco Oliveros" + ssdtablet);
+            intent.putExtra(Intent.EXTRA_TEXT, "Saco Oliveros Plataforma Virtual - " + ssdtablet);
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            startActivity(Intent.createChooser(intent, "Enviar e-mail mediante:"));
+        }
 
 
         if (id == R.id.action_reload) {
@@ -291,7 +397,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                                         .onPageError(new OnPageErrorListener() {
                                             @Override
                                             public void onPageError(int page, Throwable t) {
-                                                Toast.makeText(VisorPdfActivity.this, "error" + page, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(contentVisorActivity.this, "error" + page, Toast.LENGTH_SHORT).show();
                                             }
                                         })
                                         .onPageChange(new OnPageChangeListener() {
@@ -330,7 +436,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                             @Override
                             public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
                                 //Toast.makeText(ViewTomo3Activity.this, "Pruebe mas  tarde" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(VisorPdfActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(contentVisorActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
 
                                 progresbar.setVisibility(View.GONE);
                                 shareItem.setVisible(true);
@@ -355,7 +461,7 @@ public class VisorPdfActivity extends AppCompatActivity {
             String dato5 = obtenerValor(getApplicationContext(), "NombreUsuario");
 
             if (dato1.equalsIgnoreCase("1 Secundaria")) {
-                Intent intent = new Intent(VisorPdfActivity.this, NavActivity.class);
+                Intent intent = new Intent(contentVisorActivity.this, NavActivity.class);
                 intent.putExtra("EMail", dato);
                 intent.putExtra("ServerGradoNivel", dato1);
                 intent.putExtra("SedeUsuario", dato2);
@@ -365,7 +471,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             if (dato1.equalsIgnoreCase("2 Secundaria")) {
-                Intent intent = new Intent(VisorPdfActivity.this, NavActivity.class);
+                Intent intent = new Intent(contentVisorActivity.this, NavActivity.class);
                 intent.putExtra("EMail", dato);
                 intent.putExtra("ServerGradoNivel", dato1);
                 intent.putExtra("SedeUsuario", dato2);
@@ -375,7 +481,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             if (dato1.equalsIgnoreCase("3 Secundaria")) {
-                Intent intent = new Intent(VisorPdfActivity.this, NavActivity.class);
+                Intent intent = new Intent(contentVisorActivity.this, NavActivity.class);
                 intent.putExtra("EMail", dato);
                 intent.putExtra("ServerGradoNivel", dato1);
                 intent.putExtra("SedeUsuario", dato2);
@@ -385,7 +491,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             if (dato1.equalsIgnoreCase("4 Secundaria")) {
-                Intent intent = new Intent(VisorPdfActivity.this, NavActivity.class);
+                Intent intent = new Intent(contentVisorActivity.this, NavActivity.class);
                 intent.putExtra("EMail", dato);
                 intent.putExtra("ServerGradoNivel", dato1);
                 intent.putExtra("SedeUsuario", dato2);
@@ -395,7 +501,7 @@ public class VisorPdfActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             if (dato1.equalsIgnoreCase("5 Secundaria")) {
-                Intent intent = new Intent(VisorPdfActivity.this, NavActivity.class);
+                Intent intent = new Intent(contentVisorActivity.this, NavActivity.class);
                 intent.putExtra("EMail", dato);
                 intent.putExtra("ServerGradoNivel", dato1);
                 intent.putExtra("SedeUsuario", dato2);
@@ -420,17 +526,6 @@ public class VisorPdfActivity extends AppCompatActivity {
     }
 
 
-    private class onGo implements TextView.OnEditorActionListener {
-        @Override
-        public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-            if (i == EditorInfo.IME_ACTION_GO) {
-                Toast.makeText(getApplicationContext(), "datos", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-            return false;
-        }
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -451,27 +546,4 @@ public class VisorPdfActivity extends AppCompatActivity {
         editor.putString(keyPref, valor);
         editor.commit();
     }
-
-
-    static String PREF_URLGET = "autenticacionOff";
-
-    public static String obtenerValorURL(Context context, String keyPref) {
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_URLGET, MODE_PRIVATE);
-
-        android.util.Log.e("resultadologeo", preferences.getString(keyPref, ""));
-        return preferences.getString(keyPref, "");
-
-    }
-
-
-    void deleteRecursive(File fileOrDirectory) {
-        if (fileOrDirectory.isDirectory())
-            for (File child : fileOrDirectory.listFiles())
-                deleteRecursive(child);
-
-        fileOrDirectory.delete();
-    }
-
-
 }

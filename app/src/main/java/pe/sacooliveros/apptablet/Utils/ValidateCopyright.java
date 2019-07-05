@@ -8,8 +8,6 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import pe.sacooliveros.apptablet.FinallyActivity;
-import pe.sacooliveros.apptablet.Politica_de_Privacidad;
-import pe.sacooliveros.apptablet.PresentacionActivity;
 import pe.sacooliveros.apptablet.R;
 
 public class ValidateCopyright {
@@ -63,7 +61,6 @@ public class ValidateCopyright {
             final int Sleep_finally = 20000;
 
 
-
             new Handler().postDelayed(new Runnable() {
                 public void run() {
                     Toast.makeText(context, myDeviceModel + " Dispositivo no Autorizado - Copyright SACO OLIVEROS - registrando datos del Usuario....", Toast.LENGTH_LONG).show();
@@ -76,7 +73,7 @@ public class ValidateCopyright {
                     SharedPreferences settings = context.getSharedPreferences("autenticacionOff", Context.MODE_PRIVATE);
                     settings.edit().clear().commit();
 
-                    Intent intent= new Intent(context, FinallyActivity.class);
+                    Intent intent = new Intent(context, FinallyActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }

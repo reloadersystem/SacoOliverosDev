@@ -15,7 +15,7 @@
 
     <color name="colorPrimaryS">#b71c1c</color>
     <color name="colorPrimaryDarkS">#7f0000</color>
-    <color name="colorAccentS">#7e0000</color>
+    <color name="colorAccentS">#ebf707</color>
     <color name="redlight">#de0023</color>
     <color name="magenta">#ffffff</color>
     <color name="colortitlebalotario">#d75349</color>
@@ -40,7 +40,7 @@
 
     <color name="celesteD">#3485cc</color>
 
-    <color name="celestelucido">#d9ff00</color>
+    <color name="celestelucido">#040404</color>
 
     <color name="balotariotext">#1b7fc6</color>
 

@@ -25,6 +25,7 @@ import java.net.URL;
 import java.util.List;
 
 import pe.sacooliveros.apptablet.Balotario.VisorPdfActivity;
+import pe.sacooliveros.apptablet.Balotario.contentVisorActivity;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Model.mBalotarios;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
@@ -117,11 +118,12 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
                     } else {
                         String URL = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
 
-                        Intent intent = new Intent(mContext, VisorPdfActivity.class);
-
+                        Intent intent = new Intent(mContext, contentVisorActivity.class);
+                      //  Intent intent = new Intent(mContext, VisorPdfActivity.class);
+//
                         intent.putExtra("ViewType", "internet");
                         intent.putExtra("URL", URL);
-                        intent.putExtra("Materia", "Balotario " + title);
+                        intent.putExtra("Materia", title);
                         intent.putExtra("ssdtablet", namedescarga + ".pdf");
 
                         mContext.startActivity(intent);
@@ -130,11 +132,12 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
 
                     String URL = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
 
-                    Intent intent = new Intent(mContext, VisorPdfActivity.class);
+                    Intent intent = new Intent(mContext, contentVisorActivity.class);
+                   // Intent intent = new Intent(mContext, VisorPdfActivity.class);
 
                     intent.putExtra("ViewType", "internet");
                     intent.putExtra("URL", URL);
-                    intent.putExtra("Materia", "Balotario " + title);
+                    intent.putExtra("Materia", title);
                     intent.putExtra("ssdtablet", namedescarga + ".pdf");
 
                     mContext.startActivity(intent);
