@@ -353,8 +353,8 @@ public class contentVisorActivity extends AppCompatActivity {
             String printemailname = ShareDataRead.obtenerValor(getApplicationContext(), "EMail");
 
             intent.putExtra(Intent.EXTRA_EMAIL, new String[]{printemailname});
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Saco Oliveros" + ssdtablet);
-            intent.putExtra(Intent.EXTRA_TEXT, "Saco Oliveros Plataforma Virtual - " + ssdtablet);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Saco Oliveros");
+            intent.putExtra(Intent.EXTRA_TEXT, "Plataforma Virtual - " + ssdtablet);
             intent.putExtra(Intent.EXTRA_STREAM, uri);
             startActivity(Intent.createChooser(intent, "Enviar e-mail mediante:"));
         }
