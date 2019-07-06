@@ -59,7 +59,7 @@ public class Segundo_BalFragment extends Fragment {
 
         } else if (urlcomplement.equalsIgnoreCase("2do")) {
             numperiodo = "SEGUNDO";
-        } else if (urlcomplement.equalsIgnoreCase("3ro")) {
+        } else if (urlcomplement.equalsIgnoreCase("3er")) {
             numperiodo = "TERCERO";
         } else if (urlcomplement.equalsIgnoreCase("4to")) {
             numperiodo = "CUARTO";
@@ -124,5 +124,4 @@ public class Segundo_BalFragment extends Fragment {
 
         return rootview;
     }
-
 }

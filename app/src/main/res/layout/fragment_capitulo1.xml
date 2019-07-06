@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".Secundaria.fragments.Capitulo1_Fragment">
 
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/recycler_viewseminarios"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="12dp"
-       android:layout_centerHorizontal="true"
-       />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_viewseminarios"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp" />
 </RelativeLayout>

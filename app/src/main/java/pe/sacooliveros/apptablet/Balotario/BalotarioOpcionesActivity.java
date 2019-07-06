@@ -13,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 
@@ -140,7 +139,6 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
                 Intent intent = new Intent(BalotarioOpcionesActivity.this, BalotariosPeriodosActivity.class);
                 intent.putExtra("descripcion_balotario", "Segundo Balotario Mensual");
                 startActivity(intent);
-
             }
         });
 
@@ -149,9 +147,12 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Primer_BalFragment.instantiate("3erBimestral", "BIMESTRAL");
+                Segundo_BalFragment.instantiate("3erSolucBimestral", "BIMESTRAL");
 
-                Toast.makeText(BalotarioOpcionesActivity.this, "Material no Disponible", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(BalotarioOpcionesActivity.this, BalotariosPeriodosActivity.class);
+                intent.putExtra("descripcion_balotario", "Tercer Balotario Bimestral");
+                startActivity(intent);
             }
         });
 
@@ -159,7 +160,12 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(BalotarioOpcionesActivity.this, "Material no Disponible", Toast.LENGTH_SHORT).show();
+                Primer_BalFragment.instantiate("3erMensual", "MENSUAL");
+                Segundo_BalFragment.instantiate("3erSolucMensual", "MENSUAL");
+
+                Intent intent = new Intent(BalotarioOpcionesActivity.this, BalotariosPeriodosActivity.class);
+                intent.putExtra("descripcion_balotario", "Tercer Balotario Mensual");
+                startActivity(intent);
 
             }
         });
@@ -169,7 +175,12 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(BalotarioOpcionesActivity.this, "Material no Disponible", Toast.LENGTH_SHORT).show();
+                Primer_BalFragment.instantiate("4toMensual", "MENSUAL");
+                Segundo_BalFragment.instantiate("4toSolucMensual", "MENSUAL");
+
+                Intent intent = new Intent(BalotarioOpcionesActivity.this, BalotariosPeriodosActivity.class);
+                intent.putExtra("descripcion_balotario", "Cuarto Balotario Mensual");
+                startActivity(intent);
             }
         });
 
@@ -177,11 +188,14 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(BalotarioOpcionesActivity.this, "Material no Disponible", Toast.LENGTH_SHORT).show();
+                Primer_BalFragment.instantiate("4toBimestral", "BIMESTRAL");
+                Segundo_BalFragment.instantiate("4toSolucBimestral", "BIMESTRAL");
+
+                Intent intent = new Intent(BalotarioOpcionesActivity.this, BalotariosPeriodosActivity.class);
+                intent.putExtra("descripcion_balotario", "Cuarto Balotario Bimestral");
+                startActivity(intent);
             }
         });
-
-
     }
 
 
@@ -190,10 +204,8 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
 //        getMenuInflater().inflate(R.menu.menupdf, menu);
 //        return true;
 
-
         inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_hometoolbar, menu);
-
         shareItem = menu.findItem(R.id.action_home);
 
         return true;

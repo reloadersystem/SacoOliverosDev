@@ -84,23 +84,25 @@ public class fragmentTVSeminario extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String backscreen = ShareDataRead.obtenerValor(getContext(), "TipoGradoAsiste");
-                String gradonombre = ShareDataRead.obtenerValor(getContext(), "GradoNombre");
+//                String backscreen = ShareDataRead.obtenerValor(getContext(), "TipoGradoAsiste");
+//                String gradonombre = ShareDataRead.obtenerValor(getContext(), "GradoNombre");
+//
+//
+//                if (backscreen.equalsIgnoreCase("REGULAR") || gradonombre.equalsIgnoreCase("Cuarto Año") && backscreen.equalsIgnoreCase("PRE") || backscreen.equalsIgnoreCase("CIRCULO")) {
+//                    Fragment fragment2 = new InitialFragment();
+//                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+//                    if (fmanager2 != null) {
+//                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
+//                        if (ftransaction != null) {
+//                            ftransaction.replace(R.id.contenedorFragments, fragment2);
+//                            ftransaction.addToBackStack("");
+//                            ftransaction.commit();
+//                        }
+//                    }
+//
+//                }
 
-
-                if (backscreen.equalsIgnoreCase("REGULAR") || gradonombre.equalsIgnoreCase("Cuarto Año") && backscreen.equalsIgnoreCase("PRE") || backscreen.equalsIgnoreCase("CIRCULO")) {
-                    Fragment fragment2 = new InitialFragment();
-                    FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
-                    if (fmanager2 != null) {
-                        FragmentTransaction ftransaction = fmanager2.beginTransaction();
-                        if (ftransaction != null) {
-                            ftransaction.replace(R.id.contenedorFragments, fragment2);
-                            ftransaction.addToBackStack("");
-                            ftransaction.commit();
-                        }
-                    }
-
-                }
+                getActivity().getSupportFragmentManager().popBackStack();
 
             }
         });

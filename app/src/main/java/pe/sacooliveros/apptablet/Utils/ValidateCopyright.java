@@ -78,7 +78,6 @@ public class ValidateCopyright {
                     context.startActivity(intent);
                 }
             }, Sleep_finally);
-
         }
     }
 }
