@@ -145,7 +145,6 @@ public class fragmentMotivadores extends Fragment {
                     case 0:
 
                         adapter_materiales.tomomateriales("TOMO1");
-
                         adapter_letras.tomoletrascompendios("TOMO1");
 
                         Fragment fragment0 = new MotivadorTomosFrag();
@@ -175,7 +174,6 @@ public class fragmentMotivadores extends Fragment {
 
                         adapter_materiales.tomomateriales("TOMO2");
                         adapter_letras.tomoletrascompendios("TOMO2");
-
 
                         Fragment fragment1 = new MotivadorTomosFrag();
                         FragmentManager fmanager1 = getActivity().getSupportFragmentManager();

@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ import pe.sacooliveros.apptablet.Primaria.fragments.ajedrezFragment;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterInit;
 import pe.sacooliveros.apptablet.Secundaria.Model.mInit;
+import pe.sacooliveros.apptablet.Secundaria.fragments.TomoAsesoriasFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.VideoMotivadoresFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.contentFisicaFragment;
 import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentComputacion;
@@ -42,7 +42,6 @@ import pe.sacooliveros.apptablet.Seleccion.Model.mPruebas;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.PopupAlertManager;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
-import pe.sacooliveros.apptablet.comunicador;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -53,40 +52,23 @@ import static android.content.Context.MODE_PRIVATE;
 public class InitialFragment extends Fragment {
 
     View rootview;
-
-
     private GridView gridView;
     ArrayList<mInit> Lista;
-
     String grado;
-
     ConnectionDetector cd;
-
-    PopupMenu popup;
-
-    comunicador com;
-
-
-    String appName;
-
-    String packageName;
-
     String box;
-
     static String nivel;
     static String nivelacceso;
-
     static String gradoasiste;
-
     String gradonombrepre;
     String servergradonivel;
 
     public InitialFragment() {
-        // Required empty public constructor
+
     }
 
     public static void instantiate(String servernivel) {
-        nivel = servernivel; //2 "primaria
+        nivel = servernivel;
     }
 
     @Override
@@ -109,12 +91,9 @@ public class InitialFragment extends Fragment {
             gradoasiste = obtenerValor(getContext(), "TipoGradoAsiste");
         }
 
-
         cd = new ConnectionDetector(getContext());
 
-
         Lista = new ArrayList<mInit>();
-
 
         if (gradoasiste.equalsIgnoreCase("PRE") && gradonombrepre.equalsIgnoreCase("Cuarto Año") || gradoasiste.equalsIgnoreCase("REGULAR") && servergradonivel.equalsIgnoreCase("5 Secundaria")
                 || gradoasiste.equalsIgnoreCase("CIRCULO") && servergradonivel.equalsIgnoreCase("5 Secundaria")) {
@@ -123,28 +102,25 @@ public class InitialFragment extends Fragment {
             Lista.add(new mInit(R.drawable.secundariamain_2));
             Lista.add(new mInit(R.drawable.secundariamain_10));
             Lista.add(new mInit(R.drawable.secundariamain_11));
+            Lista.add(new mInit(R.drawable.secundariamain_15));
             Lista.add(new mInit(R.drawable.secundariamain_3));
-            //Lista.add(new mInit(R.drawable.secundariamain_8));
             Lista.add(new mInit(R.drawable.secundariamain_4));
-
             Lista.add(new mInit(R.drawable.secundariamain_5));
             Lista.add(new mInit(R.drawable.secundariamain_9));
             Lista.add(new mInit(R.drawable.secundariamain_6));
             Lista.add(new mInit(R.drawable.secundariamain_14));
-
             Lista.add(new mInit(R.drawable.secundariamain_7));
             Lista.add(new mInit(R.drawable.secundariamain_13));
-
         } else {
             Lista.add(new mInit(R.drawable.secundariamain_1));
             Lista.add(new mInit(R.drawable.secundariamain_2));
             Lista.add(new mInit(R.drawable.secundariamain_10));
             Lista.add(new mInit(R.drawable.secundariamain_11));
+            Lista.add(new mInit(R.drawable.secundariamain_15));
             Lista.add(new mInit(R.drawable.secundariamain_3));
             Lista.add(new mInit(R.drawable.secundariamain_8));
             Lista.add(new mInit(R.drawable.secundariamain_4));
             Lista.add(new mInit(R.drawable.secundariamain_12));
-
             Lista.add(new mInit(R.drawable.secundariamain_5));
             Lista.add(new mInit(R.drawable.secundariamain_9));
             Lista.add(new mInit(R.drawable.secundariamain_6));
@@ -153,20 +129,13 @@ public class InitialFragment extends Fragment {
             Lista.add(new mInit(R.drawable.secundariamain_13));
         }
 
-        //Lista.add(new mInit(R.drawable.grafico_1));
-
         final adapterInit adapter = new adapterInit(getContext(), Lista);
-
         gridView.setAdapter(adapter);
-
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-
                 mInit minit = (mInit) adapter.getItem(position);
-
 
                 switch (position) {
 
@@ -272,6 +241,31 @@ public class InitialFragment extends Fragment {
 
 
                     case 4: {
+
+                        Fragment fragment15 = new TomoAsesoriasFragment();
+                        FragmentManager fmanager15 = getActivity().getSupportFragmentManager();
+                        if (fmanager15 != null) {
+
+                            Bundle args = new Bundle();
+                            args.putString("description", "Helico Asesorias");
+                            args.putString("grado", grado);
+                            args.putString("ACCESO", nivelacceso);
+                            args.putString("TipoGradoAsiste", gradoasiste);
+                            fragment15.setArguments(args);
+
+                            FragmentTransaction ftransaction = fmanager15.beginTransaction();
+                            if (ftransaction != null) {
+                                ftransaction.replace(R.id.contenedorFragments, fragment15);
+                                ftransaction.addToBackStack("");
+                                ftransaction.commit();
+                            }
+                        }
+
+                        break;
+                    }
+
+
+                    case 5: {
                         Fragment fragment5 = new fragmentHDiapositivas();
                         FragmentManager fmanager5 = getActivity().getSupportFragmentManager();
                         if (fmanager5 != null) {
@@ -295,7 +289,7 @@ public class InitialFragment extends Fragment {
                     }
 
 
-                    case 5: {
+                    case 6: {
 
                         if (nivelacceso.equalsIgnoreCase("1") || nivelacceso.equalsIgnoreCase("2") || nivelacceso.equalsIgnoreCase("3") || nivelacceso.equalsIgnoreCase("4")) {
 
@@ -321,45 +315,6 @@ public class InitialFragment extends Fragment {
 
                         } else if (nivelacceso.equalsIgnoreCase("5")) {
 
-//                            final AlertDialog alertDialog;
-//                            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//
-//                            LayoutInflater inflater = LayoutInflater.from(getContext());
-//
-//                            View view2 = inflater.inflate(R.layout.custombalotarios, null);
-//
-//                            ImageView imgvirtualpdf = view2.findViewById(R.id.img_interactivo);
-//                            ImageView imgaulavirtual = view2.findViewById(R.id.img_virtual);
-//
-//                            builder.setView(view2);
-//                            alertDialog = builder.create();
-//                            alertDialog.show();
-//
-//                            imgaulavirtual.setOnClickListener(new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View view) {
-//                                    if (cd.isConnected()) {
-//                                        Intent intent = new Intent(getContext(), ActivityAulaVirtual.class);
-//                                        alertDialog.dismiss();
-//                                        startActivity(intent);
-//
-//                                    } else {
-//                                        Toast.makeText(getContext(), "Estás sin Conexión", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                }
-//                            });
-//
-//                            imgvirtualpdf.setOnClickListener(new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View view) {
-//
-//                                    BalotarioMenuFragment balotarioMenuFragment = new BalotarioMenuFragment();
-//                                    GeneralFragmentManager.setFragmentWithReplace((Activity) getContext(), R.id.contenedorFragments, balotarioMenuFragment);
-//                                    alertDialog.dismiss();
-//
-//                                }
-//                            });
-
                             Intent intent = new Intent(getActivity(), BalotarioMenuActivity.class);
                             getActivity().startActivity(intent);
                         }
@@ -368,8 +323,7 @@ public class InitialFragment extends Fragment {
 
                     }
 
-
-                    case 6: {
+                    case 7: {
 
                         if (nivelacceso.equalsIgnoreCase("5")) {
 
@@ -395,48 +349,6 @@ public class InitialFragment extends Fragment {
                             break;
 
                         } else {
-
-//                            final AlertDialog alertDialog;
-//                            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//
-//                            LayoutInflater inflater = LayoutInflater.from(getContext());
-//
-//                            View view2 = inflater.inflate(R.layout.custombalotarios, null);
-//
-//                            ImageView imgvirtualpdf = view2.findViewById(R.id.img_interactivo);
-//                            ImageView imgaulavirtual = view2.findViewById(R.id.img_virtual);
-//
-//                            builder.setView(view2);
-//                            alertDialog = builder.create();
-//                            alertDialog.show();
-//
-//                            imgaulavirtual.setOnClickListener(new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View view) {
-//                                    if (cd.isConnected()) {
-//                                        Intent intent = new Intent(getContext(), ActivityAulaVirtual.class);
-//                                        alertDialog.dismiss();
-//                                        startActivity(intent);
-//
-//                                    } else {
-//                                        Toast.makeText(getContext(), "Estás sin Conexión", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                }
-//                            });
-//
-//                            imgvirtualpdf.setOnClickListener(new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View view) {
-//
-//                                    BalotarioMenuFragment balotarioMenuFragment = new BalotarioMenuFragment();
-//                                    GeneralFragmentManager.setFragmentWithReplace((Activity) getContext(), R.id.contenedorFragments, balotarioMenuFragment);
-//                                    alertDialog.dismiss();
-//
-//                                }
-//                            });
-//
-//                            break;
-
                             Intent intent = new Intent(getActivity(), BalotarioMenuActivity.class);
                             getActivity().startActivity(intent);
                             break;
@@ -444,7 +356,7 @@ public class InitialFragment extends Fragment {
 
                     }
 
-                    case 7:
+                    case 8:
 
                         if (nivelacceso.equalsIgnoreCase("4") | nivelacceso.equalsIgnoreCase("3") | nivelacceso.equalsIgnoreCase("2") | nivelacceso.equalsIgnoreCase("1"))
 
@@ -495,8 +407,7 @@ public class InitialFragment extends Fragment {
                             break;
                         }
 
-
-                    case 8:
+                    case 9:
 
                         if (nivelacceso.equalsIgnoreCase("5")) {
                             Fragment fragment11 = new fragmentPFMatematica();
@@ -543,38 +454,9 @@ public class InitialFragment extends Fragment {
                                 }
                             }
                             break;
-
-
-//                            Fragment fragment9 = new fragmentVSeminario();
-//                            FragmentManager fmanager9 = getActivity().getSupportFragmentManager();
-//                            if (fmanager9 != null) {
-//
-//                                Bundle args = new Bundle();
-//                                args.putString("description", "Video Helico Seminario");
-//                                args.putString("grado", grado);
-//                                args.putString("ACCESO", nivelacceso);
-//                                args.putString("TipoGradoAsiste", gradoasiste);
-//                                args.putString("tomodesc", " ");
-//
-//                                fragment9.setArguments(args);
-//
-//
-//                                FragmentTransaction ftransaction = fmanager9.beginTransaction();
-//                                if (ftransaction != null) {
-//                                    ftransaction.replace(R.id.contenedorFragments, fragment9);
-//                                    ftransaction.addToBackStack("");
-//                                    ftransaction.commit();
-//                                }
-//                            }
-//                            break;
-
-
-                            //
-
                         }
 
-
-                    case 9:
+                    case 10:
 
                         if (nivelacceso.equalsIgnoreCase("5")) {
 
@@ -622,8 +504,7 @@ public class InitialFragment extends Fragment {
                             break;
                         }
 
-
-                    case 10:
+                    case 11:
 
                         if (nivelacceso.equalsIgnoreCase("5")) {
                             Fragment fragment3 = new fragmentEnglish();
@@ -668,8 +549,7 @@ public class InitialFragment extends Fragment {
                             break;
                         }
 
-
-                    case 11:
+                    case 13:
 
                         if (nivelacceso.equalsIgnoreCase("5")) {
 
@@ -716,8 +596,7 @@ public class InitialFragment extends Fragment {
                             break;
                         }
 
-
-                    case 12:
+                    case 14:
 
                         Fragment fragment3 = new fragmentEnglish();
                         FragmentManager fmanager3 = getActivity().getSupportFragmentManager();
@@ -740,9 +619,7 @@ public class InitialFragment extends Fragment {
 
                         break;
 
-
-                    case 13:
-
+                    case 15:
 
                         ArrayList<mPruebas> mListPruebas;
                         mListPruebas = new ArrayList<mPruebas>();
@@ -763,9 +640,6 @@ public class InitialFragment extends Fragment {
 
                         popupAlertManager.customDialog(getContext(), " MEDITACIÓN", mListPruebas);
 
-
-//
-
                         break;
                 }
 
@@ -776,15 +650,11 @@ public class InitialFragment extends Fragment {
 
     }
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        com = (comunicador) getActivity();
-        com.responder("hola");
     }
-
 
     public void openApp(Context context, String appName, String packageName) {
         if (isAppInstalled(context, packageName))
@@ -794,26 +664,21 @@ public class InitialFragment extends Fragment {
                 Toast.makeText(context, appName + " app is not enabled.", Toast.LENGTH_SHORT).show();
 
         startNewActivity(getContext(), box);
-
-
-        //else Toast.makeText(context, appName + " app is not installed.", Toast.LENGTH_SHORT).show();
     }
 
     private void startNewActivity(Context context, String packageName) {
 
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
         if (intent != null) {
-            // We found the activity now start the activity
+
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } else {
-            // Bring user to the market or let them choose an app?
             intent = new Intent(Intent.ACTION_VIEW);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setData(Uri.parse("market://details?id=" + packageName));
             context.startActivity(intent);
         }
-
     }
 
     private static boolean isAppInstalled(Context context, String packageName) {
@@ -847,8 +712,5 @@ public class InitialFragment extends Fragment {
 
         android.util.Log.e("resultadologeo", preferences.getString(keyPref, ""));
         return preferences.getString(keyPref, "");
-
     }
-
-
 }

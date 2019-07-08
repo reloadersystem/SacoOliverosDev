@@ -28,16 +28,13 @@ public class BalotarioMenuFragment extends Fragment {
     TextView txt_tercermensual, txt_tercerbimestral;
     TextView txt_cuartomensual, txt_cuartobimestral;
 
-
     public BalotarioMenuFragment() {
-        // Required empty public constructor
-    }
-
+          }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         rootview = inflater.inflate(R.layout.fragment_balotario_menu, container, false);
 
         txt_primermensual = rootview.findViewById(R.id.txt_balotar1mensual);
@@ -54,7 +51,6 @@ public class BalotarioMenuFragment extends Fragment {
         if (!balotariospdf.exists()) {
             balotariospdf.mkdir();
         }
-
 
         txt_primermensual.setOnClickListener(new View.OnClickListener() {
             @Override

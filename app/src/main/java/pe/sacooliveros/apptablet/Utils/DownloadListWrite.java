@@ -19,8 +19,11 @@ public class DownloadListWrite {
         AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(context, "administracion", null,1 );
         SQLiteDatabase BasedeDatos= admin.getWritableDatabase();
 
+        int count= Integer.parseInt(null);
+
         String dato1= obtenerValor(context, "contadorDB");
-        int count= Integer.parseInt(dato1)+ 1;
+
+        count= Integer.parseInt(dato1)+ 1;
 
         String codigo= String.valueOf(count);
         String nombrepdf= ruta;

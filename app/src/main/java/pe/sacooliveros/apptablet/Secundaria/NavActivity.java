@@ -81,7 +81,6 @@ public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, comunicador {
 
     static String PREFS_KEY = "autenticacionOff";
-    Fragment fragment;
     InitialFragment initialFragment;
     String emailogin = "";
     String emailjson = "";
@@ -98,31 +97,18 @@ public class NavActivity extends AppCompatActivity
     int MY_PERMISSIONS_REQUEST_UBICACION = 3;
 
     String sharedata;
-
     mainFragmentUni mainFragmentuni;
-
     String appName;
-
-
     String packageName;
-
     String box;
-
     static Double updateapk;
-
     ConnectionDetector cd;
-
     static String nivelacceso;
-
-    static String tokenIdData;
-
     private static final String TAG = "VersionEstado";
-
+    private static final String TAGServ = "TagServicio";
 
     String gradonombre;
-
     String apellidopaterno, apellidomaterno;
-
     GoogleApiClient mGoogleApiClient;
 
     DrawerLayout drawer;
@@ -295,47 +281,44 @@ public class NavActivity extends AppCompatActivity
 
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
-        if (updateapk == null) {
-            updateapk = Double.valueOf("2.1440");
-        }
-
+//        if (updateapk == null) {
+//            updateapk = Double.valueOf("2.1440");
+//        }
 
         Double versionapk = Double.valueOf(getVersionName(getApplicationContext()));
 
-        if (cd.isConnected()) {
-            if (updateapk > versionapk) {
+        if (!(versionapk == null)) {
+            if (cd.isConnected()) {
+                if (updateapk > versionapk) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(NavActivity.this);
-                builder.setTitle("Nueva Versión Disponible");
-                DecimalFormat df = new DecimalFormat("#.0000");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(NavActivity.this);
+                    builder.setTitle("Nueva Versión Disponible");
+                    DecimalFormat df = new DecimalFormat("#.0000");
 
-                builder.setMessage("Versión " + df.format(updateapk) + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                    builder.setMessage("Versión " + df.format(updateapk) + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
 
-                builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-//                        appName = "Gmail";
-//                        packageName = "pe.sacooliveros.apptablet";
-//
-//                        newapp = "pe.sacooliveros.apptablet";
+                    builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
 
-                        final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
-                        try {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                        } catch (android.content.ActivityNotFoundException anfe) {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                            final String appPackageName = getPackageName();
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                            } catch (android.content.ActivityNotFoundException anfe) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                            }
+
                         }
-
-                    }
-                });
-                builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                    });
+                    builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
         }
 

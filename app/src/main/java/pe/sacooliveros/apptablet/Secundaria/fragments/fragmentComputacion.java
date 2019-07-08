@@ -17,6 +17,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 
 import pe.sacooliveros.apptablet.R;
@@ -42,6 +44,10 @@ public class fragmentComputacion extends Fragment {
     Button btn_computacion;
     String acceso;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
+
+
 
     public fragmentComputacion() {
         // Required empty public constructor
@@ -58,6 +64,9 @@ public class fragmentComputacion extends Fragment {
         img_temas = rootview.findViewById(R.id.img_backexamcap);
         gridView = rootview.findViewById(R.id.ma_tomocomputacion);
         btn_computacion = rootview.findViewById(R.id.btn_computacion);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
 
 
         Bundle bundle = this.getArguments();
@@ -91,6 +100,13 @@ public class fragmentComputacion extends Fragment {
 
 
                 getActivity().getSupportFragmentManager().popBackStack();
+
+
+                Bundle bundle= new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "imagen");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "secundariamain_12.png");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SHARE,bundle);
+
 
 //                Fragment fragment2 = new InitialFragment();
 //                FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
