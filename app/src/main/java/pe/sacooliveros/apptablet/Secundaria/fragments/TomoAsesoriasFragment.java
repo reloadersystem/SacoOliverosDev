@@ -88,6 +88,11 @@ public class TomoAsesoriasFragment extends Fragment {
         final adapter_VideoMotivadores adapter = new adapter_VideoMotivadores(getContext(), Lista);
         gridView.setAdapter(adapter);
 
+        final AsesoriaCap1_Fragment asesoriaCap1_fragment= new AsesoriaCap1_Fragment();
+        final AsesoriaCap2_Fragment asesoriaCap2_fragment= new AsesoriaCap2_Fragment();
+        final AsesoriaCap3_Fragment asesoriaCap3_fragment= new AsesoriaCap3_Fragment();
+
+
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -103,6 +108,11 @@ public class TomoAsesoriasFragment extends Fragment {
 
                         FragmentManager fmanager = getActivity().getSupportFragmentManager();
                         if (fmanager != null) {
+
+
+                            asesoriaCap1_fragment.tomolistener("TOMO"+inicio);
+                            asesoriaCap2_fragment.tomolistener("TOMO"+inicio);
+                            asesoriaCap3_fragment.tomolistener("TOMO"+inicio);
 
                             Bundle args = new Bundle();
                             args.putString("Tomo", "Tomo " + inicio);

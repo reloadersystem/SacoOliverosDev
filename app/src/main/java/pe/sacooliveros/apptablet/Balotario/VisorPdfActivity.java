@@ -51,7 +51,6 @@ public class VisorPdfActivity extends AppCompatActivity {
 
     String urlcode;
     String viewType;
-    TextView tv_tomoletraspdft3;
     String password = "Reloader";
     String tema;
     PDFView pdfView;
@@ -61,7 +60,6 @@ public class VisorPdfActivity extends AppCompatActivity {
     ProgressBar progresbar;
     String rutafile;
     String estadoconec;
-    RelativeLayout lnLayout;
     static String paginainicio;
     String ruta_storage;
     MenuInflater inflater;

@@ -64,7 +64,6 @@ public class InitialFragment extends Fragment {
     String servergradonivel;
 
     public InitialFragment() {
-
     }
 
     public static void instantiate(String servernivel) {
@@ -146,23 +145,19 @@ public class InitialFragment extends Fragment {
                         if (fmanager != null) {
 
                             Bundle args = new Bundle();
-
                             args.putString("description", "VIDEO HELICO MOTIVADORES");
                             args.putString("grado", grado);
                             args.putString("ACCESO", nivelacceso);
                             args.putString("TipoGradoAsiste", gradoasiste);
-
                             fragment.setArguments(args);
 
                             FragmentTransaction ftransaction = fmanager.beginTransaction();
-
                             if (ftransaction != null) {
                                 ftransaction.replace(R.id.contenedorFragments, fragment);
                                 ftransaction.addToBackStack("");
                                 ftransaction.commit();
                             }
                         }
-
                         break;
 
                     case 1:
@@ -549,7 +544,7 @@ public class InitialFragment extends Fragment {
                             break;
                         }
 
-                    case 13:
+                    case 12:
 
                         if (nivelacceso.equalsIgnoreCase("5")) {
 
@@ -596,7 +591,7 @@ public class InitialFragment extends Fragment {
                             break;
                         }
 
-                    case 14:
+                    case 13:
 
                         Fragment fragment3 = new fragmentEnglish();
                         FragmentManager fmanager3 = getActivity().getSupportFragmentManager();
@@ -619,7 +614,7 @@ public class InitialFragment extends Fragment {
 
                         break;
 
-                    case 15:
+                    case 14:
 
                         ArrayList<mPruebas> mListPruebas;
                         mListPruebas = new ArrayList<mPruebas>();
@@ -642,18 +637,14 @@ public class InitialFragment extends Fragment {
 
                         break;
                 }
-
             }
         });
-
         return rootview;
-
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 
     public void openApp(Context context, String appName, String packageName) {
@@ -662,7 +653,6 @@ public class InitialFragment extends Fragment {
                 context.startActivity(context.getPackageManager().getLaunchIntentForPackage(packageName));
             else
                 Toast.makeText(context, appName + " app is not enabled.", Toast.LENGTH_SHORT).show();
-
         startNewActivity(getContext(), box);
     }
 

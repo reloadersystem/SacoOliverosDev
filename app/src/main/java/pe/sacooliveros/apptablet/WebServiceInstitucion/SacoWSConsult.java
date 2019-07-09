@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,38 +40,23 @@ import static java.lang.Thread.sleep;
 
 public class SacoWSConsult extends AsyncTask<String, Integer, String> {
 
-
     private RelativeLayout currentLayout;
     private final ArrayList<JSONObject> dataResult = new ArrayList<>();
     private Context currentContext;
-    private ProgressBar progressBar;
 
     String emailalumno;
-
     String gradonombre;
-
-
     String gradonumero;
-
     String nombreserver;
-
     String gradoasiste;
-
     String sedeserver;
-
     String matriculaserver;
-
     String ruta;
     String ruta_storage;
-
     String codigoautenticacion;
-
     String dnialumno;
-
     String apellidopaterno;
-
     String apellidomaterno;
-
 
     static String fechaservidor;
 
@@ -94,9 +78,7 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
 
     public static void fechaserver(String fechaserver) {
         fechaservidor = fechaserver;
-
     }
-
 
     @Override
     protected String doInBackground(String... strings) {
@@ -112,22 +94,13 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
 
         String datoserver = "{\"estado\":true,\"data\":[]}";
 
-//        String [] parts= rString.split(",");
-//        String part1 = parts[0]; // 123
-//        String part2 = parts[1]; // 654321
-
-//        String datoserver = part2;
-
-
         return rString;
-
     }
 
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-
 
     }
 
@@ -136,34 +109,19 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
     public void onPostExecute(String rString) {
         super.onPostExecute(rString);
 
-
         TextView urlview;
         TextView tvlista;
-
 
         tvlista = currentLayout.findViewById(R.id.tx_datos_server);
         urlview = currentLayout.findViewById(R.id.tv_urphoto);
 
         if (rString.equals("{\"estado\":true,\"data\":[]}")) {
             Toast.makeText(currentContext, "ACCESSO SOLO PARA ALUMNOS SACO OLIVEROS", Toast.LENGTH_SHORT).show();
-//           Intent intent= new Intent(currentContext, SacoSecurityActivity.class);
-//
-//           currentContext.startActivity(intent);
-
         }
 
         try {
             JSONObject object = new JSONObject(rString);
 
-            //if (object.has(periodo)){
-            //
-            //
-            //fecha_inicio_de_clase, fecha_fin_de_clase
-            // guardar share prefenreces  aa-mm-dd
-            // }
-            //else
-            //{ no ingresa al sistema
-            //}
 
             if (object.has("periodo")) {
                 boolean hasperiodo = object.has("periodo"); //true
@@ -174,8 +132,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                 String fecha_inicio = objectItem.get("fecha_inicio_de_clase").toString();
                 String fechafinal = String.valueOf(objectItem.get("fecha_fin_de_clase"));
 
-                //todo PONER LA PANTALLA DE INICIO DE  PERIODO
-
                 String actualfecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date()); // fecha  actual
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -184,9 +140,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                 Date date2 = null;
                 Date fechadato = null;
 
-                //persona_apellido_paterno
-                //persona_apellido_materno
-
 
                 try {
 
@@ -194,8 +147,8 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                     date2 = sdf.parse(fechafinal);
                     fechadato = sdf.parse(actualfecha);
 
-                    Boolean periodoinicio = fechadato.before(date1); // 18/03/2019 < 06/03/2019 false
-                    Boolean periodofin = fechadato.after(date2); //18/03/2019 > 31/12/2019 false
+                    Boolean periodoinicio = fechadato.before(date1);
+                    Boolean periodofin = fechadato.after(date2);
 
                     if (periodoinicio || periodofin) {
                         Intent intent = new Intent(currentContext, ScreenPeriodo.class);
@@ -206,8 +159,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
 
                         JSONArray dataArray = new JSONArray(object.get("data").toString());
 
-                        //tvlista.setText(object.get("data").toString());
-
                         for (int idx = 0; idx < dataArray.length(); idx++) {
                             JSONObject arrayObject = (JSONObject) dataArray.get(idx);
 
@@ -215,7 +166,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                             if (arrayObject.has("persona_nombre")) {
 
                                 nombreserver = arrayObject.get("persona_nombre").toString();
-                                // tvNombre.setText(arrayObject.get("persona_nombre").toString());
                             }
 
                             if (arrayObject.has("persona_apellido_paterno")) {
@@ -230,9 +180,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                             if (arrayObject.has("persona_correo_direccion")) {
 
                                 emailalumno = arrayObject.get("persona_correo_direccion").toString();
-
-                                // Toast.makeText(currentContext, arrayObject.get("persona_correo_direccion").toString(), Toast.LENGTH_LONG).show();
-                                // Log.d("DATOSALUMNOS",arrayObject.get("persona_correo_direccion").toString());
                             }
 
                             if (arrayObject.has("grado_id")) {
@@ -248,25 +195,16 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                 gradonombre = arrayObject.get("grado_nombre").toString();
                             }
 
-
                             if (arrayObject.has("sede_nombre")) {
-
-
                                 sedeserver = arrayObject.get("sede_nombre").toString();
-
                             }
 
-
                             if (arrayObject.has("matricula_retirado")) {
-
-
                                 matriculaserver = arrayObject.get("matricula_retirado").toString();
-
                             }
 
                             if (arrayObject.has("numero_grado")) {
-
-                                gradonumero = arrayObject.get("numero_grado").toString();   // 5  (5to  regular )  - 5 (5to Circulo)
+                                gradonumero = arrayObject.get("numero_grado").toString();
                             }
 
                             if (arrayObject.has("codigo_de_autenticacion")) {
@@ -277,34 +215,26 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                 dnialumno = arrayObject.get("documento").toString();
                             }
 
-
-                            if (arrayObject.has("tipo_grado_asiste")) {  //REGULAR //CIRCULO
-
+                            if (arrayObject.has("tipo_grado_asiste")) {
                                 gradoasiste = arrayObject.get("tipo_grado_asiste").toString();
                             }
-
 
                             guardarValor(currentContext, "fechainicio_clase", fecha_inicio);
                             guardarValor(currentContext, "fechafin_clase", fechafinal);
 
-
                             if (arrayObject.has("nivel_nombre")) {
 
-                                String gradoencurso = arrayObject.get("nivel_nombre").toString();  // Secundaria // Secundaria
+                                String gradoencurso = arrayObject.get("nivel_nombre").toString();
 
                                 String servernivel = gradonumero + " " + gradoencurso;
 
                                 Toast.makeText(currentContext, "Alumno " + nombreserver + " " + gradonumero + " " + gradoencurso, Toast.LENGTH_LONG).show();
 
-
                                 if (gradoencurso.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("CATOLICA"))
 
                                 {
-
                                     String dataurl = urlview.getText().toString();
-
                                     Intent intent = new Intent(currentContext, NavActivity.class);
-
                                     intent.putExtra("URLPhoto", dataurl);
                                     intent.putExtra("EMail", emailalumno);
                                     intent.putExtra("NombreUsuario", nombreserver);
@@ -315,7 +245,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     intent.putExtra("GradoNombre", gradonombre);
                                     intent.putExtra("ApellidoPaterno", apellidopaterno);
                                     intent.putExtra("ApellidoMaterno", apellidomaterno);
-
 
                                     guardarValor(currentContext, "GradoNombre", gradonombre);
                                     guardarValor(currentContext, "URLPhoto", dataurl);
@@ -333,15 +262,12 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     guardarValor(currentContext, "ApellidoPaterno", apellidopaterno);
                                     guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
                                     guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
-
 
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     currentContext.startActivity(intent);
                                 } else if (gradoencurso.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("SAN MARCOS"))
-
                                 {
                                     String dataurl = urlview.getText().toString();
-
                                     Intent intent = new Intent(currentContext, NavActivity.class);
 
                                     intent.putExtra("URLPhoto", dataurl);
@@ -371,8 +297,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     guardarValor(currentContext, "ApellidoPaterno", apellidopaterno);
                                     guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
                                     guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
-
-
 
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     currentContext.startActivity(intent);
@@ -381,7 +305,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                 {
 
                                     String dataurl = urlview.getText().toString();
-
                                     Intent intent = new Intent(currentContext, NavActivity.class);
 
                                     intent.putExtra("URLPhoto", dataurl);
@@ -411,7 +334,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     guardarValor(currentContext, "ApellidoPaterno", apellidopaterno);
                                     guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
                                     guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
-
 
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     currentContext.startActivity(intent);
@@ -421,14 +343,11 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                 {
                                     String dataurl;
 
-                                    if(emailalumno.equalsIgnoreCase("rcorrea.ti@sacooliveros.edu.pe"))
-                                    {
-                                        dataurl="https://lh3.googleusercontent.com/-tdi_1qVRlz8/XL8ToWfBnRI/AAAAAAAAAtY/FdFeDohwhfk9o8psGp_Ud9i2SnMAhSIugCEwYBhgL/w140-h140-p/37155445.jpg";
-                                    }else
-                                    {
+                                    if (emailalumno.equalsIgnoreCase("rcorrea.ti@sacooliveros.edu.pe")) {
+                                        dataurl = "https://lh3.googleusercontent.com/-tdi_1qVRlz8/XL8ToWfBnRI/AAAAAAAAAtY/FdFeDohwhfk9o8psGp_Ud9i2SnMAhSIugCEwYBhgL/w140-h140-p/37155445.jpg";
+                                    } else {
                                         dataurl = urlview.getText().toString();
                                     }
-
 
                                     Intent intent = new Intent(currentContext, NavActivity.class);
                                     intent.putExtra("URLPhoto", dataurl);
@@ -458,7 +377,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     guardarValor(currentContext, "ApellidoPaterno", apellidopaterno);
                                     guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
                                     guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
-
 
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     currentContext.startActivity(intent);
@@ -498,7 +416,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
                                     guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
 
-
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     currentContext.startActivity(intent);
 
@@ -518,7 +435,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     intent.putExtra("GradoNombre", gradonombre);
                                     intent.putExtra("ApellidoPaterno", apellidopaterno);
                                     intent.putExtra("ApellidoMaterno", apellidomaterno);
-
 
                                     guardarValor(currentContext, "GradoNombre", gradonombre);
                                     guardarValor(currentContext, "TipoGradoAsiste", gradoasiste);
@@ -557,7 +473,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     intent.putExtra("ApellidoPaterno", apellidopaterno);
                                     intent.putExtra("ApellidoMaterno", apellidomaterno);
 
-
                                     guardarValor(currentContext, "GradoNombre", gradonombre);
                                     guardarValor(currentContext, "URLPhoto", dataurl);
                                     guardarValor(currentContext, "EMail", emailalumno);
@@ -575,55 +490,46 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                                     guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
                                     guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
 
-
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     currentContext.startActivity(intent);
 
-                                } else
+                                } else if (gradonombre.equalsIgnoreCase("Quinto Año") && gradoasiste.equalsIgnoreCase("PRE"))
 
+                                {
+                                    String dataurl = urlview.getText().toString();
 
-                                    //if (gradoencurso.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("PRE") )
+                                    Intent intent = new Intent(currentContext, NavActivity.class);
+                                    intent.putExtra("URLPhoto", dataurl);
+                                    intent.putExtra("EMail", emailalumno);
+                                    intent.putExtra("NombreUsuario", nombreserver);
+                                    intent.putExtra("SedeUsuario", sedeserver);
+                                    intent.putExtra("ServerGradoNivel", servernivel);
+                                    intent.putExtra("MatriculaServer", matriculaserver);
+                                    intent.putExtra("TipoGradoAsiste", gradoasiste);
+                                    intent.putExtra("GradoNombre", gradonombre);
+                                    intent.putExtra("ApellidoPaterno", apellidopaterno);
+                                    intent.putExtra("ApellidoMaterno", apellidomaterno);
 
-                                    if (gradonombre.equalsIgnoreCase("Quinto Año") && gradoasiste.equalsIgnoreCase("PRE"))
+                                    guardarValor(currentContext, "GradoNombre", gradonombre);
+                                    guardarValor(currentContext, "URLPhoto", dataurl);
+                                    guardarValor(currentContext, "EMail", emailalumno);
+                                    guardarValor(currentContext, "NombreUsuario", nombreserver);
+                                    guardarValor(currentContext, "SedeUsuario", sedeserver);
+                                    guardarValor(currentContext, "ServerGradoNivel", servernivel);
+                                    guardarValor(currentContext, "MatriculaServer", matriculaserver);
+                                    guardarValor(currentContext, "Acceso", "Secundaria");
+                                    guardarValor(currentContext, "TipoGradoAsiste", gradoasiste);
+                                    guardarValor(currentContext, "fechaserver", fechaservidor);
+                                    guardarValor(currentContext, "codigo_autenticacion", codigoautenticacion);
+                                    guardarValor(currentContext, "dniusuario", dnialumno);
+                                    guardarValor(currentContext, "contadorDB", "1000000");
+                                    guardarValor(currentContext, "ApellidoPaterno", apellidopaterno);
+                                    guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
+                                    guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
 
-                                    {
-                                        String dataurl = urlview.getText().toString();
-
-                                        Intent intent = new Intent(currentContext, NavActivity.class);
-                                        intent.putExtra("URLPhoto", dataurl);
-                                        intent.putExtra("EMail", emailalumno);
-                                        intent.putExtra("NombreUsuario", nombreserver);
-                                        intent.putExtra("SedeUsuario", sedeserver);
-                                        intent.putExtra("ServerGradoNivel", servernivel);
-                                        intent.putExtra("MatriculaServer", matriculaserver);
-                                        intent.putExtra("TipoGradoAsiste", gradoasiste);
-                                        intent.putExtra("GradoNombre", gradonombre);
-                                        intent.putExtra("ApellidoPaterno", apellidopaterno);
-                                        intent.putExtra("ApellidoMaterno", apellidomaterno);
-
-                                        guardarValor(currentContext, "GradoNombre", gradonombre);
-                                        guardarValor(currentContext, "URLPhoto", dataurl);
-                                        guardarValor(currentContext, "EMail", emailalumno);
-                                        guardarValor(currentContext, "NombreUsuario", nombreserver);
-                                        guardarValor(currentContext, "SedeUsuario", sedeserver);
-                                        guardarValor(currentContext, "ServerGradoNivel", servernivel);
-                                        guardarValor(currentContext, "MatriculaServer", matriculaserver);
-                                        guardarValor(currentContext, "Acceso", "Secundaria");
-                                        guardarValor(currentContext, "TipoGradoAsiste", gradoasiste);
-                                        guardarValor(currentContext, "fechaserver", fechaservidor);
-                                        guardarValor(currentContext, "codigo_autenticacion", codigoautenticacion);
-                                        guardarValor(currentContext, "dniusuario", dnialumno);
-                                        guardarValor(currentContext, "contadorDB", "1000000");
-                                        guardarValor(currentContext, "ApellidoPaterno", apellidopaterno);
-                                        guardarValor(currentContext, "ApellidoMaterno", apellidomaterno);
-                                        guardarValor(currentContext, "CheckOutService", "Inicio Servicio");
-
-
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        currentContext.startActivity(intent);
-
-                                    }
-
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    currentContext.startActivity(intent);
+                                }
                             }
                         }
                     }
@@ -649,7 +555,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
 
     }
 
-
     private class DescargarPDFAsynTask extends AsyncTask<String, Integer, String> {
 
         ProgressDialog progressDialog;
@@ -658,11 +563,9 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
             this.progressDialog = progressDialog;
         }
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             progressDialog.show();
         }
 
@@ -674,7 +577,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
             OutputStream output = null;
 
             ruta_storage = currentContext.getString(R.string.ruta_raiz);
-
 
             String urlADescargar = urlPDF[0];
 
@@ -688,7 +590,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
                 }
 
                 input = conexion.getInputStream();
-
 
                 String rutaficheroGuardado = ruta_storage + "/shared_prefs/" + ruta;
 
@@ -738,7 +639,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
 
             }
 
-
             return "Se realizo Correctamente";
         }
 
@@ -751,19 +651,13 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
             progressDialog.setIndeterminate(false);
             progressDialog.setMax(100);
             progressDialog.setProgress(values[0]);
-
-
         }
 
         @Override
         protected void onPostExecute(String mensaje) {
             super.onPostExecute(mensaje);
-
-
             Toast.makeText(currentContext, mensaje, Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
-
-
         }
     }
 
@@ -771,7 +665,6 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
     @Override
     protected void onCancelled(String arrayList) {
         super.onCancelled(arrayList);
-
     }
 
     private static String PREFS_KEY = "autenticacionOff";
@@ -783,6 +676,4 @@ public class SacoWSConsult extends AsyncTask<String, Integer, String> {
         editor.putString(keyPref, valor);
         editor.commit();
     }
-
-
 }

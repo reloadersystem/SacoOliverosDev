@@ -51,6 +51,7 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
             File secundariaGrado4 = new File(ruta_storage + "/APP/2/", "4");
             File secundariaGrado5 = new File(ruta_storage + "/APP/2/", "5");
 
+
             secundariaGrado1.mkdir();
             secundariaGrado2.mkdir();
             secundariaGrado3.mkdir();
@@ -101,13 +102,21 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mMenuPrincipal12 = new File(ruta_storage + "/APP/2/" + grado + "/", "PROBLEMAS_RESUELTOS");
         File mMenuPrincipal13 = new File(ruta_storage + "/APP/2/" + grado + "/", "COMPENDIOS");
         File mMenuPrincipal14 = new File(ruta_storage + "/APP/2/" + grado + "/", "VIDEO_HELICO_SEMINARIO");
-
+        File mMenuPrincipal15 = new File(ruta_storage + "/APP/2/" + grado + "/", "HELICO_ASESORIAS");
 
         File mPrincMatematico1 = new File(ruta_storage + "/APP/2/" + grado + "/PRINCIPIOS_FMATEMATICA/", "BIMESTRE1");
         File mPrincMatematico2 = new File(ruta_storage + "/APP/2/" + grado + "/PRINCIPIOS_FMATEMATICA/", "BIMESTRE2");
         File mPrincMatematico3 = new File(ruta_storage + "/APP/2/" + grado + "/PRINCIPIOS_FMATEMATICA/", "BIMESTRE3");
         File mPrincMatematico4 = new File(ruta_storage + "/APP/2/" + grado + "/PRINCIPIOS_FMATEMATICA/", "BIMESTRE4");
 
+        File mHelicoAsesoria1 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO1");
+        File mHelicoAsesoria2 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO2");
+        File mHelicoAsesoria3 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO3");
+        File mHelicoAsesoria4 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO4");
+        File mHelicoAsesoria5 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO5");
+        File mHelicoAsesoria6 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO6");
+        File mHelicoAsesoria7 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO7");
+        File mHelicoAsesoria8 = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_ASESORIAS/", "TOMO8");
 
         File mVideoSeminario1 = new File(ruta_storage + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/", "TOMO1");
         File mVideoSeminario2 = new File(ruta_storage + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/", "TOMO2");
@@ -857,7 +866,7 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mMenuPrincipal12.mkdir();
         mMenuPrincipal13.mkdir();
         mMenuPrincipal14.mkdir();
-
+        mMenuPrincipal15.mkdir();
 
         mProPropuestos1.mkdir();
         mProPropuestos2.mkdir();
@@ -892,6 +901,17 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mPrincMatematico2.mkdir();
         mPrincMatematico3.mkdir();
         mPrincMatematico4.mkdir();
+
+
+        mHelicoAsesoria1.mkdir();
+        mHelicoAsesoria2.mkdir();
+        mHelicoAsesoria3.mkdir();
+        mHelicoAsesoria4.mkdir();
+        mHelicoAsesoria5.mkdir();
+        mHelicoAsesoria6.mkdir();
+        mHelicoAsesoria7.mkdir();
+        mHelicoAsesoria8.mkdir();
+
 
 
         mVideoSeminario1.mkdir();

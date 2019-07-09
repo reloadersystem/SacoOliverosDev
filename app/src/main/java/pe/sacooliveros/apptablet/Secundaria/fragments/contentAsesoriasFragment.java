@@ -54,14 +54,11 @@ public class contentAsesoriasFragment extends Fragment {
             tomo = bundle.getString("Tomo");
         }
 
-
         viewPager = rootview.findViewById(R.id.pagerasesorias);
         mMainNav = rootview.findViewById(R.id.main_bottomasesorias);
 
-
         BottomNavigationView navigationView = rootview.findViewById(R.id.main_bottomasesorias);
         Menu nav_Menu = navigationView.getMenu();
-
 
         if (tomo.equalsIgnoreCase("Tomo 1")) {
             nav_Menu.findItem(R.id.nav_homeseminario).setTitle("Capitulo 1");
@@ -111,31 +108,20 @@ public class contentAsesoriasFragment extends Fragment {
 
                 switch (item.getItemId()) {
 
-                    case R.id.nav_home:
+                    case R.id.nav_homeseminario:
 
                         viewPager.setCurrentItem(0);
-
-
                         break;
 
-
-                    case R.id.nav_notif:
-
+                    case R.id.nav_notifseminario:
                         viewPager.setCurrentItem(1);
-
                         break;
 
-
-                    case R.id.nav_account:
-
+                    case R.id.nav_accountseminario:
                         viewPager.setCurrentItem(2);
-
                         break;
-
                 }
-
                 return false;
-
             }
         });
 
@@ -167,9 +153,7 @@ public class contentAsesoriasFragment extends Fragment {
         setupViewPager(viewPager);
 
         return rootview;
-
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
 
@@ -182,7 +166,6 @@ public class contentAsesoriasFragment extends Fragment {
         adapter.addFragment(asesoriaCap1_fragment);
         adapter.addFragment(asesoriaCap2_fragment);
         adapter.addFragment(asesoriaCap3_fragment);
-
 
         viewPager.setAdapter(adapter);
     }

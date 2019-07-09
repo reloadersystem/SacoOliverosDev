@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -251,9 +252,22 @@ public class FBginAuth extends AppCompatActivity implements GoogleApiClient.OnCo
                     public void onResult(@NonNull Status status) {
 
                         if (status.isSuccess()) {
+
+
+                            Toast.makeText(FBginAuth.this, "Usuario no Autorizado", Toast.LENGTH_LONG).show();
+
+                            File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/file_loader");
+                            deleteRecursive(filecache);
+
+                            File file = new File(getFilesDir() + "/APP");
+                            deleteRecursive(file); // validar  que no haya  carpetas creadas
+
+                            SharedPreferences settings = getApplicationContext().getSharedPreferences("autenticacionOff", Context.MODE_PRIVATE);
+                            settings.edit().clear().commit();
+
                             Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
-                            Toast.makeText(FBginAuth.this, "Ingresa un mail válido, ejemplo: d1234567890@sacooliveros.edu.pe, ingresa a http://tablet.sacooliveros.edu.pe/  con tu dni y el código de autenticación de la tablet presiona consultar y tendrás los datos de acceso", Toast.LENGTH_LONG).show();
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            Toast.makeText(FBginAuth.this, "Usuario no Autorizado", Toast.LENGTH_LONG).show();
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "No se pudo cerrar sesión", Toast.LENGTH_LONG).show();
@@ -409,6 +423,15 @@ public class FBginAuth extends AppCompatActivity implements GoogleApiClient.OnCo
         }
         return myPath.getAbsolutePath();
 
+    }
+
+
+    void deleteRecursive(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory())
+            for (File child : fileOrDirectory.listFiles())
+                deleteRecursive(child);
+
+        fileOrDirectory.delete();
     }
 
 

@@ -287,7 +287,7 @@ public class NavActivity extends AppCompatActivity
 
         Double versionapk = Double.valueOf(getVersionName(getApplicationContext()));
 
-        if (!(versionapk == null)) {
+        if (!versionapk.equals(null)) {
             if (cd.isConnected()) {
                 if (updateapk > versionapk) {
 

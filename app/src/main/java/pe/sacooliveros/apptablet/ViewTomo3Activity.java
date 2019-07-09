@@ -81,9 +81,7 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
     FrameLayout frminiatura, fr_vindice, fr_cibergrafia;
     Integer pageNumber = 0;
     Integer pagecontador = 0;
-
     GridView gridcibergrafia;
-
     @NotEmpty
     EditText edtbuscar;
     ImageView img_fullscreen, img_prev, img_next, zoomout, zoomin, index, miniature, btn_cibergafia;

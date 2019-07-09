@@ -14,12 +14,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class DownloadListWrite {
 
+    static int count= 0;
+
     public static void WriteDownloads(Context context, String  ruta, String ssdDescarga, String rutaUrldata, String estadoPdf) {
 
         AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(context, "administracion", null,1 );
         SQLiteDatabase BasedeDatos= admin.getWritableDatabase();
-
-        int count= Integer.parseInt(null);
 
         String dato1= obtenerValor(context, "contadorDB");
 
