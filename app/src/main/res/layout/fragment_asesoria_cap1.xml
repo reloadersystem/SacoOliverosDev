@@ -12,19 +12,67 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionAsesoria"
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/floatingActionAsesoria"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="30dp"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:src="@drawable/ic_file_downloadsec"-->
+        <!--android:tint="@color/cardview_light_background"-->
+        <!--app:backgroundTint="@color/redlight"-->
+        <!--app:fabSize="normal"-->
+        <!--android:visibility="gone"-->
+        <!--/>-->
+
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/menu_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_file_downloadsec"
-        android:tint="@color/cardview_light_background"
-        app:backgroundTint="@color/redlight"
-        app:fabSize="normal"
-        />
+        android:layout_margin="12dp"
+        app:fab_labelStyle="@style/Etiquetas"
+        app:fab_addButtonColorNormal="@color/colorPrimary"
+        app:fab_addButtonSize="mini"
+        fab_labelStyle="@style/Etiquetas"
+        app:fab_labelsPosition="left"
+        >
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionAsesoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/transparenteblanco"
+            app:fab_icon="@drawable/ic_file_downloadsec"
+            fab_size="mini"
+            fab_title="Favorito"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingRecargar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/transparenteblanco"
+            app:fab_icon="@drawable/repairpdf"
+            app:fab_size="mini"
+            fab_title="Buscar"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/accion_carrito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/transparenteblanco"
+            app:fab_icon="@drawable/icobalotario_1"
+            fab_size="mini"
+            fab_title="Añadir a la cesta"
+            />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 
 </RelativeLayout>

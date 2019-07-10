@@ -57,6 +57,8 @@ public class TomoAsesoriasFragment extends Fragment {
         gridView = rootview.findViewById(R.id.grid_motivadores);
 
 
+
+
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             descrip = bundle.getString("description");

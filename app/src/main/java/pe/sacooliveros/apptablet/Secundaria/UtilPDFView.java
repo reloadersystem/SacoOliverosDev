@@ -37,8 +37,6 @@ public class UtilPDFView {
 
 //        progresbar.setVisibility(View.VISIBLE);
 
-        File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/file_loader");
-        deleteRecursive(filecache);
 
         FileLoader.with(context)
                // .fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)

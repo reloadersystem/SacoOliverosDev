@@ -55,5 +55,8 @@
     <color name="transparenteb">#5728c1c4</color>
     <color name="celeste_balotario">#4093cf</color>
 
+    <color name="negro_semitransparente">#B2000000</color>
+    <color name="blanco">#fafafa</color>
+
 
 </resources>

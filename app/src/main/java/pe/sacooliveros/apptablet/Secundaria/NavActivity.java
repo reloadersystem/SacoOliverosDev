@@ -29,6 +29,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.flurry.android.FlurryAgent;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -107,6 +108,8 @@ public class NavActivity extends AppCompatActivity
     private static final String TAG = "VersionEstado";
     private static final String TAGServ = "TagServicio";
 
+    String FLURRY_API_KEY = "P6MNPWQCTST6XZJ5KN9Y";
+
     String gradonombre;
     String apellidopaterno, apellidomaterno;
     GoogleApiClient mGoogleApiClient;
@@ -142,7 +145,6 @@ public class NavActivity extends AppCompatActivity
     protected void onStart() {
         super.onStart();
 
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -150,7 +152,8 @@ public class NavActivity extends AppCompatActivity
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
         mGoogleApiClient.connect();
-        super.onStart();
+
+        FlurryAgent.logEvent("NavActivity");
     }
 
     @Override
@@ -160,6 +163,14 @@ public class NavActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(true)
+                .withCaptureUncaughtExceptions(true)
+                .withContinueSessionMillis(10000)
+                .withLogLevel(Log.VERBOSE)
+                .build(this, FLURRY_API_KEY);
 
 
         final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
@@ -188,7 +199,6 @@ public class NavActivity extends AppCompatActivity
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         urlfotoalumno = ShareDataRead.obtenerValor(getApplicationContext(), "URLPhoto");
-
 
         String codigoAuth = ShareDataRead.obtenerValor(getApplicationContext(), "codigo_autenticacion");
 
@@ -836,6 +846,14 @@ public class NavActivity extends AppCompatActivity
                     }
                 })
                 .show();
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FlurryAgent.onEndSession(this);
+
     }
 
     private void solicitarPermiso() {
