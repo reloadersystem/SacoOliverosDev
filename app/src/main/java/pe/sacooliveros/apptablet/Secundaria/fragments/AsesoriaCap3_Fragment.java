@@ -2,13 +2,15 @@ package pe.sacooliveros.apptablet.Secundaria.fragments;
 
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.github.barteksc.pdfviewer.PDFView;
+
+import java.io.File;
 
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.UtilPDFView;
@@ -73,6 +75,7 @@ public class AsesoriaCap3_Fragment extends Fragment {
 
         String ruta_servidor = getString(R.string.servidor_ruta);
         final String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel").substring(0, 1);
+
         final String urlADescargar = ruta_servidor + "/APP/2/" + grado + "/HELICO_ASESORIAS/" + tomolistener + "/ASESORIAT" + tomo + "C" + capitulo + ".pdf";
 
         if (cd.isConnected()) {
@@ -81,7 +84,7 @@ public class AsesoriaCap3_Fragment extends Fragment {
             utilPdfView.pdfVisorInternet();
         }
 
-        FloatingActionButton fab = (FloatingActionButton) rootview.findViewById(R.id.floatingActionAsesoria3);
+        FloatingActionButton fab = rootview.findViewById(R.id.floatingActionAsesoria3);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,7 +97,28 @@ public class AsesoriaCap3_Fragment extends Fragment {
             }
         });
 
+        FloatingActionButton floatingRecargar = rootview.findViewById(R.id.floatingRecargar3);
+        floatingRecargar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/PDFiles");
+                deleteRecursive(filecache);
+
+                UtilPDFView utilPdfView = new UtilPDFView(getContext(), urlADescargar, pdfView);
+                utilPdfView.pdfVisorInternet();
+            }
+        });
+
         return rootview;
+    }
+
+    void deleteRecursive(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory())
+            for (File child : fileOrDirectory.listFiles())
+                deleteRecursive(child);
+
+        fileOrDirectory.delete();
     }
 
 }

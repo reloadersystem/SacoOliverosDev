@@ -90,7 +90,7 @@ public class AsesoriaCap1_Fragment extends Fragment {
             utilPdfView.pdfVisorInternet();
         }
 
-        FloatingActionButton fab= rootview.findViewById(R.id.floatingActionAsesoria);
+        FloatingActionButton fab = rootview.findViewById(R.id.floatingActionAsesoria);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,12 +103,12 @@ public class AsesoriaCap1_Fragment extends Fragment {
             }
         });
 
-        FloatingActionButton floatingRecargar= rootview.findViewById(R.id.floatingRecargar);
+        FloatingActionButton floatingRecargar = rootview.findViewById(R.id.floatingRecargar);
         floatingRecargar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/file_loader");
+                File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/PDFiles");
                 deleteRecursive(filecache);
 
                 UtilPDFView utilPdfView = new UtilPDFView(getContext(), urlADescargar, pdfView);

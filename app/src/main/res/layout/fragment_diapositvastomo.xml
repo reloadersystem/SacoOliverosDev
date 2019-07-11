@@ -12,7 +12,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="950dp"
+            android:layout_height="1140dp"
             android:orientation="vertical">
 
             <ImageView
@@ -80,18 +80,13 @@
 
                     android:id="@+id/ma_diapLetras"
                     android:layout_width="match_parent"
-                    android:layout_height="420dp"
+                    android:layout_height="580dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:horizontalSpacing="1dp"
                     android:numColumns="3"
-                    android:verticalSpacing="1dp"/>
+                    android:verticalSpacing="1dp" />
             </LinearLayout>
-
         </RelativeLayout>
-
-
     </ScrollView>
-
-
 </RelativeLayout>

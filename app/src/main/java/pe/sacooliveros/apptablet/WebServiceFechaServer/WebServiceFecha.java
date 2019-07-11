@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class WebServiceFecha {
 
-    public String gmaildatos;
+
     public static String urlRequest = "";
     private ProgressBar progressBar;
     static String urldatavisor;

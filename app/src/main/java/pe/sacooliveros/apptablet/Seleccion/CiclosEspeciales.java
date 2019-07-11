@@ -34,7 +34,6 @@ import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.text.DecimalFormat;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pe.sacooliveros.apptablet.Authenticacion.firebaseAuth;
@@ -80,7 +79,7 @@ public class CiclosEspeciales extends AppCompatActivity
     String packageName;
     String box;
 
-    static Double updateapk;
+    static String updateapk;
 
     ConnectionDetector cd;
     GoogleApiClient mGoogleApiClient;
@@ -93,7 +92,7 @@ public class CiclosEspeciales extends AppCompatActivity
     String versionapkbase;
 
 
-    public static void apkversion(Double updateversionapk) {
+    public static void apkversion(String updateversionapk) {
 
         updateapk = updateversionapk;
     }
@@ -189,45 +188,38 @@ public class CiclosEspeciales extends AppCompatActivity
             }
         }
 
-        Double versionapk = null;
-        try {
-            versionapk = Double.valueOf(getVersionName(getApplicationContext()));
+        float versionapk = Float.parseFloat(getVersionName(getApplicationContext()));
+        float updateapkcode = Float.valueOf(updateapk);
 
-            if (cd.isConnected()) {
-                if (updateapk > Double.parseDouble(String.valueOf(versionapk))) {
+        if (cd.isConnected()) {
+            if (updateapkcode > versionapk) {
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CiclosEspeciales.this);
-                    builder.setTitle("Nueva Versión Disponible");
-                    DecimalFormat df = new DecimalFormat("#.0000");
-                    builder.setMessage("Versión " + df.format(updateapk) + " está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                AlertDialog.Builder builder = new AlertDialog.Builder(CiclosEspeciales.this);
+                builder.setTitle("Nueva Versión Disponible");
+                builder.setMessage("Versión " + updateapkcode + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
 
-                    builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
-                            try {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                            } catch (android.content.ActivityNotFoundException anfe) {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-                            }
-
+                        final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                        try {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                         }
-                    });
-                    builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.dismiss();
-                        }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
+
+                    }
+                });
+                builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
         }
-
 
         int verificarPermisoWrite = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int verificarPermisoPhone = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);

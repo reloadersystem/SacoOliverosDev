@@ -39,7 +39,8 @@ public class UtilPDFView {
 
 
         FileLoader.with(context)
-               // .fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
+              //.fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
+              .fromDirectory("PDFiles", FileLoader.DIR_CACHE)
                 .load(urlruta)
                 .asFile(new FileRequestListener<File>() {
                     @Override

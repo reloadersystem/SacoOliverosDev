@@ -7,7 +7,6 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import pe.sacooliveros.apptablet.Primaria.NavigatorPrimaria;
@@ -43,28 +42,24 @@ public class SacoWSFecha extends AsyncTask<String, Integer, ArrayList> {
                 Log.e("RESOBJ_RSTRING", rString);
                 JSONObject resObject = new JSONObject(rString);
 
-              if (resObject.has("data")) {
+                if (resObject.has("data")) {
                     JSONObject objectItem = new JSONObject(String.valueOf(resObject.getJSONObject("data")));
-
 
                     String fechaserver = objectItem.get("fecha").toString();
 
+                    //String apkversionserver = String.valueOf(objectItem.getDouble("version_actual"));
+                    String apkversionserver = objectItem.get("version_actual").toString();
 
-                    String apkversionserver = String.valueOf(objectItem.getDouble("version_actual"));
+                    SplashActivity.fechaserver(fechaserver);
 
+                    NavActivity.apkversion(apkversionserver);
+                    CiclosEspeciales.apkversion(apkversionserver);
+                    NavigatorPrimaria.apkversion(apkversionserver);
 
-
-                  SplashActivity.fechaserver(fechaserver);
-                    NavActivity.apkversion(Double.parseDouble(apkversionserver));
-                    CiclosEspeciales.apkversion(Double.parseDouble(apkversionserver));
-                    NavigatorPrimaria.apkversion(Double.parseDouble(apkversionserver));
                     SacoWSConsult.fechaserver(fechaserver);
-
-
-
                     guardarValor(currentContext, "fechaserver", fechaserver);
 
-                    Log.e("FECHA SERVER", fechaserver);
+                    // Log.e("FECHA SERVER", fechaserver);
                 }
 
             } catch (Exception errString) {

@@ -19,6 +19,7 @@ import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterDiapositivasCiencia;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterDiapositivasLetras;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomoCienciasDiap;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomoLetrasDiap;
+import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -116,8 +117,15 @@ public class DiapositivasTomosFrag extends Fragment {
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_7, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_8, R.drawable.download_circle));
 
-        final adapterDiapositivasLetras adapter2 = new adapterDiapositivasLetras(getContext(), Lista2);
+        String grado= ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
 
+        if(grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria"))
+        {
+            Lista2.add(new mTomoLetrasDiap(R.drawable.letras_9, R.drawable.download_circle));
+            Lista2.add(new mTomoLetrasDiap(R.drawable.letras_10, R.drawable.download_circle));
+        }
+
+        final adapterDiapositivasLetras adapter2 = new adapterDiapositivasLetras(getContext(), Lista2);
         gridView2.setAdapter(adapter2);
 
         return rootview;

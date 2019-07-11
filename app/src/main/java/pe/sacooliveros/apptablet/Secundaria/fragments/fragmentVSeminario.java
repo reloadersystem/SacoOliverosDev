@@ -325,14 +325,14 @@ public class fragmentVSeminario extends Fragment {
 //
 //
             if (gradoasiste.equalsIgnoreCase("CATOLICA") && tomodescripcion.equalsIgnoreCase("BIMESTRE 1")) {
-                String listChanel = "PLdCIBUZp0Cu4lT6B5Drh3sPeBFHKEGVzD";
+                String listChanel = "PLdCIBUZp0Cu6Rw-U215o_wDLp0BUHSyid";
                 Intent intent = new Intent(getContext(), YouTubeViewer.class);
                 intent.putExtra("lista_canal", listChanel);
                 getContext().startActivity(intent);
             }
 
             if (gradoasiste.equalsIgnoreCase("CATOLICA") && tomodescripcion.equalsIgnoreCase("BIMESTRE 2")) {
-                String listChanel = "PL7NFWmNkur4zIRIjr0cqsdhWUw8L2lh5J";
+                String listChanel = "PLdCIBUZp0Cu4lT6B5Drh3sPeBFHKEGVzD";
                 Intent intent = new Intent(getContext(), YouTubeViewer.class);
                 intent.putExtra("lista_canal", listChanel);
                 getContext().startActivity(intent);
@@ -340,14 +340,14 @@ public class fragmentVSeminario extends Fragment {
 
 
             if (gradoasiste.equalsIgnoreCase("CATOLICA") && tomodescripcion.equalsIgnoreCase("BIMESTRE 3")) {
-                String listChanel = "PLdCIBUZp0Cu4GyXElnrZ7y_QlFIwWRIM8";
+                String listChanel = "";
                 Intent intent = new Intent(getContext(), YouTubeViewer.class);
                 intent.putExtra("lista_canal", listChanel);
                 getContext().startActivity(intent);
             }
 
             if (gradoasiste.equalsIgnoreCase("CATOLICA") && tomodescripcion.equalsIgnoreCase("BIMESTRE 4")) {
-                String listChanel = "PLdCIBUZp0Cu6SUxFzt05f_I21uz4knoFh";
+                String listChanel = "";
                 Intent intent = new Intent(getContext(), YouTubeViewer.class);
                 intent.putExtra("lista_canal", listChanel);
                 getContext().startActivity(intent);

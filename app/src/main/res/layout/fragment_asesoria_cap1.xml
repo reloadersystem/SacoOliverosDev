@@ -36,7 +36,7 @@
         android:layout_alignParentRight="true"
         android:layout_margin="12dp"
         app:fab_labelStyle="@style/Etiquetas"
-        app:fab_addButtonColorNormal="@color/colorPrimary"
+        app:fab_addButtonColorNormal="@color/transparenteblanco"
         app:fab_addButtonSize="mini"
         fab_labelStyle="@style/Etiquetas"
         app:fab_labelsPosition="left"
@@ -47,9 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/transparenteblanco"
-            app:fab_icon="@drawable/ic_file_downloadsec"
+            app:fab_icon="@drawable/ic_file_download_black_24dp"
             fab_size="mini"
-            fab_title="Favorito"
+            app:fab_title="Descargar"
             />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -57,20 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/transparenteblanco"
-            app:fab_icon="@drawable/repairpdf"
+            app:fab_icon="@drawable/simulacro"
             app:fab_size="mini"
-            fab_title="Buscar"
+            app:fab_title="Recargar"
             />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/accion_carrito"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/transparenteblanco"
-            app:fab_icon="@drawable/icobalotario_1"
-            fab_size="mini"
-            fab_title="Añadir a la cesta"
-            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

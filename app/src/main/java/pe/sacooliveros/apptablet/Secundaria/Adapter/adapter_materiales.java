@@ -289,99 +289,55 @@ public class adapter_materiales extends BaseAdapter {
 
                         if (cicloespecial == "3") {
 
-                            if (cd.isConnected()) {
-
-
-                                //http://192.169.218.177/APP/3/5/COMPENDIOS/TOMO2/ARITMETICA/ARITMETICA25_CT2.pdf
-
-                                String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/ARITMETICA/ARITMETICA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                                Intent intent = new Intent(context, ViewTomo3Activity.class);
-
-                                intent.putExtra("ViewType", "internet");
-                                intent.putExtra("URL", URL);
-                                intent.putExtra("Materia", "ARITMETICA");
-                                context.startActivity(intent);
-
-                            } else {
-
-
-                                String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/ARITMETICA/ARITMETICA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                                ruta = "ARITMETICA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/ARITMETICA/" + ruta);
-
-
-                                if (file0.exists())
-
-                                {
-
-                                    Intent intent = new Intent(context, ViewTomo3Activity.class);
-
-                                    intent.putExtra("ViewType", "storage");
-                                    intent.putExtra("SSDFILE", ssdFile);
-                                    intent.putExtra("Materia", "ARITMETICA");
-                                    intent.putExtra("EstadoConexion", "SinConexion");
-                                    context.startActivity(intent);
-
-                                    Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
-                                    break;
-
-                                } else {
-                                    Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
-                                    break;
-
-                                }
-
-                            }
-
-                            break;
-
+                            materia = "ARITMETICA";
+                            materiagrado = materia + "2";
 
                         } else {
-                            if (cd.isConnected()) {
+                            materia = "BIOLOGIA";
+                            materiagrado = materia + "2";
+                        }
 
 
-                                String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/BIOLOGIA/BIOLOGIA2" + nivel + "_CT" + tomonumero + ".pdf";
+                        if (cd.isConnected()) {
+
+
+                            String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+
+                            Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                            intent.putExtra("ViewType", "internet");
+                            intent.putExtra("URL", URL);
+                            intent.putExtra("Materia", materia);
+                            context.startActivity(intent);
+
+                        } else {
+
+
+                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+
+                            ruta = "BIOLOGIA2" + nivel + "_CT" + tomonumero + ".pdf";
+
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + ruta);
+
+
+                            if (file0.exists())
+
+                            {
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
 
-                                intent.putExtra("ViewType", "internet");
-                                intent.putExtra("URL", URL);
-                                intent.putExtra("Materia", "BIOLOGIA");
+                                intent.putExtra("ViewType", "storage");
+                                intent.putExtra("SSDFILE", ssdFile);
+                                intent.putExtra("Materia", materia);
+                                intent.putExtra("EstadoConexion", "SinConexion");
                                 context.startActivity(intent);
 
+                                Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
+                                break;
+
                             } else {
-
-
-                                String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/BIOLOGIA/BIOLOGIA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                                ruta = "BIOLOGIA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/BIOLOGIA/" + ruta);
-
-
-                                if (file0.exists())
-
-                                {
-
-                                    Intent intent = new Intent(context, ViewTomo3Activity.class);
-
-                                    intent.putExtra("ViewType", "storage");
-                                    intent.putExtra("SSDFILE", ssdFile);
-                                    intent.putExtra("Materia", "BIOLOGIA");
-                                    intent.putExtra("EstadoConexion", "SinConexion");
-                                    context.startActivity(intent);
-
-                                    Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
-                                    break;
-
-                                } else {
-                                    Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
-                                    break;
-
-                                }
+                                Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
+                                break;
 
                             }
 
@@ -512,24 +468,35 @@ public class adapter_materiales extends BaseAdapter {
 
                     case 5:
 
+
+                        if (cicloespecial == "3") {
+
+                            materia = "TRIGONOMETRIA";
+                            materiagrado = materia + "2";
+
+                        } else {
+                            materia = "GEOMETRIA";
+                            materiagrado = materia + "2";
+                        }
+
                         if (cd.isConnected()) {
 
 
-                            String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/GEOMETRIA/GEOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
+                            String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
 
                             Intent intent = new Intent(context, ViewTomo3Activity.class);
 
                             intent.putExtra("ViewType", "internet");
                             intent.putExtra("URL", URL);
-                            intent.putExtra("Materia", "GEOMETRÍA");
+                            intent.putExtra("Materia", materia);
                             context.startActivity(intent);
 
                         } else {
 
 
-                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/GEOMETRIA/GEOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
+                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
 
-                            ruta = "GEOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
+                            ruta = materiagrado + nivel + "_CT" + tomonumero + ".pdf";
 
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/GEOMETRIA/" + ruta);
 
@@ -616,77 +583,53 @@ public class adapter_materiales extends BaseAdapter {
 
                     case 7:
 
-
-                        if (cicloespecial == "3" || cicloespecial == "4" || cicloespecial == "6") {
-                            Toast.makeText(context, "Material No Disponible", Toast.LENGTH_SHORT).show();
-
-                        } else {
-
-                            if (cd.isConnected()) {
+                        if (cd.isConnected()) {
 
 
-                                String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
+                            String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
 
 //                            String URL = servidor_ruta+"/APP/1/"+accesodato+"/LIBROS/"+tomo+"/MATEMATICA/CALCULO_MENTAL/Calculo_MentalT"+tomonumero+".pdf";
 
+                            Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                            intent.putExtra("ViewType", "internet");
+                            intent.putExtra("URL", URL);
+                            intent.putExtra("Materia", "RAZONAMIENTO MATEMÁTICO");
+                            context.startActivity(intent);
+
+                        } else {
+
+
+                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
+
+                            ruta = "RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
+
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/" + ruta);
+
+                            if (file0.exists())
+
+                            {
+
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
 
-                                intent.putExtra("ViewType", "internet");
-                                intent.putExtra("URL", URL);
+                                intent.putExtra("ViewType", "storage");
+                                intent.putExtra("SSDFILE", ssdFile);
                                 intent.putExtra("Materia", "RAZONAMIENTO MATEMÁTICO");
+                                intent.putExtra("EstadoConexion", "SinConexion");
                                 context.startActivity(intent);
 
+                                Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
+                                break;
+
                             } else {
-
-
-                                //String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/1/"+accesodato+"/LIBROS/"+tomo+"/MATEMATICA/CALCULO_MENTAL/Calculo_MentalT"+tomonumero+".pdf";
-                                String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
-
-//                            ruta = "Calculo_MentalT"+tomonumero+".pdf";
-
-                                ruta = "RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                                //File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/1/"+accesodato+"/LIBROS/"+tomo+"/MATEMATICA/CALCULO_MENTAL/" + ruta);
-                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/" + ruta);
-
-
-//                            File file0 = new File(Environment.getExternalStorageDirectory()
-//                                    + File.separator + "SacoOliveros" + File.separator + ruta);
-
-
-                                if (file0.exists())
-
-                                {
-
-
-                                    Intent intent = new Intent(context, ViewTomo3Activity.class);
-
-                                    intent.putExtra("ViewType", "storage");
-                                    intent.putExtra("SSDFILE", ssdFile);
-                                    intent.putExtra("Materia", "RAZONAMIENTO MATEMÁTICO");
-                                    intent.putExtra("EstadoConexion", "SinConexion");
-                                    context.startActivity(intent);
-
-                                    Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
-                                    break;
-
-                                } else {
-                                    Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
-                                    break;
-
-                                }
+                                Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
+                                break;
 
                             }
-
                         }
-
                         break;
-
-
                 }
             }
-
-
         });
 
 
@@ -779,101 +722,98 @@ public class adapter_materiales extends BaseAdapter {
 
                     case 2:
 
+
                         if (cicloespecial == "3") {
-                            Toast.makeText(context, "Material No Disponible", Toast.LENGTH_SHORT).show();
+
+                            materia = "ARITMETICA";
+                            materiagrado = materia + "2";
 
                         } else {
-                            if (cd.isConnected()) {
-
-                                urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/BIOLOGIA/BIOLOGIA2" + nivel + "_CT" + tomonumero + ".pdf";
-                                ruta = "BIOLOGIA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                                materiadownload = "BIOLOGIA/";
-                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materiadownload + ruta);
-
-
-                                if (file0.exists()) {
-                                    Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
-
-
-                                } else {
-
-
-                                    descargarPDF(urlADescargar);
-
-                                    // DBwritedownloas();
-
-                                    String nombrepdfusuario = "Compendios - " + tomo + " - BIOLOGIA";
-                                    String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/BIOLOGIA/BIOLOGIA2" + nivel + "_CT" + tomonumero + ".pdf";
-                                    DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
-
-                                }
-                            } else
-
-                            {
-
-
-                                Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
-                            }
-
+                            materia = "BIOLOGIA";
+                            materiagrado = materia + "2";
                         }
 
+                        if (cd.isConnected()) {
+
+                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+                            ruta = materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+
+                            materiadownload = materia + "/";
+
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materiadownload + ruta);
+
+                            if (file0.exists()) {
+                                Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                descargarPDF(urlADescargar);
+
+                                String nombrepdfusuario = "Compendios - " + tomo + " - " + materia;
+                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+                                DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
+                            }
+                        } else {
+                            Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
+                        }
 
                         break;
-
 
                     case 3:
 
+                        if (cicloespecial == "3") {
+
+                            materia = "ALGEBRA";
+                            materiagrado = materia + "2";
+
+                        } else {
+                            materia = "ARITMETICA";
+                            materiagrado = materia + "2";
+                        }
+
 
                         if (cd.isConnected()) {
-                            // Toast.makeText(context,"Connected", Toast.LENGTH_SHORT).show();
 
-
-                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/ARITMETICA/ARITMETICA2" + nivel + "_CT" + tomonumero + ".pdf";
-                            ruta = "ARITMETICA2" + nivel + "_CT" + tomonumero + ".pdf";
-                            materiadownload = "ARITMETICA/";
+                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+                            ruta = materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+                            materiadownload = materia + "/";
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materiadownload + ruta);
-
 
                             if (file0.exists()) {
                                 Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
 
 
                             } else {
-
-
                                 descargarPDF(urlADescargar);
-
-                                //DBwritedownloas();
-
-                                String nombrepdfusuario = "Compendios - " + tomo + " - ARITMETICA";
-                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/ARITMETICA/ARITMETICA2" + nivel + "_CT" + tomonumero + ".pdf";
+                                String nombrepdfusuario = "Compendios - " + tomo + " - " + materia;
+                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
-
                             }
                         } else
 
                         {
-
-
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
 
-
                         break;
-
 
                     case 4:
 
+                        if (cicloespecial == "3") {
+
+                            materia = "GEOMETRIA";
+                            materiagrado = materia + "2";
+
+                        } else {
+                            materia = "ALGEBRA";
+                            materiagrado = materia + "2";
+                        }
 
                         if (cd.isConnected()) {
-                            // Toast.makeText(context,"Connected", Toast.LENGTH_SHORT).show();
 
+                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+                            ruta = materiagrado + nivel + "_CT" + tomonumero + ".pdf";
 
-                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/ALGEBRA/ALGEBRA2" + nivel + "_CT" + tomonumero + ".pdf";
-                            ruta = "ALGEBRA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                            materiadownload = "ALGEBRA/";
+                            materiadownload = materia + "/";
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materiadownload + ruta);
 
 
@@ -883,76 +823,60 @@ public class adapter_materiales extends BaseAdapter {
 
                             } else {
 
-
                                 descargarPDF(urlADescargar);
 
-                                //DBwritedownloas();
-
-                                String nombrepdfusuario = "Compendios - " + tomo + " - ALGEBRA";
-                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/ALGEBRA/ALGEBRA2" + nivel + "_CT" + tomonumero + ".pdf";
+                                String nombrepdfusuario = "Compendios - " + tomo + " - " + materia;
+                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
 
                             }
                         } else
 
                         {
-
-
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
 
-
                         break;
-
 
                     case 5:
 
 
+                        if (cicloespecial == "3") {
+
+                            materia = "TRIGONOMETRIA";
+                            materiagrado = materia + "2";
+
+                        } else {
+                            materia = "GEOMETRIA";
+                            materiagrado = materia + "2";
+                        }
+
                         if (cd.isConnected()) {
-                            // Toast.makeText(context,"Connected", Toast.LENGTH_SHORT).show();
 
+                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
+                            ruta = materiagrado + nivel + "_CT" + tomonumero + ".pdf";
 
-                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/GEOMETRIA/GEOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
-                            ruta = "GEOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
-
-                            materiadownload = "GEOMETRIA/";
+                            materiadownload = materia + "/";
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materiadownload + ruta);
 
 
                             if (file0.exists()) {
                                 Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
-
-
                             } else {
-
-
                                 descargarPDF(urlADescargar);
-
-                                //DBwritedownloas();
-
-                                String nombrepdfusuario = "Compendios - " + tomo + " - GEOMETRIA";
-                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/GEOMETRIA/GEOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
+                                String nombrepdfusuario = "Compendios - " + tomo + " - " + materia;
+                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/" + materia + "/" + materiagrado + nivel + "_CT" + tomonumero + ".pdf";
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
-
                             }
-                        } else
-
-                        {
-
-
+                        } else {
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
-
 
                         break;
 
                     case 6:
 
                         if (cd.isConnected()) {
-                            // Toast.makeText(context,"Connected", Toast.LENGTH_SHORT).show();
-
-                            //http://192.169.218.177/APP/4/5/COMPENDIOS/TOMO1/TRIGONOMETRIA/TRIGONOMETRIA25_CT1.pdf
-
 
                             urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/TRIGONOMETRIA/TRIGONOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
                             ruta = "TRIGONOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
@@ -964,28 +888,19 @@ public class adapter_materiales extends BaseAdapter {
                             if (file0.exists()) {
                                 Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
 
-
                             } else {
 
-
                                 descargarPDF(urlADescargar);
-
-                                //DBwritedownloas();
 
                                 String nombrepdfusuario = "Compendios - " + tomo + " - TRIGONOMETRIA";
                                 String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/TRIGONOMETRIA/TRIGONOMETRIA2" + nivel + "_CT" + tomonumero + ".pdf";
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
-
-
                             }
                         } else
 
                         {
-
-
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
-
 
                         break;
 
@@ -998,8 +913,6 @@ public class adapter_materiales extends BaseAdapter {
 
                         } else {
                             if (cd.isConnected()) {
-                                // Toast.makeText(context,"Connected", Toast.LENGTH_SHORT).show();
-
 
                                 urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
                                 ruta = "RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
@@ -1011,13 +924,9 @@ public class adapter_materiales extends BaseAdapter {
                                 if (file0.exists()) {
                                     Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
 
-
                                 } else {
 
-
                                     descargarPDF(urlADescargar);
-
-                                    //DBwritedownloas();
 
                                     String nombrepdfusuario = "Compendios - " + tomo + " - RAZONAMIENTO MATEMATICO";
                                     String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/COMPENDIOS/" + tomo + "/RAZONAMIENTO_MATEMATICO/RAZONAMIENTO_MATEMATICO2" + nivel + "_CT" + tomonumero + ".pdf";
@@ -1027,19 +936,14 @@ public class adapter_materiales extends BaseAdapter {
                             } else
 
                             {
-
-
                                 Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                             }
 
                         }
 
                         break;
-
                 }
             }
-
-
         });
 
 

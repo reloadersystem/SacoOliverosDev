@@ -38,7 +38,6 @@ import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.text.DecimalFormat;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pe.sacooliveros.apptablet.Authenticacion.firebaseAuth;
@@ -102,7 +101,7 @@ public class NavActivity extends AppCompatActivity
     String appName;
     String packageName;
     String box;
-    static Double updateapk;
+    static String updateapk;
     ConnectionDetector cd;
     static String nivelacceso;
     private static final String TAG = "VersionEstado";
@@ -120,24 +119,19 @@ public class NavActivity extends AppCompatActivity
 
     String urlfotoalumno;
 
+    float updateapkcode = 0;
 
     public static String obtenerValor(Context context, String keyPref) {
 
         SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
 
-        android.util.Log.e("resultadologeo", preferences.getString(keyPref, ""));
+        // android.util.Log.e("resultadologeo", preferences.getString(keyPref, ""));
         return preferences.getString(keyPref, "");
-
     }
 
-
-    public static void apkversion(Double updateversionapk) {
-
+    public static void apkversion(String updateversionapk) {
 
         updateapk = updateversionapk;
-
-//        updateapk = Float.parseFloat(updateversionapk);
-
     }
 
 
@@ -295,40 +289,38 @@ public class NavActivity extends AppCompatActivity
 //            updateapk = Double.valueOf("2.1440");
 //        }
 
-        Double versionapk = Double.valueOf(getVersionName(getApplicationContext()));
+        float versionapk = Float.parseFloat(getVersionName(getApplicationContext()));
+        updateapkcode = Float.valueOf(updateapk);
 
-        if (!versionapk.equals(null)) {
-            if (cd.isConnected()) {
-                if (updateapk > versionapk) {
+        if (cd.isConnected()) {
+            if (updateapkcode > versionapk) {
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(NavActivity.this);
-                    builder.setTitle("Nueva Versión Disponible");
-                    DecimalFormat df = new DecimalFormat("#.0000");
+                AlertDialog.Builder builder = new AlertDialog.Builder(NavActivity.this);
+                builder.setTitle("Nueva Versión Disponible");
+                //DecimalFormat df = new DecimalFormat("#.0000");
+                //builder.setMessage("Versión " + df.format(updateapk) + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                builder.setMessage("Versión " + updateapkcode + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
 
-                    builder.setMessage("Versión " + df.format(updateapk) + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
-
-                    builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            final String appPackageName = getPackageName();
-                            try {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                            } catch (android.content.ActivityNotFoundException anfe) {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-                            }
-
+                        final String appPackageName = getPackageName();
+                        try {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                         }
-                    });
-                    builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.dismiss();
-                        }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
+                    }
+                });
+
+                builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         }
 
@@ -345,7 +337,6 @@ public class NavActivity extends AppCompatActivity
 
                             appName = "Gmail";
                             packageName = "com.adobe.reader";
-
                             box = "com.adobe.reader";
 
                             openApp(getApplicationContext(), appName, packageName);
@@ -361,7 +352,6 @@ public class NavActivity extends AppCompatActivity
         int verificarPermisoPhone = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
         int verificarPermisoUbicacion = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
 
-
         if (verificarPermisoWrite != PackageManager.PERMISSION_GRANTED) {
             if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 solicitarPermiso(); // sino  ha aceptado los  permisos
@@ -375,12 +365,9 @@ public class NavActivity extends AppCompatActivity
                 File file = new File(getFilesDir() + "/APP");
                 deleteRecursive(file);// validar  que no haya  carpetas creadas
 
-
                 //Environment.getExternalStorageDirectory() + "/SacoOliveros/" + namedescarga + ".pdf"
 
-
                 //File balotariospdf = new File( Environment.getExternalStorageDirectory()+"/download/", "Balotarios-Saco-Oliveros");
-
 
                 DirectoryCreateUtil directoryCreate = new DirectoryCreateUtil();
 

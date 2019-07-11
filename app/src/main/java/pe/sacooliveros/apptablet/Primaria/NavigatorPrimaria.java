@@ -35,7 +35,6 @@ import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.text.DecimalFormat;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pe.sacooliveros.apptablet.Authenticacion.firebaseAuth;
@@ -97,7 +96,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
     ConnectionDetector cd;
 
-    static Double updateapk;
+    static String updateapk;
 
     GoogleApiClient mGoogleApiClient;
 
@@ -105,7 +104,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
     String versionapkbase;
 
-    public static void apkversion(Double updateversionapk) {
+    public static void apkversion(String updateversionapk) {
 
         updateapk = updateversionapk;
     }
@@ -195,45 +194,38 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         }
 
-
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
-        Double versionapk = null;
+        float versionapk = Float.parseFloat(getVersionName(getApplicationContext()));
+        float updateapkcode = Float.valueOf(updateapk);
 
-        try {
-            versionapk = Double.valueOf(getVersionName(getApplicationContext()));
-            if (cd.isConnected()) {
-                if (updateapk > versionapk) {
+        if (cd.isConnected()) {
+            if (updateapkcode > versionapk) {
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(NavigatorPrimaria.this);
-                    builder.setTitle("Nueva Versión Disponible");
-                    DecimalFormat df = new DecimalFormat("#.0000");
-                    builder.setMessage("Versión " + df.format(updateapk) + " está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                AlertDialog.Builder builder = new AlertDialog.Builder(NavigatorPrimaria.this);
+                builder.setTitle("Nueva Versión Disponible");
+                builder.setMessage("Versión " + updateapkcode + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
 
-                    builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            final String appPackageName = getPackageName();
-                            try {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                            } catch (android.content.ActivityNotFoundException anfe) {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-                            }
+                        final String appPackageName = getPackageName();
+                        try {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                         }
-                    });
-                    builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.dismiss();
-                        }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
+                    }
+                });
+                builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
         }
 
         if (!isAppInstalled2) {
