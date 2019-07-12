@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="1050dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/img_backpropuestos"
@@ -65,14 +65,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="440dp"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/tx_tomo4">
 
                 <GridView
                     android:id="@+id/ma_proletras"
                     android:layout_width="match_parent"
-                    android:layout_height="480dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:horizontalSpacing="1dp"

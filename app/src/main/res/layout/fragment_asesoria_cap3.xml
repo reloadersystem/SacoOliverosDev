@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/transparenteblanco"
             app:fab_icon="@drawable/ic_file_download_black_24dp"
-            fab_size="mini"
+            app:fab_size="mini"
             app:fab_title="Descargar"
             />
 

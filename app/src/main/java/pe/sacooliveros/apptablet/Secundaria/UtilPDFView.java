@@ -1,13 +1,19 @@
 package pe.sacooliveros.apptablet.Secundaria;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnDrawListener;
+import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.listener.OnPageErrorListener;
 import com.github.barteksc.pdfviewer.listener.OnRenderListener;
@@ -19,33 +25,38 @@ import com.krishna.fileloader.request.FileLoadRequest;
 
 import java.io.File;
 
+import pe.sacooliveros.apptablet.R;
+
 public class UtilPDFView {
 
     Context context;
-    String  urlruta;
+    String urlruta;
     PDFView pdfView;
     Integer pageNumber = 0;
     Integer pagecontador = 0;
 
     public UtilPDFView(Context context, String urlroot, PDFView pdfview) {
-        this.context= context;
-        this.urlruta=urlroot;
-        this.pdfView= pdfview;
+        this.context = context;
+        this.urlruta = urlroot;
+        this.pdfView = pdfview;
     }
 
     public void pdfVisorInternet() {
 
-//        progresbar.setVisibility(View.VISIBLE);
+        // progresbar.setVisibility(View.VISIBLE);
+
 
 
         FileLoader.with(context)
-              //.fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
-              .fromDirectory("PDFiles", FileLoader.DIR_CACHE)
+                //.fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
+                .fromDirectory("PDFiles", FileLoader.DIR_CACHE)
                 .load(urlruta)
                 .asFile(new FileRequestListener<File>() {
                     @Override
                     public void onLoad(FileLoadRequest fileLoadRequest, FileResponse<File> fileResponse) {
                         // progresbar.setVisibility(View.GONE);
+
+
                         File pdfFile = fileResponse.getBody();
                         pdfView.fromFile(pdfFile)
                                 //.password(password)
@@ -92,6 +103,13 @@ public class UtilPDFView {
                                 })
                                 .enableAntialiasing(true)
                                 .invalidPageColor(Color.WHITE)
+
+                                .onLoad(new OnLoadCompleteListener() {
+                                    @Override
+                                    public void loadComplete(int nbPages) {
+
+                                    }
+                                })
                                 .load();
                     }
 

@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapter_prociencias;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapter_proletras;
-
 import pe.sacooliveros.apptablet.Secundaria.Model.mPropuestosCiencias;
 import pe.sacooliveros.apptablet.Secundaria.Model.mPropuestosLetras;
+import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 
 
 /**
@@ -27,7 +27,7 @@ import pe.sacooliveros.apptablet.Secundaria.Model.mPropuestosLetras;
  */
 public class FragPropuestosMaterias extends Fragment {
 
-    View rootview ;
+    View rootview;
 
     private GridView gridView, gridView2;
     ArrayList<mPropuestosCiencias> Lista;
@@ -39,7 +39,6 @@ public class FragPropuestosMaterias extends Fragment {
     String acceso;
 
 
-
     public FragPropuestosMaterias() {
         // Required empty public constructor
     }
@@ -49,15 +48,15 @@ public class FragPropuestosMaterias extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview= inflater.inflate(R.layout.fragment_propuestosmaterias, container, false);
+        rootview = inflater.inflate(R.layout.fragment_propuestosmaterias, container, false);
 
 
-        gridView= rootview.findViewById(R.id.ma_cienciasresultados);
-        gridView2= rootview.findViewById(R.id.ma_proletras);
+        gridView = rootview.findViewById(R.id.ma_cienciasresultados);
+        gridView2 = rootview.findViewById(R.id.ma_proletras);
 
 
-        tomo_back2= rootview.findViewById(R.id.img_backpropuestos);
-        tx_tomo2=rootview.findViewById(R.id.tx_tomo2);
+        tomo_back2 = rootview.findViewById(R.id.img_backpropuestos);
+        tx_tomo2 = rootview.findViewById(R.id.tx_tomo2);
 
 
         Bundle bundle = this.getArguments();
@@ -94,55 +93,44 @@ public class FragPropuestosMaterias extends Fragment {
         });
 
 
-        Lista= new ArrayList<mPropuestosCiencias>();
+        Lista = new ArrayList<mPropuestosCiencias>();
 
 
-        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_1,R.drawable.download_circle));
-        Lista.add(new mPropuestosCiencias( R.drawable.ciencias_2,R.drawable.download_circle));
-        Lista.add(new mPropuestosCiencias( R.drawable.ciencias_3,R.drawable.download_circle));
-        Lista.add(new mPropuestosCiencias( R.drawable.ciencias_4,R.drawable.download_circle));
-        Lista.add(new mPropuestosCiencias( R.drawable.ciencias_5,R.drawable.download_circle));
-        Lista.add(new mPropuestosCiencias( R.drawable.ciencias_6,R.drawable.download_circle));
-        Lista.add(new mPropuestosCiencias( R.drawable.ciencias_7,R.drawable.download_circle));
-        Lista.add(new mPropuestosCiencias( R.drawable.ciencias_8,R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_1, R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_2, R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_3, R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_4, R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_5, R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_6, R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_7, R.drawable.download_circle));
+        Lista.add(new mPropuestosCiencias(R.drawable.ciencias_8, R.drawable.download_circle));
 
 
-        final adapter_prociencias adapter= new adapter_prociencias( getContext(), Lista);
+        final adapter_prociencias adapter = new adapter_prociencias(getContext(), Lista);
 
         gridView.setAdapter(adapter);
 
+        String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
 
-        listaLetras= new ArrayList<mPropuestosLetras>();
+        listaLetras = new ArrayList<mPropuestosLetras>();
 
+        listaLetras.add(new mPropuestosLetras(R.drawable.letras_1, R.drawable.download_circle));
+        listaLetras.add(new mPropuestosLetras(R.drawable.letras_2, R.drawable.download_circle));
+        listaLetras.add(new mPropuestosLetras(R.drawable.letras_3, R.drawable.download_circle));
+        listaLetras.add(new mPropuestosLetras(R.drawable.letras_4, R.drawable.download_circle));
+        listaLetras.add(new mPropuestosLetras(R.drawable.letras_5, R.drawable.download_circle));
 
-        listaLetras.add(new mPropuestosLetras(R.drawable.letras_1,R.drawable.download_circle));
-        listaLetras.add(new mPropuestosLetras( R.drawable.letras_2,R.drawable.download_circle));
-        listaLetras.add(new mPropuestosLetras( R.drawable.letras_3,R.drawable.download_circle));
-        listaLetras.add(new mPropuestosLetras( R.drawable.letras_4,R.drawable.download_circle));
-        listaLetras.add(new mPropuestosLetras( R.drawable.letras_5,R.drawable.download_circle));
-        listaLetras.add(new mPropuestosLetras( R.drawable.letras_6,R.drawable.download_circle));
-        listaLetras.add(new mPropuestosLetras( R.drawable.letras_7,R.drawable.download_circle));
-        listaLetras.add(new mPropuestosLetras( R.drawable.letras_8,R.drawable.download_circle));
+        if (grado.equalsIgnoreCase("3 Secundaria") || grado.equalsIgnoreCase("4 Secundaria") || grado.equalsIgnoreCase("5 Secundaria"))
+        {
+            listaLetras.add(new mPropuestosLetras(R.drawable.letras_6, R.drawable.download_circle));
+            listaLetras.add(new mPropuestosLetras(R.drawable.letras_7, R.drawable.download_circle));
+            listaLetras.add(new mPropuestosLetras(R.drawable.letras_8, R.drawable.download_circle));
+        }
 
-
-        final adapter_proletras adapter2= new adapter_proletras( getContext(), listaLetras);
-
+        final adapter_proletras adapter2 = new adapter_proletras(getContext(), listaLetras);
         gridView2.setAdapter(adapter2);
-
 
         return rootview;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

@@ -105,7 +105,6 @@ public class AsesoriaCap2_Fragment extends Fragment {
         floatingRecargar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/PDFiles");
                 deleteRecursive(filecache);
 

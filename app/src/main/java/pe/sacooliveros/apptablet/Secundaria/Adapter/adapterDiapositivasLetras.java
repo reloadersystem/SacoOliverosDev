@@ -52,7 +52,7 @@ public class adapterDiapositivasLetras extends BaseAdapter {
 
     String servidor_ruta;
 
-    String  nombregrado;
+    String nombregrado;
 
 
     public adapterDiapositivasLetras(Context context, ArrayList<mTomoLetrasDiap> arrayList) {
@@ -578,6 +578,156 @@ public class adapterDiapositivasLetras extends BaseAdapter {
                         break;
 
 
+                    case 8:
+                        if (cd.isConnected()) {
+
+
+                            String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/INGLES/INGLES2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+
+                            Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                            intent.putExtra("ViewType", "internet");
+                            intent.putExtra("URL", URL);
+                            intent.putExtra("Materia", "INGLÉS");
+                            context.startActivity(intent);
+
+                        } else {
+
+                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/INGLES/INGLES2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+                            ruta = "INGLES2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/INGLES/" + ruta);
+
+                            if (file0.exists())
+
+                            {
+
+                                Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                                intent.putExtra("ViewType", "storage");
+                                intent.putExtra("SSDFILE", ssdFile);
+                                intent.putExtra("Materia", "INGLÉS");
+                                intent.putExtra("EstadoConexion", "SinConexion");
+                                context.startActivity(intent);
+
+                                Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            } else {
+                                Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            }
+
+                        }
+
+
+                        break;
+
+
+                    case 9:
+
+
+                        if (cd.isConnected()) {
+
+
+                            String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+
+                            Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                            intent.putExtra("ViewType", "internet");
+                            intent.putExtra("URL", URL);
+                            intent.putExtra("Materia", "TEATRO y ORATORIA");
+                            context.startActivity(intent);
+
+                        } else {
+
+
+                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+
+                            ruta = "TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/" + ruta);
+
+
+                            if (file0.exists())
+
+                            {
+
+
+                                Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                                intent.putExtra("ViewType", "storage");
+                                intent.putExtra("SSDFILE", ssdFile);
+                                intent.putExtra("Materia", "TEATRO y ORATORIA");
+                                intent.putExtra("EstadoConexion", "SinConexion");
+                                context.startActivity(intent);
+
+                                Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            } else {
+                                Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            }
+
+                        }
+
+                        break;
+
+
+                    case 10:
+//
+
+                        if (cd.isConnected()) {
+
+
+                            String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/VALORES/VLIDERAZGO2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+
+                            Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                            intent.putExtra("ViewType", "internet");
+                            intent.putExtra("URL", URL);
+                            intent.putExtra("Materia", "Valores y Liderazgo");
+                            context.startActivity(intent);
+
+                        } else {
+
+
+                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/VALORES/VLIDERAZGO2" + nivel + "_HDT" + tomonumero + ".pdf";
+                            ruta = "VLIDERAZGO2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/VALORES/" + ruta);
+                            if (file0.exists())
+                            {
+                                Intent intent = new Intent(context, ViewTomo3Activity.class);
+                                intent.putExtra("ViewType", "storage");
+                                intent.putExtra("SSDFILE", ssdFile);
+                                intent.putExtra("Materia", "Valores y Liderazgo");
+                                intent.putExtra("EstadoConexion", "SinConexion");
+                                context.startActivity(intent);
+
+                                Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            } else {
+                                Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            }
+
+                        }
+
+
+                        break;
+
+
                 }
             }
 
@@ -824,7 +974,6 @@ public class adapterDiapositivasLetras extends BaseAdapter {
 
                             } else {
 
-
                                 descargarPDF(urlADescargar);
 
                                 //DBwritedownloas();
@@ -851,49 +1000,34 @@ public class adapterDiapositivasLetras extends BaseAdapter {
                         if (cd.isConnected()) {
                             // Toast.makeText(context,"Connected", Toast.LENGTH_SHORT).show();
 
-
                             urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/ECONOMIA/ECONOMIA2" + nivel + "_HDT" + tomonumero + ".pdf";
                             ruta = "ECONOMIA2" + nivel + "_HDT" + tomonumero + ".pdf";
 
                             materiadownload = "ECONOMIA/";
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/" + materiadownload + ruta);
 
-
                             if (file0.exists()) {
                                 Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
 
-
                             } else {
 
-
                                 descargarPDF(urlADescargar);
-
                                 //DBwritedownloas();
 
                                 String nombrepdfusuario = "Helico Diapositivas - " + tomo + " - ECONOMIA";
                                 String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/ECONOMIA/ECONOMIA2" + nivel + "_HDT" + tomonumero + ".pdf";
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
-
-
                             }
                         } else
-
                         {
-
-
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
 
-
                         break;
 
-
                     case 7:
-
-
                         if (cd.isConnected()) {
                             // Toast.makeText(context,"Connected", Toast.LENGTH_SHORT).show();
-
 
                             urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/PSICOLOGIA/PSICOLOGIA2" + nivel + "_HDT" + tomonumero + ".pdf";
                             ruta = "PSICOLOGIA2" + nivel + "_HDT" + tomonumero + ".pdf";
@@ -929,6 +1063,79 @@ public class adapterDiapositivasLetras extends BaseAdapter {
 
                         break;
 
+
+                    case 8:
+                        if (cd.isConnected()) {
+                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/INGLES/INGLES2" + nivel + "_HDT" + tomonumero + ".pdf";
+                            ruta = "INGLES2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+                            materiadownload = "INGLES/";
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/" + materiadownload + ruta);
+
+                            if (file0.exists()) {
+                                Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
+                            } else {
+                                descargarPDF(urlADescargar);
+                                String nombrepdfusuario = "Helico Diapositivas - " + tomo + " - INGLES";
+                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/INGLES/INGLES2" + nivel + "_HDT" + tomonumero + ".pdf";
+                                DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
+
+                            }
+                        } else {
+                            Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+
+
+                    case 9:
+                        //http://192.169.218.177/APP/2/1/HELICO_DIAPOSITIVAS/TOMO1/TEATRO/TEATRO21_HDT1.pdf
+
+                        if (cd.isConnected()) {
+                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+                            ruta = "TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+                            materiadownload = "TEATRO/";
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/" + materiadownload + ruta);
+
+                            if (file0.exists()) {
+                                Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
+                            } else {
+                                descargarPDF(urlADescargar);
+                                String nombrepdfusuario = "Helico Diapositivas - " + tomo + " - TEATRO y ORATORIA";
+                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+                                DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
+
+                            }
+                        } else {
+                            Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
+                        }
+
+                        break;
+
+
+                    case 10:
+                       // http://192.169.218.177/APP/2/1/HELICO_DIAPOSITIVAS/TOMO1/VALORES/VLIDERAZGO21_HDT1.pdf
+
+                        if (cd.isConnected()) {
+                            urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+                            ruta = "TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+
+                            materiadownload = "TEATRO/";
+                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/" + materiadownload + ruta);
+
+                            if (file0.exists()) {
+                                Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
+                            } else {
+                                descargarPDF(urlADescargar);
+                                String nombrepdfusuario = "Helico Diapositivas - " + tomo + " - TEATRO y ORATORIA";
+                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";
+                                DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
+
+                            }
+                        } else {
+                            Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
                 }
             }
 
@@ -936,7 +1143,6 @@ public class adapterDiapositivasLetras extends BaseAdapter {
         });
 
         return convertView;
-
 
     }
 

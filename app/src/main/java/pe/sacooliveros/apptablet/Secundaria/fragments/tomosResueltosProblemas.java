@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,8 +18,10 @@ import java.util.ArrayList;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterResueltosCiencia;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterResueltosLetras;
+import pe.sacooliveros.apptablet.Secundaria.Model.mPropuestosLetras;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomoCienciasResueltos;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomoLetrasResueltos;
+import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +45,8 @@ public class tomosResueltosProblemas extends Fragment {
 
     String acceso;
 
+    LinearLayout lslist2;
+
 
     public tomosResueltosProblemas() {
         // Required empty public constructor
@@ -58,6 +63,7 @@ public class tomosResueltosProblemas extends Fragment {
         img_temas = rootview.findViewById(R.id.img_tomoResueltos);
         gridView = rootview.findViewById(R.id.grid_resueltosciencias);
         gridView2 = rootview.findViewById(R.id.grid_resueltosletras);
+        lslist2= rootview.findViewById(R.id.lnlist2);
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -107,6 +113,7 @@ public class tomosResueltosProblemas extends Fragment {
 
         gridView.setAdapter(adapter);
 
+        String gradousuario = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
 
         Lista2 = new ArrayList<mTomoLetrasResueltos>();
 
@@ -115,10 +122,15 @@ public class tomosResueltosProblemas extends Fragment {
         Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_3, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_4, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_5, R.drawable.download_circle));
-        Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_6, R.drawable.download_circle));
-        Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_7, R.drawable.download_circle));
-        Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_8, R.drawable.download_circle));
 
+
+        if (gradousuario.equalsIgnoreCase("3 Secundaria") || gradousuario.equalsIgnoreCase("4 Secundaria") || gradousuario.equalsIgnoreCase("5 Secundaria"))
+        {
+            Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_6, R.drawable.download_circle));
+            Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_7, R.drawable.download_circle));
+            Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_8, R.drawable.download_circle));
+
+        }
 
         final adapterResueltosLetras adapter2 = new adapterResueltosLetras(getContext(), Lista2);
 

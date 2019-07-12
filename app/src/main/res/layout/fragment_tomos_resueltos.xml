@@ -8,11 +8,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1050dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -27,9 +27,7 @@
                 android:id="@+id/tx_titleResueltos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignParentRight="true"
-
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
@@ -58,7 +56,6 @@
                 android:horizontalSpacing="1dp"
                 android:numColumns="3"
                 android:verticalSpacing="1dp"
-
                 ></GridView>
 
 
@@ -72,19 +69,17 @@
                 android:text="LETRAS"
                 android:textSize="20sp" />
 
-
             <LinearLayout
+                android:id="@+id/lnlist2"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="440dp"
                 android:layout_below="@id/tx_tomo4"
                 android:layout_marginTop="20dp">
 
-
                 <GridView
-
                     android:id="@+id/grid_resueltosletras"
                     android:layout_width="match_parent"
-                    android:layout_height="480dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:horizontalSpacing="1dp"

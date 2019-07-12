@@ -10,9 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1140dp"
+            android:layout_height="1050dp"
             android:orientation="vertical">
 
             <ImageView
@@ -20,7 +21,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_arrow" />
 
             <TextView
@@ -29,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:text="TOMO II"
+                android:text="TOMO I"
                 android:textSize="25sp" />
 
 
@@ -39,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tx_tomfisica"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="CIENCIAS"
                 android:textSize="20sp" />
 
@@ -48,14 +49,12 @@
                 android:id="@+id/ma_listfisica"
                 android:layout_width="match_parent"
                 android:layout_height="442dp"
-                android:layout_below="@id/tx_tomo3"
+                android:layout_below="@+id/tx_tomo3"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:horizontalSpacing="1dp"
                 android:numColumns="3"
-                android:verticalSpacing="1dp"
-
-                ></GridView>
+                android:verticalSpacing="1dp"></GridView>
 
 
             <TextView
@@ -64,29 +63,23 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ma_listfisica"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:text="LETRAS"
                 android:textSize="20sp" />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/tx_tomo4"
-                android:layout_marginTop="20dp">
-
-
-                <GridView
-
+            <GridView
                     android:id="@+id/ma_diapLetras"
                     android:layout_width="match_parent"
                     android:layout_height="580dp"
+                    android:layout_below="@id/tx_tomo4"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:horizontalSpacing="1dp"
                     android:numColumns="3"
                     android:verticalSpacing="1dp" />
-            </LinearLayout>
+
         </RelativeLayout>
+
     </ScrollView>
+
 </RelativeLayout>

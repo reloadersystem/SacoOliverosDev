@@ -35,6 +35,7 @@ import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.math.BigDecimal;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pe.sacooliveros.apptablet.Authenticacion.firebaseAuth;
@@ -103,6 +104,8 @@ public class NavigatorPrimaria extends AppCompatActivity
     String apellidopaterno, apellidomaterno;
 
     String versionapkbase;
+
+    BigDecimal updateapkcode;
 
     public static void apkversion(String updateversionapk) {
 
@@ -196,11 +199,13 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
-        float versionapk = Float.parseFloat(getVersionName(getApplicationContext()));
-        float updateapkcode = Float.valueOf(updateapk);
 
-        if (cd.isConnected()) {
-            if (updateapkcode > versionapk) {
+        if (cd.isConnected() && updateapk != null) {
+
+            BigDecimal versionapk = new BigDecimal(getVersionName(getApplicationContext()));
+            updateapkcode = new BigDecimal(updateapk);
+
+            if (updateapkcode.compareTo(versionapk) > 0) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(NavigatorPrimaria.this);
                 builder.setTitle("Nueva Versión Disponible");
@@ -360,15 +365,12 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         MainfragPrim.instantiate(servernivel);
 
-
         inicioFragment = new MainfragPrim();
-
 
         FragmentManager fmanager = getSupportFragmentManager();
         FragmentTransaction ftransaction = fmanager.beginTransaction();
         ftransaction.add(R.id.contentFragPrimaria, inicioFragment);
         ftransaction.commit();
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -380,15 +382,6 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         CircleImageView imageView = navigationView.getHeaderView(0).findViewById(R.id.imageNavPrimaria);
         TextView txtEmail = navigationView.getHeaderView(0).findViewById(R.id.textViewMail);
-
-//        String datamail= ShareDataRead.obtenerValor(getApplicationContext(), "EMail").substring(0,1);
-//
-//        if(datamail.equalsIgnoreCase("e") || datamail.equalsIgnoreCase("a"))
-//        {
-//            Menu nav_Menu = navigationView.getMenu();
-//            nav_Menu.findItem(R.id.nav_cerrarsesionpri).setVisible(false);
-//        }
-
 
         ConnectionDetector cd = new ConnectionDetector(this);
 
@@ -461,7 +454,6 @@ public class NavigatorPrimaria extends AppCompatActivity
     }
 
     private void solicitarPermiso() {
-
 
         new AlertDialog.Builder(this)
                 .setTitle("Autorización")

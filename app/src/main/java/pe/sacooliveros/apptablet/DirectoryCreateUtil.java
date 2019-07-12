@@ -6,8 +6,6 @@ import android.util.Log;
 
 import java.io.File;
 
-import static android.os.Environment.getExternalStorageDirectory;
-
 public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrado {
 
     String ruta_storage;
@@ -103,6 +101,7 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mMenuPrincipal13 = new File(ruta_storage + "/APP/2/" + grado + "/", "COMPENDIOS");
         File mMenuPrincipal14 = new File(ruta_storage + "/APP/2/" + grado + "/", "VIDEO_HELICO_SEMINARIO");
         File mMenuPrincipal15 = new File(ruta_storage + "/APP/2/" + grado + "/", "HELICO_ASESORIAS");
+
 
         File mPrincMatematico1 = new File(ruta_storage + "/APP/2/" + grado + "/PRINCIPIOS_FMATEMATICA/", "BIMESTRE1");
         File mPrincMatematico2 = new File(ruta_storage + "/APP/2/" + grado + "/PRINCIPIOS_FMATEMATICA/", "BIMESTRE2");
@@ -360,7 +359,6 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mCompendio1_7 = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/", "TOMO7");
         File mCompendio1_8 = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/", "TOMO8");
 
-
         File mCompendioTomo1a = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO1/", "ALGEBRA");
         File mCompendioTomo1b = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO1/", "ARITMETICA");
         File mCompendioTomo1c = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO1/", "BIOLOGIA");
@@ -378,7 +376,6 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mCompendioTomo1o = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO1/", "RAZONAMIENTO_MATEMATICO");
         File mCompendioTomo1p = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO1/", "RAZONAMIENTO_VERBAL");
         File mCompendioTomo1q = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO1/", "TRIGONOMETRIA");
-
 
         File mCompendioTomo2a = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO2/", "ALGEBRA");
         File mCompendioTomo2b = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO2/", "ARITMETICA");
@@ -451,7 +448,6 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mCompendioTomo5o = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO5/", "RAZONAMIENTO_MATEMATICO");
         File mCompendioTomo5p = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO5/", "RAZONAMIENTO_VERBAL");
         File mCompendioTomo5q = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO5/", "TRIGONOMETRIA");
-
 
         File mCompendioTomo6a = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO6/", "ALGEBRA");
         File mCompendioTomo6b = new File(ruta_storage + "/APP/2/" + grado + "/COMPENDIOS/TOMO6/", "ARITMETICA");
@@ -528,6 +524,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo1o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO1/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo1p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO1/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo1q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO1/", "TRIGONOMETRIA");
+        File mDiapositivasTomo1r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO1/", "INGLES");
+        File mDiapositivasTomo1s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO1/", "TEATRO");
+        File mDiapositivasTomo1t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO1/", "VALORES");
 
 
         File mDiapositivasTomo2a = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO2/", "ALGEBRA");
@@ -547,6 +546,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo2o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO2/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo2p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO2/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo2q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO2/", "TRIGONOMETRIA");
+        File mDiapositivasTomo2r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO2/", "INGLES");
+        File mDiapositivasTomo2s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO2/", "TEATRO");
+        File mDiapositivasTomo2t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO2/", "VALORES");
 
         File mDiapositivasTomo3a = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "ALGEBRA");
         File mDiapositivasTomo3b = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "ARITMETICA");
@@ -565,7 +567,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo3o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo3p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo3q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "TRIGONOMETRIA");
-
+        File mDiapositivasTomo3r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "INGLES");
+        File mDiapositivasTomo3s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "TEATRO");
+        File mDiapositivasTomo3t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO3/", "VALORES");
 
         File mDiapositivasTomo4a = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "ALGEBRA");
         File mDiapositivasTomo4b = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "ARITMETICA");
@@ -584,6 +588,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo4o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo4p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo4q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "TRIGONOMETRIA");
+        File mDiapositivasTomo4r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "INGLES");
+        File mDiapositivasTomo4s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "TEATRO");
+        File mDiapositivasTomo4t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO4/", "VALORES");
 
 
         File mDiapositivasTomo5a = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO5/", "ALGEBRA");
@@ -603,6 +610,10 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo5o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO5/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo5p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO5/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo5q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO5/", "TRIGONOMETRIA");
+        File mDiapositivasTomo5r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO5/", "INGLES");
+        File mDiapositivasTomo5s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO5/", "TEATRO");
+        File mDiapositivasTomo5t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO5/", "VALORES");
+
 
         File mDiapositivasTomo6a = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "ALGEBRA");
         File mDiapositivasTomo6b = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "ARITMETICA");
@@ -621,6 +632,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo6o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo6p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo6q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "TRIGONOMETRIA");
+        File mDiapositivasTomo6r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "INGLES");
+        File mDiapositivasTomo6s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "TEATRO");
+        File mDiapositivasTomo6t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO6/", "VALORES");
 
 
         File mDiapositivasTomo7a = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO7/", "ALGEBRA");
@@ -640,6 +654,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo7o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO7/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo7p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO7/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo7q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO7/", "TRIGONOMETRIA");
+        File mDiapositivasTomo7r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO7/", "INGLES");
+        File mDiapositivasTomo7s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO7/", "TEATRO");
+        File mDiapositivasTomo7t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO7/", "VALORES");
 
 
         File mDiapositivasTomo8a = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO8/", "ALGEBRA");
@@ -659,6 +676,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         File mDiapositivasTomo8o = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO8/", "RAZONAMIENTO_MATEMATICO");
         File mDiapositivasTomo8p = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO8/", "RAZONAMIENTO_VERBAL");
         File mDiapositivasTomo8q = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO8/", "TRIGONOMETRIA");
+        File mDiapositivasTomo8r = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO8/", "INGLES");
+        File mDiapositivasTomo8s = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO8/", "TEATRO");
+        File mDiapositivasTomo8t = new File(ruta_storage + "/APP/2/" + grado + "/HELICO_DIAPOSITIVAS/TOMO8/", "VALORES");
 
 
         //--------------------------------------------------------------------------------------------- problemas resueltos
@@ -911,7 +931,6 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mHelicoAsesoria6.mkdir();
         mHelicoAsesoria7.mkdir();
         mHelicoAsesoria8.mkdir();
-
 
 
         mVideoSeminario1.mkdir();
@@ -1489,6 +1508,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo1o.mkdir();
         mDiapositivasTomo1p.mkdir();
         mDiapositivasTomo1q.mkdir();
+        mDiapositivasTomo1r.mkdir();
+        mDiapositivasTomo1s.mkdir();
+        mDiapositivasTomo1t.mkdir();
 
 
         mDiapositivasTomo2a.mkdir();
@@ -1508,6 +1530,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo2o.mkdir();
         mDiapositivasTomo2p.mkdir();
         mDiapositivasTomo2q.mkdir();
+        mDiapositivasTomo2r.mkdir();
+        mDiapositivasTomo2s.mkdir();
+        mDiapositivasTomo2t.mkdir();
 
 
         mDiapositivasTomo3a.mkdir();
@@ -1527,6 +1552,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo3o.mkdir();
         mDiapositivasTomo3p.mkdir();
         mDiapositivasTomo3q.mkdir();
+        mDiapositivasTomo3r.mkdir();
+        mDiapositivasTomo3s.mkdir();
+        mDiapositivasTomo3t.mkdir();
 
 
         mDiapositivasTomo4a.mkdir();
@@ -1546,6 +1574,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo4o.mkdir();
         mDiapositivasTomo4p.mkdir();
         mDiapositivasTomo4q.mkdir();
+        mDiapositivasTomo4r.mkdir();
+        mDiapositivasTomo4s.mkdir();
+        mDiapositivasTomo4t.mkdir();
 
 
         mDiapositivasTomo5a.mkdir();
@@ -1565,6 +1596,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo5o.mkdir();
         mDiapositivasTomo5p.mkdir();
         mDiapositivasTomo5q.mkdir();
+        mDiapositivasTomo5r.mkdir();
+        mDiapositivasTomo5s.mkdir();
+        mDiapositivasTomo5t.mkdir();
 
 
         mDiapositivasTomo6a.mkdir();
@@ -1584,6 +1618,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo6o.mkdir();
         mDiapositivasTomo6p.mkdir();
         mDiapositivasTomo6q.mkdir();
+        mDiapositivasTomo6r.mkdir();
+        mDiapositivasTomo6s.mkdir();
+        mDiapositivasTomo6t.mkdir();
 
 
         mDiapositivasTomo7a.mkdir();
@@ -1603,6 +1640,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo7o.mkdir();
         mDiapositivasTomo7p.mkdir();
         mDiapositivasTomo7q.mkdir();
+        mDiapositivasTomo7r.mkdir();
+        mDiapositivasTomo7s.mkdir();
+        mDiapositivasTomo7t.mkdir();
 
 
         mDiapositivasTomo8a.mkdir();
@@ -1622,6 +1662,9 @@ public class DirectoryCreateUtil extends AppCompatActivity implements EnviarGrad
         mDiapositivasTomo8o.mkdir();
         mDiapositivasTomo8p.mkdir();
         mDiapositivasTomo8q.mkdir();
+        mDiapositivasTomo8r.mkdir();
+        mDiapositivasTomo8s.mkdir();
+        mDiapositivasTomo8t.mkdir();
 
 
     }

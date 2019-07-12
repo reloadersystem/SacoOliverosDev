@@ -116,13 +116,14 @@ public class DiapositivasTomosFrag extends Fragment {
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_6, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_7, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_8, R.drawable.download_circle));
+        Lista2.add(new mTomoLetrasDiap(R.drawable.letras_9, R.drawable.download_circle));
 
         String grado= ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
 
         if(grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria"))
         {
-            Lista2.add(new mTomoLetrasDiap(R.drawable.letras_9, R.drawable.download_circle));
-            Lista2.add(new mTomoLetrasDiap(R.drawable.letras_10, R.drawable.download_circle));
+          Lista2.add(new mTomoLetrasDiap(R.drawable.letras_10, R.drawable.download_circle));
+          Lista2.add(new mTomoLetrasDiap(R.drawable.letras_11, R.drawable.download_circle));
         }
 
         final adapterDiapositivasLetras adapter2 = new adapterDiapositivasLetras(getContext(), Lista2);

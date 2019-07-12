@@ -38,6 +38,7 @@ import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.math.BigDecimal;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pe.sacooliveros.apptablet.Authenticacion.firebaseAuth;
@@ -81,6 +82,7 @@ public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, comunicador {
 
     static String PREFS_KEY = "autenticacionOff";
+
     InitialFragment initialFragment;
     String emailogin = "";
     String emailjson = "";
@@ -104,8 +106,6 @@ public class NavActivity extends AppCompatActivity
     static String updateapk;
     ConnectionDetector cd;
     static String nivelacceso;
-    private static final String TAG = "VersionEstado";
-    private static final String TAGServ = "TagServicio";
 
     String FLURRY_API_KEY = "P6MNPWQCTST6XZJ5KN9Y";
 
@@ -119,7 +119,7 @@ public class NavActivity extends AppCompatActivity
 
     String urlfotoalumno;
 
-    float updateapkcode = 0;
+    BigDecimal updateapkcode;
 
     public static String obtenerValor(Context context, String keyPref) {
 
@@ -231,7 +231,6 @@ public class NavActivity extends AppCompatActivity
             }
         }
 
-
 //        if (cd.isConnected()) {
 //            if (codigoAuth.equalsIgnoreCase("null") || codigoAuth.equalsIgnoreCase("")) {
 //                AlertDialog.Builder builder = new AlertDialog.Builder(NavActivity.this);
@@ -289,21 +288,20 @@ public class NavActivity extends AppCompatActivity
 //            updateapk = Double.valueOf("2.1440");
 //        }
 
-        float versionapk = Float.parseFloat(getVersionName(getApplicationContext()));
-        updateapkcode = Float.valueOf(updateapk);
 
-        if (cd.isConnected()) {
-            if (updateapkcode > versionapk) {
+        if (cd.isConnected() && updateapk != null) {
+
+            BigDecimal versionapk = new BigDecimal(getVersionName(getApplicationContext()));
+            updateapkcode = new BigDecimal(updateapk);
+
+            if (updateapkcode.compareTo(versionapk) > 0) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(NavActivity.this);
                 builder.setTitle("Nueva Versión Disponible");
-                //DecimalFormat df = new DecimalFormat("#.0000");
-                //builder.setMessage("Versión " + df.format(updateapk) + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
-                builder.setMessage("Versión " + updateapkcode + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
+                builder.setMessage("Versión " + updateapkcode.toString() + "  está disponible en Google Play Store ¿Deseas Actualizar Ahora?");
                 builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-
                         final String appPackageName = getPackageName();
                         try {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
@@ -323,7 +321,6 @@ public class NavActivity extends AppCompatActivity
                 dialog.show();
             }
         }
-
 
         if (!isAppInstalled2) {
 

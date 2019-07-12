@@ -56,7 +56,6 @@ public class fragmentPropuestos extends Fragment {
         gridView= rootview.findViewById(R.id.ma_tomoDiapo);
 
 
-
         Bundle bundle = this.getArguments();
         if (bundle != null) {
 

@@ -34,6 +34,7 @@ import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.math.BigDecimal;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pe.sacooliveros.apptablet.Authenticacion.firebaseAuth;
@@ -91,17 +92,15 @@ public class CiclosEspeciales extends AppCompatActivity
 
     String versionapkbase;
 
+    BigDecimal updateapkcode;
 
     public static void apkversion(String updateversionapk) {
-
         updateapk = updateversionapk;
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
-
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -151,21 +150,6 @@ public class CiclosEspeciales extends AppCompatActivity
         String codigoAuth = ShareDataRead.obtenerValor(getApplicationContext(), "codigo_autenticacion");
 
 
-//        String validacionAutenticacion = ShareDataRead.obtenerValor(getApplicationContext(), "EstadoAuthentication");
-//
-//        if (validacionAutenticacion.equalsIgnoreCase("true")) {
-//
-//            Log.i(TAG, "Se envió correctamente BD Versión");
-//
-//        }
-//        else
-//        {
-//            SConsultVersion consultversion = new SConsultVersion("http://192.169.218.177:8080/FacturacionElectronicaSIIAA/api/v1/estudiante/validarVersionAplicativo/" + codigoAuth + "/" + versionapkbase);
-//            consultversion.setCurrentContext(this);
-//            consultversion.setCurrentLayout(drawer);
-//            consultversion.execute();
-//        }
-
         cd = new ConnectionDetector(getApplicationContext());
 
         if (cd.isConnected()) {
@@ -188,11 +172,12 @@ public class CiclosEspeciales extends AppCompatActivity
             }
         }
 
-        float versionapk = Float.parseFloat(getVersionName(getApplicationContext()));
-        float updateapkcode = Float.valueOf(updateapk);
+        if (cd.isConnected() && updateapk != null) {
 
-        if (cd.isConnected()) {
-            if (updateapkcode > versionapk) {
+            BigDecimal versionapk = new BigDecimal(getVersionName(getApplicationContext()));
+            updateapkcode = new BigDecimal(updateapk);
+
+            if (updateapkcode.compareTo(versionapk) > 0) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(CiclosEspeciales.this);
                 builder.setTitle("Nueva Versión Disponible");
@@ -207,7 +192,6 @@ public class CiclosEspeciales extends AppCompatActivity
                         } catch (android.content.ActivityNotFoundException anfe) {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                         }
-
                     }
                 });
                 builder.setNegativeButton("Después", new DialogInterface.OnClickListener() {
