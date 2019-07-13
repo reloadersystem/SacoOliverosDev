@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.File;
@@ -33,6 +34,7 @@ public class AsesoriaCap3_Fragment extends Fragment {
     public AsesoriaCap3_Fragment() {
         // Required empty public constructor
     }
+
     public static void tomolistener(String tomoinfo) {
         tomolistener = tomoinfo;
     }
@@ -41,9 +43,9 @@ public class AsesoriaCap3_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview= inflater.inflate(R.layout.fragment_asesoria_cap3, container, false);
+        rootview = inflater.inflate(R.layout.fragment_asesoria_cap3, container, false);
 
-        pdfView= rootview.findViewById(R.id.pdfViewAsesoria3);
+        pdfView = rootview.findViewById(R.id.pdfViewAsesoria3);
 
         cd = new ConnectionDetector(getContext());
 
@@ -84,6 +86,8 @@ public class AsesoriaCap3_Fragment extends Fragment {
             utilPdfView.pdfVisorInternet();
         }
 
+        final FloatingActionsMenu floatingActionsMenu = rootview.findViewById(R.id.menu_fab);
+
         FloatingActionButton fab = rootview.findViewById(R.id.floatingActionAsesoria3);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +98,7 @@ public class AsesoriaCap3_Fragment extends Fragment {
 
                 GeneralFileManager generalFileManager = new GeneralFileManager(getContext());
                 generalFileManager.downloadFileView(file_route, pdfusername);
+                floatingActionsMenu.collapse();
             }
         });
 
@@ -107,6 +112,8 @@ public class AsesoriaCap3_Fragment extends Fragment {
 
                 UtilPDFView utilPdfView = new UtilPDFView(getContext(), urlADescargar, pdfView);
                 utilPdfView.pdfVisorInternet();
+                floatingActionsMenu.collapse();
+
             }
         });
 

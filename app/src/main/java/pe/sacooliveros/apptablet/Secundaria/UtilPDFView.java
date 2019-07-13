@@ -1,5 +1,6 @@
 package pe.sacooliveros.apptablet.Secundaria;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -41,9 +42,15 @@ public class UtilPDFView {
         this.pdfView = pdfview;
     }
 
+
+
+
     public void pdfVisorInternet() {
 
         // progresbar.setVisibility(View.VISIBLE);
+
+        Dialog dialog= new Dialog(context);
+        dialog.show();
 
 
 

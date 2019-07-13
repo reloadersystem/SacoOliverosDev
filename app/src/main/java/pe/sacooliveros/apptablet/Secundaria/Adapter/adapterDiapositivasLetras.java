@@ -125,7 +125,7 @@ public class adapterDiapositivasLetras extends BaseAdapter {
 
         ImageView imgfoto = convertView.findViewById(R.id.img_hdiapoletras);
 
-        ImageView imgfoto2 = convertView.findViewById(R.id.img_downhdiapoletras);
+        final ImageView imgfoto2 = convertView.findViewById(R.id.img_downhdiapoletras);
 
         imgfoto.setImageResource(arrayList.get(position).getImagen_logo());
         imgfoto2.setImageResource(arrayList.get(position).getImagen_logo2());
@@ -704,8 +704,7 @@ public class adapterDiapositivasLetras extends BaseAdapter {
                             ruta = "VLIDERAZGO2" + nivel + "_HDT" + tomonumero + ".pdf";
 
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/VALORES/" + ruta);
-                            if (file0.exists())
-                            {
+                            if (file0.exists()) {
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
                                 intent.putExtra("ViewType", "storage");
                                 intent.putExtra("SSDFILE", ssdFile);
@@ -743,10 +742,7 @@ public class adapterDiapositivasLetras extends BaseAdapter {
 
                     case 0:
 
-
                         if (cd.isConnected()) {
-
-                            //http://app8.sacooliveros.edu.pe/APP/"+cicloespecial+"/"+nivel+"/HELICO_DIAPOSITIVAS/TOMO1/LENGUAJE/LENGUAJE2"+nivel+"_HDT1.pdf
 
                             urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/LENGUAJE/LENGUAJE2" + nivel + "_HDT" + tomonumero + ".pdf";
 
@@ -763,10 +759,7 @@ public class adapterDiapositivasLetras extends BaseAdapter {
 
                             } else {
 
-
                                 descargarPDF(urlADescargar);
-
-                                //DBwritedownloas();
 
                                 String nombrepdfusuario = "Helico Diapositivas - " + tomo + " - LENGUAJE ";
                                 String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/LENGUAJE/LENGUAJE2" + nivel + "_HDT" + tomonumero + ".pdf";
@@ -776,8 +769,6 @@ public class adapterDiapositivasLetras extends BaseAdapter {
                         } else
 
                         {
-
-
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
 
@@ -1018,8 +1009,7 @@ public class adapterDiapositivasLetras extends BaseAdapter {
                                 String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/ECONOMIA/ECONOMIA2" + nivel + "_HDT" + tomonumero + ".pdf";
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
                             }
-                        } else
-                        {
+                        } else {
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
 
@@ -1114,7 +1104,7 @@ public class adapterDiapositivasLetras extends BaseAdapter {
 
 
                     case 10:
-                       // http://192.169.218.177/APP/2/1/HELICO_DIAPOSITIVAS/TOMO1/VALORES/VLIDERAZGO21_HDT1.pdf
+                        // http://192.169.218.177/APP/2/1/HELICO_DIAPOSITIVAS/TOMO1/VALORES/VLIDERAZGO21_HDT1.pdf
 
                         if (cd.isConnected()) {
                             urlADescargar = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/TEATRO/TEATRO2" + nivel + "_HDT" + tomonumero + ".pdf";

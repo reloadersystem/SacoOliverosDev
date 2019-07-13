@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/transparenteblanco"
-            app:fab_icon="@drawable/simulacro"
+            app:fab_icon="@drawable/ic_rotate_left_black_24dp"
             app:fab_size="mini"
             app:fab_title="Recargar"
             />

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.File;
@@ -90,7 +91,13 @@ public class AsesoriaCap1_Fragment extends Fragment {
             utilPdfView.pdfVisorInternet();
         }
 
-        FloatingActionButton fab = rootview.findViewById(R.id.floatingActionAsesoria);
+
+        final FloatingActionsMenu floatingActionsMenu= rootview.findViewById(R.id.menu_fab);
+
+
+
+
+        final FloatingActionButton fab = rootview.findViewById(R.id.floatingActionAsesoria);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +107,12 @@ public class AsesoriaCap1_Fragment extends Fragment {
 
                 GeneralFileManager generalFileManager = new GeneralFileManager(getContext());
                 generalFileManager.downloadFileView(file_route, pdfusername);
+                floatingActionsMenu.collapse();
+
+
+
+               // fab.setVisibility(fab.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);// desaparece el item
+
             }
         });
 
@@ -113,6 +126,7 @@ public class AsesoriaCap1_Fragment extends Fragment {
 
                 UtilPDFView utilPdfView = new UtilPDFView(getContext(), urlADescargar, pdfView);
                 utilPdfView.pdfVisorInternet();
+                floatingActionsMenu.collapse();
             }
         });
 

@@ -62,7 +62,6 @@ public class ViewYouTubeScreen extends YouTubeBaseActivity implements YouTubePla
         listChanel = datos.getString("lista_canal");
 
 
-
         mHandler = new Handler();
 
 
@@ -72,11 +71,9 @@ public class ViewYouTubeScreen extends YouTubeBaseActivity implements YouTubePla
             @Override
             public void onClick(View view) {
 
-
                 if (null != mPlayer && !mPlayer.isPlaying()) {
                     mPlayer.play();
                 }
-
 
             }
         });

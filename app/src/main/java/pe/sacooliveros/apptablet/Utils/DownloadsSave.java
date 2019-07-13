@@ -24,7 +24,6 @@ public class DownloadsSave {
     String nombrepdfuser;
 
 
-
     public void descargarPDF(final String urlADescargar, String ssdRuta, Context context, String nombreuserpdf) {
 
         ssdroot = ssdRuta;
@@ -62,7 +61,6 @@ public class DownloadsSave {
             HttpURLConnection conexion = null;
             InputStream input = null;
             OutputStream output = null;
-
 
             String urlADescargar = urlPDF[0];
 
