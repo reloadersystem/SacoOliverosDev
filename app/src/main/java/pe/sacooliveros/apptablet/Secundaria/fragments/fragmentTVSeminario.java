@@ -122,7 +122,6 @@ public class fragmentTVSeminario extends Fragment {
                 String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel").substring(0, 1);
                 String pingvalor= Boolean.toString(isOnlineNet());
 
-
                 switch (position) {
 
 

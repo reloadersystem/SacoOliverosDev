@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -20,7 +21,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +31,12 @@ import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.listener.OnPageErrorListener;
 import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 import com.github.barteksc.pdfviewer.listener.OnTapListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.krishna.fileloader.FileLoader;
 import com.krishna.fileloader.listener.FileRequestListener;
 import com.krishna.fileloader.pojo.FileResponse;
 import com.krishna.fileloader.request.FileLoadRequest;
+import com.microsoft.graph.models.generated.EventType;
 
 import java.io.File;
 
@@ -66,6 +68,7 @@ public class VisorPdfActivity extends AppCompatActivity {
     MenuItem shareItem;
     String ssdtablet;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     public static String obtenerValor(Context context, String keyPref) {
         SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
@@ -79,10 +82,14 @@ public class VisorPdfActivity extends AppCompatActivity {
         setContentView(R.layout.activity_visor_pdf);
         setTitle("");
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle params= new Bundle();
+        params.putInt("ID_VisorActivity", R.id.cl_visorpdfactivity);
+        mFirebaseAnalytics.logEvent("ActVisorBalotarios",params);
+
         pdfView = findViewById(R.id.pdfViewletraspdft3);
-
         progresbar = findViewById(R.id.progresbart3);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -158,7 +165,6 @@ public class VisorPdfActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-
 
     private void EjecucionInternet() {
 

@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -13,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,15 +28,25 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.flurry.android.FlurryAgent;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.OnSuccessListener;
+import com.google.android.play.core.tasks.Task;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -72,7 +84,6 @@ import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentVSeminario;
 import pe.sacooliveros.apptablet.ServiceVersion.SConsultVersion;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
-import pe.sacooliveros.apptablet.Utils.ValidateCopyright;
 import pe.sacooliveros.apptablet.ViewTomo3Activity;
 import pe.sacooliveros.apptablet.comunicador;
 
@@ -97,7 +108,6 @@ public class NavActivity extends AppCompatActivity
     int MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1;
     int MY_PERMISSIONS_REQUEST_TELEPHONE = 2;
     int MY_PERMISSIONS_REQUEST_UBICACION = 3;
-
     String sharedata;
     mainFragmentUni mainFragmentuni;
     String appName;
@@ -107,19 +117,22 @@ public class NavActivity extends AppCompatActivity
     ConnectionDetector cd;
     static String nivelacceso;
 
-    String FLURRY_API_KEY = "P6MNPWQCTST6XZJ5KN9Y";
+    //String FLURRY_API_KEY = "P6MNPWQCTST6XZJ5KN9Y";
 
     String gradonombre;
     String apellidopaterno, apellidomaterno;
     GoogleApiClient mGoogleApiClient;
-
     DrawerLayout drawer;
-
     String versionapkbase;
-
     String urlfotoalumno;
-
     BigDecimal updateapkcode;
+
+    public static final int MY_REQUESTCODE = 1155;
+
+    AppUpdateManager mAppUpdateManager;
+
+
+    private static final String TAG = "UPDATEPLAY";
 
     public static String obtenerValor(Context context, String keyPref) {
 
@@ -147,7 +160,6 @@ public class NavActivity extends AppCompatActivity
                 .build();
         mGoogleApiClient.connect();
 
-        FlurryAgent.logEvent("NavActivity");
     }
 
     @Override
@@ -159,17 +171,35 @@ public class NavActivity extends AppCompatActivity
         getSupportActionBar().setTitle("");
 
 
-        new FlurryAgent.Builder()
-                .withLogEnabled(true)
-                .withCaptureUncaughtExceptions(true)
-                .withContinueSessionMillis(10000)
-                .withLogLevel(Log.VERBOSE)
-                .build(this, FLURRY_API_KEY);
+        mAppUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+
+        Task<AppUpdateInfo> appUpdateInfoTask = mAppUpdateManager.getAppUpdateInfo();
+
+        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+            @Override
+            public void onSuccess(AppUpdateInfo appUpdateInfo) {
+
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                        && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+
+                    try {
+                        mAppUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.IMMEDIATE, NavActivity.this, MY_REQUESTCODE);
+
+                    } catch (IntentSender.SendIntentException e) {
+                        e.printStackTrace();
+                    }
+                } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                    popupSnackbarForCompleteUpdate();
+
+                } else {
+                    Log.e(TAG, "checkForAppUpdateAvailability: something else");
+                }
+            }
+        });
 
 
-        final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
-        validateCopyright.isvalidate();
-
+//        final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
+//        validateCopyright.isvalidate();
 
         if (getIntent() != null && getIntent().getExtras() != null) {
             Bundle bundle = this.getIntent().getExtras();
@@ -200,7 +230,6 @@ public class NavActivity extends AppCompatActivity
 
         String validacionAutenticacion = ShareDataRead.obtenerValor(getApplicationContext(), "EstadoAuthentication");
 
-
         //CheckOutService
 
 //        if (validacionAutenticacion.equalsIgnoreCase("true")) {
@@ -211,7 +240,6 @@ public class NavActivity extends AppCompatActivity
         String consultarServicio = ShareDataRead.obtenerValor(getApplicationContext(), "CheckOutService");
 
         versionapkbase = getVersionName(getApplicationContext());
-
 
         if (cd.isConnected()) {
 
@@ -431,13 +459,9 @@ public class NavActivity extends AppCompatActivity
                 Log.d("RUTA_APP", data2);
                 directoryutilpre.verGradoSec(servernivel);
                 directoryutilpre.createCarpetas(getFilesDir() + "/APP");
-
             }
 
-
-            if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("CIRCULO"))
-
-            {
+            if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("CIRCULO")) {
                 File file = new File(getFilesDir() + "/APP");
                 deleteRecursive(file); // validar  que no haya  carpetas creadas
 
@@ -451,9 +475,7 @@ public class NavActivity extends AppCompatActivity
                 Log.d("RUTA_APP", data);
 
                 directoryCreate.verGradoSec(servernivel);
-
                 directoryCreate.createCarpetas(getFilesDir() + "/APP");
-
             }
 
         } else
@@ -836,7 +858,7 @@ public class NavActivity extends AppCompatActivity
     @Override
     protected void onStop() {
         super.onStop();
-        FlurryAgent.onEndSession(this);
+        //FlurryAgent.onEndSession(this);
 
     }
 
@@ -1665,5 +1687,52 @@ public class NavActivity extends AppCompatActivity
         editor.commit();
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == MY_REQUESTCODE) {
+            if (resultCode != RESULT_OK) {
+                Log.e(TAG, "Update flow failed! Result code: " + resultCode);
+            }
+        }
+    }
+
+    private void popupSnackbarForCompleteUpdate() {
+        Snackbar snackbar = Snackbar.make(
+                findViewById(R.id.drawer_layout),
+                "New app is Ready!",
+                Snackbar.LENGTH_INDEFINITE);
+
+        snackbar.setAction("Install", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mAppUpdateManager != null) {
+                    mAppUpdateManager.completeUpdate();
+                }
+            }
+        });
+        snackbar.setActionTextColor(getResources().getColor(R.color.accent));
+        snackbar.show();
+    }
+
+    InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
+        @Override
+        public void onStateUpdate(InstallState installState) {
+
+            if (installState.installStatus() == InstallStatus.DOWNLOADED) {
+                popupSnackbarForCompleteUpdate();
+
+            } else if (installState.installStatus() == InstallStatus.INSTALLED) {
+                if (mAppUpdateManager != null) {
+                    mAppUpdateManager.unregisterListener(installStateUpdatedListener);
+                }
+            } else {
+                Log.i(TAG, "InstallStateListener: state: " + installState.installStatus());
+            }
+
+        }
+    };
 
 }
