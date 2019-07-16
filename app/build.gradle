@@ -4,12 +4,11 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "pe.sacooliveros.apptablet"
-        //minSdkVersion 21
         minSdkVersion 23
         targetSdkVersion 27
 
-        versionCode 108
-        versionName '2.1602'
+        versionCode 112
+        versionName '2.1606'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,6 +22,10 @@ android {
         pickFirst 'META-INF/jersey-module-version'
     }
     productFlavors {
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -57,7 +60,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation 'com.google.guava:guava:25.1-android'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
-    implementation "com.google.android.play:core:1.5.0"
+    implementation 'com.google.android.play:core:1.5.0'
     implementation('com.microsoft.identity.client:msal:0.2.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.google.code.gson'

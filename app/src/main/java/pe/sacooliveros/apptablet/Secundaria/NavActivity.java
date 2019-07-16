@@ -28,7 +28,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +36,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -45,8 +43,6 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.tasks.OnSuccessListener;
-import com.google.android.play.core.tasks.Task;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -127,9 +123,10 @@ public class NavActivity extends AppCompatActivity
     String urlfotoalumno;
     BigDecimal updateapkcode;
 
-    public static final int MY_REQUESTCODE = 1155;
+    public static final int MY_REQUESTCODE = 1001;
 
     AppUpdateManager mAppUpdateManager;
+    //AppUpdateManager appUpdateManager;
 
 
     private static final String TAG = "UPDATEPLAY";
@@ -170,33 +167,49 @@ public class NavActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
+//        mAppUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+//
+//        mAppUpdateManager.registerListener(installStateUpdatedListener);
+//        mAppUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
+//
+//            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+//                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+//
+//                try {
+//                    mAppUpdateManager.startUpdateFlowForResult(
+//                            appUpdateInfo, AppUpdateType.IMMEDIATE, NavActivity.this, MY_REQUESTCODE);
+//                } catch (IntentSender.SendIntentException e) {
+//                    e.printStackTrace();
+//                }
+//            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+//                popupSnackbarForCompleteUpdate();
+//            } else {
+//                Log.e(TAG, "checkForUpdateAvailability: something else");
+//            }
+//        });
 
         mAppUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+        Log.e(TAG, mAppUpdateManager.getAppUpdateInfo().toString());
+        mAppUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(
+                        appUpdateInfo -> {
 
-        Task<AppUpdateInfo> appUpdateInfoTask = mAppUpdateManager.getAppUpdateInfo();
-
-        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
-            @Override
-            public void onSuccess(AppUpdateInfo appUpdateInfo) {
-
-                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                        && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-
-                    try {
-                        mAppUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.IMMEDIATE, NavActivity.this, MY_REQUESTCODE);
-
-                    } catch (IntentSender.SendIntentException e) {
-                        e.printStackTrace();
-                    }
-                } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
-                    popupSnackbarForCompleteUpdate();
-
-                } else {
-                    Log.e(TAG, "checkForAppUpdateAvailability: something else");
-                }
-            }
-        });
-
+                            // Checks that the platform will allow the specified type of update.
+                            if ((appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE)
+                                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                                // Request the update.
+                                try {
+                                    mAppUpdateManager.startUpdateFlowForResult(
+                                            appUpdateInfo,
+                                            AppUpdateType.IMMEDIATE,
+                                            this,
+                                            MY_REQUESTCODE);
+                                } catch (IntentSender.SendIntentException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
 
 //        final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
 //        validateCopyright.isvalidate();
@@ -1705,34 +1718,57 @@ public class NavActivity extends AppCompatActivity
                 "New app is Ready!",
                 Snackbar.LENGTH_INDEFINITE);
 
-        snackbar.setAction("Install", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mAppUpdateManager != null) {
-                    mAppUpdateManager.completeUpdate();
-                }
+        snackbar.setAction("Install", view -> {
+            if (mAppUpdateManager != null) {
+                mAppUpdateManager.completeUpdate();
             }
         });
+
         snackbar.setActionTextColor(getResources().getColor(R.color.accent));
         snackbar.show();
     }
 
     InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
         @Override
-        public void onStateUpdate(InstallState installState) {
+        public void onStateUpdate(InstallState state) {
 
-            if (installState.installStatus() == InstallStatus.DOWNLOADED) {
+            if (state.installStatus() == InstallStatus.DOWNLOADED) {
                 popupSnackbarForCompleteUpdate();
 
-            } else if (installState.installStatus() == InstallStatus.INSTALLED) {
+            } else if (state.installStatus() == InstallStatus.INSTALLED) {
                 if (mAppUpdateManager != null) {
                     mAppUpdateManager.unregisterListener(installStateUpdatedListener);
                 }
             } else {
-                Log.i(TAG, "InstallStateListener: state: " + installState.installStatus());
+                Log.i(TAG, "InstallStateListener: state: " + state.installStatus());
             }
-
         }
     };
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mAppUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(
+                        appUpdateInfo -> {
+
+                            if (appUpdateInfo.updateAvailability()
+                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                                // If an in-app update is already running, resume the update.
+                                try {
+                                    mAppUpdateManager.startUpdateFlowForResult(
+                                            appUpdateInfo,
+                                            AppUpdateType.IMMEDIATE,
+                                            this,
+                                            MY_REQUESTCODE);
+                                } catch (IntentSender.SendIntentException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+    }
 
 }
