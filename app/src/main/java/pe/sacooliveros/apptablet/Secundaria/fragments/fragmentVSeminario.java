@@ -340,7 +340,7 @@ public class fragmentVSeminario extends Fragment {
 
 
             if (gradoasiste.equalsIgnoreCase("CATOLICA") && tomodescripcion.equalsIgnoreCase("BIMESTRE 3")) {
-                String listChanel = "";
+                String listChanel = "PLdCIBUZp0Cu4GyXElnrZ7y_QlFIwWRIM8";
                 Intent intent = new Intent(getContext(), YouTubeViewer.class);
                 intent.putExtra("lista_canal", listChanel);
                 getContext().startActivity(intent);

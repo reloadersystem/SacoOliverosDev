@@ -17,12 +17,10 @@ import static java.lang.Thread.sleep;
 
 public class DownloadsSave {
 
-
     static Context dscontext;
     static String ssdroot;
     String rutaurldata;
     String nombrepdfuser;
-
 
     public void descargarPDF(final String urlADescargar, String ssdRuta, Context context, String nombreuserpdf) {
 

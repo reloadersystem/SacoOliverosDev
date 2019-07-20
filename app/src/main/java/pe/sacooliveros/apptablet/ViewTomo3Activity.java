@@ -722,7 +722,7 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
 
                     @Override
                     public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
-                        Toast.makeText(ViewTomo3Activity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewTomo3Activity.this, "Conexión baja intente mas  tarde o presione Actualizar" , Toast.LENGTH_SHORT).show();
                         progresbar.setVisibility(View.GONE);
                     }
                 });
@@ -758,7 +758,7 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
 
                     @Override
                     public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
-                        Toast.makeText(ViewTomo3Activity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewTomo3Activity.this, "Conexión baja intente mas  tarde o presione Actualizar", Toast.LENGTH_SHORT).show();
                         progresbar.setVisibility(View.GONE);
                     }
                 });
@@ -1033,7 +1033,7 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
                                         .onPageError(new OnPageErrorListener() {
                                             @Override
                                             public void onPageError(int page, Throwable t) {
-                                                Toast.makeText(ViewTomo3Activity.this, "error" + page, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(ViewTomo3Activity.this, "error", Toast.LENGTH_SHORT).show();
                                             }
                                         })
                                         .onPageChange(new OnPageChangeListener() {

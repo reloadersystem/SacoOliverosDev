@@ -119,7 +119,7 @@ public class unidadFragment extends Fragment {
                     LecturasDialog lecturasDialog = new LecturasDialog();
 
 //                    for (int a = 0; a < countList; a++) {
-                    for (int a = 0; a < 4; a++) {
+                    for (int a = 0; a < 5; a++) {
 
                         if (position == a) {
                             int inicio = a + 1;
@@ -142,9 +142,7 @@ public class unidadFragment extends Fragment {
 
                             if (cd.isConnected()) {
 
-                                if (nivel.equalsIgnoreCase("5 Primaria"))
-
-                                {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
                                     listCanal("PLLnivJhjddCLurI-WW5zlQ1ggT6H2oVxm");
 
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
@@ -166,9 +164,7 @@ public class unidadFragment extends Fragment {
 
                             if (cd.isConnected()) {
 
-                                if (nivel.equalsIgnoreCase("5 Primaria"))
-
-                                {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
                                     listCanal("PLLnivJhjddCJPMcdRHHdxSTzsGywGsSIO");
 
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
@@ -189,9 +185,7 @@ public class unidadFragment extends Fragment {
 
                             if (cd.isConnected()) {
 
-                                if (nivel.equalsIgnoreCase("5 Primaria"))
-
-                                {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
                                     listCanal("PLLnivJhjddCK9r2EWmJcLRAhbqmRJy4Ac");
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
                                     listCanal("PLcWdL9UMc9NoiZ_K_z4Etdv3LFxq_DAhh");
@@ -209,9 +203,7 @@ public class unidadFragment extends Fragment {
                         case 3:
                             if (cd.isConnected()) {
 
-                                if (nivel.equalsIgnoreCase("5 Primaria"))
-
-                                {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
                                     listCanal("PLLnivJhjddCL7a8laLqIK5C3D3PuWR2PS");
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
                                     listCanal("PLcWdL9UMc9No6kGWJ8a0XOm2XEKFU2fQD");
@@ -223,8 +215,23 @@ public class unidadFragment extends Fragment {
                                 Toast.makeText(getContext(), "Estas sin Conexión", Toast.LENGTH_SHORT).show();
                             }
 
+                            break;
+
+                        case 4:
+                            if (cd.isConnected()) {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
+                                    listCanal("PLLnivJhjddCILWsKEZ4OXoxcrhdqtjL6y");
+                                } else if (nivel.equalsIgnoreCase("6 Primaria")) {
+                                    listCanal("PLcWdL9UMc9NouJSOuK6Q83IXv7MSW94um");
+                                }
+                                break;
+
+                            } else {
+                                Toast.makeText(getContext(), "Estas sin Conexión", Toast.LENGTH_SHORT).show();
+                            }
 
                             break;
+
                     }
 
                 } else if (tema.equalsIgnoreCase("VIDEO SEMINARIO")) {
@@ -235,9 +242,7 @@ public class unidadFragment extends Fragment {
 
                             if (cd.isConnected()) {
 
-                                if (nivel.equalsIgnoreCase("5 Primaria"))
-
-                                {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
                                     listCanal("PLLnivJhjddCJTNboB02IkghOHQjnH1Tpp");
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
 
@@ -257,9 +262,7 @@ public class unidadFragment extends Fragment {
 
                             if (cd.isConnected()) {
 
-                                if (nivel.equalsIgnoreCase("5 Primaria"))
-
-                                {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
                                     listCanal("PLLnivJhjddCLfv6IgDJ7Pq_I11GljGf4t");
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
                                     listCanal("PLcWdL9UMc9NqZ9IuARSTLlSBJPuo3FXVS");
@@ -277,9 +280,7 @@ public class unidadFragment extends Fragment {
                         case 2:
 
                             if (cd.isConnected()) {
-                                if (nivel.equalsIgnoreCase("5 Primaria"))
-
-                                {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
                                     listCanal("PLLnivJhjddCLXFUd80aDmtuDLuh5XOWYn");
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
                                     listCanal("PLcWdL9UMc9NqX0Km_Hnmxq8omnJfF6ksl");
@@ -301,7 +302,6 @@ public class unidadFragment extends Fragment {
                                 } else if (nivel.equalsIgnoreCase("6 Primaria")) {
                                     listCanal("PLcWdL9UMc9NqzPL3v-LZamZ1FgnOjzHkP");
                                 }
-
                                 break;
                             } else {
                                 Toast.makeText(getContext(), "Estas sin Conexión", Toast.LENGTH_SHORT).show();
@@ -309,9 +309,21 @@ public class unidadFragment extends Fragment {
 
                             break;
 
+                        case 4:
+                            if (cd.isConnected()) {
+                                if (nivel.equalsIgnoreCase("5 Primaria")) {
+                                    listCanal("PLLnivJhjddCL-HA0HX__t12E1Eu-Nyzy8");
+                                } else if (nivel.equalsIgnoreCase("6 Primaria")) {
+                                    listCanal("PLcWdL9UMc9NrrCZMmzMQsgZ37u0VCqK48");
+                                }
 
+                                break;
+                            } else {
+                                Toast.makeText(getContext(), "Estas sin Conexión", Toast.LENGTH_SHORT).show();
+                            }
+
+                            break;
                     }
-
                 }//
             }
         });

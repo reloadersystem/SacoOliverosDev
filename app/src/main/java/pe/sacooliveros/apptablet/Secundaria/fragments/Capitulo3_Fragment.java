@@ -81,6 +81,8 @@ public class Capitulo3_Fragment extends Fragment {
             capitulo = "9";
         } else if (tomolistener.equalsIgnoreCase("Tomo4")) {
             capitulo = "12";
+        }else if (tomolistener.equalsIgnoreCase("Tomo5")) {
+            capitulo = "15";
         }
 
 

@@ -29,6 +29,7 @@ import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.AdminSQLiteOpenHelper
 import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.RecyclerViewAdapter;
 import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.Utilidades;
 import pe.sacooliveros.apptablet.Secundaria.Model.Model;
+import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 
 public class SConsultSeminario extends AsyncTask<String, Integer, ArrayList> {
 
@@ -65,6 +66,7 @@ public class SConsultSeminario extends AsyncTask<String, Integer, ArrayList> {
     Float versiondbconsult;
 
     Dialog dialog;
+    int countgrado = 0;
 
     public SConsultSeminario() {
 
@@ -219,12 +221,16 @@ public class SConsultSeminario extends AsyncTask<String, Integer, ArrayList> {
         if (resValues.isEmpty() == false) {
 
             ArrayList<Model> elements = new ArrayList<>();
-// si es primer grado 12
-// mostrar 17
 
-            for (int idx = 0; idx < 15; idx++)
+            String sharedata = ShareDataRead.obtenerValor(currentContext, "ServerGradoNivel");
 
-            {
+            if (sharedata.equalsIgnoreCase("1 Secundaria") || sharedata.equalsIgnoreCase("2 Secundaria")) {
+                countgrado = 12;
+            } else {
+                countgrado = 15;
+            }
+
+            for (int idx = 0; idx < countgrado; idx++) {
                 Model model = new Model();
 
                 JSONObject idxItem = (JSONObject) resValues.get(idx);

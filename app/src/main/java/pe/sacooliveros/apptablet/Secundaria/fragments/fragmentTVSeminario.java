@@ -22,7 +22,6 @@ import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapter_TVSeminario;
 import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.AdminSQLiteOpenHelper;
 import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.Utilidades;
-import pe.sacooliveros.apptablet.Secundaria.InitialFragment;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomoVSeminario;
 import pe.sacooliveros.apptablet.Secundaria.ServiceWSeminario.SConsultSeminario;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
@@ -108,7 +107,6 @@ public class fragmentTVSeminario extends Fragment {
         });
 
 
-
         //todo BD VERSIONES && BDSEMINARIO
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -120,14 +118,12 @@ public class fragmentTVSeminario extends Fragment {
                 Capitulo3_Fragment capitulo3_fragment = new Capitulo3_Fragment();
 
                 String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel").substring(0, 1);
-                String pingvalor= Boolean.toString(isOnlineNet());
+                String pingvalor = Boolean.toString(isOnlineNet());
 
                 switch (position) {
 
 
-                    case 0:
-
-                    {
+                    case 0: {
                         if (conn.isConnected()) {
 
                             if (pingvalor.equalsIgnoreCase("True")) {
@@ -211,9 +207,7 @@ public class fragmentTVSeminario extends Fragment {
                     }
 
 
-                    case 1:
-
-                    {
+                    case 1: {
                         if (conn.isConnected()) {
 
                             String estadobd = checkEmpty();
@@ -284,9 +278,7 @@ public class fragmentTVSeminario extends Fragment {
                         }
                     }
 
-                    case 2:
-
-                    {
+                    case 2: {
 
                         if (conn.isConnected()) {
 
@@ -367,10 +359,7 @@ public class fragmentTVSeminario extends Fragment {
                     break;
 
 
-                    case 3:
-
-
-                    {
+                    case 3: {
 
                         if (conn.isConnected()) {
 
@@ -457,10 +446,90 @@ public class fragmentTVSeminario extends Fragment {
                     break;
 
 
-                    case 4:
-                        Toast.makeText(getContext(), "Material no Disponible", Toast.LENGTH_SHORT).show();
+                    case 4: {
 
-                        break;
+                        if (conn.isConnected()) {
+
+                            //Boolean data= checkEmpty(); //BD esta vacia?
+                            String estadobd = checkEmpty();
+
+                            if (estadobd.equalsIgnoreCase("Contiene Datos")) {
+
+
+                                //no esta  vacia
+
+                                eliminarTomo("Tomo5");
+
+                                //http://192.169.218.177/APP/2/1/VIDEO_HELICO_SEMINARIO/TOMO4/VHS21_TOMO4.json
+
+                                SConsultSeminario consult = new SConsultSeminario(rutaserver + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/TOMO5/VHS2" + grado + "_TOMO5.json");
+                                consult.setCurrentContext(getContext());
+                                consult.setCurrentLayout(relativeVideoSeminario);    // sino cambio  solo  no  hace nada visualiza  la SSD
+                                consult.execute();
+//
+                                capitulo1_fragment.tomolistener("Tomo5");
+                                capitulo2_fragment.tomolistener("Tomo5");
+                                capitulo3_fragment.tomolistener("Tomo5");
+
+                                Fragment fragment2 = new Content_SeminarioFragment();
+                                FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+                                if (fmanager2 != null) {
+
+                                    Bundle args = new Bundle();
+                                    args.putString("Tomo", "Tomo 5");
+                                    fragment2.setArguments(args);
+
+                                    FragmentTransaction ftransaction = fmanager2.beginTransaction();
+                                    if (ftransaction != null) {
+                                        ftransaction.replace(R.id.contenedorFragments, fragment2);
+                                        ftransaction.addToBackStack("");
+                                        ftransaction.commit();
+                                    }
+                                }
+
+                                break;
+
+
+                            } else if (estadobd.equalsIgnoreCase("No Contiene Datos")) {
+
+                                //si esta  vacia
+
+                                //http://192.169.218.177/APP/2/1/VIDEO_HELICO_SEMINARIO/TOMO4/VHS21_TOMO4.json
+
+                                SConsultSeminario consult = new SConsultSeminario(rutaserver + "/APP/2/" + grado + "/VIDEO_HELICO_SEMINARIO/TOMO5/VHS2" + grado + "_TOMO5.json");
+                                consult.setCurrentContext(getContext());
+                                consult.setCurrentLayout(relativeVideoSeminario);
+                                consult.execute();
+
+
+                                capitulo1_fragment.tomolistener("Tomo5");
+                                capitulo2_fragment.tomolistener("Tomo5");
+                                capitulo3_fragment.tomolistener("Tomo5");
+
+                                Fragment fragment2 = new Content_SeminarioFragment();
+                                FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
+                                if (fmanager2 != null) {
+
+                                    Bundle args = new Bundle();
+                                    args.putString("Tomo", "Tomo 5");
+                                    fragment2.setArguments(args);
+
+                                    FragmentTransaction ftransaction = fmanager2.beginTransaction();
+                                    if (ftransaction != null) {
+                                        ftransaction.replace(R.id.contenedorFragments, fragment2);
+                                        ftransaction.addToBackStack("");
+                                        ftransaction.commit();
+                                    }
+                                }
+
+                                break;
+                            }
+                        } else {
+                            Toast.makeText(getContext(), "Material solo con Conexión a Internet", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    break;
 
 
                     case 5:

@@ -109,6 +109,10 @@ public class Capitulo1_Fragment extends Fragment {
         {
             capitulo="10";
         }
+        else if(tomolistener.equalsIgnoreCase("Tomo5"))
+        {
+            capitulo="13";
+        }
 
         String[] params = new String[2];
         params[0] = tomolistener;
