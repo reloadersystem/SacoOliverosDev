@@ -259,7 +259,6 @@ public class InitialFragment extends Fragment {
                         break;
                     }
 
-
                     case 5: {
                         Fragment fragment5 = new fragmentHDiapositivas();
                         FragmentManager fmanager5 = getActivity().getSupportFragmentManager();

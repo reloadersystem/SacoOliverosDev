@@ -1,6 +1,5 @@
 package pe.sacooliveros.apptablet.Secundaria.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,22 +24,15 @@ import pe.sacooliveros.apptablet.Secundaria.Model.mVideoMotivadores;
 public class TomoAsesoriasFragment extends Fragment {
 
     View rootview;
-
     private static final String TAG = "VideoMotivadoresFragmen";
-
     private GridView gridView;
     ArrayList<mVideoMotivadores> Lista;
     TextView tx_temas;
     ImageView img_temas;
     String descrip, grado;
     String acceso;
-
     String gradoasiste;
-
-    String sharedata;
-
     String tipogradoasiste;
-
 
     public TomoAsesoriasFragment() {
         // Required empty public constructor
@@ -55,9 +47,6 @@ public class TomoAsesoriasFragment extends Fragment {
 
         img_temas = rootview.findViewById(R.id.img_backmotivadores);
         gridView = rootview.findViewById(R.id.grid_motivadores);
-
-
-
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -94,8 +83,6 @@ public class TomoAsesoriasFragment extends Fragment {
         final AsesoriaCap2_Fragment asesoriaCap2_fragment= new AsesoriaCap2_Fragment();
         final AsesoriaCap3_Fragment asesoriaCap3_fragment= new AsesoriaCap3_Fragment();
 
-
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -110,7 +97,6 @@ public class TomoAsesoriasFragment extends Fragment {
 
                         FragmentManager fmanager = getActivity().getSupportFragmentManager();
                         if (fmanager != null) {
-
 
                             asesoriaCap1_fragment.tomolistener("TOMO"+inicio);
                             asesoriaCap2_fragment.tomolistener("TOMO"+inicio);

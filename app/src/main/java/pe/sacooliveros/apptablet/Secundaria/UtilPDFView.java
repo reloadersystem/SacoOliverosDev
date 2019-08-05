@@ -42,17 +42,9 @@ public class UtilPDFView {
         this.pdfView = pdfview;
     }
 
-
-
-
     public void pdfVisorInternet() {
 
         // progresbar.setVisibility(View.VISIBLE);
-
-        Dialog dialog= new Dialog(context);
-        dialog.show();
-
-
 
         FileLoader.with(context)
                 //.fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)

@@ -27,13 +27,9 @@ public class AsesoriaCap1_Fragment extends Fragment {
     View rootview;
     PDFView pdfView;
     ConnectionDetector cd;
-
     static String tomolistener;
-
     String capitulo;
-
     String tomo;
-
 
     public AsesoriaCap1_Fragment() {
         // Required empty public constructor
@@ -76,13 +72,11 @@ public class AsesoriaCap1_Fragment extends Fragment {
             capitulo = "19";
         } else if (tomolistener.equalsIgnoreCase("TOMO8")) {
             tomo = "8";
-            capitulo = "21";
+            capitulo = "22";
         }
-
 
         String ruta_servidor = getString(R.string.servidor_ruta);
         final String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel").substring(0, 1);
-
         final String urlADescargar = ruta_servidor + "/APP/2/" + grado + "/HELICO_ASESORIAS/" + tomolistener + "/ASESORIAT" + tomo + "C" + capitulo + ".pdf";
 
         if (cd.isConnected()) {
@@ -91,11 +85,7 @@ public class AsesoriaCap1_Fragment extends Fragment {
             utilPdfView.pdfVisorInternet();
         }
 
-
-        final FloatingActionsMenu floatingActionsMenu= rootview.findViewById(R.id.menu_fab);
-
-
-
+        final FloatingActionsMenu floatingActionsMenu = rootview.findViewById(R.id.menu_fab);
 
         final FloatingActionButton fab = rootview.findViewById(R.id.floatingActionAsesoria);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -109,9 +99,7 @@ public class AsesoriaCap1_Fragment extends Fragment {
                 generalFileManager.downloadFileView(file_route, pdfusername);
                 floatingActionsMenu.collapse();
 
-
-
-               // fab.setVisibility(fab.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);// desaparece el item
+                // fab.setVisibility(fab.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);// desaparece el item
 
             }
         });

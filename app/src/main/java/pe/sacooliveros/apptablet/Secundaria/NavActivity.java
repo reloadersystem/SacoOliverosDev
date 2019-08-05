@@ -1,6 +1,5 @@
 package pe.sacooliveros.apptablet.Secundaria;
 
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -80,6 +79,7 @@ import pe.sacooliveros.apptablet.Secundaria.fragments.fragmentVSeminario;
 import pe.sacooliveros.apptablet.ServiceVersion.SConsultVersion;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
+import pe.sacooliveros.apptablet.Utils.ValidateCopyright;
 import pe.sacooliveros.apptablet.ViewTomo3Activity;
 import pe.sacooliveros.apptablet.comunicador;
 
@@ -124,11 +124,7 @@ public class NavActivity extends AppCompatActivity
     BigDecimal updateapkcode;
 
     public static final int MY_REQUESTCODE = 1001;
-
     AppUpdateManager mAppUpdateManager;
-    //AppUpdateManager appUpdateManager;
-
-
     private static final String TAG = "UPDATEPLAY";
 
     public static String obtenerValor(Context context, String keyPref) {
@@ -167,52 +163,29 @@ public class NavActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
-//        mAppUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
-//
-//        mAppUpdateManager.registerListener(installStateUpdatedListener);
-//        mAppUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
-//
-//            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-//                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-//
-//                try {
-//                    mAppUpdateManager.startUpdateFlowForResult(
-//                            appUpdateInfo, AppUpdateType.IMMEDIATE, NavActivity.this, MY_REQUESTCODE);
-//                } catch (IntentSender.SendIntentException e) {
-//                    e.printStackTrace();
-//                }
-//            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
-//                popupSnackbarForCompleteUpdate();
-//            } else {
-//                Log.e(TAG, "checkForUpdateAvailability: something else");
-//            }
-//        });
-
         mAppUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
-        Log.e(TAG, mAppUpdateManager.getAppUpdateInfo().toString());
-        mAppUpdateManager
-                .getAppUpdateInfo()
-                .addOnSuccessListener(
-                        appUpdateInfo -> {
+        mAppUpdateManager.registerListener(installStateUpdatedListener);
+        mAppUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
 
-                            // Checks that the platform will allow the specified type of update.
-                            if ((appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE)
-                                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-                                // Request the update.
-                                try {
-                                    mAppUpdateManager.startUpdateFlowForResult(
-                                            appUpdateInfo,
-                                            AppUpdateType.IMMEDIATE,
-                                            this,
-                                            MY_REQUESTCODE);
-                                } catch (IntentSender.SendIntentException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
 
-//        final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
-//        validateCopyright.isvalidate();
+                try {
+                    mAppUpdateManager.startUpdateFlowForResult(
+                            appUpdateInfo, AppUpdateType.IMMEDIATE, NavActivity.this, MY_REQUESTCODE);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                popupSnackbarForCompleteUpdate();
+            } else {
+                Log.e(TAG, "checkForUpdateAvailability: something else");
+            }
+        });
+
+
+        final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
+        validateCopyright.isvalidate();
 
         if (getIntent() != null && getIntent().getExtras() != null) {
             Bundle bundle = this.getIntent().getExtras();
@@ -329,6 +302,7 @@ public class NavActivity extends AppCompatActivity
 //            updateapk = Double.valueOf("2.1440");
 //        }
 
+/*   todo Desactivando la funcionalidad de actualizar desde el servidor o firebase linea 332-365
 
         if (cd.isConnected() && updateapk != null) {
 
@@ -361,7 +335,7 @@ public class NavActivity extends AppCompatActivity
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-        }
+        }*/
 
         if (!isAppInstalled2) {
 
@@ -396,9 +370,7 @@ public class NavActivity extends AppCompatActivity
             } else
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_STORAGE);
 
-            if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("Regular") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE"))
-
-            {
+            if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("Regular") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE")) {
 
                 File file = new File(getFilesDir() + "/APP");
                 deleteRecursive(file);// validar  que no haya  carpetas creadas
@@ -491,9 +463,7 @@ public class NavActivity extends AppCompatActivity
                 directoryCreate.createCarpetas(getFilesDir() + "/APP");
             }
 
-        } else
-
-        {
+        } else {
 
             String sesiondata = ShareDataRead.obtenerValor(getApplicationContext(), "CerrarSesion");
 
@@ -520,9 +490,7 @@ public class NavActivity extends AppCompatActivity
                     directoryUtilCatolica.createCarpetas(getFilesDir() + "/APP");
                 }
 
-                if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("Regular") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE"))
-
-                {
+                if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("Regular") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE")) {
 
                     File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/file_loader");
                     deleteRecursive(filecache);
@@ -597,9 +565,7 @@ public class NavActivity extends AppCompatActivity
                     directoryutilpre.verGradoSec(servernivel);
                     directoryutilpre.createCarpetas(getFilesDir() + "/APP");
 
-                } else if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("CIRCULO"))
-
-                {
+                } else if (niveltexto.equalsIgnoreCase("Secundaria") && gradoasiste.equalsIgnoreCase("CIRCULO")) {
 
                     File filecache = new File("/data/user/0/pe.sacooliveros.apptablet/cache/file_loader");
                     deleteRecursive(filecache);
@@ -693,9 +659,7 @@ public class NavActivity extends AppCompatActivity
             ftransaction.commit();
 
 
-        } else if (gradoasiste.equalsIgnoreCase("Regular") || gradoasiste.equalsIgnoreCase("CIRCULO") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE"))
-
-        {
+        } else if (gradoasiste.equalsIgnoreCase("Regular") || gradoasiste.equalsIgnoreCase("CIRCULO") || gradonombre.equalsIgnoreCase("Cuarto Año") && gradoasiste.equalsIgnoreCase("PRE")) {
             initialFragment = new InitialFragment();
 
             FragmentManager fmanager = getSupportFragmentManager();
@@ -703,9 +667,7 @@ public class NavActivity extends AppCompatActivity
             ftransaction.add(R.id.contenedorFragments, initialFragment);
             ftransaction.commit();
 
-        } else if (gradoasiste.equalsIgnoreCase("SAN MARCOS"))
-
-        {
+        } else if (gradoasiste.equalsIgnoreCase("SAN MARCOS")) {
 
             mainFragmentuni = new mainFragmentUni();
             FragmentManager fmanager = getSupportFragmentManager();
@@ -713,9 +675,7 @@ public class NavActivity extends AppCompatActivity
             ftransaction.add(R.id.contenedorFragments, mainFragmentuni);
             ftransaction.commit();
 
-        } else if (gradoasiste.equalsIgnoreCase("CATOLICA"))
-
-        {
+        } else if (gradoasiste.equalsIgnoreCase("CATOLICA")) {
 
 //            FragmentManager fragmentManager= getSupportFragmentManager();
 //
@@ -734,9 +694,7 @@ public class NavActivity extends AppCompatActivity
             ftransaction.addToBackStack("mainfragmentuni");
             ftransaction.commit();
 
-        } else if (gradoasiste.equalsIgnoreCase("PRE") && gradonombre.equalsIgnoreCase("Quinto Año"))
-
-        {
+        } else if (gradoasiste.equalsIgnoreCase("PRE") && gradonombre.equalsIgnoreCase("Quinto Año")) {
 
             mainFragmentuni = new mainFragmentUni();
             FragmentManager fmanager = getSupportFragmentManager();
@@ -1332,9 +1290,7 @@ public class NavActivity extends AppCompatActivity
                     }
                 }
 
-            } else if (gradoasiste.equalsIgnoreCase("UNI") || gradoasiste.equalsIgnoreCase("SAN MARCOS") || gradonombre.equalsIgnoreCase("Quinto Año") && gradoasiste.equalsIgnoreCase("PRE"))
-
-            {
+            } else if (gradoasiste.equalsIgnoreCase("UNI") || gradoasiste.equalsIgnoreCase("SAN MARCOS") || gradonombre.equalsIgnoreCase("Quinto Año") && gradoasiste.equalsIgnoreCase("PRE")) {
                 Fragment fragment7 = new fragmentVSeminario();
                 FragmentManager fmanager7 = this.getSupportFragmentManager();
                 if (fmanager7 != null) {
@@ -1700,18 +1656,6 @@ public class NavActivity extends AppCompatActivity
         editor.commit();
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == MY_REQUESTCODE) {
-            if (resultCode != RESULT_OK) {
-                Log.e(TAG, "Update flow failed! Result code: " + resultCode);
-            }
-        }
-    }
-
     private void popupSnackbarForCompleteUpdate() {
         Snackbar snackbar = Snackbar.make(
                 findViewById(R.id.drawer_layout),
@@ -1727,6 +1671,19 @@ public class NavActivity extends AppCompatActivity
         snackbar.setActionTextColor(getResources().getColor(R.color.accent));
         snackbar.show();
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == MY_REQUESTCODE) {
+            if (resultCode != RESULT_OK) {
+                Log.e(TAG, "Update flow failed! Result code: " + resultCode);
+            }
+        }
+    }
+
 
     InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
         @Override
@@ -1770,5 +1727,4 @@ public class NavActivity extends AppCompatActivity
                             }
                         });
     }
-
 }
