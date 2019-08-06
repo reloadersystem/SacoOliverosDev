@@ -134,9 +134,7 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
                         // mMainNav.setItemBackgroundResource(R.color.colorPrimary);
                         // setFragment(homeFragment);
 
-
                         viewPager.setCurrentItem(0);
-
 
                         break;
 

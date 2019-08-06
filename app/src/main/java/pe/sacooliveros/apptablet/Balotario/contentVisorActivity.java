@@ -1,19 +1,21 @@
 package pe.sacooliveros.apptablet.Balotario;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
-import android.support.design.widget.FloatingActionButton;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -21,11 +23,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnDrawListener;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
@@ -39,13 +45,22 @@ import com.krishna.fileloader.pojo.FileResponse;
 import com.krishna.fileloader.request.FileLoadRequest;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import pe.sacooliveros.apptablet.R;
+import pe.sacooliveros.apptablet.Secundaria.Adapter.RecyclerBalotariosAdapter;
 import pe.sacooliveros.apptablet.Secundaria.NavActivity;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
 
 import static android.os.Environment.getExternalStorageDirectory;
+import static java.lang.Thread.sleep;
 
 public class contentVisorActivity extends AppCompatActivity {
 
@@ -70,6 +85,7 @@ public class contentVisorActivity extends AppCompatActivity {
     MenuInflater inflater;
     MenuItem shareItem;
     String ssdtablet;
+    ConstraintLayout cl_popupmessage;
 
     private static final boolean AUTO_HIDE = true;
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
@@ -181,7 +197,21 @@ public class contentVisorActivity extends AppCompatActivity {
             }
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        cl_popupmessage= findViewById(R.id.cl_popupmessage);
+
+        final Animation myAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_transition_animation);
+
+        cl_popupmessage.setAnimation(myAnim);
+
+        cl_popupmessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cl_popupmessage.setVisibility(View.INVISIBLE);
+            }
+        });
+
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,7 +227,132 @@ public class contentVisorActivity extends AppCompatActivity {
 
 
             }
+        });*/
+
+
+        final FloatingActionsMenu floatingActionsMenu = findViewById(R.id.menu_flbBalotarios);
+
+        FloatingActionButton floatingImprimir = findViewById(R.id.flb_imprimir);
+        floatingImprimir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+                {
+                    String printpdf = Environment.getExternalStorageDirectory() + "/PDFiles/" + ssdtablet;
+                    PrintDocumentAdapter printAdapter = new PdfDocumentAdapter(getApplicationContext(), printpdf);
+                    printManager.print(ssdtablet, printAdapter, new PrintAttributes.Builder().build());
+                }
+                floatingActionsMenu.collapse();
+            }
         });
+
+        FloatingActionButton floatingDescargar = findViewById(R.id.flb_descargar);
+        floatingDescargar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String urlADescargar = urlcode;
+                descargarPDF(urlADescargar);
+
+                floatingActionsMenu.collapse();
+            }
+        });
+
+        FloatingActionButton floatingRecargar = findViewById(R.id.flb_recargar);
+        floatingRecargar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (cd.isConnected()) {
+
+                    File filecachepdf = new File(getExternalStorageDirectory() + "/PDFiles/" + ssdtablet);
+                    boolean deleted = filecachepdf.delete();
+                    shareItem.setVisible(false);
+
+                    progresbar.setVisibility(View.VISIBLE);
+                    FileLoader.with(getApplicationContext())
+                            .fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
+                            .load(urlcode)
+                            .asFile(new FileRequestListener<File>() {
+                                @Override
+                                public void onLoad(FileLoadRequest fileLoadRequest, FileResponse<File> fileResponse) {
+                                    progresbar.setVisibility(View.GONE);
+                                    File pdfFile = fileResponse.getBody();
+                                    pdfView.fromFile(pdfFile)
+                                            .password(password)
+                                            .defaultPage(pageNumber)
+                                            .enableDoubletap(true)
+                                            .swipeHorizontal(true)
+                                            .spacing(0)
+                                            .onRender(new OnRenderListener() {   // visualizar  3 , 4 paginas en miniatura landscape
+                                                @Override
+                                                public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
+                                                    pdfView.fitToWidth(pdfView.getCurrentPage());
+                                                }
+                                            })
+                                            .onDraw(new OnDrawListener() {
+                                                @Override
+                                                public void onLayerDrawn(Canvas canvas, float pageWidth, float pageHeight, int displayedPage) {
+                                                }
+                                            })
+                                            .onPageError(new OnPageErrorListener() {
+                                                @Override
+                                                public void onPageError(int page, Throwable t) {
+                                                    Toast.makeText(contentVisorActivity.this, "error" + page, Toast.LENGTH_SHORT).show();
+                                                }
+                                            })
+                                            .onPageChange(new OnPageChangeListener() {
+                                                @Override
+                                                public void onPageChanged(int page, int pageCount) {
+                                                    pageNumber = page;
+                                                    pagecontador = pageCount;
+                                                    setTitle(tema);
+                                                }
+                                            })
+                                            .onTap(new OnTapListener() {
+                                                @Override
+                                                public boolean onTap(MotionEvent e) {
+                                                    return true;
+                                                }
+                                            })
+                                            .onRender(new OnRenderListener() {
+                                                @Override
+                                                public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
+                                                    pdfView.fitToWidth();
+
+                                                }
+                                            })
+                                            .enableAntialiasing(true)
+                                            .invalidPageColor(Color.WHITE)
+                                            .onLoad(new OnLoadCompleteListener() {
+                                                @Override
+                                                public void loadComplete(int nbPages) {
+
+                                                    shareItem.setVisible(true);
+                                                }
+                                            })
+                                            .load();
+                                }
+
+                                @Override
+                                public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
+                                    //Toast.makeText(ViewTomo3Activity.this, "Pruebe mas  tarde" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(contentVisorActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
+
+                                    progresbar.setVisibility(View.GONE);
+                                    shareItem.setVisible(true);
+                                }
+                            });
+
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Estas sin conexión", Toast.LENGTH_SHORT).show();
+                }
+                floatingActionsMenu.collapse();
+            }
+        });
+
 
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -511,7 +666,6 @@ public class contentVisorActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-
             return true;
         }
 
@@ -545,5 +699,131 @@ public class contentVisorActivity extends AppCompatActivity {
         editor = settings.edit();
         editor.putString(keyPref, valor);
         editor.commit();
+    }
+
+
+    private void descargarPDF(String urlADescargar) {
+
+        ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+        progressDialog.setIndeterminate(true);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setMessage("Descargando PDF...");
+
+        new DescargarPDFAsynTask(progressDialog).execute(urlADescargar);
+    }
+
+    private class DescargarPDFAsynTask extends AsyncTask<String, Integer, String> {
+
+       // ProgressDialog progressDialog;
+
+        public DescargarPDFAsynTask(ProgressDialog progressDialog) {
+          //  this.progressDialog = progressDialog;
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+           // progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... urlPDF) {
+
+            HttpURLConnection conexion = null;
+            InputStream input = null;
+            OutputStream output = null;
+
+            //ruta_storage = context.getString(R.string.ruta_raiz);
+            ///data/user/0/pe.sacooliveros.apptablet/files
+
+            String urlADescargar = urlPDF[0];
+
+            try {
+                URL url = new URL(urlADescargar);
+                conexion = (HttpURLConnection) url.openConnection();
+                conexion.connect();
+
+                if (conexion.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                    return "Conexión no realizada correctamente";
+                }
+
+                input = conexion.getInputStream();
+
+
+                //todo  falta nombre...
+
+                String rutaficheroGuardado = Environment.getExternalStorageDirectory() + "/SacoOliveros/" + tema + ".pdf";
+
+                output = new FileOutputStream(rutaficheroGuardado);
+
+                int tamanoFichero = conexion.getContentLength();
+
+                byte[] data = new byte[3072];
+                int count;
+                int total = 0;
+
+
+                while ((count = input.read(data)) != -1) {
+
+                    sleep(1);
+                    output.write(data, 0, count);
+
+                    total += count;
+                    publishProgress((int) (total * 100 / tamanoFichero));
+
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                //return "Error: " + e.getMessage();
+                return "Error: " + "Intente otra vez";
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "Sin Conexión";
+            }
+            //cerrando la carpeta una vez que termino
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+
+                try {
+                    if (input != null) input.close();
+                    //cerrando conexion progress
+                    if (output != null) output.close();
+                    if (conexion != null) conexion.disconnect();
+
+                   // progressDialog.dismiss();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+            return "Se realizó Correctamente";
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            //%de descarga
+            super.onProgressUpdate(values);
+
+//            progressDialog.setIndeterminate(false);
+//            progressDialog.setMax(100);
+//            progressDialog.setProgress(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String mensaje) {
+            super.onPostExecute(mensaje);
+
+            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+          //  progressDialog.dismiss();
+            //Tiempo estimado
+        }
     }
 }
