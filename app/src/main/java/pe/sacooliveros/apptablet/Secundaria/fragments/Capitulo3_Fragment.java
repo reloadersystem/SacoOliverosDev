@@ -72,7 +72,6 @@ public class Capitulo3_Fragment extends Fragment {
         SQLiteDatabase db = conn.getReadableDatabase();
         Model model = null;
 
-
         if (tomolistener.equalsIgnoreCase("Tomo1")) {
             capitulo = "3";
         } else if (tomolistener.equalsIgnoreCase("Tomo2")) {
@@ -81,8 +80,14 @@ public class Capitulo3_Fragment extends Fragment {
             capitulo = "9";
         } else if (tomolistener.equalsIgnoreCase("Tomo4")) {
             capitulo = "12";
-        }else if (tomolistener.equalsIgnoreCase("Tomo5")) {
+        } else if (tomolistener.equalsIgnoreCase("Tomo5")) {
             capitulo = "15";
+        } else if (tomolistener.equalsIgnoreCase("Tomo6")) {
+            capitulo = "18";
+        } else if (tomolistener.equalsIgnoreCase("Tomo7")) {
+            capitulo = "21";
+        } else if (tomolistener.equalsIgnoreCase("Tomo8")) {
+            capitulo = "24";
         }
 
 

@@ -65,31 +65,6 @@ public class Segundo_BalFragment extends Fragment {
             numperiodo = "CUARTO";
         }
 
-        //http://192.169.218.177/APP/2/5/BALOTARIOS/PRIMERO/BALOTARIO_MENSUAL/Psicologia1erMensual.pdf
-//
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_1, "FISICA", R.drawable.downloadbal, "Física - " + balotariotipo, "Fisica" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_2, "QUIMICA", R.drawable.downloadbal, "Química - " + balotariotipo, "Quimica" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_3, "BIOLOGIA", R.drawable.downloadbal, "Biología - " + balotariotipo, "Biologia" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_4, "ARITMETICA", R.drawable.downloadbal, "Aritmética - " + balotariotipo, "Aritmetica" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_5, "ALGEBRA", R.drawable.downloadbal, "Algebra - " + balotariotipo, "Algebra" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_6, "GEOMETRIA", R.drawable.downloadbal, "Geometría - " + balotariotipo, "Geometria" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_7, "TRIGONOMETRIA", R.drawable.downloadbal, "Trigonometría - " + balotariotipo, "Trigonometria" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.ciencias_8, "RAZONAMIENTO_MATEMATICO", R.drawable.downloadbal, "Razonamiento Matemático - " + balotariotipo, "RM" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.letras_1, "LENGUAJE", R.drawable.downloadbal, "Lenguaje - " + balotariotipo, "Lenguaje" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.letras_2, "LITERATURA", R.drawable.downloadbal, "Literatura - " + balotariotipo, "Literatura" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.letras_3, "RAZONAMIENTO_VERBAL", R.drawable.downloadbal, "Razonamiento Verbal - " + balotariotipo, "RV" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.letras_4, "HISTORIA_DEL_PERU", R.drawable.downloadbal, "Historia del Perú - " + balotariotipo, "HP" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.letras_5, "GEOGRAFIA", R.drawable.downloadbal, "Geografía - " + balotariotipo, "Geografia" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        listaBalotarioss.add(new mBalotarios(R.drawable.letras_9, "INGLES", R.drawable.downloadbal, "Inglés - " + balotariotipo, "Ingles" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//
-//        if (sharedata.equalsIgnoreCase("3 Secundaria") || sharedata.equalsIgnoreCase("4 Secundaria") || sharedata.equalsIgnoreCase("5 Secundaria")) {
-//
-//            listaBalotarioss.add(new mBalotarios(R.drawable.letras_7, "ECONOMIA", R.drawable.downloadbal, "Economía - " + balotariotipo, "Economia" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//            listaBalotarioss.add(new mBalotarios(R.drawable.letras_6, "HISTORIA_UNIVERSAL", R.drawable.downloadbal, "Historia Universal - " + balotariotipo, "HU" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//            listaBalotarioss.add(new mBalotarios(R.drawable.letras_8, "PSICOLOGIA", R.drawable.downloadbal, "Psicología - " + balotariotipo, "Psicologia" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
-//        }
-
-
         listaBalotarioss.add(new mBalotarios(R.drawable.publicaciones1, "Física", R.drawable.downloadpublic, "Física - " + balotariotipo, "Fisica" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
         listaBalotarioss.add(new mBalotarios(R.drawable.publicaciones2, "Química", R.drawable.downloadpublic, "Química - " + balotariotipo, "Quimica" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));
         listaBalotarioss.add(new mBalotarios(R.drawable.publicaciones3, "Biología", R.drawable.downloadpublic, "Biología - " + balotariotipo, "Biologia" + balotariotipo, numperiodo + "/SOLUCIONARIO_" + tipoperiodo + "/"));

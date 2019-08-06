@@ -26,12 +26,14 @@
 
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_popupmessage"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="130dp"
         android:layout_marginRight="25dp"
+        android:elevation="3dp"
         android:background="@drawable/messagepopup"
         android:layout_marginTop="50dp"
         >

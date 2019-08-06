@@ -66,7 +66,6 @@
             android:tint="@color/cardview_light_background"
             app:backgroundTint="@color/redlight"
             app:fabSize="normal"
-            android:visibility="gone"
             />
   </android.support.design.widget.CoordinatorLayout>
 

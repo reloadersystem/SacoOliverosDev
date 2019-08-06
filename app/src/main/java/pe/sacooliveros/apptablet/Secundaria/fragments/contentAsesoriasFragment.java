@@ -3,6 +3,7 @@ package pe.sacooliveros.apptablet.Secundaria.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
@@ -22,6 +25,8 @@ import pe.sacooliveros.apptablet.Utils.ViewPagerAdapter;
 public class contentAsesoriasFragment extends Fragment {
 
     View rootview;
+
+    ConstraintLayout cl_popupmessage;
 
     AsesoriaCap1_Fragment asesoriaCap1_fragment;
     AsesoriaCap2_Fragment asesoriaCap2_fragment;
@@ -48,9 +53,22 @@ public class contentAsesoriasFragment extends Fragment {
         asesoriaCap2_fragment = new AsesoriaCap2_Fragment();
         asesoriaCap3_fragment = new AsesoriaCap3_Fragment();
 
+        cl_popupmessage= rootview.findViewById(R.id.cl_popupmessage);
+
+        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.fade_transition_animation);
+
+        cl_popupmessage.setAnimation(myAnim);
+
+        cl_popupmessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cl_popupmessage.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-
             tomo = bundle.getString("Tomo");
         }
 

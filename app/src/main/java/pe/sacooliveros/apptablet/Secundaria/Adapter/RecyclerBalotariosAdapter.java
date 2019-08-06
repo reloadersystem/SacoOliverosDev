@@ -117,8 +117,8 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
                     } else {
                         String URL = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
 
-                       // Intent intent = new Intent(mContext, contentVisorActivity.class);
-                       Intent intent = new Intent(mContext, VisorPdfActivity.class);
+                        Intent intent = new Intent(mContext, contentVisorActivity.class);
+                      // Intent intent = new Intent(mContext, VisorPdfActivity.class);
 //
                         intent.putExtra("ViewType", "internet");
                         intent.putExtra("URL", URL);
@@ -131,8 +131,8 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
 
                     String URL = servidor_ruta + "/APP/2/" + numgrado + "/BALOTARIOS/" + complementurl + namedescarga + ".pdf";
 
-                    //Intent intent = new Intent(mContext, contentVisorActivity.class);
-                   Intent intent = new Intent(mContext, VisorPdfActivity.class);
+                    Intent intent = new Intent(mContext, contentVisorActivity.class);
+                   //Intent intent = new Intent(mContext, VisorPdfActivity.class);
 
                     intent.putExtra("ViewType", "internet");
                     intent.putExtra("URL", URL);

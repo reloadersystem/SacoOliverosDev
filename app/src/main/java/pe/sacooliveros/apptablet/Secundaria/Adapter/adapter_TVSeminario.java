@@ -45,8 +45,6 @@ public class adapter_TVSeminario extends BaseAdapter {
             convertView= LayoutInflater.from(context).inflate(R.layout.item_tvseminario,null);
 
         }
-
-
         ImageView imgfoto= convertView.findViewById(R.id.img_vhseminario);
         imgfoto.setImageResource(arrayList.get(position).getImagen_logo());
 

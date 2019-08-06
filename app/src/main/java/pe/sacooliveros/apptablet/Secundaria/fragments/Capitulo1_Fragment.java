@@ -10,14 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.AdminSQLiteOpenHelper;
 import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.RecyclerViewAdapter;
-import pe.sacooliveros.apptablet.Secundaria.DataBaseHelper.Utilidades;
 import pe.sacooliveros.apptablet.Secundaria.Model.Model;
 import pe.sacooliveros.apptablet.Secundaria.ServiceWSeminario.SConsultSeminario;
 
@@ -44,9 +42,8 @@ public class Capitulo1_Fragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static void tomolistener(String tomoinfo)
-    {
-        tomolistener= tomoinfo;
+    public static void tomolistener(String tomoinfo) {
+        tomolistener = tomoinfo;
     }
 
     @Override
@@ -93,25 +90,22 @@ public class Capitulo1_Fragment extends Fragment {
 
         //Cursor cursor = db.rawQuery("Select  * from videoseminario where tomopdf= 'Tomo1' and capitulo='2'",null);
 
-        if(tomolistener.equalsIgnoreCase("Tomo1"))
-        {
-            capitulo="1";
-        }
-        else if(tomolistener.equalsIgnoreCase("Tomo2"))
-        {
-            capitulo="4";
-        }else if(tomolistener.equalsIgnoreCase("Tomo3"))
-        {
-            capitulo="7";
-        }
-
-        else if(tomolistener.equalsIgnoreCase("Tomo4"))
-        {
-            capitulo="10";
-        }
-        else if(tomolistener.equalsIgnoreCase("Tomo5"))
-        {
-            capitulo="13";
+        if (tomolistener.equalsIgnoreCase("Tomo1")) {
+            capitulo = "1";
+        } else if (tomolistener.equalsIgnoreCase("Tomo2")) {
+            capitulo = "4";
+        } else if (tomolistener.equalsIgnoreCase("Tomo3")) {
+            capitulo = "7";
+        } else if (tomolistener.equalsIgnoreCase("Tomo4")) {
+            capitulo = "10";
+        } else if (tomolistener.equalsIgnoreCase("Tomo5")) {
+            capitulo = "13";
+        } else if (tomolistener.equalsIgnoreCase("Tomo6")) {
+            capitulo = "16";
+        } else if (tomolistener.equalsIgnoreCase("Tomo7")) {
+            capitulo = "19";
+        } else if (tomolistener.equalsIgnoreCase("Tomo8")) {
+            capitulo = "22";
         }
 
         String[] params = new String[2];
@@ -119,7 +113,7 @@ public class Capitulo1_Fragment extends Fragment {
         params[1] = capitulo;
 
         //Cursor cursor = db.rawQuery("Select  * from videoseminario where tomopdf= ? and capitulo='1'",params);
-        Cursor cursor = db.rawQuery("Select  * from videoseminario where tomopdf= ? and capitulo= ?",params);
+        Cursor cursor = db.rawQuery("Select  * from videoseminario where tomopdf= ? and capitulo= ?", params);
 
         while (cursor.moveToNext()) {
             model = new Model();
