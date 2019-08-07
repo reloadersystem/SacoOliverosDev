@@ -27,6 +27,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -42,6 +44,7 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.OnSuccessListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -165,24 +168,27 @@ public class NavActivity extends AppCompatActivity
 
         mAppUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
         mAppUpdateManager.registerListener(installStateUpdatedListener);
-        mAppUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
 
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+        mAppUpdateManager.getAppUpdateInfo().addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+            @Override
+            public void onSuccess(AppUpdateInfo appUpdateInfo) {
 
-                try {
-                    mAppUpdateManager.startUpdateFlowForResult(
-                            appUpdateInfo, AppUpdateType.IMMEDIATE, NavActivity.this, MY_REQUESTCODE);
-                } catch (IntentSender.SendIntentException e) {
-                    e.printStackTrace();
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                        && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+
+                    try {
+                        mAppUpdateManager.startUpdateFlowForResult(
+                                appUpdateInfo, AppUpdateType.IMMEDIATE, NavActivity.this, MY_REQUESTCODE);
+                    } catch (IntentSender.SendIntentException e) {
+                        e.printStackTrace();
+                    }
+                } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                    popupSnackbarForCompleteUpdate();
+                } else {
+                    Log.e(TAG, "checkForUpdateAvailability: something else");
                 }
-            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
-                popupSnackbarForCompleteUpdate();
-            } else {
-                Log.e(TAG, "checkForUpdateAvailability: something else");
             }
         });
-
 
         final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
         validateCopyright.isvalidate();
@@ -199,17 +205,13 @@ public class NavActivity extends AppCompatActivity
             servernivel = bundle.getString("ServerGradoNivel"); //2 Secundaria
             matricularserver = bundle.getString("MatriculaServer");
             gradoasiste = bundle.getString("TipoGradoAsiste");
-
             apellidopaterno = bundle.getString("ApellidoPaterno");
             apellidomaterno = bundle.getString("ApellidoMaterno");
         }
 
         cd = new ConnectionDetector(getApplicationContext());
-
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         urlfotoalumno = ShareDataRead.obtenerValor(getApplicationContext(), "URLPhoto");
-
         String codigoAuth = ShareDataRead.obtenerValor(getApplicationContext(), "codigo_autenticacion");
 
         //todo servicio que envia  codigo autenticacion y  versiontablet
@@ -1327,8 +1329,6 @@ public class NavActivity extends AppCompatActivity
                 }
 
             }
-
-
         } else if (id == R.id.nav_efisica) {
 
             Fragment fragment10 = new contentFisicaFragment();
@@ -1345,10 +1345,7 @@ public class NavActivity extends AppCompatActivity
                     ftransaction.addToBackStack("");
                     ftransaction.commit();
                 }
-
             }
-
-
         } else if (id == R.id.nav_pfmatematica) {
 
             Fragment fragment7 = new fragmentPFMatematica();
@@ -1358,7 +1355,6 @@ public class NavActivity extends AppCompatActivity
                 Bundle args = new Bundle();
                 args.putString("ACCESO", nivelacceso);
                 fragment7.setArguments(args);
-
 
                 FragmentTransaction ftransaction = fmanager7.beginTransaction();
                 if (ftransaction != null) {
@@ -1662,9 +1658,12 @@ public class NavActivity extends AppCompatActivity
                 "New app is Ready!",
                 Snackbar.LENGTH_INDEFINITE);
 
-        snackbar.setAction("Install", view -> {
-            if (mAppUpdateManager != null) {
-                mAppUpdateManager.completeUpdate();
+        snackbar.setAction("RESTART", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mAppUpdateManager != null) {
+                    mAppUpdateManager.completeUpdate();
+                }
             }
         });
 
@@ -1709,22 +1708,23 @@ public class NavActivity extends AppCompatActivity
 
         mAppUpdateManager
                 .getAppUpdateInfo()
-                .addOnSuccessListener(
-                        appUpdateInfo -> {
-
-                            if (appUpdateInfo.updateAvailability()
-                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-                                // If an in-app update is already running, resume the update.
-                                try {
-                                    mAppUpdateManager.startUpdateFlowForResult(
-                                            appUpdateInfo,
-                                            AppUpdateType.IMMEDIATE,
-                                            this,
-                                            MY_REQUESTCODE);
-                                } catch (IntentSender.SendIntentException e) {
-                                    e.printStackTrace();
-                                }
+                .addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+                    @Override
+                    public void onSuccess(AppUpdateInfo appUpdateInfo) {
+                        if (appUpdateInfo.updateAvailability()
+                                == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                            // If an in-app update is already running, resume the update.
+                            try {
+                                mAppUpdateManager.startUpdateFlowForResult(
+                                        appUpdateInfo,
+                                        AppUpdateType.IMMEDIATE,
+                                        NavActivity.this,
+                                        MY_REQUESTCODE);
+                            } catch (IntentSender.SendIntentException e) {
+                                e.printStackTrace();
                             }
-                        });
+                        }
+                    }
+                });
     }
 }

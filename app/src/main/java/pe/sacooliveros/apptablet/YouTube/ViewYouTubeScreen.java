@@ -19,25 +19,15 @@ import pe.sacooliveros.apptablet.R;
 public class ViewYouTubeScreen extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, YouTubePlayer.PlaybackEventListener {
 
     YouTubePlayerView youTubePlayerView;
-
     YouTubePlayer.PlayerStyle style;
-
     String claveyoutube = "AIzaSyBBoMapePV_AthrQPLWevncKB-RVw6QXtw";
-
-
     String id_channel;
     String listChanel;
-
     TextView play_time;
-
     ImageButton play_video, pause_video;
-
     SeekBar video_seekbar;
-
     private Handler mHandler = null;
-
     private YouTubePlayer mPlayer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

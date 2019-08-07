@@ -41,8 +41,6 @@ public class YouTubeControls extends YouTubeBaseActivity implements YouTubePlaye
     String claveyoutube = "AIzaSyD9GZLfzFIdowg9dIJyb6jfgac3P6mRp1U";
 
 
-
-
     TextView play_time;
 
     ImageButton play_video, pause_video;
@@ -71,7 +69,6 @@ public class YouTubeControls extends YouTubeBaseActivity implements YouTubePlaye
         play_time = findViewById(R.id.play_time);
 
         mHandler = new Handler();
-
 
         style = YouTubePlayer.PlayerStyle.MINIMAL;
 

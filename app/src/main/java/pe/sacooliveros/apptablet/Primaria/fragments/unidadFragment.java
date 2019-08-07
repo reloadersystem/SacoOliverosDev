@@ -28,49 +28,33 @@ import pe.sacooliveros.apptablet.YouTube.YouTubeViewer;
 public class unidadFragment extends Fragment {
 
     View rootview;
-
     private GridView gridView;
-
     ArrayList<mPlan> Lista;
-
     String tema;
-
     TextView tx_plan;
-
     String nivel;
-
     ConnectionDetector cd;
-
 
     public unidadFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootview = inflater.inflate(R.layout.fragment_unidad, container, false);
-
         gridView = rootview.findViewById(R.id.ma_plan);
-
         tx_plan = rootview.findViewById(R.id.tx_plan);
-
         cd = new ConnectionDetector(getContext());
-
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-
             tema = bundle.getString("Temario");
-
         }
 
         tx_plan.setText(tema);
-
         nivel = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
-
 
         Lista = new ArrayList<mPlan>();
 
@@ -323,6 +307,7 @@ public class unidadFragment extends Fragment {
                             }
 
                             break;
+
                     }
                 }//
             }

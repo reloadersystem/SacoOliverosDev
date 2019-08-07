@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -46,43 +47,26 @@ import pe.sacooliveros.apptablet.ViewTomo3Activity;
 
 public class YouTubeViewer extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, YouTubePlayer.PlaybackEventListener, AdapterView.OnItemClickListener  {
 
-
+    private static final String TAG = "COUNT_LISTYOUTUBE";
     YouTubePlayerView youTubePlayerView;
-
     String claveyoutube= "AIzaSyBBoMapePV_AthrQPLWevncKB-RVw6QXtw";
-
     RelativeLayout logo_sombreado;
-
     ImageView home_primaria;
-
     String listChanel;
-
-
     ListView listView;
-
     String videoselect;
-
     String API_KEY= "AIzaSyD9GZLfzFIdowg9dIJyb6jfgac3P6mRp1U";
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
     //String url="https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLq_MGynXklvnlaed3VruS0dp1a7Qgpg4i&key=AIzaSyD9GZLfzFIdowg9dIJyb6jfgac3P6mRp1U";
     //String url="https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLq_MGynXklvnlaed3VruS0dp1a7Qgpg4i&key="+API_KEY;
     String url;
-
     YouTubePlayer.PlayerStyle style;
-
     TextView play_time;
-
     ImageButton play_video, pause_video;
-
     SeekBar video_seekbar;
-
     private Handler mHandler = null;
-
     private YouTubePlayer mPlayer;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +94,10 @@ public class YouTubeViewer extends YouTubeBaseActivity implements YouTubePlayer.
 
         listChanel= datos.getString("lista_canal");
         //url= "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId="+listChanel+"+&key="+API_KEY;
-        url= "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=12&playlistId="+listChanel+"+&key="+API_KEY;
-        //todo maximo num de resultados youtube 12
+        //url= "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=12&playlistId="+listChanel+"+&key="+API_KEY; //  //todo maximo num de resultados youtube 12
+        url= "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId="+listChanel+"+&key="+API_KEY;
+
+
         //url= "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLgGlu7X3dcFgabqPrSzdNeyYy15riYwCD&key="+API_KEY;
         //PLgGlu7X3dcFgabqPrSzdNeyYy15riYwCD
         //https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLsKQe03h-kOi86OZJqby0i2o1Y2WnwvJf
@@ -215,11 +201,9 @@ public class YouTubeViewer extends YouTubeBaseActivity implements YouTubePlayer.
             @Override
             public void onClick(View view) {
 
-
                 if (null != mPlayer && !mPlayer.isPlaying()) {
                     mPlayer.play();
                 }
-
 
             }
         });
@@ -282,9 +266,7 @@ public class YouTubeViewer extends YouTubeBaseActivity implements YouTubePlayer.
         }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 Toast.makeText(YouTubeViewer.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
         }
 
@@ -475,8 +457,6 @@ public class YouTubeViewer extends YouTubeBaseActivity implements YouTubePlayer.
 
     }
 
-
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -489,14 +469,11 @@ public class YouTubeViewer extends YouTubeBaseActivity implements YouTubePlayer.
 //            home_primaria.setVisibility(View.GONE);
 //            listView.setVisibility(View.GONE);
 
-
-
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
 
             logo_sombreado.setVisibility(View.VISIBLE);
             home_primaria.setVisibility(View.VISIBLE);
             listView.setVisibility(View.VISIBLE);
-
 
         }
     }
@@ -505,245 +482,256 @@ public class YouTubeViewer extends YouTubeBaseActivity implements YouTubePlayer.
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-
-        int  cantidadItemList= myCustomAdapter.getCount();
-
+        int  cantidadItemList= myCustomAdapter.getCount(); // cantidad de items de la lista de Youtube
 
         VideoDetails videoDetails= (VideoDetails)myCustomAdapter.getItem(position);
 
+        //reconoce cuantos  items  tiene y también lo que selecciono el usuario
+        for (int a = 0; a <= cantidadItemList; a++) {
 
-
-        switch (position)
-        {
-
-
-            case 0:
-
+            if (position == a) {
                 videoselect= videoDetails.getVideoId();
-
-                //listChanel= datos.getString("lista_canal");
-
                 Intent intent= new Intent(this, ViewYouTubeScreen.class);
                 intent.putExtra("video_itemselec", videoselect);
                 intent.putExtra("lista_canal", listChanel);
-
-
                 startActivity(intent);
-
                 this.finish();
-
-
-                //Toast.makeText(YouTubeViewer.this,position+" ID: " + videoDetails.getVideoId(),  Toast.LENGTH_SHORT).show();
-
-
-                break;
-
-            case 1:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent2= new Intent(this, ViewYouTubeScreen.class);
-                intent2.putExtra("video_itemselec", videoselect);
-                intent2.putExtra("lista_canal", listChanel);
-                
-                startActivity(intent2);
-                this.finish();
-
-                break;
-
-
-
-            case 2:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent3= new Intent(this, ViewYouTubeScreen.class);
-                intent3.putExtra("video_itemselec", videoselect);
-                intent3.putExtra("lista_canal", listChanel);
-                startActivity(intent3);
-                this.finish();
-
-                break;
-
-
-            case 3:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent4= new Intent(this, ViewYouTubeScreen.class);
-                intent4.putExtra("video_itemselec", videoselect);
-                intent4.putExtra("lista_canal", listChanel);
-                startActivity(intent4);
-
-                this.finish();
-
-                break;
-
-
-
-            case 4:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent5= new Intent(this, ViewYouTubeScreen.class);
-                intent5.putExtra("video_itemselec", videoselect);
-                intent5.putExtra("lista_canal", listChanel);
-                startActivity(intent5);
-
-                this.finish();
-
-                break;
-
-
-            case 5:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent6= new Intent(this, ViewYouTubeScreen.class);
-                intent6.putExtra("video_itemselec", videoselect);
-                intent6.putExtra("lista_canal", listChanel);
-                startActivity(intent6);
-                this.finish();
-                break;
-
-
-            case 6:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent7= new Intent(this, ViewYouTubeScreen.class);
-                intent7.putExtra("video_itemselec", videoselect);
-                intent7.putExtra("lista_canal", listChanel);
-                startActivity(intent7);
-
-                this.finish();
-
-                break;
-
-            case 7:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent8= new Intent(this, ViewYouTubeScreen.class);
-                intent8.putExtra("video_itemselec", videoselect);
-                intent8.putExtra("lista_canal", listChanel);
-                startActivity(intent8);
-
-                this.finish();
-
-                break;
-
-
-            case 8:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent9= new Intent(this, ViewYouTubeScreen.class);
-                intent9.putExtra("video_itemselec", videoselect);
-                intent9.putExtra("lista_canal", listChanel);
-                startActivity(intent9);
-
-                this.finish();
-
-                break;
-
-            case 9:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent10= new Intent(this, ViewYouTubeScreen.class);
-                intent10.putExtra("video_itemselec", videoselect);
-                intent10.putExtra("lista_canal", listChanel);
-                startActivity(intent10);
-
-                this.finish();
-
-                break;
-
-
-            case 10:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent11= new Intent(this, ViewYouTubeScreen.class);
-                intent11.putExtra("video_itemselec", videoselect);
-                intent11.putExtra("lista_canal", listChanel);
-                startActivity(intent11);
-
-                this.finish();
-
-                break;
-
-
-            case 11:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent12= new Intent(this, ViewYouTubeScreen.class);
-                intent12.putExtra("video_itemselec", videoselect);
-                intent12.putExtra("lista_canal", listChanel);
-                startActivity(intent12);
-
-                this.finish();
-
-                break;
-
-            case 12:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent13= new Intent(this, ViewYouTubeScreen.class);
-                intent13.putExtra("video_itemselec", videoselect);
-                intent13.putExtra("lista_canal", listChanel);
-                startActivity(intent13);
-
-                this.finish();
-
-                break;
-
-
-            case 13:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent14= new Intent(this, ViewYouTubeScreen.class);
-                intent14.putExtra("video_itemselec", videoselect);
-                intent14.putExtra("lista_canal", listChanel);
-                startActivity(intent14);
-                this.finish();
-                break;
-
-            case 14:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent15= new Intent(this, ViewYouTubeScreen.class);
-                intent15.putExtra("video_itemselec", videoselect);
-                intent15.putExtra("lista_canal", listChanel);
-                startActivity(intent15);
-
-                this.finish();
-
-                break;
-
-
-
-            case 15:
-
-                videoselect= videoDetails.getVideoId();
-
-                Intent intent16= new Intent(this, ViewYouTubeScreen.class);
-                intent16.putExtra("video_itemselec", videoselect);
-                intent16.putExtra("lista_canal", listChanel);
-                startActivity(intent16);
-
-                this.finish();
-
-                break;
-
-
-
+            }
         }
+
+        //todo numero de items playlist youtube
+
+//        switch (position)
+//        {
+//
+//            case 0:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                //listChanel= datos.getString("lista_canal");
+//
+//                Intent intent= new Intent(this, ViewYouTubeScreen.class);
+//                intent.putExtra("video_itemselec", videoselect);
+//                intent.putExtra("lista_canal", listChanel);
+//
+//
+//                startActivity(intent);
+//
+//                this.finish();
+//
+//
+//                //Toast.makeText(YouTubeViewer.this,position+" ID: " + videoDetails.getVideoId(),  Toast.LENGTH_SHORT).show();
+//
+//
+//                break;
+//
+//            case 1:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent2= new Intent(this, ViewYouTubeScreen.class);
+//                intent2.putExtra("video_itemselec", videoselect);
+//                intent2.putExtra("lista_canal", listChanel);
+//
+//                startActivity(intent2);
+//                this.finish();
+//
+//                break;
+//
+//
+//
+//            case 2:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent3= new Intent(this, ViewYouTubeScreen.class);
+//                intent3.putExtra("video_itemselec", videoselect);
+//                intent3.putExtra("lista_canal", listChanel);
+//                startActivity(intent3);
+//                this.finish();
+//
+//                break;
+//
+//
+//            case 3:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent4= new Intent(this, ViewYouTubeScreen.class);
+//                intent4.putExtra("video_itemselec", videoselect);
+//                intent4.putExtra("lista_canal", listChanel);
+//                startActivity(intent4);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//
+//            case 4:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent5= new Intent(this, ViewYouTubeScreen.class);
+//                intent5.putExtra("video_itemselec", videoselect);
+//                intent5.putExtra("lista_canal", listChanel);
+//                startActivity(intent5);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//            case 5:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent6= new Intent(this, ViewYouTubeScreen.class);
+//                intent6.putExtra("video_itemselec", videoselect);
+//                intent6.putExtra("lista_canal", listChanel);
+//                startActivity(intent6);
+//                this.finish();
+//                break;
+//
+//
+//            case 6:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent7= new Intent(this, ViewYouTubeScreen.class);
+//                intent7.putExtra("video_itemselec", videoselect);
+//                intent7.putExtra("lista_canal", listChanel);
+//                startActivity(intent7);
+//
+//                this.finish();
+//
+//                break;
+//
+//            case 7:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent8= new Intent(this, ViewYouTubeScreen.class);
+//                intent8.putExtra("video_itemselec", videoselect);
+//                intent8.putExtra("lista_canal", listChanel);
+//                startActivity(intent8);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//            case 8:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent9= new Intent(this, ViewYouTubeScreen.class);
+//                intent9.putExtra("video_itemselec", videoselect);
+//                intent9.putExtra("lista_canal", listChanel);
+//                startActivity(intent9);
+//
+//                this.finish();
+//
+//                break;
+//
+//            case 9:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent10= new Intent(this, ViewYouTubeScreen.class);
+//                intent10.putExtra("video_itemselec", videoselect);
+//                intent10.putExtra("lista_canal", listChanel);
+//                startActivity(intent10);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//            case 10:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent11= new Intent(this, ViewYouTubeScreen.class);
+//                intent11.putExtra("video_itemselec", videoselect);
+//                intent11.putExtra("lista_canal", listChanel);
+//                startActivity(intent11);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//            case 11:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent12= new Intent(this, ViewYouTubeScreen.class);
+//                intent12.putExtra("video_itemselec", videoselect);
+//                intent12.putExtra("lista_canal", listChanel);
+//                startActivity(intent12);
+//
+//                this.finish();
+//
+//                break;
+//
+//            case 12:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent13= new Intent(this, ViewYouTubeScreen.class);
+//                intent13.putExtra("video_itemselec", videoselect);
+//                intent13.putExtra("lista_canal", listChanel);
+//                startActivity(intent13);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//            case 13:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent14= new Intent(this, ViewYouTubeScreen.class);
+//                intent14.putExtra("video_itemselec", videoselect);
+//                intent14.putExtra("lista_canal", listChanel);
+//                startActivity(intent14);
+//                this.finish();
+//                break;
+//
+//            case 14:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent15= new Intent(this, ViewYouTubeScreen.class);
+//                intent15.putExtra("video_itemselec", videoselect);
+//                intent15.putExtra("lista_canal", listChanel);
+//                startActivity(intent15);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//
+//            case 15:
+//
+//                videoselect= videoDetails.getVideoId();
+//
+//                Intent intent16= new Intent(this, ViewYouTubeScreen.class);
+//                intent16.putExtra("video_itemselec", videoselect);
+//                intent16.putExtra("lista_canal", listChanel);
+//                startActivity(intent16);
+//
+//                this.finish();
+//
+//                break;
+//
+//
+//
+//
+//        }
     }
 
 
