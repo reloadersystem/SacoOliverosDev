@@ -139,11 +139,8 @@ public class adapterComputacion extends BaseAdapter {
                             } else {
                                 Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
                                 break;
-
                             }
-
                         }
-
 
                         break;
 

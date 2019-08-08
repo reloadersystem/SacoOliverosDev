@@ -96,22 +96,15 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
     String rutafile;
     String estadoconec;
     int miniaturedato;
+
     RelativeLayout lnLayout;
-
     Adapter_Indice iadapter;
-
     int selectitem;
-
     String numeropagina;
-
     String notaurl;
-
     static String paginainicio;
-
     String ruta_storage;
-
     MenuInflater inflater;
-
     MenuItem shareItem;
 
 
@@ -283,7 +276,6 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
 
                     if (!(urlcode == null)) {
                         WebServiceIndice.urlvisor(urlcode);
-
                         SConsultIndice consult = new SConsultIndice();
                         consult.setCurrentContext(getApplicationContext());
                         consult.setCurrentLayout(lnLayout);
@@ -499,7 +491,7 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
                     @Override
                     public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
                         //Toast.makeText(ViewTomo3Activity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(ViewTomo3Activity.this, "Conexiòn baja intente mas  tarde o presione Actualizar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewTomo3Activity.this, "Conexión baja intente mas tarde o presione Actualizar", Toast.LENGTH_SHORT).show();
                         progresbar.setVisibility(View.GONE);
                     }
                 });

@@ -205,8 +205,6 @@ public class NavActivity extends AppCompatActivity
 //
 
 
-
-
         String consultarServicio = ShareDataRead.obtenerValor(getApplicationContext(), "CheckOutService");
 
         versionapkbase = getVersionName(getApplicationContext());

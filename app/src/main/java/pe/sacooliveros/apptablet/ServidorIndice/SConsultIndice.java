@@ -75,9 +75,6 @@ public class SConsultIndice extends AsyncTask<String, Integer, ArrayList> {
         ArrayList<JSONObject> resValues = new ArrayList<>();
          resValues2 = new ArrayList<>();
 
-
-
-
         if (WebServiceIndice.isValidResponse(rString)) {
             try {
                 Log.e("RESOBJ_RSTRING", rString);
@@ -122,7 +119,6 @@ public class SConsultIndice extends AsyncTask<String, Integer, ArrayList> {
             }
         }
 
-
         return resValues;
     }
 
@@ -135,7 +131,6 @@ public class SConsultIndice extends AsyncTask<String, Integer, ArrayList> {
     //protected void onPostExecute(String rString) {
     public void onPostExecute(ArrayList resValues) {
         super.onPostExecute(resValues);
-
 
         lvIndice = currentLayout.findViewById(R.id.lvIndice);
         gridcibergrafia= currentLayout.findViewById(R.id.lv_cibergrafia);
@@ -186,9 +181,6 @@ public class SConsultIndice extends AsyncTask<String, Integer, ArrayList> {
             }
 
 
-
-
-
         Lista= new ArrayList<M_Cybergrafia>();
         final adapter_Cibergrafia adapter= new adapter_Cibergrafia(currentContext,data);
         gridcibergrafia.setAdapter(adapter);
@@ -198,8 +190,6 @@ public class SConsultIndice extends AsyncTask<String, Integer, ArrayList> {
         {
             ViewTomo3Activity.instantiate2("noitems");
         }
-
-
 
     }
 

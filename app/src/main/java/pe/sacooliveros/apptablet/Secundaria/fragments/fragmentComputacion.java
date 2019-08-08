@@ -47,8 +47,6 @@ public class fragmentComputacion extends Fragment {
     private FirebaseAnalytics mFirebaseAnalytics;
 
 
-
-
     public fragmentComputacion() {
         // Required empty public constructor
     }
