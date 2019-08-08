@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -11,6 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -24,6 +26,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -58,25 +70,21 @@ import pe.sacooliveros.apptablet.Primaria.fragments.mateRFragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.motivacionFragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.unidadFragment;
 import pe.sacooliveros.apptablet.R;
+import pe.sacooliveros.apptablet.Secundaria.NavActivity;
 import pe.sacooliveros.apptablet.ServiceVersion.SConsultVersion;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
+import pe.sacooliveros.apptablet.Utils.ValidateCopyright;
 
 public class NavigatorPrimaria extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, EnviarNumeroGrado, mateRFragment.IEnviarMensaje {
 
     MainfragPrim inicioFragment;
-
     String urlphoto;
-
     String emailserver;
-
     String usuarioserver;
-
     String sedeserver;
-
     String servernivel;
-
     String matricularserver;
 
     String nivelUsuario; //5 o 6to
@@ -86,29 +94,24 @@ public class NavigatorPrimaria extends AppCompatActivity
     int MY_PERMISSIONS_REQUEST_UBICACION = 3;
 
     static String PREFS_KEY = "autenticacionOff";
-
     String appName;
-
     String packageName;
-
     String box;
-
     private static final String TAG = "VersionEstado";
-
     ConnectionDetector cd;
-
     static String updateapk;
-
     GoogleApiClient mGoogleApiClient;
-
     String apellidopaterno, apellidomaterno;
-
     String versionapkbase;
-
     BigDecimal updateapkcode;
 
-    public static void apkversion(String updateversionapk) {
+    //autoUpdate
+    private static final int REQ_CODE_VERSION_UPDATE = 530;
+    private AppUpdateManager appUpdateManager;
+    private InstallStateUpdatedListener installStateUpdatedListener;
+    private static final String TAG_UPDATE = "VERIFY_UPDATE";
 
+    public static void apkversion(String updateversionapk) {
         updateapk = updateversionapk;
     }
 
@@ -135,6 +138,11 @@ public class NavigatorPrimaria extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+
+        checkForAppUpdate();
+
+        final ValidateCopyright validateCopyright = new ValidateCopyright(getApplicationContext());
+        validateCopyright.isvalidate();
 
 
         if (getIntent() != null && getIntent().getExtras() != null) {
@@ -199,6 +207,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
+/*  Servicio de Actualización atraves del Servidor
 
         if (cd.isConnected() && updateapk != null) {
 
@@ -232,6 +241,7 @@ public class NavigatorPrimaria extends AppCompatActivity
                 dialog.show();
             }
         }
+        */
 
         if (!isAppInstalled2) {
 
@@ -404,6 +414,113 @@ public class NavigatorPrimaria extends AppCompatActivity
         txtEmail.setText(emailserver);
     }
 
+    private void checkForAppUpdate() {
+        // Creates instance of the manager.
+        appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+
+        // Returns an intent object that you use to check for an update.
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+        // Create a listener to track request state updates.
+        installStateUpdatedListener = new InstallStateUpdatedListener() {
+            @Override
+            public void onStateUpdate(InstallState installState) {
+                // Show module progress, log state, or install the update.
+                if (installState.installStatus() == InstallStatus.DOWNLOADED)
+                    // After the update is downloaded, show a notification
+                    // and request user confirmation to restart the app.
+                    popupSnackbarForCompleteUpdateAndUnregister();
+            }
+        };
+
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                // Request the update.
+                if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+
+                    // Before starting an update, register a listener for updates.
+                    appUpdateManager.registerListener(installStateUpdatedListener);
+                    // Start an update.
+                    startAppUpdateFlexible(appUpdateInfo);
+                } else if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                    // Start an update.
+                    startAppUpdateImmediate(appUpdateInfo);
+                }
+            }
+        });
+    }
+
+    private void startAppUpdateImmediate(AppUpdateInfo appUpdateInfo) {
+        try {
+            appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    AppUpdateType.IMMEDIATE,
+                    // The curren
+                    this,
+                    // Include a request code to later monitor this update request.
+                    NavigatorPrimaria.REQ_CODE_VERSION_UPDATE);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void startAppUpdateFlexible(AppUpdateInfo appUpdateInfo) {
+        try {
+            appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    AppUpdateType.FLEXIBLE,
+                    // The current activity making the update request.
+                    this,
+                    // Include a request code to later monitor this update request.
+                    NavigatorPrimaria.REQ_CODE_VERSION_UPDATE);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+            unregisterInstallStateUpdListener();
+        }
+    }
+
+    private void popupSnackbarForCompleteUpdateAndUnregister() {
+        Snackbar snackbar =
+                Snackbar.make(findViewById(R.id.drawer_layout), "New app is Ready", Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction("Install", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                appUpdateManager.completeUpdate();
+            }
+        });
+        snackbar.setActionTextColor(getResources().getColor(R.color.accent));
+        snackbar.show();
+
+        unregisterInstallStateUpdListener();
+    }
+
+    private void checkNewAppVersionState() {
+        appUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(
+                        appUpdateInfo -> {
+                            //FLEXIBLE:
+                            // If the update is downloaded but not installed,
+                            // notify the user to complete the update.
+                            if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                                popupSnackbarForCompleteUpdateAndUnregister();
+                            }
+
+                            //IMMEDIATE:
+                            if (appUpdateInfo.updateAvailability()
+                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                                // If an in-app update is already running, resume the update.
+                                startAppUpdateImmediate(appUpdateInfo);
+                            }
+                        });
+
+    }
+
+    private void unregisterInstallStateUpdListener() {
+        if (appUpdateManager != null && installStateUpdatedListener != null)
+            appUpdateManager.unregisterListener(installStateUpdatedListener);
+    }
 
     private void solicitarPermisoUbicacion() {
 
@@ -967,6 +1084,37 @@ public class NavigatorPrimaria extends AppCompatActivity
         editor = settings.edit();
         editor.putString(keyPref, valor);
         editor.commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+
+            case REQ_CODE_VERSION_UPDATE:
+                if (resultCode != RESULT_OK) { //RESULT_OK / RESULT_CANCELED / RESULT_IN_APP_UPDATE_FAILED
+                    Log.d(TAG_UPDATE, "Update flow failed! Result code: " + resultCode);
+                    // If the update is cancelled or fails,
+                    // you can request to start the update again.
+                    unregisterInstallStateUpdListener();
+                }
+
+                break;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkNewAppVersionState();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterInstallStateUpdListener();
     }
 
 }
