@@ -1758,8 +1758,6 @@ public class NavActivity extends AppCompatActivity
 
                 break;
         }
-
-
     }
 
 

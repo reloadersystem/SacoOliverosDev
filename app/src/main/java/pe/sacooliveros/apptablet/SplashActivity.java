@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -29,20 +28,14 @@ import pe.sacooliveros.apptablet.WebServiceFechaServer.WebServiceFecha;
 
 public class SplashActivity extends AppCompatActivity {
 
-    ImageView imageView;
     String myDeviceModel;
     String Baseband;
     VideoView videoView;
     ConnectionDetector cd;
-
     static String fechaservidor;
-
     String actualfecha;
-
     String box;
-
     String nombregrado;
-
 
     @Override
     protected void onStart() {
@@ -228,9 +221,7 @@ public class SplashActivity extends AppCompatActivity {
                                             || dato6.equalsIgnoreCase("Secundaria") && dato7.equalsIgnoreCase("PRE") && nombregrado.equalsIgnoreCase("Cuarto Año")
                                             || dato6.equalsIgnoreCase("Secundaria") && dato7.equalsIgnoreCase("PRE") && nombregrado.equalsIgnoreCase("Quinto Año")
 
-                                            )
-
-                                    {
+                                    ) {
 
                                         Intent intent = new Intent(getApplicationContext(), NavActivity.class);
 
@@ -244,9 +235,7 @@ public class SplashActivity extends AppCompatActivity {
 
                                         startActivity(intent);
                                         finish();
-                                    } else if (dato1.equalsIgnoreCase("601 Secundaria") || dato1.equalsIgnoreCase("701 Secundaria") || dato1.equalsIgnoreCase("601 Primaria"))
-
-                                    {
+                                    } else if (dato1.equalsIgnoreCase("601 Secundaria") || dato1.equalsIgnoreCase("701 Secundaria") || dato1.equalsIgnoreCase("601 Primaria")) {
 
                                         Intent intent = new Intent(getApplicationContext(), CiclosEspeciales.class);
 
@@ -299,9 +288,7 @@ public class SplashActivity extends AppCompatActivity {
                             } else if (dato6.equalsIgnoreCase("Secundaria")
                                     || dato6.equalsIgnoreCase("Secundaria") && dato7.equalsIgnoreCase("PRE") && nombregrado.equalsIgnoreCase("Cuarto Año")
                                     || dato6.equalsIgnoreCase("Secundaria") && dato7.equalsIgnoreCase("PRE") && nombregrado.equalsIgnoreCase("Quinto Año")
-                                    )
-
-                            {
+                            ) {
 
                                 Intent intent = new Intent(getApplicationContext(), NavActivity.class);
 
