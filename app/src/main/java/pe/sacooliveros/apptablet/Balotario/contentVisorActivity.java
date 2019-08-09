@@ -483,12 +483,10 @@ public class contentVisorActivity extends AppCompatActivity {
 //        getMenuInflater().inflate(R.menu.menupdf, menu);
 //        return true;
 
-
         inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_printbalotario, menu);
 
         shareItem = menu.findItem(R.id.action_reload);
-
 
         return true;
 
@@ -513,7 +511,6 @@ public class contentVisorActivity extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_STREAM, uri);
             startActivity(Intent.createChooser(intent, "Enviar e-mail mediante:"));
         }
-
 
         if (id == R.id.action_reload) {
 

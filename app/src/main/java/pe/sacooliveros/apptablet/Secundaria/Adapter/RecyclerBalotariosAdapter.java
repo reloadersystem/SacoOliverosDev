@@ -49,7 +49,6 @@ public class RecyclerBalotariosAdapter extends RecyclerView.Adapter<RecyclerBalo
 
     ConnectionDetector cd;
 
-
     public RecyclerBalotariosAdapter(Context mContext, List<mBalotarios> mBalotariosList) {
         this.mContext = mContext;
         this.mBalotariosList = mBalotariosList;

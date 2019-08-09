@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import pe.sacooliveros.apptablet.Balotario.BalotarioMenuActivity;
 import pe.sacooliveros.apptablet.Primaria.fragments.ajedrezFragment;
 import pe.sacooliveros.apptablet.R;
+import pe.sacooliveros.apptablet.Secundaria.Activitys.HelicoAsesoriasActivity;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterInit;
 import pe.sacooliveros.apptablet.Secundaria.Model.mInit;
 import pe.sacooliveros.apptablet.Secundaria.fragments.TomoAsesoriasFragment;
@@ -237,24 +238,27 @@ public class InitialFragment extends Fragment {
 
                     case 4: {
 
-                        Fragment fragment15 = new TomoAsesoriasFragment();
-                        FragmentManager fmanager15 = getActivity().getSupportFragmentManager();
-                        if (fmanager15 != null) {
+//                        Fragment fragment15 = new TomoAsesoriasFragment();
+//                        FragmentManager fmanager15 = getActivity().getSupportFragmentManager();
+//                        if (fmanager15 != null) {
+//
+//                            Bundle args = new Bundle();
+//                            args.putString("description", "Helico Asesorias");
+//                            args.putString("grado", grado);
+//                            args.putString("ACCESO", nivelacceso);
+//                            args.putString("TipoGradoAsiste", gradoasiste);
+//                            fragment15.setArguments(args);
+//
+//                            FragmentTransaction ftransaction = fmanager15.beginTransaction();
+//                            if (ftransaction != null) {
+//                                ftransaction.replace(R.id.contenedorFragments, fragment15);
+//                                ftransaction.addToBackStack("");
+//                                ftransaction.commit();
+//                            }
+//                        }
 
-                            Bundle args = new Bundle();
-                            args.putString("description", "Helico Asesorias");
-                            args.putString("grado", grado);
-                            args.putString("ACCESO", nivelacceso);
-                            args.putString("TipoGradoAsiste", gradoasiste);
-                            fragment15.setArguments(args);
-
-                            FragmentTransaction ftransaction = fmanager15.beginTransaction();
-                            if (ftransaction != null) {
-                                ftransaction.replace(R.id.contenedorFragments, fragment15);
-                                ftransaction.addToBackStack("");
-                                ftransaction.commit();
-                            }
-                        }
+                        Intent  intent= new Intent(getContext(), HelicoAsesoriasActivity.class);
+                        startActivity(intent);
 
                         break;
                     }

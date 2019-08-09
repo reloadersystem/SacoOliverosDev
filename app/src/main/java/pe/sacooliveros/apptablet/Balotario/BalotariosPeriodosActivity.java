@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -30,7 +31,6 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
 
     private Primer_BalFragment balotario1_fragment;
 
-
     private Segundo_BalFragment balotario2_fragment;
 
     MenuItem prevMenuItem;
@@ -45,6 +45,8 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
 
     Typeface futuralbold;
     Typeface futuraheavy;
+
+    FloatingActionButton fb_zipdescarga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,28 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
             tipoBalotario = bundle.getString("descripcion_balotario");
         }
 
+        /* Para Enviar por mail un .Zip
+
+       fb_zipdescarga = findViewById(R.id.fb_zipdescarga);
+        fb_zipdescarga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Uri uri = Uri.fromFile(new
+                        File(getExternalStorageDirectory() + "/PDFiles/" + "BALOTARIO_MENSUAL.zip"));
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("application/zip");
+
+                String printemailname = ShareDataRead.obtenerValor(getApplicationContext(), "EMail");
+
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{printemailname});
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Saco Oliveros");
+                intent.putExtra(Intent.EXTRA_TEXT, "Plataforma Virtual - " + "BALOTARIO_MENSUAL");
+                intent.putExtra(Intent.EXTRA_STREAM, uri);
+                startActivity(Intent.createChooser(intent, "Enviar e-mail mediante:"));
+            }
+        });*/
 
         BottomNavigationView navigationView = findViewById(R.id.main_bottomlecturas);
         Menu nav_Menu = navigationView.getMenu();
@@ -179,9 +203,6 @@ public class BalotariosPeriodosActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
-
-
-
         });
 
         setupViewPager(viewPager);

@@ -6,7 +6,7 @@
         android:id="@+id/action_reload"
         android:orderInCategory="100"
         android:title="opcionD"
-        android:icon="@drawable/repairpdf"
+        android:icon="@drawable/ic_updatebalotario"
         app:showAsAction="ifRoom" />
 
     <item
