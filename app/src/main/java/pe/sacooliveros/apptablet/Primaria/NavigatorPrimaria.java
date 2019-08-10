@@ -43,6 +43,7 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.squareup.picasso.Picasso;
 
@@ -70,7 +71,6 @@ import pe.sacooliveros.apptablet.Primaria.fragments.mateRFragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.motivacionFragment;
 import pe.sacooliveros.apptablet.Primaria.fragments.unidadFragment;
 import pe.sacooliveros.apptablet.R;
-import pe.sacooliveros.apptablet.Secundaria.NavActivity;
 import pe.sacooliveros.apptablet.ServiceVersion.SConsultVersion;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
@@ -193,9 +193,7 @@ public class NavigatorPrimaria extends AppCompatActivity
                 consultversion.setCurrentLayout(drawer);
                 consultversion.execute();
 
-            } else if (consultarServicio.equalsIgnoreCase("Servicio Finalizado"))
-
-            {
+            } else if (consultarServicio.equalsIgnoreCase("Servicio Finalizado")) {
                 guardarValor(getApplicationContext(), "CheckOutService", "");
                 SConsultVersion consultversion = new SConsultVersion("http://192.169.218.177:8080/FacturacionElectronicaSIIAA/api/v1/estudiante/validarVersionAplicativo/" + codigoAuth + "/" + versionapkbase);
                 consultversion.setCurrentContext(this);
@@ -434,19 +432,23 @@ public class NavigatorPrimaria extends AppCompatActivity
         };
 
         // Checks that the platform will allow the specified type of update.
-        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
-                // Request the update.
-                if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+            @Override
+            public void onSuccess(AppUpdateInfo appUpdateInfo) {
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                    // Request the update.
+                    if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
 
-                    // Before starting an update, register a listener for updates.
-                    appUpdateManager.registerListener(installStateUpdatedListener);
-                    // Start an update.
-                    startAppUpdateFlexible(appUpdateInfo);
-                } else if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-                    // Start an update.
-                    startAppUpdateImmediate(appUpdateInfo);
+                        // Before starting an update, register a listener for updates.
+                        appUpdateManager.registerListener(installStateUpdatedListener);
+                        // Start an update.
+                        startAppUpdateFlexible(appUpdateInfo);
+                    } else if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                        // Start an update.
+                        startAppUpdateImmediate(appUpdateInfo);
+                    }
                 }
+
             }
         });
     }
@@ -498,23 +500,24 @@ public class NavigatorPrimaria extends AppCompatActivity
     private void checkNewAppVersionState() {
         appUpdateManager
                 .getAppUpdateInfo()
-                .addOnSuccessListener(
-                        appUpdateInfo -> {
-                            //FLEXIBLE:
-                            // If the update is downloaded but not installed,
-                            // notify the user to complete the update.
-                            if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
-                                popupSnackbarForCompleteUpdateAndUnregister();
-                            }
+                .addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+                    @Override
+                    public void onSuccess(AppUpdateInfo appUpdateInfo) {
+                        //FLEXIBLE:
+                        // If the update is downloaded but not installed,
+                        // notify the user to complete the update.
+                        if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                            popupSnackbarForCompleteUpdateAndUnregister();
+                        }
 
-                            //IMMEDIATE:
-                            if (appUpdateInfo.updateAvailability()
-                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-                                // If an in-app update is already running, resume the update.
-                                startAppUpdateImmediate(appUpdateInfo);
-                            }
-                        });
-
+                        //IMMEDIATE:
+                        if (appUpdateInfo.updateAvailability()
+                                == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                            // If an in-app update is already running, resume the update.
+                            startAppUpdateImmediate(appUpdateInfo);
+                        }
+                    }
+                });
     }
 
     private void unregisterInstallStateUpdListener() {
@@ -717,9 +720,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         switch (item.getItemId()) {
 
-            case R.id.nav_homepri:
-
-            {
+            case R.id.nav_homepri: {
                 Fragment fragment = new MainfragPrim();
                 FragmentManager fmanager = this.getSupportFragmentManager();
                 if (fmanager != null) {
@@ -734,9 +735,7 @@ public class NavigatorPrimaria extends AppCompatActivity
                 break;
             }
 
-            case R.id.nav_librospri:
-
-            {
+            case R.id.nav_librospri: {
                 Fragment fragment = new librosfragment();
                 FragmentManager fmanager = this.getSupportFragmentManager();
                 if (fmanager != null) {
@@ -929,9 +928,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
             }
 
-            case R.id.nav_sabiasque:
-
-            {
+            case R.id.nav_sabiasque: {
                 if (cd.isConnected()) {
                     Fragment fragment = new fragmentSabiasQ();
                     FragmentManager fmanager = this.getSupportFragmentManager();

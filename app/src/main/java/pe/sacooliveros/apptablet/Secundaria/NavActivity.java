@@ -44,6 +44,7 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.squareup.picasso.Picasso;
 
@@ -781,18 +782,22 @@ public class NavActivity extends AppCompatActivity
         };
 
         // Checks that the platform will allow the specified type of update.
-        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
-                // Request the update.
-                if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
 
-                    // Before starting an update, register a listener for updates.
-                    appUpdateManager.registerListener(installStateUpdatedListener);
-                    // Start an update.
-                    startAppUpdateFlexible(appUpdateInfo);
-                } else if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-                    // Start an update.
-                    startAppUpdateImmediate(appUpdateInfo);
+        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+            @Override
+            public void onSuccess(AppUpdateInfo appUpdateInfo) {
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                    // Request the update.
+                    if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+
+                        // Before starting an update, register a listener for updates.
+                        appUpdateManager.registerListener(installStateUpdatedListener);
+                        // Start an update.
+                        startAppUpdateFlexible(appUpdateInfo);
+                    } else if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                        // Start an update.
+                        startAppUpdateImmediate(appUpdateInfo);
+                    }
                 }
             }
         });
@@ -845,23 +850,24 @@ public class NavActivity extends AppCompatActivity
     private void checkNewAppVersionState() {
         appUpdateManager
                 .getAppUpdateInfo()
-                .addOnSuccessListener(
-                        appUpdateInfo -> {
-                            //FLEXIBLE:
-                            // If the update is downloaded but not installed,
-                            // notify the user to complete the update.
-                            if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
-                                popupSnackbarForCompleteUpdateAndUnregister();
-                            }
+                .addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+                    @Override
+                    public void onSuccess(AppUpdateInfo appUpdateInfo) {
+                        //FLEXIBLE:
+                        // If the update is downloaded but not installed,
+                        // notify the user to complete the update.
+                        if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                            popupSnackbarForCompleteUpdateAndUnregister();
+                        }
 
-                            //IMMEDIATE:
-                            if (appUpdateInfo.updateAvailability()
-                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-                                // If an in-app update is already running, resume the update.
-                                startAppUpdateImmediate(appUpdateInfo);
-                            }
-                        });
-
+                        //IMMEDIATE:
+                        if (appUpdateInfo.updateAvailability()
+                                == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                            // If an in-app update is already running, resume the update.
+                            startAppUpdateImmediate(appUpdateInfo);
+                        }
+                    }
+                });
     }
 
     private void unregisterInstallStateUpdListener() {

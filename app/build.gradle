@@ -7,8 +7,8 @@ android {
         minSdkVersion 23
         targetSdkVersion 27
 
-        versionCode 116
-        versionName '2.1610'
+        versionCode 118
+        versionName '2.1612'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,12 +20,6 @@ android {
 
     packagingOptions {
         pickFirst 'META-INF/jersey-module-version'
-    }
-    productFlavors {
-    }
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
     }
 }
 
