@@ -11,7 +11,7 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:background="@drawable/radius"
+        android:background="@drawable/shape_degradado_asesoria"
         android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
         >
 
@@ -20,13 +20,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="exitUntilCollapsed|scroll"
-            app:contentScrim="@drawable/sh_cabecera"
+            app:contentScrim="@drawable/sh_fondoasesoria"
             app:title="HELICO ASESORIAS"
             app:collapsedTitleGravity="center_horizontal"
             app:expandedTitleGravity="center"
             app:expandedTitleTextAppearance="@style/StyleAppBar"
             app:collapsedTitleTextAppearance="@style/StyleAppBarCollpase"
-            android:background="@drawable/cabecera_balotario"
+            android:background="@drawable/cabecera_asesoria"
             >
 
             <android.support.v7.widget.Toolbar

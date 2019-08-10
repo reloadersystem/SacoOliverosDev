@@ -26,14 +26,14 @@ public class HelicoAsesoriasActivity extends AppCompatActivity {
 
         mTomosAsesoriasList = new ArrayList<>();
 
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 1"));
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 2"));
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 3"));
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 4"));
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 5"));
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 6"));
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 7"));
-        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.icobalotario_3, "TOMO 8"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 1"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 2"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 3"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 4"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 5"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 6"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 7"));
+        mTomosAsesoriasList.add(new mTomosHelicoAsesoria(R.drawable.libroasesoria, "TOMO 8"));
 
         adapterRecyclerAsesoria adapter = new adapterRecyclerAsesoria(HelicoAsesoriasActivity.this, mTomosAsesoriasList);
         if (getApplicationContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {

@@ -13,7 +13,7 @@
         android:id="@+id/img_tomosAsesoria"
         android:layout_width="131dp"
         android:layout_height="79dp"
-        android:src="@drawable/icobalotario_3" />
+        android:src="@drawable/libroasesoria" />
 
     <TextView
         android:id="@+id/txt_titleAsesoria"
