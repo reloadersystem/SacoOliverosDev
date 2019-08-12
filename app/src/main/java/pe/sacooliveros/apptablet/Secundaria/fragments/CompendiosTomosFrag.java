@@ -37,17 +37,10 @@ public class CompendiosTomosFrag extends Fragment {
 
     TextView tx_temas;
     ImageView img_temas;
-
     String descrip, grado;
-
     String acceso;
-
     String gradoasiste;
-
     String sharedata;
-
-
-
 
     public CompendiosTomosFrag() {
         // Required empty public constructor

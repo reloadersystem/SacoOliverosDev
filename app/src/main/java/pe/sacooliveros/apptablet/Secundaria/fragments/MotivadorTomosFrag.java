@@ -52,6 +52,10 @@ public class MotivadorTomosFrag extends Fragment {
         tomo_back2 = rootview.findViewById(R.id.img_tomoback2);
         tx_tomo2 = rootview.findViewById(R.id.tx_tomo2);
 
+        gridView.setScrollContainer(false);
+        gridView2.setScrollContainer(false);
+
+
         Bundle bundle = this.getArguments();
         if (bundle != null) {
 
@@ -99,6 +103,8 @@ public class MotivadorTomosFrag extends Fragment {
 
 
         String gradonombrepre = ShareDataRead.obtenerValor(getContext(), "GradoNombre");
+        String gradonivel = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
+
 
         if (gradoasiste.equalsIgnoreCase("UNI")) {
             Lista.add(new mMateriasOne(R.drawable.ciencias_1, R.drawable.download_circle));
@@ -138,9 +144,12 @@ public class MotivadorTomosFrag extends Fragment {
         listaLetras.add(new mLetras(R.drawable.letras_3, R.drawable.download_circle));
         listaLetras.add(new mLetras(R.drawable.letras_4, R.drawable.download_circle));
         listaLetras.add(new mLetras(R.drawable.letras_5, R.drawable.download_circle));
-        listaLetras.add(new mLetras(R.drawable.letras_6, R.drawable.download_circle));
-        listaLetras.add(new mLetras(R.drawable.letras_7, R.drawable.download_circle));
-        listaLetras.add(new mLetras(R.drawable.letras_8, R.drawable.download_circle));
+
+        if (gradonivel.equalsIgnoreCase("3 Secundaria") || gradonivel.equalsIgnoreCase("4 Secundaria") || gradonivel.equalsIgnoreCase("5 Secundaria")) {
+            listaLetras.add(new mLetras(R.drawable.letras_6, R.drawable.download_circle));
+            listaLetras.add(new mLetras(R.drawable.letras_7, R.drawable.download_circle));
+            listaLetras.add(new mLetras(R.drawable.letras_8, R.drawable.download_circle));
+        }
 
         final adapter_letras adapter2 = new adapter_letras(getContext(), listaLetras);
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -335,6 +336,19 @@ public class NavActivity extends AppCompatActivity
                             box = "com.adobe.reader";
 
                             openApp(getApplicationContext(), appName, packageName);
+
+                            PackageManager manager = NavActivity.this.getPackageManager();
+                            PackageInfo info = null;
+                            try {
+                                info = manager.getPackageInfo(packageName, 0);
+                                Toast.makeText(NavActivity.this,
+                                        "PackageName = " + info.packageName + "\nVersionCode = "
+                                                + info.versionCode + "\nVersionName = "
+                                                + info.versionName + "\nPermissions = " + info.permissions, Toast.LENGTH_SHORT).show();
+                            } catch (PackageManager.NameNotFoundException e) {
+                                e.printStackTrace();
+                            }
+
 
                             //dialog.dismiss();
                         }
@@ -1666,6 +1680,7 @@ public class NavActivity extends AppCompatActivity
     }
 
     public void openApp(Context context, String appName, String packageName) {
+
         if (isAppInstalled(context, packageName))
             if (isAppEnabled(context, packageName))
                 context.startActivity(context.getPackageManager().getLaunchIntentForPackage(packageName));

@@ -51,8 +51,10 @@ public class DiapositivasTomosFrag extends Fragment {
 
         tx_temas = rootview.findViewById(R.id.tx_tomfisica);
         img_temas = rootview.findViewById(R.id.img_tomoSeminario);
-        gridView = rootview.findViewById(R.id.ma_listfisica);
-        gridView2 = rootview.findViewById(R.id.ma_diapLetras);
+        gridView = rootview.findViewById(R.id.gb_topgrid);
+        gridView2 = rootview.findViewById(R.id.gb_bottomgrid);
+
+        gridView2.setScrollContainer(false);
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -86,7 +88,6 @@ public class DiapositivasTomosFrag extends Fragment {
                     }
                 }
             }
-
         });
 
         Lista = new ArrayList<mTomoCienciasDiap>();
@@ -100,11 +101,8 @@ public class DiapositivasTomosFrag extends Fragment {
         Lista.add(new mTomoCienciasDiap(R.drawable.ciencias_7, R.drawable.download_circle));
         Lista.add(new mTomoCienciasDiap(R.drawable.ciencias_8, R.drawable.download_circle));
 
-
         final adapterDiapositivasCiencia adapter = new adapterDiapositivasCiencia(getContext(), Lista);
-
         gridView.setAdapter(adapter);
-
 
         Lista2 = new ArrayList<mTomoLetrasDiap>();
 
@@ -116,14 +114,19 @@ public class DiapositivasTomosFrag extends Fragment {
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_6, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_7, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_8, R.drawable.download_circle));
-        Lista2.add(new mTomoLetrasDiap(R.drawable.letras_9, R.drawable.download_circle));
 
-        String grado= ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
+        //TipoGradoAsiste
 
-        if(grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria"))
-        {
-          Lista2.add(new mTomoLetrasDiap(R.drawable.letras_10, R.drawable.download_circle));
-          Lista2.add(new mTomoLetrasDiap(R.drawable.letras_11, R.drawable.download_circle));
+        String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
+        String tipogrado = ShareDataRead.obtenerValor(getContext(), "TipoGradoAsiste");
+
+        if (!tipogrado.equalsIgnoreCase("SAN MARCOS")) {
+            Lista2.add(new mTomoLetrasDiap(R.drawable.letras_9, R.drawable.download_circle));
+        }
+
+        if (grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria")) {
+            Lista2.add(new mTomoLetrasDiap(R.drawable.letras_10, R.drawable.download_circle));
+            Lista2.add(new mTomoLetrasDiap(R.drawable.letras_11, R.drawable.download_circle));
         }
 
         final adapterDiapositivasLetras adapter2 = new adapterDiapositivasLetras(getContext(), Lista2);

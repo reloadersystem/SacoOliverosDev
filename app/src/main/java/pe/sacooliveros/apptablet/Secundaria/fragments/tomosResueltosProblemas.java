@@ -63,7 +63,7 @@ public class tomosResueltosProblemas extends Fragment {
         img_temas = rootview.findViewById(R.id.img_tomoResueltos);
         gridView = rootview.findViewById(R.id.grid_resueltosciencias);
         gridView2 = rootview.findViewById(R.id.grid_resueltosletras);
-        lslist2= rootview.findViewById(R.id.lnlist2);
+     
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {

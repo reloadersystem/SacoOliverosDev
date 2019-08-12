@@ -36,6 +36,7 @@
         android:elevation="3dp"
         android:background="@drawable/messagepopup"
         android:layout_marginTop="50dp"
+        android:visibility="gone"
         >
 
 

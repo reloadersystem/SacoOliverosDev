@@ -238,27 +238,27 @@ public class InitialFragment extends Fragment {
 
                     case 4: {
 
-//                        Fragment fragment15 = new TomoAsesoriasFragment();
-//                        FragmentManager fmanager15 = getActivity().getSupportFragmentManager();
-//                        if (fmanager15 != null) {
-//
-//                            Bundle args = new Bundle();
-//                            args.putString("description", "Helico Asesorias");
-//                            args.putString("grado", grado);
-//                            args.putString("ACCESO", nivelacceso);
-//                            args.putString("TipoGradoAsiste", gradoasiste);
-//                            fragment15.setArguments(args);
-//
-//                            FragmentTransaction ftransaction = fmanager15.beginTransaction();
-//                            if (ftransaction != null) {
-//                                ftransaction.replace(R.id.contenedorFragments, fragment15);
-//                                ftransaction.addToBackStack("");
-//                                ftransaction.commit();
-//                            }
-//                        }
+                        Fragment fragment15 = new TomoAsesoriasFragment();
+                        FragmentManager fmanager15 = getActivity().getSupportFragmentManager();
+                        if (fmanager15 != null) {
 
-                        Intent  intent= new Intent(getContext(), HelicoAsesoriasActivity.class);
-                        startActivity(intent);
+                            Bundle args = new Bundle();
+                            args.putString("description", "Helico Asesorias");
+                            args.putString("grado", grado);
+                            args.putString("ACCESO", nivelacceso);
+                            args.putString("TipoGradoAsiste", gradoasiste);
+                            fragment15.setArguments(args);
+
+                            FragmentTransaction ftransaction = fmanager15.beginTransaction();
+                            if (ftransaction != null) {
+                                ftransaction.replace(R.id.contenedorFragments, fragment15);
+                                ftransaction.addToBackStack("");
+                                ftransaction.commit();
+                            }
+                        }
+
+//                        Intent  intent= new Intent(getContext(), HelicoAsesoriasActivity.class);
+//                        startActivity(intent);
 
                         break;
                     }

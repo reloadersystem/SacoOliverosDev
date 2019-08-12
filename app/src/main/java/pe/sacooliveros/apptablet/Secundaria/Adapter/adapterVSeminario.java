@@ -593,6 +593,24 @@ public class adapterVSeminario extends BaseAdapter {
                         }
 
                         break;
+
+
+                    case 15:
+
+                        if (cd.isConnected()) {
+
+                            String URL = servidor_ruta+"/APP/"+cicloespecial+"/"+numgrado+"/VIDEO_HELICO_SEMINARIO/BIOLOGIA/BIOLOGIA"+cicloespecial+numgrado+"_VHS.pdf";
+
+                            Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                            intent.putExtra("ViewType", "internet");
+                            intent.putExtra("URL", URL);
+                            intent.putExtra("Materia", "BIOLOGIA");
+                            context.startActivity(intent);
+
+                        }
+
+
                 }
             }
 

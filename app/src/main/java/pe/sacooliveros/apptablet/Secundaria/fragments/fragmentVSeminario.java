@@ -152,6 +152,9 @@ public class fragmentVSeminario extends Fragment {
             Lista.add(new mVSeminario(R.drawable.letras_5));
             Lista.add(new mVSeminario(R.drawable.letras_7));
             Lista.add(new mVSeminario(R.drawable.letras_8));
+            Lista.add(new mVSeminario(R.drawable.ciencias_3));
+
+
         } else if (gradoasiste.equalsIgnoreCase("CATOLICA")) {
             Lista.add(new mVSeminario(R.drawable.catolicatomo_1));
             Lista.add(new mVSeminario(R.drawable.catolicatomo_2));

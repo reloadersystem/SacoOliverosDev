@@ -55,16 +55,16 @@ public class contentAsesoriasFragment extends Fragment {
 
         cl_popupmessage= rootview.findViewById(R.id.cl_popupmessage);
 
-        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.fade_transition_animation);
-
-        cl_popupmessage.setAnimation(myAnim);
-
-        cl_popupmessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cl_popupmessage.setVisibility(View.INVISIBLE);
-            }
-        });
+//        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.fade_transition_animation);
+//
+//        cl_popupmessage.setAnimation(myAnim);
+//
+//        cl_popupmessage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                cl_popupmessage.setVisibility(View.INVISIBLE);
+//            }
+//        });
 
 
         Bundle bundle = this.getArguments();

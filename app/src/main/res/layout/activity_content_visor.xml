@@ -88,21 +88,13 @@
             app:fab_size="mini"
             app:fab_title="Descargar" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/flb_recargar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/transparenteblanco"
-            app:fab_icon="@drawable/ic_rotate_left_black_24dp"
-            app:fab_size="mini"
-            app:fab_title="Recargar" />
-
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/cl_popupmessage"
+        android:visibility="gone"
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginTop="27dp"

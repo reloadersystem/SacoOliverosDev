@@ -26,7 +26,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +53,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import pe.sacooliveros.apptablet.R;
-import pe.sacooliveros.apptablet.Secundaria.Adapter.RecyclerBalotariosAdapter;
 import pe.sacooliveros.apptablet.Secundaria.NavActivity;
 import pe.sacooliveros.apptablet.Utils.ConnectionDetector;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
@@ -79,7 +77,6 @@ public class contentVisorActivity extends AppCompatActivity {
     ProgressBar progresbar;
     String rutafile;
     String estadoconec;
-    RelativeLayout lnLayout;
     static String paginainicio;
     String ruta_storage;
     MenuInflater inflater;
@@ -198,7 +195,7 @@ public class contentVisorActivity extends AppCompatActivity {
         }
 
 
-        cl_popupmessage= findViewById(R.id.cl_popupmessage);
+        cl_popupmessage = findViewById(R.id.cl_popupmessage);
 
         final Animation myAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_transition_animation);
 
@@ -229,7 +226,6 @@ public class contentVisorActivity extends AppCompatActivity {
             }
         });*/
 
-
         final FloatingActionsMenu floatingActionsMenu = findViewById(R.id.menu_flbBalotarios);
 
         FloatingActionButton floatingImprimir = findViewById(R.id.flb_imprimir);
@@ -258,102 +254,6 @@ public class contentVisorActivity extends AppCompatActivity {
                 floatingActionsMenu.collapse();
             }
         });
-
-        FloatingActionButton floatingRecargar = findViewById(R.id.flb_recargar);
-        floatingRecargar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (cd.isConnected()) {
-
-                    File filecachepdf = new File(getExternalStorageDirectory() + "/PDFiles/" + ssdtablet);
-                    boolean deleted = filecachepdf.delete();
-                    shareItem.setVisible(false);
-
-                    progresbar.setVisibility(View.VISIBLE);
-                    FileLoader.with(getApplicationContext())
-                            .fromDirectory("PDFiles", FileLoader.DIR_EXTERNAL_PUBLIC)
-                            .load(urlcode)
-                            .asFile(new FileRequestListener<File>() {
-                                @Override
-                                public void onLoad(FileLoadRequest fileLoadRequest, FileResponse<File> fileResponse) {
-                                    progresbar.setVisibility(View.GONE);
-                                    File pdfFile = fileResponse.getBody();
-                                    pdfView.fromFile(pdfFile)
-                                            .password(password)
-                                            .defaultPage(pageNumber)
-                                            .enableDoubletap(true)
-                                            .swipeHorizontal(true)
-                                            .spacing(0)
-                                            .onRender(new OnRenderListener() {   // visualizar  3 , 4 paginas en miniatura landscape
-                                                @Override
-                                                public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
-                                                    pdfView.fitToWidth(pdfView.getCurrentPage());
-                                                }
-                                            })
-                                            .onDraw(new OnDrawListener() {
-                                                @Override
-                                                public void onLayerDrawn(Canvas canvas, float pageWidth, float pageHeight, int displayedPage) {
-                                                }
-                                            })
-                                            .onPageError(new OnPageErrorListener() {
-                                                @Override
-                                                public void onPageError(int page, Throwable t) {
-                                                    Toast.makeText(contentVisorActivity.this, "error" + page, Toast.LENGTH_SHORT).show();
-                                                }
-                                            })
-                                            .onPageChange(new OnPageChangeListener() {
-                                                @Override
-                                                public void onPageChanged(int page, int pageCount) {
-                                                    pageNumber = page;
-                                                    pagecontador = pageCount;
-                                                    setTitle(tema);
-                                                }
-                                            })
-                                            .onTap(new OnTapListener() {
-                                                @Override
-                                                public boolean onTap(MotionEvent e) {
-                                                    return true;
-                                                }
-                                            })
-                                            .onRender(new OnRenderListener() {
-                                                @Override
-                                                public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
-                                                    pdfView.fitToWidth();
-
-                                                }
-                                            })
-                                            .enableAntialiasing(true)
-                                            .invalidPageColor(Color.WHITE)
-                                            .onLoad(new OnLoadCompleteListener() {
-                                                @Override
-                                                public void loadComplete(int nbPages) {
-
-                                                    shareItem.setVisible(true);
-                                                }
-                                            })
-                                            .load();
-                                }
-
-                                @Override
-                                public void onError(FileLoadRequest fileLoadRequest, Throwable throwable) {
-                                    //Toast.makeText(ViewTomo3Activity.this, "Pruebe mas  tarde" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(contentVisorActivity.this, "Error de Conexión, vuelva a intentar", Toast.LENGTH_SHORT).show();
-
-                                    progresbar.setVisibility(View.GONE);
-                                    shareItem.setVisible(true);
-                                }
-                            });
-
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Estas sin conexión", Toast.LENGTH_SHORT).show();
-                }
-                floatingActionsMenu.collapse();
-            }
-        });
-
-
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -711,10 +611,10 @@ public class contentVisorActivity extends AppCompatActivity {
 
     private class DescargarPDFAsynTask extends AsyncTask<String, Integer, String> {
 
-       // ProgressDialog progressDialog;
+        // ProgressDialog progressDialog;
 
         public DescargarPDFAsynTask(ProgressDialog progressDialog) {
-          //  this.progressDialog = progressDialog;
+            //  this.progressDialog = progressDialog;
         }
 
 
@@ -722,7 +622,7 @@ public class contentVisorActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-           // progressDialog.show();
+            // progressDialog.show();
         }
 
         @Override
@@ -791,7 +691,7 @@ public class contentVisorActivity extends AppCompatActivity {
                     if (output != null) output.close();
                     if (conexion != null) conexion.disconnect();
 
-                   // progressDialog.dismiss();
+                    // progressDialog.dismiss();
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -819,7 +719,7 @@ public class contentVisorActivity extends AppCompatActivity {
             super.onPostExecute(mensaje);
 
             Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
-          //  progressDialog.dismiss();
+            //  progressDialog.dismiss();
             //Tiempo estimado
         }
     }
