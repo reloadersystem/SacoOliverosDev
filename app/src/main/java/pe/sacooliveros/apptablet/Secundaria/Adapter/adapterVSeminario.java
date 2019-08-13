@@ -46,7 +46,6 @@ public class adapterVSeminario extends BaseAdapter {
 
     static String  tomonumero;
 
-
     public adapterVSeminario(Context context, ArrayList<mVSeminario> arrayList) {
         this.context = context;
         this.arrayList = arrayList;

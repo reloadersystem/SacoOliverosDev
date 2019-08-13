@@ -58,6 +58,7 @@ import pe.sacooliveros.apptablet.Balotario.BalotarioMenuActivity;
 import pe.sacooliveros.apptablet.ConfigFragment;
 import pe.sacooliveros.apptablet.DBDescargas.AdminSQLiteOpenHelper;
 import pe.sacooliveros.apptablet.DescargasFragment;
+import pe.sacooliveros.apptablet.DescargasHistorial.checkDescargasFragment;
 import pe.sacooliveros.apptablet.DirectoryCreateUtil;
 import pe.sacooliveros.apptablet.DirectoryUtilCatolica;
 import pe.sacooliveros.apptablet.DirectoryUtilPRE;
@@ -1139,7 +1140,23 @@ public class NavActivity extends AppCompatActivity
 
         if (id == R.id.descargas_tablet) {
 
-            Fragment fragment = new DescargasFragment();
+//            Fragment fragment = new DescargasFragment();
+//            FragmentManager fmanager = this.getSupportFragmentManager();
+//            if (fmanager != null) {
+//
+//                Bundle args = new Bundle();
+//                args.putString("ACCESO", nivelacceso);
+//                fragment.setArguments(args);
+//
+//                FragmentTransaction ftransaction = fmanager.beginTransaction();
+//                if (ftransaction != null) {
+//                    ftransaction.replace(R.id.contenedorFragments, fragment);
+//                    ftransaction.addToBackStack("");
+//                    ftransaction.commit();
+//                }
+//            }
+
+            Fragment fragment = new checkDescargasFragment();
             FragmentManager fmanager = this.getSupportFragmentManager();
             if (fmanager != null) {
 
