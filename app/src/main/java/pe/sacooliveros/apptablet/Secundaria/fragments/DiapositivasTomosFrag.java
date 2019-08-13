@@ -120,7 +120,12 @@ public class DiapositivasTomosFrag extends Fragment {
         String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
         String tipogrado = ShareDataRead.obtenerValor(getContext(), "TipoGradoAsiste");
 
-        if (!tipogrado.equalsIgnoreCase("SAN MARCOS")) {
+
+
+        if (tipogrado.equalsIgnoreCase("SAN MARCOS") || tipogrado.equalsIgnoreCase("UNI") ) {
+
+        }else
+        {
             Lista2.add(new mTomoLetrasDiap(R.drawable.letras_9, R.drawable.download_circle));
         }
 

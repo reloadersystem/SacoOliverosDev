@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterResueltosCiencia;
 import pe.sacooliveros.apptablet.Secundaria.Adapter.adapterResueltosLetras;
-import pe.sacooliveros.apptablet.Secundaria.Model.mPropuestosLetras;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomoCienciasResueltos;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomoLetrasResueltos;
 import pe.sacooliveros.apptablet.Utils.ShareDataRead;
@@ -63,7 +62,7 @@ public class tomosResueltosProblemas extends Fragment {
         img_temas = rootview.findViewById(R.id.img_tomoResueltos);
         gridView = rootview.findViewById(R.id.grid_resueltosciencias);
         gridView2 = rootview.findViewById(R.id.grid_resueltosletras);
-     
+
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -123,19 +122,20 @@ public class tomosResueltosProblemas extends Fragment {
         Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_4, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_5, R.drawable.download_circle));
 
+        if (gradousuario.equalsIgnoreCase("1 Secundaria") || gradousuario.equalsIgnoreCase("2 Secundaria") || gradousuario.equalsIgnoreCase("3 Secundaria") || gradousuario.equalsIgnoreCase("4 Secundaria")) {
+            Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_9, R.drawable.download_circle));
+        }
 
-        if (gradousuario.equalsIgnoreCase("3 Secundaria") || gradousuario.equalsIgnoreCase("4 Secundaria") || gradousuario.equalsIgnoreCase("5 Secundaria"))
-        {
+        if (gradousuario.equalsIgnoreCase("3 Secundaria") || gradousuario.equalsIgnoreCase("4 Secundaria") || gradousuario.equalsIgnoreCase("5 Secundaria")) {
             Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_6, R.drawable.download_circle));
             Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_7, R.drawable.download_circle));
             Lista2.add(new mTomoLetrasResueltos(R.drawable.letras_8, R.drawable.download_circle));
-
         }
+
 
         final adapterResueltosLetras adapter2 = new adapterResueltosLetras(getContext(), Lista2);
 
         gridView2.setAdapter(adapter2);
-
 
         return rootview;
     }

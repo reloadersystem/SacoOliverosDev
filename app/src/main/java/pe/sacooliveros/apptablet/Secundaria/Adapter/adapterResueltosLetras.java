@@ -94,9 +94,7 @@ public class adapterResueltosLetras extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
-                switch (position)
-
-                {
+                switch (position) {
                     case 0:
                         fileManager.manageFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/LENGUAJE/LENGUAJE2" + nivel + "_PRM" + mesnumero + ".pdf", "LENGUAJE");
                         break;
@@ -118,14 +116,17 @@ public class adapterResueltosLetras extends BaseAdapter {
                         break;
 
                     case 5:
-                        fileManager.manageFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PRM" + mesnumero + ".pdf", "HISTORIA UNIVERSAL");
+                        String gradousuario = ShareDataRead.obtenerValor(context, "ServerGradoNivel");
+                        if (gradousuario.equalsIgnoreCase("1 Secundaria") || gradousuario.equalsIgnoreCase("2 Secundaria") || gradousuario.equalsIgnoreCase("3 Secundaria") || gradousuario.equalsIgnoreCase("4 Secundaria")) {
+                            fileManager.manageFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/INGLES/INGLES2" + nivel + "_PRM" + mesnumero + ".pdf", "INGLES");
+                        } else {
+                            fileManager.manageFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PRM" + mesnumero + ".pdf", "HISTORIA UNIVERSAL");
+                        }
                         break;
-
 
                     case 6:
                         fileManager.manageFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/ECONOMIA/ECONOMIA2" + nivel + "_PRM" + mesnumero + ".pdf", "ECONOMIA");
                         break;
-
 
                     case 7:
                         fileManager.manageFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/PSICOLOGIA/PSICOLOGIA2" + nivel + "_PRM" + mesnumero + ".pdf", "PSICOLOGIA");
@@ -165,8 +166,14 @@ public class adapterResueltosLetras extends BaseAdapter {
                         fileManager.downloadFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/GEOGRAFIA/GEOGRAFIA2" + nivel + "_PRM" + mesnumero + ".pdf", "Problemas Resueltos - MES " + mesnumero + " - GEOGRAFIA");
                         break;
 
+
                     case 5:
-                        fileManager.downloadFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PRM" + mesnumero + ".pdf", "Problemas Resueltos - MES " + mesnumero + " - HISTORIA UNIVERSAL");
+                        String gradousuario = ShareDataRead.obtenerValor(context, "ServerGradoNivel");
+                        if (gradousuario.equalsIgnoreCase("1 Secundaria") || gradousuario.equalsIgnoreCase("2 Secundaria") || gradousuario.equalsIgnoreCase("3 Secundaria") || gradousuario.equalsIgnoreCase("4 Secundaria")) {
+                            fileManager.downloadFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/INGLES/INGLES2" + nivel + "_PRM" + mesnumero + ".pdf", "Problemas Resueltos - MES " + mesnumero + " - INGLES");
+                        } else {
+                            fileManager.downloadFileView("/APP/2/" + nivel + "/PROBLEMAS_RESUELTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PRM" + mesnumero + ".pdf", "Problemas Resueltos - MES " + mesnumero + " - HISTORIA UNIVERSAL");
+                        }
                         break;
 
                     case 6:

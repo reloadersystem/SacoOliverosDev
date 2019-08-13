@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".Secundaria.Activitys.TomosAsesoriasActivity"></activity>
         <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -223,11 +223,9 @@
             android:name=".Balotario.contentVisorActivity"
             android:theme="@style/AppThemeVisorPdf"
             android:windowSoftInputMode="stateHidden" />
-
-        <activity android:name=".Secundaria.Activitys.HelicoAsesoriasActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+        <activity
+            android:name=".Secundaria.Activitys.HelicoAsesoriasActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

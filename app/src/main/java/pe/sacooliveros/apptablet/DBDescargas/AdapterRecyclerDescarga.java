@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -50,6 +51,8 @@ public class AdapterRecyclerDescarga extends RecyclerView.Adapter<AdapterRecycle
 
         holder.fecha.setText(listaDescargas.get(position).getFecha());
         holder.nombre.setText(listaDescargas.get(position).getNombre());
+
+        //holder.chk_eliminarItem
     }
 
     @Override
@@ -85,6 +88,8 @@ public class AdapterRecyclerDescarga extends RecyclerView.Adapter<AdapterRecycle
 
         public CardView card_animdownload;
 
+
+
         public DescargaViewHolder(View itemView) {
             super(itemView);
 
@@ -94,6 +99,8 @@ public class AdapterRecyclerDescarga extends RecyclerView.Adapter<AdapterRecycle
             nombre= itemView.findViewById(R.id.edt_itemfile);
             ruta= itemView.findViewById(R.id.edt_itemrutaurl);
             imageView=itemView.findViewById(R.id.img_item);
+            imageView=itemView.findViewById(R.id.img_item);
+
 
         }
     }

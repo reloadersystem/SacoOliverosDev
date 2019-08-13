@@ -14,10 +14,12 @@ import java.util.List;
 import pe.sacooliveros.apptablet.R;
 import pe.sacooliveros.apptablet.Secundaria.Model.mTomosHelicoAsesoria;
 
-public class adapterRecyclerAsesoria extends RecyclerView.Adapter<adapterRecyclerAsesoria.MyViewHolder> {
+public class adapterRecyclerAsesoria extends RecyclerView.Adapter<adapterRecyclerAsesoria.MyViewHolder> implements View.OnClickListener {
 
     private Context mContext;
     private List<mTomosHelicoAsesoria> mTomosHelicoAsesoriasList;
+
+    private View.OnClickListener listener;
 
     public adapterRecyclerAsesoria(Context mContext, List<mTomosHelicoAsesoria> mTomosHelicoAsesoriasList) {
         this.mContext = mContext;
@@ -30,6 +32,7 @@ public class adapterRecyclerAsesoria extends RecyclerView.Adapter<adapterRecycle
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.item_asesoria_tomos, parent, false);
+        view.setOnClickListener(this);
         return new MyViewHolder(view);
     }
 
@@ -46,6 +49,21 @@ public class adapterRecyclerAsesoria extends RecyclerView.Adapter<adapterRecycle
         return mTomosHelicoAsesoriasList.size();
     }
 
+    public void setOnclickListener(View.OnClickListener listener)
+    {
+        this.listener= listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(listener!=null)
+        {
+            listener.onClick(view);
+        }
+    }
+
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView img_tomoAsesoria;
@@ -56,8 +74,6 @@ public class adapterRecyclerAsesoria extends RecyclerView.Adapter<adapterRecycle
 
             img_tomoAsesoria= itemView.findViewById(R.id.img_tomosAsesoria);
             text_tomoAsesoria= itemView.findViewById(R.id.txt_titleAsesoria);
-
-
 
         }
     }

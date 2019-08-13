@@ -112,22 +112,18 @@ public class adapter_proletras extends BaseAdapter {
 
         cd = new ConnectionDetector(context);
 
-        String gradopre= ShareDataRead.obtenerValor(context, "TipoGradoAsiste");
-        String nivelpre= ShareDataRead.obtenerValor(context, "ServerGradoNivel").substring(0,1);
+        String gradopre = ShareDataRead.obtenerValor(context, "TipoGradoAsiste");
+        String nivelpre = ShareDataRead.obtenerValor(context, "ServerGradoNivel").substring(0, 1);
 
-        if(nivel==null)
-        { nivel= ShareDataRead.obtenerValor(context, "ServerGradoNivel").substring(0,1);
+        if (nivel == null) {
+            nivel = ShareDataRead.obtenerValor(context, "ServerGradoNivel").substring(0, 1);
         }
-
-
 
         imgfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                switch (position)
-
-                {
+                switch (position) {
                     case 0:
 
                         if (cd.isConnected()) {
@@ -153,9 +149,7 @@ public class adapter_proletras extends BaseAdapter {
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/LENGUAJE/" + ruta);
 
 
-                            if (file0.exists())
-
-                            {
+                            if (file0.exists()) {
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
 
@@ -206,9 +200,7 @@ public class adapter_proletras extends BaseAdapter {
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/LITERATURA/" + ruta);
 
 
-                            if (file0.exists())
-
-                            {
+                            if (file0.exists()) {
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
 
@@ -259,9 +251,7 @@ public class adapter_proletras extends BaseAdapter {
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/RAZONAMIENTO_VERBAL/" + ruta);
 
 
-                            if (file0.exists())
-
-                            {
+                            if (file0.exists()) {
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
 
@@ -311,9 +301,7 @@ public class adapter_proletras extends BaseAdapter {
 
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_DEL_PERU/" + ruta);
 
-                            if (file0.exists())
-
-                            {
+                            if (file0.exists()) {
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
 
@@ -366,9 +354,7 @@ public class adapter_proletras extends BaseAdapter {
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/GEOGRAFIA/" + ruta);
 
 
-                            if (file0.exists())
-
-                            {
+                            if (file0.exists()) {
 
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
@@ -395,53 +381,93 @@ public class adapter_proletras extends BaseAdapter {
 
                     case 5:
 
-                        if (cd.isConnected()) {
+                        String grado = ShareDataRead.obtenerValor(context, "ServerGradoNivel");
 
-                            //http://app8.sacooliveros.edu.pe/APP/2/2/PROBLEMAS_PROPUESTOS/MES1/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL22_PPM1.pdf
+                        if (grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria") || grado.equalsIgnoreCase("3 Secundaria") || grado.equalsIgnoreCase("4 Secundaria")) {
+                            if (cd.isConnected()) {
 
+                                //http://192.169.218.177/APP/2/4/PROBLEMAS_PROPUESTOS/MES5/INGLES/INGLES24_PPM5.pdf
 
-                            String URL = servidor_ruta + "/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
-
-                            Intent intent = new Intent(context, ViewTomo3Activity.class);
-
-                            intent.putExtra("ViewType", "internet");
-                            intent.putExtra("URL", URL);
-                            intent.putExtra("Materia", "HISTORIA UNIVERSAL");
-                            context.startActivity(intent);
-
-                        } else {
-
-
-                            String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
-
-                            ruta = "HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
-
-                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/" + ruta);
-
-                            if (file0.exists())
-
-                            {
-
+                                String URL = servidor_ruta + "/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/INGLES/INGLES2" + nivel + "_PPM" + mesnumero + ".pdf";
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
 
-                                intent.putExtra("ViewType", "storage");
-                                intent.putExtra("SSDFILE", ssdFile);
-                                intent.putExtra("Materia", "HISTORIA UNIVERSAL");
-                                intent.putExtra("EstadoConexion", "SinConexion");
+                                intent.putExtra("ViewType", "internet");
+                                intent.putExtra("URL", URL);
+                                intent.putExtra("Materia", "INGLES");
                                 context.startActivity(intent);
 
-                                Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
-                                break;
+                            } else {
+
+                                String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/INGLES/INGLES2" + nivel + "_PPM" + mesnumero + ".pdf";
+
+                                ruta = "INGLES2" + nivel + "_PPM" + mesnumero + ".pdf";
+
+                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/INGLES/" + ruta);
+
+                                if (file0.exists()) {
+                                    Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                                    intent.putExtra("ViewType", "storage");
+                                    intent.putExtra("SSDFILE", ssdFile);
+                                    intent.putExtra("Materia", "INGLES");
+                                    intent.putExtra("EstadoConexion", "SinConexion");
+                                    context.startActivity(intent);
+
+                                    Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                                } else {
+                                    Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                                }
+                            }
+                        } else {
+                            if (cd.isConnected()) {
+
+                                String URL = servidor_ruta + "/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
+
+                                Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                                intent.putExtra("ViewType", "internet");
+                                intent.putExtra("URL", URL);
+                                intent.putExtra("Materia", "HISTORIA UNIVERSAL");
+                                context.startActivity(intent);
 
                             } else {
-                                Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
-                                break;
+
+
+                                String ssdFile = "/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
+
+                                ruta = "HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
+
+                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/" + ruta);
+
+                                if (file0.exists()) {
+
+
+                                    Intent intent = new Intent(context, ViewTomo3Activity.class);
+
+                                    intent.putExtra("ViewType", "storage");
+                                    intent.putExtra("SSDFILE", ssdFile);
+                                    intent.putExtra("Materia", "HISTORIA UNIVERSAL");
+                                    intent.putExtra("EstadoConexion", "SinConexion");
+                                    context.startActivity(intent);
+
+                                    Toast.makeText(context, " Vista Sin Conexion", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                                } else {
+                                    Toast.makeText(context, "No descargaste el archivo", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                                }
 
                             }
+                            break;
 
                         }
-
 
                         break;
 
@@ -469,9 +495,7 @@ public class adapter_proletras extends BaseAdapter {
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/ECONOMIA/" + ruta);
 
 
-                            if (file0.exists())
-
-                            {
+                            if (file0.exists()) {
 
 
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
@@ -519,9 +543,7 @@ public class adapter_proletras extends BaseAdapter {
 
                             File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/PSICOLOGIA/" + ruta);
 
-                            if (file0.exists())
-
-                            {
+                            if (file0.exists()) {
                                 Intent intent = new Intent(context, ViewTomo3Activity.class);
                                 intent.putExtra("ViewType", "storage");
                                 intent.putExtra("SSDFILE", ssdFile);
@@ -591,9 +613,7 @@ public class adapter_proletras extends BaseAdapter {
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
 
                             }
-                        } else
-
-                        {
+                        } else {
 
 
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
@@ -634,9 +654,7 @@ public class adapter_proletras extends BaseAdapter {
                                 String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/LITERATURA/LITERATURA2" + nivel + "_PPM" + mesnumero + ".pdf";
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
                             }
-                        } else
-
-                        {
+                        } else {
 
 
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
@@ -677,9 +695,7 @@ public class adapter_proletras extends BaseAdapter {
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
 
                             }
-                        } else
-
-                        {
+                        } else {
 
 
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
@@ -717,9 +733,7 @@ public class adapter_proletras extends BaseAdapter {
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
 
                             }
-                        } else
-
-                        {
+                        } else {
 
 
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
@@ -758,9 +772,7 @@ public class adapter_proletras extends BaseAdapter {
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
 
                             }
-                        } else
-
-                        {
+                        } else {
 
 
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
@@ -772,43 +784,72 @@ public class adapter_proletras extends BaseAdapter {
 
                     case 5:
 
+                        String grado = ShareDataRead.obtenerValor(context, "ServerGradoNivel");
 
-                        if (cd.isConnected()) {
+                        if (grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria") || grado.equalsIgnoreCase("3 Secundaria") || grado.equalsIgnoreCase("4 Secundaria")) {
+                            if (cd.isConnected()) {
 
-                            urlADescargar = servidor_ruta + "/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
-                            ruta = "HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
+                                urlADescargar = servidor_ruta + "/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/INGLES/INGLES2" + nivel + "_PPM" + mesnumero + ".pdf";
+                                ruta = "INGLES2" + nivel + "_PPM" + mesnumero + ".pdf";
 
-                            materiadownload = "HISTORIA_UNIVERSAL/";
-                            File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/" + materiadownload + ruta);
-
-
-                            if (file0.exists()) {
-                                Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
+                                materiadownload = "INGLES/";
+                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/" + materiadownload + ruta);
 
 
+                                if (file0.exists()) {
+                                    Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    descargarPDF(urlADescargar);
+
+                                    //DBwritedownloas();
+
+                                    String nombrepdfusuario = "Problemas Propuestos - MES " + mesnumero + " - INGLES";
+                                    String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/INGLES/INGLES2" + nivel + "_PPM" + mesnumero + ".pdf";
+                                    DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
+                                }
+                            } else {
+                                Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
+                            }
+
+                            break;
+
+                        } else {
+                            if (cd.isConnected()) {
+
+                                urlADescargar = servidor_ruta + "/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
+                                ruta = "HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
+
+                                materiadownload = "HISTORIA_UNIVERSAL/";
+                                File file0 = new File("/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/" + materiadownload + ruta);
+
+
+                                if (file0.exists()) {
+                                    Toast.makeText(context, "Archivo Existente", Toast.LENGTH_SHORT).show();
+
+
+                                } else {
+
+
+                                    descargarPDF(urlADescargar);
+
+                                    //DBwritedownloas();
+
+                                    String nombrepdfusuario = "Problemas Propuestos - MES " + mesnumero + " - HISTORIA UNIVERSAL";
+                                    String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
+                                    DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
+
+
+                                }
                             } else {
 
 
-                                descargarPDF(urlADescargar);
-
-                                //DBwritedownloas();
-
-                                String nombrepdfusuario = "Problemas Propuestos - MES " + mesnumero + " - HISTORIA UNIVERSAL";
-                                String rutasdd = "/data/user/0/pe.sacooliveros.apptablet/files/APP/2/" + nivel + "/PROBLEMAS_PROPUESTOS/MES" + mesnumero + "/HISTORIA_UNIVERSAL/HISTORIA_UNIVERSAL2" + nivel + "_PPM" + mesnumero + ".pdf";
-                                DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
-
-
+                                Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                             }
-                        } else
 
-                        {
-
-
-                            Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
                         }
 
-
                         break;
+
 
                     case 6:
 
@@ -838,9 +879,7 @@ public class adapter_proletras extends BaseAdapter {
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
 
                             }
-                        } else
-
-                        {
+                        } else {
 
 
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();
@@ -851,7 +890,6 @@ public class adapter_proletras extends BaseAdapter {
 
 
                     case 7:
-
 
                         if (cd.isConnected()) {
 
@@ -879,9 +917,7 @@ public class adapter_proletras extends BaseAdapter {
                                 DownloadListWrite.WriteDownloads(context, nombrepdfusuario, rutasdd, urlADescargar, "true");
 
                             }
-                        } else
-
-                        {
+                        } else {
 
 
                             Toast.makeText(context, " Sin Conexión", Toast.LENGTH_SHORT).show();

@@ -119,6 +119,10 @@ public class FragPropuestosMaterias extends Fragment {
         listaLetras.add(new mPropuestosLetras(R.drawable.letras_3, R.drawable.download_circle));
         listaLetras.add(new mPropuestosLetras(R.drawable.letras_4, R.drawable.download_circle));
         listaLetras.add(new mPropuestosLetras(R.drawable.letras_5, R.drawable.download_circle));
+        if (grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria") || grado.equalsIgnoreCase("3 Secundaria") || grado.equalsIgnoreCase("4 Secundaria"))
+        {
+            listaLetras.add(new mPropuestosLetras(R.drawable.letras_9, R.drawable.download_circle));
+        }
 
         if (grado.equalsIgnoreCase("3 Secundaria") || grado.equalsIgnoreCase("4 Secundaria") || grado.equalsIgnoreCase("5 Secundaria"))
         {
@@ -126,6 +130,8 @@ public class FragPropuestosMaterias extends Fragment {
             listaLetras.add(new mPropuestosLetras(R.drawable.letras_7, R.drawable.download_circle));
             listaLetras.add(new mPropuestosLetras(R.drawable.letras_8, R.drawable.download_circle));
         }
+
+
 
         final adapter_proletras adapter2 = new adapter_proletras(getContext(), listaLetras);
         gridView2.setAdapter(adapter2);

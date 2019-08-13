@@ -1140,23 +1140,7 @@ public class NavActivity extends AppCompatActivity
 
         if (id == R.id.descargas_tablet) {
 
-//            Fragment fragment = new DescargasFragment();
-//            FragmentManager fmanager = this.getSupportFragmentManager();
-//            if (fmanager != null) {
-//
-//                Bundle args = new Bundle();
-//                args.putString("ACCESO", nivelacceso);
-//                fragment.setArguments(args);
-//
-//                FragmentTransaction ftransaction = fmanager.beginTransaction();
-//                if (ftransaction != null) {
-//                    ftransaction.replace(R.id.contenedorFragments, fragment);
-//                    ftransaction.addToBackStack("");
-//                    ftransaction.commit();
-//                }
-//            }
-
-            Fragment fragment = new checkDescargasFragment();
+            Fragment fragment = new DescargasFragment();
             FragmentManager fmanager = this.getSupportFragmentManager();
             if (fmanager != null) {
 
