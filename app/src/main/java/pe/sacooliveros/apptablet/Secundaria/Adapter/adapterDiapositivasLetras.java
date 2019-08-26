@@ -198,9 +198,6 @@ public class adapterDiapositivasLetras extends BaseAdapter {
                         if (cd.isConnected()) {
 
 
-                            //http://app8.sacooliveros.edu.pe/APP/"+cicloespecial+"/"+nivel+"/HELICO_DIAPOSITIVAS/TOMO1/LITERATURA/LITERATURA2"+nivel+"_HDT1.pdf
-
-
                             String URL = servidor_ruta + "/APP/" + cicloespecial + "/" + nivel + "/HELICO_DIAPOSITIVAS/" + tomo + "/LITERATURA/LITERATURA2" + nivel + "_HDT" + tomonumero + ".pdf";
 
                             Intent intent = new Intent(context, ViewTomo3Activity.class);

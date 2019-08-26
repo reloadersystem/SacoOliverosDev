@@ -209,9 +209,7 @@ public class InitialFragment extends Fragment {
 
                         break;
 
-                    case 3:
-
-                    {
+                    case 3: {
                         Fragment fragment13 = new fragmentResueltosProblemas();
                         FragmentManager fmanager13 = getActivity().getSupportFragmentManager();
                         if (fmanager13 != null) {
@@ -238,27 +236,26 @@ public class InitialFragment extends Fragment {
 
                     case 4: {
 
-                        Fragment fragment15 = new TomoAsesoriasFragment();
-                        FragmentManager fmanager15 = getActivity().getSupportFragmentManager();
-                        if (fmanager15 != null) {
+//                        Fragment fragment15 = new TomoAsesoriasFragment();
+//                        FragmentManager fmanager15 = getActivity().getSupportFragmentManager();
+//                        if (fmanager15 != null) {
+//
+//                            Bundle args = new Bundle();
+//                            args.putString("description", "Helico Asesorias");
+//                            args.putString("ACCESO", nivelacceso);//                            args.putString("grado", grado);
+//                            args.putString("TipoGradoAsiste", gradoasiste);
+//                            fragment15.setArguments(args);
+//
+//                            FragmentTransaction ftransaction = fmanager15.beginTransaction();
+//                            if (ftransaction != null) {
+//                                ftransaction.replace(R.id.contenedorFragments, fragment15);
+//                                ftransaction.addToBackStack("");
+//                                ftransaction.commit();
+//                            }
+//                        }
 
-                            Bundle args = new Bundle();
-                            args.putString("description", "Helico Asesorias");
-                            args.putString("grado", grado);
-                            args.putString("ACCESO", nivelacceso);
-                            args.putString("TipoGradoAsiste", gradoasiste);
-                            fragment15.setArguments(args);
-
-                            FragmentTransaction ftransaction = fmanager15.beginTransaction();
-                            if (ftransaction != null) {
-                                ftransaction.replace(R.id.contenedorFragments, fragment15);
-                                ftransaction.addToBackStack("");
-                                ftransaction.commit();
-                            }
-                        }
-
-//                        Intent  intent= new Intent(getContext(), HelicoAsesoriasActivity.class);
-//                        startActivity(intent);
+                        Intent intent = new Intent(getContext(), HelicoAsesoriasActivity.class);
+                        startActivity(intent);
 
                         break;
                     }
@@ -356,9 +353,7 @@ public class InitialFragment extends Fragment {
 
                     case 8:
 
-                        if (nivelacceso.equalsIgnoreCase("4") | nivelacceso.equalsIgnoreCase("3") | nivelacceso.equalsIgnoreCase("2") | nivelacceso.equalsIgnoreCase("1"))
-
-                        {
+                        if (nivelacceso.equalsIgnoreCase("4") | nivelacceso.equalsIgnoreCase("3") | nivelacceso.equalsIgnoreCase("2") | nivelacceso.equalsIgnoreCase("1")) {
                             Fragment fragment8 = new fragmentComputacion();
                             FragmentManager fmanager8 = getActivity().getSupportFragmentManager();
                             if (fmanager8 != null) {

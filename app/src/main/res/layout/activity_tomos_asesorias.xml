@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".Secundaria.Activitys.TomosAsesoriasActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -11,29 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="@drawable/shape_degradado_asesoria"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
+        android:fitsSystemWindows="true"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="exitUntilCollapsed|scroll"
-            app:contentScrim="@drawable/sh_fondoasesoria"
-            app:title="HELICO ASESORIAS"
+            android:background="@drawable/cabecera_asesoria"
+            android:fitsSystemWindows="true"
             app:collapsedTitleGravity="center_horizontal"
+            app:collapsedTitleTextAppearance="@style/StyleAppBarCollpase"
+            app:contentScrim="@drawable/sh_fondoasesoria"
             app:expandedTitleGravity="center"
             app:expandedTitleTextAppearance="@style/StyleAppBar"
-            app:collapsedTitleTextAppearance="@style/StyleAppBarCollpase"
-            android:background="@drawable/cabecera_asesoria"
-            >
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="HELICO ASESORIAS">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarid"
                 android:layout_width="match_parent"
-                app:popupTheme="@style/AlertDialog.AppCompat.Light"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                android:layout_height="?attr/actionBarSize">
+                app:popupTheme="@style/AlertDialog.AppCompat.Light">
 
             </android.support.v7.widget.Toolbar>
 
@@ -42,53 +43,28 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pagerAsesorias"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/pager"
-                android:layout_width="match_parent"
-                android:layout_height="770dp"
-                />
-        </LinearLayout>
-
-
-    </android.support.v4.widget.NestedScrollView>
+        android:layout_height="700dp"
+        android:layout_marginBottom="50dp"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/main_bottomlecturas"
+        android:id="@+id/main_bottomasesorias"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/barbottom"
-        app:itemIconTint="@drawable/colorbottombalotario"
-        app:itemTextColor="@drawable/colorbottombalotario"
-        app:menu="@menu/menu_seminarios"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        >
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fb_zipdescarga"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="end|bottom"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="7dp"
-            android:src="@drawable/ic_share_zip"
-            android:visibility="gone"
-            app:backgroundTint="#FFFFFF" />
+        android:background="@color/barbottom"
+        app:itemIconTint="@drawable/colorbottomasesoria"
+        app:itemTextColor="@drawable/colorbottomasesoria"
+        app:menu="@menu/menu_asesorias">
 
 
     </android.support.design.widget.BottomNavigationView>
+
 
 </android.support.design.widget.CoordinatorLayout>

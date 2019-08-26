@@ -58,7 +58,6 @@ import pe.sacooliveros.apptablet.Balotario.BalotarioMenuActivity;
 import pe.sacooliveros.apptablet.ConfigFragment;
 import pe.sacooliveros.apptablet.DBDescargas.AdminSQLiteOpenHelper;
 import pe.sacooliveros.apptablet.DescargasFragment;
-import pe.sacooliveros.apptablet.DescargasHistorial.checkDescargasFragment;
 import pe.sacooliveros.apptablet.DirectoryCreateUtil;
 import pe.sacooliveros.apptablet.DirectoryUtilCatolica;
 import pe.sacooliveros.apptablet.DirectoryUtilPRE;
@@ -287,7 +286,7 @@ public class NavActivity extends AppCompatActivity
 //            updateapk = Double.valueOf("2.1440");
 //        }
 
-/*   todo Desactivando la funcionalidad de actualizar desde el servidor o firebase linea 332-365
+//   todo Desactivando la funcionalidad de actualizar desde el servidor o firebase linea 332-365
 
         if (cd.isConnected() && updateapk != null) {
 
@@ -320,7 +319,7 @@ public class NavActivity extends AppCompatActivity
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-        }*/
+        }
 
         if (!isAppInstalled2) {
 

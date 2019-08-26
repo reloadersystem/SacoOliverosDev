@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -23,10 +24,11 @@ import pe.sacooliveros.apptablet.Secundaria.fragments.Segundo_BalFragment;
 
 public class BalotarioOpcionesActivity extends AppCompatActivity {
 
-    TextView txt_primermensual, txt_primerbimestral;
-    TextView txt_segundomensual, txt_segundobimestral;
-    TextView txt_tercermensual, txt_tercerbimestral;
-    TextView txt_cuartomensual, txt_cuartobimestral;
+    ImageView imgPrimerMensual, imgPrimerBimestral;
+    ImageView imgSegundoMensual, imgSegundoBimestral;
+    ImageView imgTercerMensual, imgTercerBimestral;
+    ImageView imgCuartoMensual, imgCuartoBimestral;
+
 
     CollapsingToolbarLayout collapsingToolbarLayout;
 
@@ -43,15 +45,14 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balotario_opciones);
 
-        txt_primermensual = findViewById(R.id.txt_mensualbalotario1);
-        txt_primerbimestral = findViewById(R.id.txt_bimestralbalotario1);
-        txt_segundobimestral = findViewById(R.id.txt_bimestralbalotario2);
-        txt_segundomensual = findViewById(R.id.txt_mensualbalotario2);
-        txt_tercerbimestral = findViewById(R.id.txt_bimestralbalotario3);
-        txt_tercermensual = findViewById(R.id.txt_mensualbalotario3);
-        txt_cuartomensual = findViewById(R.id.txt_mensualbalotario4);
-        txt_cuartobimestral = findViewById(R.id.txt_bimestralbalotario4);
-
+        imgPrimerMensual = findViewById(R.id.imgPrimerMensual);
+        imgPrimerBimestral = findViewById(R.id.imgPrimerBimestral);
+        imgSegundoMensual = findViewById(R.id.imgSegundoMensual);
+        imgSegundoBimestral = findViewById(R.id.imgSegundoBimestral);
+        imgTercerMensual = findViewById(R.id.imgTercerMensual);
+        imgTercerBimestral = findViewById(R.id.imgTercerBimestral);
+        imgCuartoMensual = findViewById(R.id.imgCuartoMensual);
+        imgCuartoBimestral = findViewById(R.id.imgCuartoBimestral);
 
         File balotariospdf = new File(Environment.getExternalStorageDirectory(), "/SacoOliveros");
         if (!balotariospdf.exists()) {
@@ -82,8 +83,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         collapsingToolbarLayout.setCollapsedTitleTypeface(futuralbold);
         collapsingToolbarLayout.setExpandedTitleTypeface(futuraheavy);
 
-
-        txt_primermensual.setOnClickListener(new View.OnClickListener() {
+        imgPrimerMensual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -98,7 +98,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         });
 
 
-        txt_primerbimestral.setOnClickListener(new View.OnClickListener() {
+        imgPrimerBimestral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -114,7 +114,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         });
 
 
-        txt_segundobimestral.setOnClickListener(new View.OnClickListener() {
+        imgSegundoBimestral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -129,7 +129,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         });
 
 
-        txt_segundomensual.setOnClickListener(new View.OnClickListener() {
+        imgSegundoMensual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -143,7 +143,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         });
 
 
-        txt_tercerbimestral.setOnClickListener(new View.OnClickListener() {
+        imgTercerBimestral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -156,7 +156,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
             }
         });
 
-        txt_tercermensual.setOnClickListener(new View.OnClickListener() {
+        imgTercerMensual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -171,7 +171,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
         });
 
 
-        txt_cuartomensual.setOnClickListener(new View.OnClickListener() {
+        imgCuartoMensual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -184,7 +184,7 @@ public class BalotarioOpcionesActivity extends AppCompatActivity {
             }
         });
 
-        txt_cuartobimestral.setOnClickListener(new View.OnClickListener() {
+        imgCuartoBimestral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

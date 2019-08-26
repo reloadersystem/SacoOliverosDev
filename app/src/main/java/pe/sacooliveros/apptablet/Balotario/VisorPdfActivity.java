@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -36,7 +35,6 @@ import com.krishna.fileloader.FileLoader;
 import com.krishna.fileloader.listener.FileRequestListener;
 import com.krishna.fileloader.pojo.FileResponse;
 import com.krishna.fileloader.request.FileLoadRequest;
-import com.microsoft.graph.models.generated.EventType;
 
 import java.io.File;
 
@@ -84,9 +82,13 @@ public class VisorPdfActivity extends AppCompatActivity {
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        Bundle params= new Bundle();
-        params.putInt("ID_VisorActivity", R.id.cl_visorpdfactivity);
-        mFirebaseAnalytics.logEvent("ActVisorBalotarios",params);
+
+        if (cd.isConnected()) {
+            Bundle params = new Bundle();
+            params.putInt("ID_VisorActivity", R.id.cl_visorpdfactivity);
+            mFirebaseAnalytics.logEvent("ActVisorBalotarios", params);
+        }
+
 
         pdfView = findViewById(R.id.pdfViewletraspdft3);
         progresbar = findViewById(R.id.progresbart3);

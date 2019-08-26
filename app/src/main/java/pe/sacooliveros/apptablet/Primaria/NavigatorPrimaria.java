@@ -205,7 +205,7 @@ public class NavigatorPrimaria extends AppCompatActivity
 
         boolean isAppInstalled2 = isPackageInstalled("com.adobe.reader", this.getPackageManager());
 
-/*  Servicio de Actualización atraves del Servidor
+//  Servicio de Actualización atraves del Servidor
 
         if (cd.isConnected() && updateapk != null) {
 
@@ -239,7 +239,7 @@ public class NavigatorPrimaria extends AppCompatActivity
                 dialog.show();
             }
         }
-        */
+
 
         if (!isAppInstalled2) {
 

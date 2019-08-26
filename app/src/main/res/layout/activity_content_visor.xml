@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Balotario.contentVisorActivity">
 
-
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/cordinator_layout"
         android:layout_width="match_parent"

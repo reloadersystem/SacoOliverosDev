@@ -485,6 +485,7 @@ public class ViewTomo3Activity extends AppCompatActivity implements View.OnClick
                                 })
                                 .enableAntialiasing(true)
                                 .invalidPageColor(Color.WHITE)
+                                .enableAnnotationRendering(true)
                                 .load();
                     }
 

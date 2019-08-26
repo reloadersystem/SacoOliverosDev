@@ -51,84 +51,122 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/imgTercerMensual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="116dp"
+                android:layout_marginEnd="54dp"
+                android:src="@drawable/imgbalotariom"
+                app:layout_constraintEnd_toStartOf="@+id/imgTercerBimestral"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/img_balotariovirtual"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_marginStart="67dp"
-                android:layout_marginTop="68dp"
-                android:src="@drawable/icobalotario_3"
-                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/imgTercerBimestral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="116dp"
+                android:layout_marginEnd="69dp"
+                android:src="@drawable/imgbalotariob"
+                app:layout_constraintEnd_toStartOf="@+id/imgCuartoMensual"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgPrimerBimestral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="116dp"
+                android:src="@drawable/imgbalotariob"
+                app:layout_constraintStart_toEndOf="@+id/imgPrimerMensual"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/futuraheavy"
                 android:text="Primer balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_balotariovirtual" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+
+            <ImageView
+                android:id="@+id/imgSegundoMensual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="81dp"
+                android:layout_marginTop="116dp"
+                android:src="@drawable/imgbalotariom"
+                app:layout_constraintStart_toEndOf="@+id/imgPrimerBimestral"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgSegundoBimestral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="116dp"
+                android:src="@drawable/imgbalotariob"
+                app:layout_constraintStart_toEndOf="@+id/imgSegundoMensual"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
                 android:id="@+id/txt_mensualbalotario1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="22dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toBottomOf="@+id/imgPrimerMensual" />
 
             <TextView
                 android:id="@+id/txt_mensualbalotario2"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="67dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/txt_bimestralbalotario1"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/imgSegundoMensual" />
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="25dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="8dp"
                 android:src="@drawable/sh_divider"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txt_mensualbalotario2"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/imgSegundoBimestral" />
 
 
             <TextView
                 android:id="@+id/txt_bimestralbalotario2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/imgSegundoBimestral" />
 
 
             <TextView
@@ -136,59 +174,48 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="31dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/futuraheavy"
                 android:text="Segundo balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/img_aulavirtual" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 
             <TextView
                 android:id="@+id/txt_bimestralbalotario1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toBottomOf="@+id/imgPrimerBimestral" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="25dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/sh_divider"
                 app:layout_constraintStart_toEndOf="@+id/txt_mensualbalotario1"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toBottomOf="@+id/imgPrimerMensual" />
 
 
             <ImageView
-                android:id="@+id/img_aulavirtual"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_marginStart="110dp"
-                android:layout_marginTop="68dp"
-                android:src="@drawable/icobalotario_3"
-                app:layout_constraintStart_toEndOf="@+id/img_balotariovirtual"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_marginTop="68dp"
-                android:layout_marginEnd="87dp"
-                android:src="@drawable/icobalotario_3"
-                app:layout_constraintEnd_toStartOf="@+id/imageView9"
+                android:id="@+id/imgPrimerMensual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="116dp"
+                android:src="@drawable/imgbalotariom"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -197,14 +224,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="31dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="47dp"
                 android:fontFamily="@font/futuraheavy"
                 android:text="Tercer balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toStartOf="@+id/textView19"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 
             <TextView
@@ -212,12 +239,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                app:layout_constraintTop_toBottomOf="@+id/imgTercerMensual" />
 
 
             <TextView
@@ -225,13 +253,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="39dp"
+                android:layout_marginEnd="50dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/txt_mensualbalotario4"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                app:layout_constraintTop_toBottomOf="@+id/imgTercerBimestral" />
 
 
             <ImageView
@@ -239,72 +267,81 @@
                 android:layout_width="25dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/sh_divider"
                 app:layout_constraintEnd_toStartOf="@+id/txt_bimestralbalotario3"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_marginTop="68dp"
-                android:layout_marginEnd="89dp"
-                android:src="@drawable/icobalotario_3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/imgTercerMensual" />
 
 
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="52dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/futuraheavy"
                 android:text="Cuarto balotario"
                 android:textColor="#989898"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
+            <ImageView
+                android:id="@+id/imgCuartoMensual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="116dp"
+                android:layout_marginEnd="56dp"
+                android:src="@drawable/imgbalotariom"
+                app:layout_constraintEnd_toStartOf="@+id/imgCuartoBimestral"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgCuartoBimestral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="116dp"
+                android:layout_marginEnd="33dp"
+                android:src="@drawable/imgbalotariob"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
                 android:id="@+id/txt_mensualbalotario4"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Mensual"
                 android:textColor="#4093cf"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView22"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/imgCuartoMensual" />
 
             <TextView
                 android:id="@+id/txt_bimestralbalotario4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="64dp"
+                android:layout_marginEnd="23dp"
                 android:fontFamily="@font/futuralt"
                 android:text="Bimestral"
                 android:textColor="@color/celeste_balotario"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/imgCuartoBimestral" />
 
             <ImageView
                 android:id="@+id/imageView22"
                 android:layout_width="25dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/sh_divider"
                 app:layout_constraintEnd_toStartOf="@+id/txt_bimestralbalotario4"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/imgCuartoMensual" />
 
 
         </android.support.constraint.ConstraintLayout>

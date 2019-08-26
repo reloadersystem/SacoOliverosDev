@@ -90,8 +90,6 @@ public class fragmentPropuestos extends Fragment {
             @Override
             public void onClick(View view) {
 
-
-
                 Fragment fragment2 = new InitialFragment();
                 FragmentManager fmanager2 = getActivity().getSupportFragmentManager();
                 if (fmanager2 != null) {
@@ -125,7 +123,6 @@ public class fragmentPropuestos extends Fragment {
 
                         adapter_prociencias.mes("MES0");
                         adapter_proletras.mesletras("MES0");
-
 
                         Fragment fragment0 = new FragPropuestosMaterias();
                         FragmentManager fmanager0 = getActivity().getSupportFragmentManager();

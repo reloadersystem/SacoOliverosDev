@@ -195,7 +195,7 @@ public class CiclosEspeciales extends AppCompatActivity
             }
         }
 
-        /* Actualización App usando un servicio
+        // Actualización App usando un servicio
         if (cd.isConnected() && updateapk != null) {
 
             BigDecimal versionapk = new BigDecimal(getVersionName(getApplicationContext()));
@@ -228,7 +228,6 @@ public class CiclosEspeciales extends AppCompatActivity
                 dialog.show();
             }
         }
-        */
 
         int verificarPermisoWrite = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int verificarPermisoPhone = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);

@@ -36,6 +36,9 @@ public class DiapositivasTomosFrag extends Fragment {
     String gradoasiste;
     ArrayList<mTomoLetrasDiap> Lista2;
     String acceso;
+    String gradousuario;
+
+
 
 
     public DiapositivasTomosFrag() {
@@ -64,6 +67,8 @@ public class DiapositivasTomosFrag extends Fragment {
             acceso = bundle.getString("ACCESO");
             gradoasiste = bundle.getString("TipoGradoAsiste");
         }
+
+        gradousuario = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
 
         adapterDiapositivasCiencia.instantiate(acceso);
         adapterDiapositivasCiencia.gradoasiste(gradoasiste);
@@ -111,16 +116,15 @@ public class DiapositivasTomosFrag extends Fragment {
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_3, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_4, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_5, R.drawable.download_circle));
+
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_6, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_7, R.drawable.download_circle));
         Lista2.add(new mTomoLetrasDiap(R.drawable.letras_8, R.drawable.download_circle));
 
         //TipoGradoAsiste
 
-        String grado = ShareDataRead.obtenerValor(getContext(), "ServerGradoNivel");
+
         String tipogrado = ShareDataRead.obtenerValor(getContext(), "TipoGradoAsiste");
-
-
 
         if (tipogrado.equalsIgnoreCase("SAN MARCOS") || tipogrado.equalsIgnoreCase("UNI") ) {
 
@@ -129,7 +133,7 @@ public class DiapositivasTomosFrag extends Fragment {
             Lista2.add(new mTomoLetrasDiap(R.drawable.letras_9, R.drawable.download_circle));
         }
 
-        if (grado.equalsIgnoreCase("1 Secundaria") || grado.equalsIgnoreCase("2 Secundaria")) {
+        if (gradousuario.equalsIgnoreCase("1 Secundaria") || gradousuario.equalsIgnoreCase("2 Secundaria")) {
             Lista2.add(new mTomoLetrasDiap(R.drawable.letras_10, R.drawable.download_circle));
             Lista2.add(new mTomoLetrasDiap(R.drawable.letras_11, R.drawable.download_circle));
         }

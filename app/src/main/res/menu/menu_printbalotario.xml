@@ -13,7 +13,7 @@
         android:id="@+id/action_opcionDpdf"
         android:orderInCategory="100"
         android:title="opcionD"
-        android:icon="@drawable/ic_home_white"
+        android:icon="@drawable/ic_home_white2"
         app:showAsAction="ifRoom" />
 
     <item
